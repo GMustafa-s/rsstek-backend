@@ -265,5 +265,14 @@ Route::prefix('contactus')->group(function () {
     Route::post('/add', [ContactUsController::class, 'store'])->name('add.contactus');
     Route::get('/show', [ContactUsController::class, 'show'])->name('show.contactus');
  });
-
  Route::get('contactus', [ContactUsController::class, 'index'])->name('/contactus');
+ //demo routes
+ Route::prefix('demo')->group(function () { 
+    Route::post('/add', [ContactUsController::class, 'demoStore'])->name('add.demo');
+    Route::get('/show', [ContactUsController::class, 'demoShow'])->name('show.demo');
+ });
+
+ Route::prefix('intallation')->group(function () { 
+    Route::post('/add', [ContactUsController::class, 'installationStore'])->name('add.intallation');
+    Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
+ });

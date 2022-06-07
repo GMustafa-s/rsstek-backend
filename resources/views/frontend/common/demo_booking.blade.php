@@ -9,9 +9,10 @@
                 <div class="frame viewport-holder slideDown delay-2">
                     <h3 class="viewport-holder slideDown delay-3">Book a Demo</h3>
                     <p class="viewport-holder slideDown delay-4">Book a Demo for  your facility for demotrastion of camera operation.</p>
-                    <form  onsubmit="demoEmail(); reset(); return false" method="POST" class="user-form">
+                    <form action="{{route('add.demo')}}"  method="POST" onsubmit="demoEmail()" class="user-form">
+                    @csrf
                         <input class="form-control" id="name" type="text" placeholder="Your Name" name="name" required>
-                        <input class="form-control" id="email" type="email" placeholder="Your Email" name="emai" required>
+                        <input class="form-control" id="email" type="email" placeholder="Your Email" name="email" required>
                         <input class="login-btn" type="submit" value="Book Now">
                     </form>
                 </div>

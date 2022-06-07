@@ -45,8 +45,13 @@
 								</ul>
 							</li>
 
-							<li> 
-								<a href="{{url('contactus/show')}}"><i class="la la-envelope"></i> <span>Mail Box</span></a>
+							<li class="submenu">
+								<a href="#" class=""><i class="la la-list"></i> <span>Contact Queries</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{{url('contactus/show')}}">Main ContactUs </a></li>
+									<li><a href="{{route('show.installation')}}">Installation Queries</a></li>
+									<li><a href="{{route('show.intallation')}}">Demo Queries</a></li>
+								</ul>
 							</li>
 							
 						</ul>

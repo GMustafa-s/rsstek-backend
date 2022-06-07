@@ -1,6 +1,19 @@
 @extends('frontend.index')
 @section('content')
-
+@if(session()->has('success'))
+  <div class="alert-success">
+    <p>
+      {{ session()->get('success') }}
+    </p>
+   </div>
+@endif
+@if(session()->has('error'))
+<div class="alert-error">
+  <p>
+    {{ session()->get('error') }}
+  </p>
+ </div>
+@endif
 {{-- Home page slider's video --}}
 
 <div class="header-b">
@@ -261,7 +274,8 @@
                 <div class="form-holder">
                     <h2 class="viewport-holder slideDown delay-2"><span>GET PRODUCT</span>Ready To Install?</h2>
                     <p class="viewport-holder slideDown delay-3">Fill your name and mobile number below so we can contact you to proceed to the next step</p>
-                    <form  onsubmit="demoInstall(); reset(); return false" method="POST" class="form">
+                    <form  action="{{route('add.intallation')}}"method="POST" onsubmit="demoInstall()"  class="form">
+                    @csrf
                             <input class="form-control" id="name" type="text" placeholder="Your Name" name="name" required>
                             <input class="form-control" id="phone" type="tel" placeholder="Your Phone" name="phone" required>
                             <input class="login-btn" type="submit" value="Book Now">
