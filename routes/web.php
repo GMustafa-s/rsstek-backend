@@ -254,8 +254,10 @@ Route::get('/admin-dashboard', function () {
 
 
 Route::prefix('settings')->group(function () { 
-   
    Route::resource('general',GeneralController::class);
+   Route::post('add-site-info', [GeneralController::class, 'createSiteInfo'])->name('add.siteinfo');
+   Route::post('add-contatct-info', [GeneralController::class, 'createContactInfo'])->name('add.contactInfo');
+   Route::post('add-copy-right', [GeneralController::class, 'createCopyRight'])->name('add.copyright');
    Route::post('add-soacials', [GeneralController::class, 'createSocials'])->name('add.socials');
    Route::post('edit-soacials/{id}', [GeneralController::class, 'editSocials'])->name('edit.socials');
    Route::get('delete-soacials/{id}', [GeneralController::class, 'deleteSicials'])->name('del.socials');
@@ -265,6 +267,7 @@ Route::prefix('contactus')->group(function () {
     Route::post('/add', [ContactUsController::class, 'store'])->name('add.contactus');
     Route::get('/show', [ContactUsController::class, 'show'])->name('show.contactus');
  });
+
  Route::get('contactus', [ContactUsController::class, 'index'])->name('/contactus');
  //demo routes
  Route::prefix('demo')->group(function () { 

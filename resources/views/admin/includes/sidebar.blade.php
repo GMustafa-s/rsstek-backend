@@ -40,7 +40,22 @@
 								<a href="#" class="noti-dot"><i class="la la-globe"></i> <span>Website Settings </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="{{url('settings/general')}}">General Settings</a></li>
-									<li><a href="holidays.html">Pages</a></li>
+									<li>
+									<li class="submenu">
+										<a href="javascript:void(0);"> <i class="la la-columns"></i> <span>Pages</span> <span class="menu-arrow"></span></a>
+										<ul style="display: none;">
+											<li><a href="javascript:void(0);"><span>Level 2</span></a></li>
+											<li class="submenu">
+												<a href="javascript:void(0);"> <span> Home</span> <span class="menu-arrow"></span></a>
+												<ul style="display: none;">
+													<li><a href="javascript:void(0);">Level 3</a></li>
+													<li><a href="javascript:void(0);">Level 3</a></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
+										</ul>
+									</li> 
+										
 									
 								</ul>
 							</li>

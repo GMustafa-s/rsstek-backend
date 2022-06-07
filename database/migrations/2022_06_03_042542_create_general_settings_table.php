@@ -15,10 +15,15 @@ return new class extends Migration
     {
         Schema::create('general_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('setting_name');
-            $table->string('title')->nullable();
+            $table->string('site_title')->nullable();
             $table->text('description')->nullable();
-            $table->string('files')->nullable();
+            $table->string('favicon')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->text('copy_right_text')->nullable();
+
             $table->timestamps();
         });
     }
