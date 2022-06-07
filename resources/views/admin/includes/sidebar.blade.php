@@ -49,8 +49,8 @@
 								<a href="#" class=""><i class="la la-list"></i> <span>Contact Queries</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="{{url('contactus/show')}}">Main ContactUs </a></li>
-									<li><a href="{{route('show.installation')}}">Installation Queries</a></li>
-									<li><a href="{{route('show.intallation')}}">Demo Queries</a></li>
+									<li><a href="{{route('show.intallation')}}">Installation Queries</a></li>
+									<li><a href="{{route('show.demo')}}">Demo Queries</a></li>
 								</ul>
 							</li>
 							

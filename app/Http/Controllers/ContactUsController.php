@@ -86,8 +86,8 @@ class ContactUsController extends Controller
 
     // installation queries
     public function intallationShow(){
-        $demo_messages = Demo::orderby('created_at','DESC')->paginate(15);
-        return view('admin.queries.demo',compact('demo_messages'));        
+        $installation_messages = installationQuery::orderby('created_at','DESC')->paginate(15);
+        return view('admin.queries.insatallation',compact('installation_messages'));        
     }
 
     public function installationStore(Request $request){

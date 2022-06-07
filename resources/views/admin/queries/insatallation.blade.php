@@ -8,11 +8,11 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">Demo Queries</h3>
+                    <h3 class="page-title">Installation Queries</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">demo queries</li>
+                            <li class="breadcrumb-item active" aria-current="page">Installation Queries</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,7 +22,7 @@
 						<div class="col-sm-12">
 							<div class="card mb-0">
 								<div class="card-header">
-									<h4 class="card-title mb-0">Demo Queries</h4>
+									<h4 class="card-title mb-0">Installation  Queries</h4>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
@@ -34,7 +34,7 @@
                                                     
                                                     <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Name</th>
 
-                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 311.453px;">E-mail</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 311.453px;">Phone</th>
 
 
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 108.406px;">Action</th></tr>
@@ -42,13 +42,13 @@
 											<tbody>
 
 											
-												@if($demo_messages->count()>0)
-												@foreach($demo_messages as $message)
+												@if($installation_messages->count()>0)
+												@foreach($installation_messages as $message)
 												<tr role="row">
 													<td class="sorting_1">{{$message->name}}</td>
-													<td>{{$message->email}}</td>
-													<td style="padding: 0;"><a target="_blank" href="mailto:{{$message->email}}" style="font-size: 35px;margin-left:10px">
-														<i class="la la-envelope"></i>
+													<td>{{$message->phone}}</td>
+													<td style="padding: 0;"><a target="_blank" href="tel:{{$message->phone}}" style="font-size: 35px;margin-left:10px">
+														<i class="la la-phone"></i>
 													</a></td>
 												</tr>
 												@endforeach
@@ -63,7 +63,7 @@
 									
 									</div></div>
 									<div id="pagination-svg">
-										{!! $demo_messages->links() !!}	
+										{!! $installation_messages->links() !!}	
 									</div>
 									
 									<div class="row">
