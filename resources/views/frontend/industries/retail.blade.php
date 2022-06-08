@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div id="promo-retail" class="promo product">
         <div class="frame">
@@ -7,8 +7,8 @@
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
                             <li><a href="{{ route('/') }}">Main</a></li>
-                            <li><a href="{{ route('/solutions') }}">Solutions</a></li>
-                            <li><a href="{{ route('/retail') }}">Retail</a></li>
+                            <li><a href="{{ route('solutions') }}">Solutions</a></li>
+                            <li><a href="{{ route('retail') }}">Retail</a></li>
 
                         </ul>
                         <div id="text-banner-overview" class="text">
@@ -20,7 +20,7 @@
                                 staff: cashiers, salespeople and others.
                             </p>
                             <ul class="viewport-holder slideDown delay-3">
-                                <li><a href="{{ route('/solutions') }}" class="btn sec">Get Solutions</a></li>
+                                <li><a href="{{ route('solutions') }}" class="btn sec">Get Solutions</a></li>
                             </ul>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                                 <div class="frame">
                                     <img src="{{asset('frontend')}}/images/Industries/Retail/Queue_detector.png" alt="image description">
                                     <div class="txt-box">
-                                        <a href="{{route('/queue_counter')}}" class="more">Queue Detector</a>
+                                        <a href="{{route('queue.counter')}}" class="more">Queue Detector</a>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                                 <div class="frame">
                                     <img src="{{asset('frontend')}}/images/Industries/Retail/Heat_map_on_map.png" alt="image description">
                                     <div class="txt-box">
-                                        <a href="{{route('/heat_map')}}" class="more">Heat Map On Map</a>
+                                        <a href="{{route('heat.map')}}" class="more">Heat Map On Map</a>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                                 <div class="frame">
                                     <img src="{{asset('frontend')}}/images/Industries/Retail/Staff_tracker.png" alt="image description">
                                     <div class="txt-box">
-                                        <a href="{{route('/staff_tracker')}}" class="more">Staff Tracker</a>
+                                        <a href="{{route('staff.tracker')}}" class="more">Staff Tracker</a>
                                     </div>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
 		<div id="promo-health-care" class="promo product">
 			<div class="frame">
@@ -9,7 +9,7 @@
 								<li><a href="{{route('/')}}">Main</a></li>
 								<li><a href="#">Products</a></li>
 								<li><a href="#">Analitys</a></li>
-								<li><a href="{{route('/work_safety')}}">Work Safety</a></li>
+								<li><a href="{{route('work.safety')}}">Work Safety</a></li>
 							</ul>
 							<div class="text">
 								<h1 class="viewport-holder slideDown delay-1">Work Safety</h1>
@@ -28,8 +28,8 @@
 		<div class="link-holder">
 			<div class="container">
 				<ul class="links viewport-holder slideDown">
-					<li><a href="{{route('/hardhat_detector')}}">Hardhat Detector</a></li>
-					<li><a href="{{route('/wear_detector')}}">Wear Detector</a></li>
+					<li><a href="{{route('hardhat.detector')}}">Hardhat Detector</a></li>
+					<li><a href="{{route('wear.detector')}}">Wear Detector</a></li>
 			</div>
 		</div>
 		<main id="main">

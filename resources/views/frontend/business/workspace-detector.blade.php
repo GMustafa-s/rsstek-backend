@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
 
 
@@ -9,13 +9,13 @@
 						<div class="box">
 							<ul class="breadcrumbs viewport-holder slideDown">
 								<li><a href="{{route('/')}}">Main</a></li>
-								<li><a href="{{route('/business')}}">Business</a></li>
-								<li><a href="{{route('/workspace_detector')}}">Workspace Detector</a></li>
+								<li><a href="{{route('business')}}">Business</a></li>
+								<li><a href="{{route('workspace.detector')}}">Workspace Detector</a></li>
 							</ul>
 							<div class="text">
 								<h1 class="viewport-holder slideDown delay-1">Workspace Detector</h1>
 								<ul class="viewport-holder slideDown delay-2">
-									<li><a href="{{route('/demo')}}" class="btn"><span>Book a Demo</span></a></li>
+									<li><a href="{{route('demo')}}" class="btn"><span>Book a Demo</span></a></li>
 									<li><a href="{{route('/contactus')}}" class="btn add">How to Buy</a></li>
 								</ul>
 							</div>
@@ -56,7 +56,42 @@
 							</div>
 						</div>
 					</div>
-					@include('frontend.business.sidebar')
+					<div class="product-box">
+                        <div class="frame viewport-holder slideDown delay-1">
+                            <h2 class="viewport-holder slideDown delay-2">Other Products</h2>
+                            <ul class="accordion" data-accordion="close">
+                                <li class="viewport-holder slideDown delay-3">
+                                    <a    href="{{route('active.post')}}">ActivePOS</a>
+
+                                </li>
+                                <!-- <li class="viewport-holder slideDown delay-4">
+                                    <a    href="workspace-detector.html">Workspace Detector</a>
+
+                                </li> -->
+                                <li class="viewport-holder slideDown delay-4">
+                                    <a    href="{{route('staff.tracker')}}">Staff Tracker</a>
+
+                                </li>
+                                <li class="viewport-holder slideDown delay-5">
+                                    <a    href="{{route('shelf.detector')}}">Shelf Detector</a>
+
+                                </li>
+                                <li class="viewport-holder slideDown delay-6">
+                                    <a    href="{{route('heat.map')}}">Heat Map on Map</a>
+
+                                </li>
+                                <li class="viewport-holder slideDown delay-7">
+                                    <a    href="{{route('neuro.counter')}}">Neuro Counter</a>
+
+                                </li>
+                                <li class="viewport-holder slideDown delay-8">
+                                    <a    href="{{route('queue.counter')}}">Queue Counter</a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
 				</div>
 			</div>
 			@include('frontend.common.solutions_area')

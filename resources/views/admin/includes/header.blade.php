@@ -1,6 +1,6 @@
 <!-- Header -->
 <div class="header">
-			
+
             <!-- Logo -->
             <div class="header-left">
                 <a href="{{url('/admin-dashboard')}}" class="logo">
@@ -8,7 +8,7 @@
                 </a>
             </div>
             <!-- /Logo -->
-            
+
             <a id="toggle_btn" href="javascript:void(0);">
                 <span class="bar-icon">
                     <span></span>
@@ -16,18 +16,18 @@
                     <span></span>
                 </span>
             </a>
-            
+
             <!-- Header Title -->
             <div class="page-title-box">
                 <h3>Dreamguy's Technologies</h3>
             </div>
             <!-- /Header Title -->
-            
+
             <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
-            
+
             <!-- Header Menu -->
             <ul class="nav user-menu">
-            
+
                 <!-- Search -->
                 <!-- <li class="nav-item">
                     <div class="top-nav-search">
@@ -41,7 +41,7 @@
                     </div>
                 </li> -->
                 <!-- /Search -->
-            
+
                 <!-- Flag -->
                 <!-- <li class="nav-item dropdown has-arrow flag-nav">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
@@ -63,7 +63,7 @@
                     </div>
                 </li> -->
                 <!-- /Flag -->
-            
+
                 <!-- Notifications -->
                 <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -149,7 +149,7 @@
                     </div>
                 </li>
                 <!-- /Notifications -->
-                
+
                 <!-- Message Notifications -->
                 <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -265,12 +265,12 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="settings.html">Settings</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                     </div>
                 </li>
             </ul>
             <!-- /Header Menu -->
-            
+
             <!-- Mobile Menu -->
             <div class="dropdown mobile-user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
@@ -281,6 +281,6 @@
                 </div>
             </div>
             <!-- /Mobile Menu -->
-            
+
         </div>
         <!-- /Header -->

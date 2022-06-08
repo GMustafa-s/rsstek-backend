@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
 
 <div id="promo-business" class="promo product">
@@ -31,13 +31,13 @@
 <div class="link-holder col2-tab">
     <div class="container">
         <ul class="links viewport-holder slideDown">
-            <li><a href="{{route('/workspace_detector')}}">Workspace Detector</a></li>
-            <li><a href="{{route('/staff_tracker')}}">Staff Tracker</a></li>
-            <li><a href="{{route('/heat_map')}}">Heat Map on Map</a></li>
-            <li><a href="{{route('/queue_counter')}}">Queue Counter</a></li>
-            <li><a href="{{route('/active_post')}}">ActivePOS</a></li>
-            <li><a href="{{route('/shelf_detector')}}">Shelf Detector</a></li>
-            <li><a href="{{route('/neuro_counter')}}">Neuro Counter</a></li>
+            <li><a href="{{route('workspace.detector')}}">Workspace Detector</a></li>
+            <li><a href="{{route('staff.tracker')}}">Staff Tracker</a></li>
+            <li><a href="{{route('heat.map')}}">Heat Map on Map</a></li>
+            <li><a href="{{route('queue.counter')}}">Queue Counter</a></li>
+            <li><a href="{{route('active.post')}}">ActivePOS</a></li>
+            <li><a href="{{route('shelf.detector')}}">Shelf Detector</a></li>
+            <li><a href="{{route('neuro.counter')}}">Neuro Counter</a></li>
         </ul>
     </div>
 </div>

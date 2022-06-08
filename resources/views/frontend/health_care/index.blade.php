@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div id="wrapper">
 
@@ -11,7 +11,7 @@
                                 <li><a href="{{ route('/') }}">Main</a></li>
                                 <li><a href="#">Products</a></li>
                                 <li><a href="#">Analitys</a></li>
-                                <li><a href="{{ route('/health_care') }}">Healthcare</a></li>
+                                <li><a href="{{ route('health.care') }}">Healthcare</a></li>
                             </ul>
                             <div class="text">
                                 <h1 class="viewport-holder slideDown delay-1">Healthcare</h1>
@@ -31,9 +31,9 @@
         <div class="link-holder">
             <div class="container">
                 <ul class="links viewport-holder slideDown">
-                    <li><a href="{{ route('/face_mask_detector') }}">Face Mask Detector</a></li>
-                    <li><a href="{{ route('/social_distance_detector') }}">Social Distance Detector</a></li>
-                    <li><a href="{{ route('/thermal_camera') }}">Thermal Camera</a></li>
+                    <li><a href="{{ route('face.mask.detector') }}">Face Mask Detector</a></li>
+                    <li><a href="{{ route('social.distance.detector') }}">Social Distance Detector</a></li>
+                    <li><a href="{{ route('thermal.camera') }}">Thermal Camera</a></li>
             </div>
         </div>
         <main id="main">

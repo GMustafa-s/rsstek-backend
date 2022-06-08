@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
       <div id="promo-solutions" class="promo product">
         <div class="frame">
@@ -7,7 +7,7 @@
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
                   <li><a href="{{route('/')}}">Main</a></li>
-                  <li><a href="{{route('/solutions')}}">Solutions</a></li>
+                  <li><a href="{{route('solutions')}}">Solutions</a></li>
                 </ul>
                 <div class="text">
                   <h1 class="viewport-holder slideDown delay-1">
@@ -29,12 +29,12 @@
       <div class="link-holder">
         <div class="container">
           <ul class="links viewport-holder slideDown">
-            <li><a href="{{route('/transport_and_storage')}}">Transport and storage</a></li>
-            <li><a href="{{route('/public_safety')}}">Public safety</a></li>
-            <li><a href="{{route('/health_care')}}">Healthcare</a></li>
-            <li><a href="{{route('/real_state')}}">Real estate</a></li>
-            <li><a href="{{route('/retail')}}">Retail</a></li>
-            <li><a href="{{route('/industrial')}}">Industrial</a></li>
+            <li><a href="{{route('transport.and.storage')}}">Transport and storage</a></li>
+            <li><a href="{{route('public.safety')}}">Public safety</a></li>
+            <li><a href="{{route('health.care')}}">Healthcare</a></li>
+            <li><a href="{{route('real.state')}}">Real estate</a></li>
+            <li><a href="{{route('retail')}}">Retail</a></li>
+            <li><a href="{{route('industrial')}}">Industrial</a></li>
           </ul>
         </div>
       </div>

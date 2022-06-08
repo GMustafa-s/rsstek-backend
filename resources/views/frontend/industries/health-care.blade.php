@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
       <div id="promo-healthcare" class="promo product">
         <div class="frame">
@@ -7,8 +7,8 @@
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
                   <li><a href="{{ route('/') }}">Main</a></li>
-                  <li><a href="{{ route('/solutions') }}">Solutions</a></li>
-                  <li><a href="{{ route('/health_care') }}">Health Care</a></li>
+                  <li><a href="{{ route('solutions') }}">Solutions</a></li>
+                  <li><a href="{{ route('health.care') }}">Health Care</a></li>
                 </ul>
                 <div id="text-banner-overview" class="text">
                   <h1 class="viewport-holder slideDown delay-1">Health Care</h1>
@@ -28,7 +28,7 @@
                   </p>
 
                   <ul class="viewport-holder slideDown delay-3">
-                    <li><a href="{{route('/solutions')}}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
+                    <li><a href="{{route('solutions')}}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
                   </ul>
                 </div>
               </div>
@@ -132,7 +132,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/thermal_camera')}}" class="more">Thermal Camera</a>
+                        <a href="{{route('thermal.camera')}}" class="more">Thermal Camera</a>
                       </div>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/social_distance_detector')}}" class="more">Social Distance Detector</a>
+                        <a href="{{route('social.distance.detector')}}" class="more">Social Distance Detector</a>
                       </div>
                     </div>
                   </div>
@@ -154,7 +154,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/face_mask_detector')}}" class="more">Face Mask Detector</a>
+                        <a href="{{route('face.mask.detector')}}" class="more">Face Mask Detector</a>
                       </div>
                     </div>
                   </div>

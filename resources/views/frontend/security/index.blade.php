@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div id="promo-security" class="promo product">
         <div class="frame">
@@ -9,7 +9,7 @@
                             <li><a href="{{ route('/') }}">Main</a></li>
                             <li><a href="#">Products</a></li>
                             <li><a href="#">Analitys</a></li>
-                            <li><a href="{{ route('/security') }}">Security</a></li>
+                            <li><a href="{{ route('security') }}">Security</a></li>
                         </ul>
                         <div id="text-banner-overview" class="text">
                             <h1 class="viewport-holder slideDown delay-1">Security</h1>
@@ -63,7 +63,7 @@
                         <p class="viewport-holder slideDown delay-3">Neuro Left Object Detector works on the basis of a
                             detector of objects and people - unlike the classical one, it does not depend on the background
                             and works better in difficult conditions. The detector is based on two grids and tracking.</p>
-                        <a href="{{route('/neuro_left_object_detector')}}" class="viewport-holder slideDown delay-4 more"><span>Read
+                        <a href="{{route('neuro.left.object.detector')}}" class="viewport-holder slideDown delay-4 more"><span>Read
                                 More</span></a>
                     </div>
                 </article>
@@ -103,7 +103,7 @@
                             detect objects in the frame. When a foreign object enters the specified area, the detector
                             generates an alarm. Allows to significantly reduce the number of false alarms by filtering
                             foreign objects and noise.</p>
-                        <a href="{{route('/neuro_detector')}}" class="viewport-holder slideDown delay-3 more"><span>Read
+                        <a href="{{route('neuro.detector')}}" class="viewport-holder slideDown delay-3 more"><span>Read
                                 More</span></a>
                     </div>
                 </article>
@@ -118,7 +118,7 @@
                             of objects - people, cars, bicycles - in a prohibited direction. When crossing a predetermined
                             line or changing the trajectory of movement, the module sends alarm notifications to the guard
                             and saves the frame for the evidentiary base.</p>
-                        <a href="{{route('/direction_detector')}}" class="viewport-holder slideDown delay-4 more"><span>Read
+                        <a href="{{route('direction.detector')}}" class="viewport-holder slideDown delay-4 more"><span>Read
                                 More</span></a>
                     </div>
                 </article>
@@ -131,7 +131,7 @@
                         <p class="viewport-holder slideDown delay-3">Overcrowding detector with customizable threshold -
                             when the allowed number of people is exceeded, the module sends a notification in real time.
                             Designed to ensure safety in indoor and outdoor areas.</p>
-                        <a href="{{route('/crowd_detector')}}" class="viewport-holder slideDown delay-4 more"><span>Read
+                        <a href="{{route('crowd.detector')}}" class="viewport-holder slideDown delay-4 more"><span>Read
                                 More</span></a>
                     </div>
                 </article>

@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
       <div class="promo">
         <div class="frame">
@@ -7,8 +7,8 @@
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
                   <li><a href="{{route('/')}}">Main</a></li>
-                  <li><a href="{{route('/work_safety')}}"> Work Safety</a></li>
-                  <li><a href="{{route('/wear_detector')}}">Wear Detector</a></li>
+                  <li><a href="{{route('work.safety')}}"> Work Safety</a></li>
+                  <li><a href="{{route('wear.detector')}}">Wear Detector</a></li>
                 </ul>
                 <div class="text">
                   <h1 class="viewport-holder slideDown delay-1">
@@ -16,7 +16,7 @@
                   </h1>
                   <ul class="viewport-holder slideDown delay-2">
                     <li>
-                      <a href="{{route('/demo')}}" class="btn"><span>Book a Demo</span></a>
+                      <a href="{{route('demo')}}" class="btn"><span>Book a Demo</span></a>
                     </li>
                     <li><a href="{{route('/contactus')}}" class="btn add">How to Buy</a></li>
                   </ul>
@@ -100,10 +100,10 @@
                 <h2>Other Products</h2>
                 <ul class="accordion" data-accordion="close">
                   <li>
-                    <a href="{{route('/hardhat_detector')}}">Hardhat Detector </a>
+                    <a href="{{route('hardhat.detector')}}">Hardhat Detector </a>
                   </li>
                   {{-- <li>
-						<a    href="{{route('/hardhat_detector')}}">Wear Detector</a>
+						<a    href="{{route('hardhat.detector')}}">Wear Detector</a>
 					</li> --}}
                 </ul>
               </div>
