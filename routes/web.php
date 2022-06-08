@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\settings\GeneralController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\cms\cumtom\HomeController;
+use App\Http\Controllers\cms\solution\SolutionController;
 
 
 /*
@@ -277,5 +279,15 @@ Route::prefix('contactus')->group(function () {
 
  Route::prefix('intallation')->group(function () { 
     Route::post('/add', [ContactUsController::class, 'installationStore'])->name('add.intallation');
+    Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
+ });
+
+ Route::prefix('cmd')->group(function () { 
+    Route::get('/custom/home', [HomeController::class, 'index'])->name('cms.custom.home');
+    Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
+ });
+
+ Route::prefix('solution')->group(function () { 
+    Route::get('/index', [SolutionController::class, 'index'])->name('cms.solution.index');
     Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
  });

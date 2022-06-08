@@ -41,34 +41,54 @@
 								<ul style="display: none;">
 									<li><a href="{{url('settings/general')}}">General Settings</a></li>
 									<li>
-									<li class="submenu">
-										<a href="javascript:void(0);"> <i class="la la-columns"></i> <span>Pages</span> <span class="menu-arrow"></span></a>
-										<ul style="display: none;">
-											<li><a href="javascript:void(0);"><span>Level 2</span></a></li>
-											<li class="submenu">
-												<a href="javascript:void(0);"> <span> Home</span> <span class="menu-arrow"></span></a>
-												<ul style="display: none;">
-													<li><a href="javascript:void(0);">Level 3</a></li>
-													<li><a href="javascript:void(0);">Level 3</a></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
-										</ul>
-									</li> 
-										
-									
 								</ul>
 							</li>
+							<li class="menu-title"> 
 
+								<span>Queries</span>
+							</li>
 							<li class="submenu">
-								<a href="#" class=""><i class="la la-list"></i> <span>Contact Queries</span> <span class="menu-arrow"></span></a>
+								<a href="#" class=""><i class="la la-phone"></i> <span>Contact Queries</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="{{url('contactus/show')}}">Main ContactUs </a></li>
 									<li><a href="{{route('show.intallation')}}">Installation Queries</a></li>
 									<li><a href="{{route('show.demo')}}">Demo Queries</a></li>
 								</ul>
 							</li>
-							
+							<li class="menu-title"> 
+
+								<span>CMS</span>
+							</li>
+							<li class="submenu">
+								<a href="#" class=""><i class="la la-desktop"></i> <span>CMS</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li>
+									<li class="submenu">
+								<a href="#" class=""><span>Custome Pages</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<!-- <li><a href="{{route('cms.custom.home')}}">Home</a></li>
+									<li><a href="{{route('show.demo')}}">About Us</a></li>
+									<li><a href="{{route('show.intallation')}}">Contact Us</a></li>
+									<li><a href="{{route('show.demo')}}">Demo</a></li>
+									<li><a href="{{route('show.demo')}}">Cases</a></li>
+									<li><a href="{{route('show.demo')}}">Integration</a></li>
+									<li><a href="{{route('show.demo')}}">Camera Compare</a></li> -->
+
+								</ul>
+							</li>
+									</li>
+									<li>
+									<li class="submenu">
+								<a href="#" class=""><span>Camera Pages</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{{url('contactus/show')}}">Static Sections</a></li>
+									<li><a href="{{route('show.demo')}}">Dynamic</a></li>
+								</ul>
+									</li>
+									<li><a href="{{route('cms.solution.index')}}">Static Sections</a></li>
+								</ul>
+								
+							</li>
 						</ul>
 					</div>
                 </div>
