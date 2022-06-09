@@ -43,16 +43,20 @@ class GeneralController extends Controller
         if($request->description){
         $site_data->description = $request->description;
         }
+        else{
+        $site_data->description = "";
+
+        }
         if($request->favicon !=null){
             $file = $request->file('favicon');
-            $filename = rand().$file->getClientOriginalName();
+            $filename = rand().'.'.$file->getClientOriginalExtension();
             $destinationPath = public_path('frontend').'/images/fevicon/';
             $file->move($destinationPath,$filename);
             $site_data->favicon = $filename;
         }
         if($request->logo !=null){
             $file = $request->file('logo');
-            $filename = rand().$file->getClientOriginalName();
+            $filename = rand().'.'.$file->getClientOriginalExtension();
             $destinationPath = public_path('frontend').'/images';
             $file->move($destinationPath,$filename);
             $site_data->logo = $filename;
@@ -159,7 +163,7 @@ class GeneralController extends Controller
     public function createSocials(Request $request)
     {
         $file = $request->file('image');
-        $filename = rand().$file->getClientOriginalName();
+        $filename = rand().'.'.$file->getClientOriginalExtension();
         $destinationPath = public_path('frontend').'/images/social-icons/Button/';
         $file->move($destinationPath,$filename);
         $data_array = ['url'=>$request->url,'image'=>$filename];

@@ -289,5 +289,10 @@ Route::prefix('contactus')->group(function () {
 
  Route::prefix('solution')->group(function () { 
     Route::get('/index', [SolutionController::class, 'index'])->name('cms.solution.index');
-    Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
+    Route::get('/create', [SolutionController::class, 'create'])->name('cms.solution.create');
+    Route::post('/store', [SolutionController::class, 'store'])->name('cms.solution.store');
+    Route::get('/sub', [SolutionController::class, 'subPage'])->name('cms.solution.subpage');
+    Route::get('/sub-create', [SolutionController::class, 'subCreate'])->name('cms.solution.subcreate');
+    Route::post('/sub-store', [SolutionController::class, 'sobStore'])->name('cms.solution.substore');
+
  });

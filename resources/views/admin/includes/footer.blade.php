@@ -1,4 +1,4 @@
-</div>
+	</div>
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
