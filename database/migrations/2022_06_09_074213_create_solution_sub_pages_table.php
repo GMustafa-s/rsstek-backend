@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('page_categories_id');
             $table->string('title');
-            $table->text('description');
+            $table->longText('description');
             $table->string('fetaured_image');
             $table->string('video');
             $table->string('slug');

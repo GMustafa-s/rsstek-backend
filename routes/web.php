@@ -308,8 +308,9 @@ Route::prefix('contactus')->group(function () {
     Route::get('/sub-page/delete/{id}', [SolutionController::class, 'subDelete'])->name('cms.solution.subdelete');
     Route::post('/add-section/{id}', [SolutionController::class, 'addSection'])->name('cms.solution.section.add');
     Route::post('/update-section/{id}', [SolutionController::class, 'updateSection'])->name('cms.solution.section.update');
+   
  });
-
+ Route::get('/delete-section/{id}', [SolutionController::class, 'deleteSection'])->name('cms.solution.section.delete');
 
 Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('category.slug');
-Route::get('solution/sub-page/{any}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');
+Route::get('solution/{solution}/{name}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');

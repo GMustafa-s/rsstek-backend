@@ -10,7 +10,7 @@
 							<ul class="breadcrumbs viewport-holder slideDown">
 								<li><a href="{{route('/')}}">Main</a></li>
 								<li><a href="{{route('category.slug',$main_page->slug)}}">{{$main_page->name}}</a></li>
-								<li><a href="{{route('category.sub.slug',$page->slug)}}">{{$page->title}}</a></li>
+								<li><a href="{{route('category.sub.slug',['solution'=>$main_page->slug,'name'=>$page->slug])}}">{{$page->title}}</a></li>
 							</ul>
 							<div class="text">
 								<h1 class="viewport-holder slideDown delay-1">{{$page->title}}</h1>
@@ -40,17 +40,19 @@
 							<h1 class="viewport-holder slideDown"><span>OVERVIEW</span><br>{{$page->title}}</h1>
 							<div class="text viewport-holder slideDown delay-1">
 								<p class="viewport-holder slideDown delay-2">
-                                    {{$page->description}}
+                                    {!! $page->description !!}
                                 </p>
 							</div>
 						</div>
-						@if($section !=null)
+						@if($sections !=null)
+						@foreach($sections as $section)
 						<div>
 							<h2 class="viewport-holder slideDown delay-4">{{$section->title}}</h2>
 							<div class="text viewport-holder slideDown delay-5">
 								{!! $section->body !!}
 							</div>
 						</div>
+						@endforeach
 						@endif
 					</div>
 					<div class="product-box">
@@ -60,7 +62,8 @@
             @if($other_pages->count()>0)
                 @foreach($other_pages as $other)
                     <li class="viewport-holder slideDown delay-3">
-                        <a    href="{{route('category.sub.slug',$other->slug)}}">{{$other->title}}</a>
+				
+                        <a    href="{{route('category.sub.slug',['solution'=>$main_page->slug,'name'=>$other->slug])}}">{{$other->title}}</a>
                     </li>
                 @endforeach
             @endif

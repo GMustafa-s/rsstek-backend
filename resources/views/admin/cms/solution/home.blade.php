@@ -87,13 +87,13 @@
                                     @if($sub_categ->page_categories_id == $categ->id)
                                     @if($n==1)
                                     <p>
-                                    <a href="{{route('category.sub.slug',$sub_categ->slug)}}">{{$sub_categ->title}}</a>
+                                    <a href="{{route('category.sub.slug',['solution'=>$categ->slug,'name'=>$sub_categ->slug])}}">{{$sub_categ->title}}</a>
                                   
                                     <span id="seemore"> <a onclick="showtext()">...see more</a></span>
                                     </p>
                                     @else
                                     <p id="sub-pages" class="text-hide">
-                                        <a href="{{route('category.sub.slug',$sub_categ->slug)}}">
+                                        <a href="{{route('category.sub.slug',['solution'=>$categ->slug,'name'=>$sub_categ->slug])}}">
                                     {{$sub_categ->title}}</a>
                                     @if($n==$sub_category->count())
                                     <span id="seeless" class="text-hide"> <a onclick="showtext()">...see less</a></span>

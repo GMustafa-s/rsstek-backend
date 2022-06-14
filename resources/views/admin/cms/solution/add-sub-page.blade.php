@@ -62,11 +62,6 @@
                                     <label>Title</label>
                                     <input type="text" class="form-control" name="title" maxlength="100" value="" required />
                                 </div>
-
-                                <div class="form-group mb-4">
-                                    <label>Header Description</label>
-                                    <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="165" placeholder=" description here" ></textarea>
-                                </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <div class="form-group">
@@ -74,8 +69,6 @@
                                             <input required name="featured_image" class="form-control" type="file" accept="image/png, image/gif, image/jpeg" />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mb-4">
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label>Header Video</label>
@@ -83,6 +76,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
+                                <h2 style="text-align: center;">Overview Section</h2>
+                                <div class="form-group mb-4">
+                                    <label> Description</label>
+                                    <textarea name="description" rows="4" class="form-control summernote" placeholder="Enter your content"></textarea>
+                                </div>
+                                <div id="section-container" ">
+                                    <!-- here will be the new section content -->
+                                </div>
+                                <a id="add-sec-btn" href="javascript:void(0)" onclick="addSection()" style="float: right;"><i class="fa fa-plus"></i> Add section</a>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Create Now</button>
                                 </div>
@@ -91,8 +94,20 @@
                     </div>
                 </div>
                 </form>
-            
-
-             
-
+            </div>
+        </div>
+    </div>
+    <script>
+        var i = 0;
+   function addSection() {
+        ++i;
+       $("#section-container").append('<h2 style="text-align: center;">Add Section</h2><div id="title"><div class="form-group"><label>Section Title</label><input class="form-control" type="text" name="title_'+i+'"></div><div class="form-group"><label>Section body</label></div><textarea name="description_'+i+'" id="body-'+i+'"></textarea><hr>'
+       );
+       $("#section-container #body-"+i).summernote('insertText', 'Section description');
+       
+      if(i==3){
+       $('#add-sec-btn').css("display","none"); 
+      }
+}
+   </script>
 @endsection

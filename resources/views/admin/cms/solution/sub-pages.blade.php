@@ -75,7 +75,7 @@
                         @foreach($subpages as $page)
                         <tr role="row" class="odd">
                             <td class="sorting_1">
-								<a href="{{route('category.sub.slug',$page->slug)}}"> {{$page->title}}</a>	
+								<a href="{{route('category.sub.slug',['solution'=>$page->parent_slug,'name'=>$page->slug])}}"> {{$page->title}}</a>	
 							</td>
 							<td class="sorting_1">
                             <a href="{{route('category.slug',$page->parent_slug)}}">    {{$page->parent_name}} </a>

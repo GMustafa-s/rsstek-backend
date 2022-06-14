@@ -31,7 +31,7 @@ style="background-image: url('{{ asset('frontend/images/' . $page->name.'/'.$pag
         <ul class="links viewport-holder slideDown">
             @if($sub_pages->count()>0)
                 @foreach($sub_pages as $sub_page)
-            <li><a href="{{route('category.sub.slug',$sub_page->slug)}}">{{$sub_page->title}}</a></li>
+            <li><a href="{{route('category.sub.slug',['solution'=>$page->slug,'name'=>$sub_page->slug])}}">{{$sub_page->title}}</a></li>
             @endforeach
             @endif
         </ul>
@@ -51,14 +51,10 @@ style="background-image: url('{{ asset('frontend/images/' . $page->name.'/'.$pag
                     </div>
                     <div class="text-box">
                         <h2 class="viewport-holder slideDown delay-2">
-                            <span><i>OUR PRODUCT</i></span> ActivePOS
+                            <span><i>OUR PRODUCT</i></span> {{$sub_page->title}}
                         </h2>
                         <p class="viewport-holder slideDown delay-3">
-                            The intelligent module for monitoring cash and banking
-                            operations, weighing and calculating machines is a reliable
-                            and highly effective tool for automatic and manual detection
-                            and prevention of personnel fraud and shoppers theft in real
-                            time and offline.
+                        {!! $sub_page->description !!}
                         </p>
                         <a href="active-post.html" class="viewport-holder slideDown delay-4 more"><span>Read More</span></a>
                     </div>
@@ -74,7 +70,7 @@ style="background-image: url('{{ asset('frontend/images/' . $page->name.'/'.$pag
                         <span><i>OUR PRODUCT</i></span> {{$sub_page->title}}
                     </h2>
                     <p class="viewport-holder slideDown delay-3">
-                        {{$sub_page->description}}
+                        {!! $sub_page->description !!}
                     </p>
                     <a class="viewport-holder slideDown delay-4 more" href="workspace-detector.html"><span>Read
                             More</span></a>
