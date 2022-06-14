@@ -5,7 +5,7 @@ use App\Http\Controllers\settings\GeneralController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\cms\cumtom\HomeController;
 use App\Http\Controllers\cms\solution\SolutionController;
-
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +17,17 @@ use App\Http\Controllers\cms\solution\SolutionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// slug based 
+
+// $all_slugs = App\Models\PageCategory::all();
+
+
             //Frontend
 Route::get('/', function () {
     return view('frontend.home');
 })->name('/');
+
 Route::get('/aboutus', function () {
     return view('frontend.aboutus');
 })->name('/aboutus');
@@ -28,7 +35,6 @@ Route::get('/aboutus', function () {
 //Bussiness Card
 Route::get('/business', function(){
     return view('frontend.business.index');
-
 })->name('/business');
 
 Route::get('business/workspace_detector', function(){
@@ -288,11 +294,22 @@ Route::prefix('contactus')->group(function () {
  });
 
  Route::prefix('solution')->group(function () { 
-    Route::get('/index', [SolutionController::class, 'index'])->name('cms.solution.index');
+    Route::get('/', [SolutionController::class, 'index'])->name('cms.solution.index');
     Route::get('/create', [SolutionController::class, 'create'])->name('cms.solution.create');
     Route::post('/store', [SolutionController::class, 'store'])->name('cms.solution.store');
-    Route::get('/sub', [SolutionController::class, 'subPage'])->name('cms.solution.subpage');
-    Route::get('/sub-create', [SolutionController::class, 'subCreate'])->name('cms.solution.subcreate');
-    Route::post('/sub-store', [SolutionController::class, 'sobStore'])->name('cms.solution.substore');
-
+    Route::get('/edit/{id}', [SolutionController::class, 'edit'])->name('cms.solution.edit');
+    Route::post('/update/{id}', [SolutionController::class, 'update'])->name('cms.solution.update');
+    Route::get('/delete/{id}', [SolutionController::class, 'destroy'])->name('cms.solution.destroy');
+    Route::get('/sub-page', [SolutionController::class, 'subPage'])->name('cms.solution.subpage');
+    Route::get('/sub-page/create', [SolutionController::class, 'subCreate'])->name('cms.solution.subcreate');
+    Route::post('/sub-page/store', [SolutionController::class, 'sobStore'])->name('cms.solution.substore');
+    Route::get('/sub-page/edit/{id}', [SolutionController::class, 'subEdit'])->name('cms.solution.subEdit');
+    Route::post('/sub-page/update/{id}', [SolutionController::class, 'subUpdate'])->name('cms.solution.subupdate');
+    Route::get('/sub-page/delete/{id}', [SolutionController::class, 'subDelete'])->name('cms.solution.subdelete');
+    Route::post('/add-section/{id}', [SolutionController::class, 'addSection'])->name('cms.solution.section.add');
+    Route::post('/update-section/{id}', [SolutionController::class, 'updateSection'])->name('cms.solution.section.update');
  });
+
+
+Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('category.slug');
+Route::get('solution/sub-page/{any}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');

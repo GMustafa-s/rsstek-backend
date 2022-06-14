@@ -1,5 +1,4 @@
 @extends('admin.layouts.app')
-
 @section('content')
 <div class="page-wrapper" style="min-height: 198px;">
                 <div class="content container-fluid">
@@ -8,10 +7,10 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Solution Main</h3>
+								<h3 class="page-title">Solutions</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="{{url('/')}}">dashboard</a></li>
-									<li class="breadcrumb-item active">solution pages</li>
+									<li class="breadcrumb-item active">solution</li>
 								</ul>
 							</div>
 						</div>
@@ -19,7 +18,16 @@
 					<!-- /Page Header -->
 					@if(session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-								<strong>Success!</strong> Your category successfully.
+								<strong>Success!</strong>  {{ session()->get('success') }}
+                                
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+                    @endif
+                    @if(session()->has('error'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong>Success!</strong> {{ session()->get('error') }}
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
@@ -27,7 +35,7 @@
                     @endif
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="card mb-0">
+							<div class="card mb-0"> 
 							
 								<div class="card-body">
 
@@ -69,15 +77,41 @@
                          @foreach($category as $categ)
                         <tr role="row" class="odd">
                             <td class="sorting_1">
-								<a href="#">{{$categ->name}}</a>	
+								<a href="{{route('category.slug',$categ->slug)}}">{{$categ->name}}</a>	
 							</td>
 							<td class="sorting_1">
-
+                                <?php
+                                $n=1;
+                                ?> 
+                                @foreach($sub_category as $sub_categ)
+                                    @if($sub_categ->page_categories_id == $categ->id)
+                                    @if($n==1)
+                                    <p>
+                                    <a href="{{route('category.sub.slug',$sub_categ->slug)}}">{{$sub_categ->title}}</a>
+                                  
+                                    <span id="seemore"> <a onclick="showtext()">...see more</a></span>
+                                    </p>
+                                    @else
+                                    <p id="sub-pages" class="text-hide">
+                                        <a href="{{route('category.sub.slug',$sub_categ->slug)}}">
+                                    {{$sub_categ->title}}</a>
+                                    @if($n==$sub_category->count())
+                                    <span id="seeless" class="text-hide"> <a onclick="showtext()">...see less</a></span>
+                                    @endif
+                                    </p>
+                                   
+                                       
+                                    @endif
+                                    @endif
+                                    <?php
+                                $n++;
+                                ?>
+                                @endforeach
                             </td>
                           
                             <td style="font-size: 20px;"> <span>
-								<a href=""><i class="la la-eye"></i></a></span> | <span> <a href=""><i class="la la-edit"></i></a> </span> |
-								  <span> <a href=""><i class="la la-trash"></i> </a></span>
+								<a href="{{route('category.slug',$categ->name)}}"><i class="la la-eye"></i></a></span> | <span> <a href="{{route('cms.solution.edit',$categ->id)}}"><i class="la la-edit"></i></a> </span> |
+								  <span> <a href="{{route('cms.solution.destroy',$categ->id)}}"><i class="la la-trash"></i> </a></span>
 								 </td>
                         </tr>
                         @endforeach
@@ -116,6 +150,14 @@
 				
 				</div>			
 			</div>
+            <script>
+                function showtext(){
+                    $('#sub-pages').toggleClass( "text-hide" );
+                    $('#seemore').toggleClass( "text-hide" );
+                    $('#seeless').toggleClass( "text-hide" );
+
+                }
+            </script>
 		<script src="{{asset('admin')}}/assets/js/jquery.dataTables.min.js"></script>
 		<script src="{{asset('admin')}}/assets/js/dataTables.bootstrap4.min.js"></script>
 @endsection

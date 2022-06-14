@@ -37,7 +37,7 @@ $site_dat = App\Models\GeneralSetting::first();
                                         <a href="{{route('/')}}" class="title">Home</a>
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="{{route('/business')}}" class="title">BUSINESS</a>
+                                        <a href="{{route('category.slug','category-1')}}" class="title">BUSINESS</a>
                                         <ul class="link">
                                             <li><a href="#" class="nav-back">Back</a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->

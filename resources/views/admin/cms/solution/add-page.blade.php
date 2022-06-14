@@ -9,11 +9,12 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">New Category</h3>
+                    <h3 class="page-title">New Solution Page</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">Category</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">general settings</li>
+                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{url('/solution/index')}}">solution</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">create</li>
                         </ol>
                     </nav>
                 </div>
@@ -45,18 +46,18 @@
                             </div>
                             <div class="col-8">
                                 <div class="form-group mb-4">
-                                    <label>Category Name</label>
+                                    <label>Title</label>
                                     <input type="text" class="form-control" name="name" value="" required />
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label>Description</label>
+                                    <label>Header Description</label>
                                     <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="165" placeholder=" description here" ></textarea>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label>Background Image</label>
+                                            <label>Header Background Image</label>
                                             <input required name="bg_image" class="form-control" type="file" />
                                         </div>
                                     </div>

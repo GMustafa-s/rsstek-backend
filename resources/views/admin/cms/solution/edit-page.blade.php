@@ -9,14 +9,12 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">New solution sub page</h3>
+                    <h3 class="page-title">Edit {{$category->name}}</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">dashboard</a></li>
                             <li class="breadcrumb-item"><a href="{{url('/solution')}}">solution</a></li>
-                            <li class="breadcrumb-item"><a href="{{url('/solution/sub-page')}}">sub pages</a></li>
-                            
-                            <li class="breadcrumb-item active" aria-current="page">create</li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit {{$category->name}}</li>
                         </ol>
                     </nav>
                 </div>
@@ -35,7 +33,7 @@
     
         <div class="row">
             <div class="col-md-12">
-                <form action="{{route('cms.solution.substore')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('cms.solution.update',$category->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
@@ -47,52 +45,37 @@
                                 </div>
                             </div>
                             <div class="col-8">
-                            <div class="form-group mb-4">
-                                    <label>Select Parent solution</label>
-                                    <select class="form-control" requireds name="page_categories_id">
-													<option disabled selected>-- Select --</option>
-                                                        @if($categories->count()>0)
-                                                        @foreach($categories as $category)
-													    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                        @endforeach
-                                                        @endif
-												</select>
-                                </div>
                                 <div class="form-group mb-4">
                                     <label>Title</label>
-                                    <input type="text" class="form-control" name="title" maxlength="100" value="" required />
+                                    <input type="text" class="form-control" name="name" value="{{$category->name}}" required />
                                 </div>
 
                                 <div class="form-group mb-4">
                                     <label>Header Description</label>
-                                    <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="165" placeholder=" description here" ></textarea>
+                                    <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" >{{$category->description}}</textarea>
                                 </div>
                                 <div class="row mb-4">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label>Featured Image</label>
-                                            <input required name="featured_image" class="form-control" type="file" accept="image/png, image/gif, image/jpeg" />
-                                        </div>
+                                    <div class="col-12">
+                                        <img src="{{asset('frontend/images')}}/{{$category->name}}/{{$category->bg_image}}" width="100%" alt="">
                                     </div>
                                 </div>
                                 <div class="row mb-4">
-                                    <div class="col-6">
+                                    <div class="col-1"></div>
+                                    <div class="col-8">
                                         <div class="form-group">
-                                            <label>Header Video</label>
-                                            <input required name="video" class="form-control" type="file" accept="video/mp4,video/x-m4v,video/*" />
+                                            <label>Header Background Image</label>
+                                            <input accept="image/png, image/gif, image/jpeg"  name="bg_image" class="form-control" type="file" />
                                         </div>
                                     </div>
+                                    <div class="col-2"></div>
+                                   
                                 </div>
                                 <div class="submit-section">
-                                    <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Create Now</button>
+                                    <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-edit"></i> update</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 </form>
-            
-
-             
-
 @endsection

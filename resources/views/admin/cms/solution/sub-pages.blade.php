@@ -9,10 +9,11 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Solution Sub</h3>
+								<h3 class="page-title">Solution Sub Page</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="{{url('/')}}">dashboard</a></li>
-									<li class="breadcrumb-item active">solution sub-page</li>
+									<li class="breadcrumb-item"><a href="{{url('/solution')}}">solution</a></li>
+                                    <li class="breadcrumb-item active">sub pages</li>
 								</ul>
 							</div>
 						</div>
@@ -20,7 +21,7 @@
 					<!-- /Page Header -->
 					@if(session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-								<strong>Success!</strong> Your category sub page added successfully.
+								<strong>Success!</strong> {{ session()->get('success') }}
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
@@ -63,7 +64,6 @@
 
                             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Parent Page</th>
 
-                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Slug</th>
 
 							<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 108.406px;">Image</th>
 
@@ -75,17 +75,19 @@
                         @foreach($subpages as $page)
                         <tr role="row" class="odd">
                             <td class="sorting_1">
-								<a href="#"> {{$page->title}}</a>	
+								<a href="{{route('category.sub.slug',$page->slug)}}"> {{$page->title}}</a>	
 							</td>
-							<td class="sorting_1">{{$page->parent_name}}</td>
-							<td class="sorting_1">{{$page->slug}}</td>
+							<td class="sorting_1">
+                            <a href="{{route('category.slug',$page->parent_slug)}}">    {{$page->parent_name}} </a>
+                            </td>
+							
 							<td class="sorting_1">
                                 <img src="{{asset('frontend/images')}}/{{$page->parent_name}}/{{$page->title}}/{{$page->fetaured_image}}" width="50" alt="">   
                             </td>
                           
                             <td style="font-size: 20px;"> <span>
-								<a href=""><i class="la la-eye"></i></a></span> | <span> <a href=""><i class="la la-edit"></i></a> </span> |
-								  <span> <a href=""><i class="la la-trash"></i> </a></span>
+								<span> <a href="{{route('cms.solution.subEdit',$page->id)}}"><i class="la la-edit"></i></a> </span> |
+								  <span> <a href="{{route('cms.solution.subdelete',$page->id)}}"><i class="la la-trash"></i> </a></span>
 								 </td>
                         </tr>
                         @endforeach
@@ -95,7 +97,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-5"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 30 entries</div></div>
+            <div class="col-sm-12 col-md-5"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of {{$subpages->count()}} entries</div></div>
             <div class="col-sm-12 col-md-7">
                 <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
                     <ul class="pagination">
@@ -110,7 +112,6 @@
         </div>
     </div>
 </div>
-
 								</div>
 							</div>
 						</div>
