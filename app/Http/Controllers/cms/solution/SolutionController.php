@@ -61,7 +61,7 @@ class SolutionController extends Controller
         if($request->bg_image){
             $file = $request->file('bg_image');
             $filename = rand().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('frontend').'/images/'.$request->name.'//';
+            $destinationPath = public_path('frontend').'/images/'.$request->name.'/';
             $file->move($destinationPath,$filename);
             $add_categ->bg_image = $filename;
         }
@@ -92,7 +92,7 @@ class SolutionController extends Controller
         if($request->bg_image){
             $file = $request->file('bg_image');
             $filename = rand().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('frontend').'/images/'.$request->name.'//';
+            $destinationPath = public_path('frontend').'/images/'.$request->name.'/';
             $file->move($destinationPath,$filename);
             $category->bg_image = $filename;
         }
@@ -182,7 +182,6 @@ class SolutionController extends Controller
         $categories = PageCategory::where('id','!=',$category->id)->get();
         $sections = SolutionSections::where('solution_sub_pages_id',$id)->get();
         return view('admin.cms.solution.edit-sub-page',compact('sub_page','category','categories','sections')); 
-
     }
 
     public function subUpdate(Request $request,$id){

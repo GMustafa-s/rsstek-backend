@@ -13,8 +13,8 @@
                             <li><a href="#">TR-D3181IR3 v2 3.6</a></li>
                         </ul>
                         <div class="text">
-                            <h1 class="viewport-holder slideDown delay-1">TR-D3181IR3 v2 3.6</h1>
-                            <p class="viewport-holder slideDown delay-2">Outdoor IP camera with IR illumination</p>
+                            <h1 class="viewport-holder slideDown delay-1">{{$camera->title}}</h1>
+                            <p class="viewport-holder slideDown delay-2">{{$camera->sub_title}}</p>
                             <div class="btn-holder viewport-holder slideDown delay-2">
                                 <a href="{{ route('/solutions') }}" class="btn primary"><span>Book a Demo</span></a>
                                 <a href="{{ route('/contactus') }}" class="btn default"><span>How To Buy</span></a>
@@ -23,7 +23,7 @@
 
                     </div>
                     <div class="cam-holder viewport-holder slideDown delay-4">
-                        <img src="{{ asset('frontend') }}/images/compare-camera/Camera Compare - TR-D3181IR3 v2 3.6.png"
+                        <img src="{{ asset('frontend') }}/images/camera/{{$camera->image}}"
                             alt="image description">
                     </div>
                 </div>
@@ -35,13 +35,9 @@
             <div class="container">
                 <div class="post">
                     <div class="viewport-holder slideDown">
-                        <h1><span>OVERVIEW</span><br>TRASSIR TR-D3181IR3 v2 (3.6 mm)</h1>
+                        <h1><span>OVERVIEW</span><br>{{$camera->title}}</h1>
                         <div class="text">
-                            <p>8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of
-                                round-the-clock year-round outdoor operation in places out of sight of security personnel:
-                                the metal case is protected from mechanical impacts according to the IK10 code, from
-                                moisture and dust - according to the IP67 standard, operating temperatures - –40 ° C… +60 °
-                                C, lightning protection - TVS 2000 V, range of integrated backlighting - 30 m.</p>
+                            <p>{!! $camera->description !!}</p>
                             <!-- <p>TRASSIR Workplace Detector is designed to monitor and track employees' working time.</p> -->
                         </div>
                     </div>

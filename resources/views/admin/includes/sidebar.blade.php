@@ -81,8 +81,8 @@
 									<li class="submenu">
 								<a href="#" class=""><span>Camera Pages</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="{{url('contactus/show')}}">Static Sections</a></li>
-									<li><a href="{{route('show.demo')}}">Dynamic</a></li>
+									<li><a href="{{route('cms.camera.index')}}">Camera Pages</a></li>
+									<li><a href="{{route('show.demo')}}">compare Page</a></li>
 								</ul>
 									</li>
 									<li class="submenu">

@@ -5,6 +5,8 @@ use App\Http\Controllers\settings\GeneralController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\cms\cumtom\HomeController;
 use App\Http\Controllers\cms\solution\SolutionController;
+use App\Http\Controllers\cms\camera\CameraController;
+
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -22,7 +24,18 @@ use Illuminate\Support\Facades\DB;
 
 // $all_slugs = App\Models\PageCategory::all();
 
+// Make applicaton refresh
+Route::get('cache', function () {
+    \Artisan::call('optimize:clear');
+    dd("Cache is cleared");
 
+});
+Route::get('migrate', function () {
+    \Artisan::call('migrate:refresh');
+    \Artisan::call('db:seed');
+    dd("migrated");
+
+});
             //Frontend
 Route::get('/', function () {
     return view('frontend.home');
@@ -72,25 +85,25 @@ Route::get('business/neuro_counter', function(){
 
 
             //Health Care Card
-Route::get('/health_care', function(){
-    return view('frontend.health_care.index');
+// Route::get('health_care', function(){
+//     return view('frontend.health_care.index');
 
-})->name('/health_care');
+// })->name('/health_care');
 
-Route::get('/health_care/face_mask_detector', function(){
-    return view('frontend.health_care.face-mask-detector');
+// Route::get('health_care/face_mask_detector', function(){
+//     return view('frontend.health_care.face-mask-detector');
 
-})->name('/face_mask_detector');
+// })->name('face_mask_detector');
 
-Route::get('/health_care/social_distance_detector', function(){
-    return view('frontend.health_care.social-distance-detector');
+// Route::get('/health_care/social_distance_detector', function(){
+//     return view('frontend.health_care.social-distance-detector');
 
-})->name('/social_distance_detector');
+// })->name('/social_distance_detector');
 
-Route::get('/health_care/thermal_camera', function(){
-    return view('frontend.health_care.thermal-camera');
+// Route::get('/health_care/thermal_camera', function(){
+//     return view('frontend.health_care.thermal-camera');
 
-})->name('/thermal_camera');
+// })->name('/thermal_camera');
 
 
 
@@ -288,9 +301,9 @@ Route::prefix('contactus')->group(function () {
     Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
  });
 
- Route::prefix('cmd')->group(function () { 
+ Route::prefix('cms')->group(function () { 
     Route::get('/custom/home', [HomeController::class, 'index'])->name('cms.custom.home');
-    Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
+    Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('cms.show.intallation');
  });
 
  Route::prefix('solution')->group(function () { 
@@ -314,3 +327,14 @@ Route::prefix('contactus')->group(function () {
 
 Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('category.slug');
 Route::get('solution/{solution}/{name}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');
+
+
+Route::prefix('cms/camera')->group(function () {
+
+    Route::get('/', [CameraController::class, 'index'])->name('cms.camera.index');
+    Route::get('/create', [CameraController::class, 'create'])->name('cms.camera.create');
+    Route::post('/store', [CameraController::class, 'store'])->name('cms.camera.store');
+
+});
+
+Route::get('camera/{any}',[CameraController::class, 'showSlug'])->name('camera.slug');
