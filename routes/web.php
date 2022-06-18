@@ -6,7 +6,11 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\cms\cumtom\HomeController;
 use App\Http\Controllers\cms\solution\SolutionController;
 use App\Http\Controllers\cms\camera\CameraController;
-use App\Http\Controllers\cms\camera\UserController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\RoleController;
+
+
 
 
 use Illuminate\Support\Facades\DB;
@@ -274,19 +278,21 @@ Route::get('/admin-dashboard', function () {
     return view('admin.index');
 })->name('dashboard')->middleware('auth');
 
-Route::group(['middleware' => ['auth', 'permission']], function() {
+Route::group(['middleware' => ['auth']], function() {
     /**
      * User Routes
      */
     Route::group(['prefix' => 'users'], function() {
-        Route::get('/', 'UserController@index')->name('users.index');
-        Route::get('/create', 'UserController@create')->name('users.create');
-        Route::post('/create', 'UserController@store')->name('users.store');
-        Route::get('/{user}/show', 'UserController@show')->name('users.show');
-        Route::get('/{user}/edit', 'UserController@edit')->name('users.edit');
-        Route::patch('/{user}/update', 'UserController@update')->name('users.update');
-        Route::delete('/{user}/delete', 'UserController@destroy')->name('users.destroy');
+        Route::get('/', [UserController::class,'index'])->name('users.index');
+        Route::get('/create',  [UserController::class,'create'])->name('users.create');
+        Route::post('/create',  [UserController::class,'store'])->name('users.store');
+        Route::get('/{user}/show',  [UserController::class,'show'])->name('users.show');
+        Route::get('/{user}/edit',  [UserController::class,'edit'])->name('users.edit');
+        Route::put('/{user}/update',  [UserController::class,'update'])->name('users.update');
+        Route::delete('/{user}/delete',  [UserController::class,'destroy'])->name('users.destroy');
     });
+
+    
 });
 
 Route::prefix('settings')->group(function () { 
@@ -360,3 +366,7 @@ Route::get('camera/{any}',[CameraController::class, 'showSlug'])->name('camera.s
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('permissions', PermissionsController::class);
+Route::resource('roles', RoleController::class);
+Route::post('roles/assign-permission/{id}', [RoleController::class,'assignPermission'])->name('roles.assign.permissions');
+Route::post('roles/revok', [PermissionsController::class,'revokeRole'])->name('users.revoke.roles');

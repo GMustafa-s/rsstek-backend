@@ -2,116 +2,182 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+// use Illuminate\Foundation\Auth\User;
+use App\Models\User;
+use Spatie\Permission\models\Role;
+use Spatie\Permission\models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     /**
-     * Display all users
-     * 
+     * Display a listing of the resource.
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index(User $user)
     {
-        $users = User::latest()->paginate(10);
+        //
+        // $users = Auth()->user()->get();
 
-        return view('users.index', compact('users'));
+        // dd($user->getRoleName('Hacker'));
+
+        $users = User::all();
+        $roles = Role::all();
+        return view('admin.users.index', compact('users','roles'));
     }
 
     /**
-     * Show form for creating user
-     * 
+     * Show the form for creating a new resource.
+     *
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
-        return view('users.create');
+        //
+        return view('admin.users.create');
     }
 
     /**
-     * Store a newly created user
-     * 
-     * @param User $user
-     * @param StoreUserRequest $request
-     * 
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, StoreUserRequest $request) 
+    public function store(Request $request)
     {
-        //For demo purposes only. When creating user or inviting a user
-        // you should create a generated random password and email it to the user
-        $user->create(array_merge($request->validated(), [
-            'password' => 'test' 
-        ]));
-
-        return redirect()->route('users.index')
-            ->withSuccess(__('User created successfully.'));
-    }
-
-    /**
-     * Show user data
-     * 
-     * @param User $user
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user) 
-    {
-        return view('users.show', [
-            'user' => $user
+        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:4',
         ]);
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        // $user->assignRole(3);
+        return redirect()->route('users.index')->with('success', 'User created successfully');
     }
 
     /**
-     * Edit user data
-     * 
-     * @param User $user
-     * 
+     * Display the specified resource.
+     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user) 
+    public function show($id)
     {
-        return view('users.edit', [
-            'user' => $user,
-            'userRole' => $user->roles->pluck('name')->toArray(),
-            'roles' => Role::latest()->get()
+       
+        $user = User::findOrFail($id);
+        return view('admin.users.show', ['user'=>$user]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+        $roles = Role::all();
+
+        $assigned_roles = DB::table('model_has_roles')->where('model_id',$id)
+        ->join('roles','roles.id','=','model_has_roles.role_id')
+        ->get();
+        // $user = Auth()->user();
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', compact('user', 'roles','assigned_roles'));
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
         ]);
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        // dd($user->getRoleName());
+        if($request->role == "Select Roles")
+        {
+            $user->update();
+
+        }
+        else{
+
+            $user->assignRole($request->role);
+        }
+        $user->update();
+        return redirect()->back()->with('success', 'User updated successfully');
+
     }
 
     /**
-     * Update user data
-     * 
-     * @param User $user
-     * @param UpdateUserRequest $request
-     * 
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user, UpdateUserRequest $request) 
+    public function destroy($id)
     {
-        $user->update($request->validated());
-
-        $user->syncRoles($request->get('role'));
-
-        return redirect()->route('users.index')
-            ->withSuccess(__('User updated successfully.'));
-    }
-
-    /**
-     * Delete user data
-     * 
-     * @param User $user
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user) 
-    {
+        //
+        $user = User::findOrFail($id);
         $user->delete();
-
-        return redirect()->route('users.index')
-            ->withSuccess(__('User deleted successfully.'));
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
+    // Assigning and revoking Role to user functionality
+    public function assignRole(Request $request, User $user){
+        if($user->hasRole($request->role)){
+        return back()->with('error', 'Role already assigned');
+        }
+        $user->assignRole($request->role);
+        return redirect()->back()->with('success', 'Role assigned successfully');
+    }
+
+    public function revokeRole(Request $request){
+        // dd($request->all());
+
+        $user = User::findOrFail($request->user_id);
+        $role = Role::findOrFail($request->role_id);
+        if($user->hasRole($role)){
+            $user->removeRole($role);
+            return response()->json(['success'=>'Role revoked successfully', 'role'=>$role->name]);
+        }
+        return response()->json(['error'=>'Role not assigned',400]);
+    }
+
+    //Assigning and revoking Permission to user functionality
+    // public function assignPermission(Request $request, User $user){
+    //     if($user->hasPermissionTo($request->permission)){
+    //         return back()->with('error', 'Role already has this permission');
+    //     }
+    //     $user->givePermissionTo($request->permission);
+    //     return redirect()->back()->with('success', 'Permission assigned successfully');
+    // }
+
+    // public function revokePermission(User $user, Permission $permission){
+    //     if($user->hasPermissionTo($permission)){
+
+    //         $user->revokePermissionTo($permission);
+    //         return redirect()->back()->with('success', 'Permission revoked successfully');
+    //     }
+    //     return back()->with('error', 'Role does not have this permission');
+    // }
+
 }
