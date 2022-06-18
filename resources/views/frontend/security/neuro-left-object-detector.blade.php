@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
 		<div class="promo">
 			<div class="frame">
@@ -7,13 +7,13 @@
 						<div class="box">
 							<ul class="breadcrumbs viewport-holder slideDown">
 								<li><a href="{{ route('/') }}">Main</a></li>
-								<li><a href="{{ route('/security') }}">  Security</a></li>
-								<li><a href="{{ route('/neuro_left_object_detector') }}">Neuro Left Object Detector</a></li>
+								<li><a href="{{ route('security') }}">  Security</a></li>
+								<li><a href="{{ route('neuro.left.object.detector') }}">Neuro Left Object Detector</a></li>
 							</ul>
 							<div class="text">
 								<h1 class="viewport-holder slideDown delay-1">Neuro Left Object Detector</h1>
 								<ul class="viewport-holder slideDown delay-2">
-									<li><a href="{{ route('/demo') }}" class="btn"><span>Book a Demo</span></a></li>
+									<li><a href="{{ route('demo') }}" class="btn"><span>Book a Demo</span></a></li>
 									<li><a href="{{ route('/contactus') }}" class="btn add">How to Buy</a></li>
 								</ul>
 							</div>
@@ -61,36 +61,32 @@
 						<div class="frame viewport-holder slideDown delay-1">
 							<h2>Other Products</h2>
 							<ul class="accordion" data-accordion="close">
-								<li>
-                                <a href="Auto-anpr.html">Auto ANPR</a>
+                                <li>
+                                  <a href="{{route('auto.anpr')}}">Auto Anpr</a>
+                                </li>
+                                {{-- <li>
+                                  <a href="{{route('neuro.left.object.detector')}}"
+                                    >Neuro Left Object Detector</a
+                                  >
+                                </li> --}}
+                                <li>
+                                  <a href="{{route('pose.detector')}}">Pose Detector</a>
+                                </li>
+                                <li>
+                                  <a href="{{route('face.recognition')}}">Face Recognition</a>
+                                </li>
 
-								</li>
-								<!-- <li>
-									<a    href="neuro-left-object-detector.html">Neuro Left Object Detector</a>
+                                <li>
+                                                  <a    href="{{route('neuro.detector')}}">Neuro Detector</a>
 
-								</li> -->
-								<li>
-									<a  href="pose-detector.html">Pose Detector</a>
-
-								</li>
-								<li>
-									<a    href="face-recognition.html">Face Recognition</a>
-
-								</li>
-
-								<li>
-									<a    href="neuro-detector.html">Neuro Detector</a>
-
-								</li>
-								<li>
-									<a    href="direction-detector.html">Direction Detector</a>
-
-								</li>
-								<li>
-									<a    href="crowd-detector.html">Crowd Detector</a>
-
-								</li>
-							</ul>
+                                              </li>
+                                <li>
+                                  <a href="{{route('direction.detector')}}">Direction Detector</a>
+                                </li>
+                                <li>
+                                  <a href="{{route('crowd.detector')}}">Crowd Detector</a>
+                                </li>
+                              </ul>
 						</div>
 					</div>
 				</div>

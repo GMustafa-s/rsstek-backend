@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div class="promo">
         <div class="frame">
@@ -7,13 +7,13 @@
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
                             <li><a href="{{ route('/') }}">Main</a></li>
-                            <li><a href="{{ route('/health_care') }}">Health Care</a></li>
-                            <li><a href="{{ route('/thermal_camera') }}">Thermal Camera</a></li>
+                            <li><a href="{{ route('health.care') }}">Health Care</a></li>
+                            <li><a href="{{ route('thermal.camera') }}">Thermal Camera</a></li>
                         </ul>
                         <div class="text">
                             <h1 class="viewport-holder slideDown delay-1">Thermal Camera</h1>
                             <ul class="viewport-holder slideDown delay-2">
-                                <li><a href="{{ route('/demo') }}" class="btn"><span>Book a Demo</span></a></li>
+                                <li><a href="{{ route('demo') }}" class="btn"><span>Book a Demo</span></a></li>
                                 <li><a href="{{ route('/contactus') }}" class="btn add">How to Buy</a></li>
                             </ul>
                         </div>
@@ -61,15 +61,15 @@
                         <h2>Other Products</h2>
                         <ul class="accordion" data-accordion="close">
                             <li>
-                                <a href="{{route('/social_distance_detector')}}">Social Distance Detector</a>
+                                <a href="{{route('social.distance.detector')}}">Social Distance Detector</a>
 
                             </li>
                             {{-- <li>
-                                <a  href="{{route('/thermal_camera')}}">Thermal Detector</a>
+                                <a  href="{{route('thermal.camera')}}">Thermal Detector</a>
 
                             </li> --}}
                             <li>
-                                <a href="{{route('/face_mask_detector')}}">Face Mask Detector</a>
+                                <a href="{{route('face.mask.detector')}}">Face Mask Detector</a>
 
                             </li>
                         </ul>

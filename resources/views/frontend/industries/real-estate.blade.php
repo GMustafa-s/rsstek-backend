@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div id="promo-real-estate" class="promo product">
         <div class="frame">
@@ -7,8 +7,8 @@
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
                             <li><a href="{{ route('/') }}">Main</a></li>
-                            <li><a href="{{ route('/solutions') }}">Solutions</a></li>
-                            <li><a href="{{ route('/real_estate') }}">Real estate</a></li>
+                            <li><a href="{{ route('solutions') }}">Solutions</a></li>
+                            <li><a href="{{ route('real.estate') }}">Real estate</a></li>
                         </ul>
                         <div id="text-banner-overview" class="text">
                             <h1 class="viewport-holder slideDown delay-1">Real estate</h1>
@@ -19,7 +19,7 @@
                                 predictability and efficiency of the real estat
                             </p>
                             <ul class="viewport-holder slideDown delay-3">
-                                <li><a href="{{ route('/solutions') }}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
+                                <li><a href="{{ route('solutions') }}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
                             </ul>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                                 <div class="frame">
                                     <img src="{{asset('frontend')}}/images/Industries/Real-estate/Neuro-counter.png" alt="image description" />
                                     <div class="txt-box">
-                                        <a href="{{ route('/neuro_counter') }}" class="more">Neuro Counter</a>
+                                        <a href="{{ route('neuro.counter') }}" class="more">Neuro Counter</a>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                     <img src="{{ asset('frontend') }}/images/Industries/Real-estate/Direction-director.png"
                                         alt="image description" />
                                     <div class="txt-box">
-                                        <a href="{{ route('/direction_detector') }}" class="more">Direction
+                                        <a href="{{ route('direction.detector') }}" class="more">Direction
                                             Director</a>
                                     </div>
                                 </div>

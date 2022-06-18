@@ -160,7 +160,9 @@
                                         Footer settings
                                     </div>
                                 </div>
-                                <div class="col-8">
+
+
+                                <div class="col-4">
                                     <div class="form-group mb-4">
                                         <label>Copy Right Text</label>
                                         <input type="text"  name="copy_right_text" class="form-control" value="@if($generals->copy_right_text !=null) {{$generals->copy_right_text}} @endif" placeholder="Copyright © 2022 RRSTEK All rights reserved" />
@@ -168,6 +170,10 @@
                                     <div class="submit-section">
                                         <button type="submit" class="btn btn-primary submit-btn">Update</button>
                                     </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_copy_right"><i ></i> Update</a>
                                 </div>
                             </div>
                         </div>
@@ -222,8 +228,8 @@
                                                                     <div class="col-4">
                                                                         <button type="submit" class="btn btn-info">Update</button>
                                                                     </div>
-                                                                
-                                                                    
+
+
                                                                 </form>
                                                             </td>
                                                             <td>
@@ -286,5 +292,8 @@
         </div>
     </div>
 </div>
+
+{{-- Copy Right --}}
+
 
 @endsection

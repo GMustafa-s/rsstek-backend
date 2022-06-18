@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
       <div id="promo-transport" class="promo product">
         <div class="frame">
@@ -7,8 +7,8 @@
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
                   <li><a href="{{route('/')}}">Main</a></li>
-                  <li><a href="{{route('/solutions')}}">Solutions</a></li>
-                  <li><a href="{{route('/transport_and_storage')}}">Transport and storage</a></li>
+                  <li><a href="{{route('solutions')}}">Solutions</a></li>
+                  <li><a href="{{route('transport.and.storage')}}">Transport and storage</a></li>
                 </ul>
                 <div id="text-banner-overview" class="text">
                   <h1 class="viewport-holder slideDown delay-1">
@@ -23,7 +23,7 @@
                     carefully managed.
                   </p>
                   <ul class="viewport-holder slideDown delay-3">
-                    <li><a href="{{route('/solutions')}}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
+                    <li><a href="{{route('solutions')}}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
                   </ul>
                 </div>
               </div>
@@ -144,7 +144,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/neuro_counter')}}" class="more">Neuro Detector</a>
+                        <a href="{{route('neuro.counter')}}" class="more">Neuro Detector</a>
                       </div>
                     </div>
                   </div>

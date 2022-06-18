@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
 <div id="promo-contact-us" class="promo product">
   @if(session()->has('success'))
@@ -24,7 +24,7 @@
               <li><a href="index.html">Main</a></li>
               <li><a href="#">Contact Us</a></li>
             </ul>
-        
+
             <div id="text-banner-overview" class="text">
               <h1 class="viewport-holder slideDown delay-1">Have a question?</h1>
               <p class=" viewport-holder slideDown delay-2">
@@ -50,7 +50,7 @@
     <div id="contact-form" class="contact-form">
       <div class="container">
         <h3 class="viewport-holder slideDown"><span>Contact Us</span> Contact Sales for questions or a live video security demo</h3>
-       
+
         <form  action="{{route('add.contactus')}}" method="POST" onsubmit="sendEmail();">
           @csrf
                     <div class="holder">
@@ -95,7 +95,7 @@
                           <span>{!! app('captcha')->display() !!}</span>
                           <!-- <button type="button" class="btn btn-success refresh-cpatcha"><i class="fa fa-refresh"></i></button> -->
                         </div>
-                       
+
                         @error('g-recaptcha-response')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

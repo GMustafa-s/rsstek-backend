@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div class="promo camera-detail">
         <div class="frame">
@@ -9,7 +9,7 @@
                             <li><a href="{{ route('/') }}">Main</a></li>
                             <li><a href="#">product</a></li>
                             <li><a href="#">Camera</a></li>
-                            <li><a href="{{ route('/camera/compare') }}">Compare</a></li>
+                            <li><a href="{{ route('camera.compare') }}">Compare</a></li>
                             <li><a href="#">TR-D3181IR3 v2 3.6</a></li>
                         </ul>
                         <div class="text">

@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
       <div id="promo-publicSafety" class="promo product">
         <div class="frame">
@@ -7,8 +7,8 @@
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
                   <li><a href="{{ route('/') }}">Main</a></li>
-                  <li><a href="{{ route('/solutions') }}">Solutions</a></li>
-                  <li><a href="{{ route('/public_safety') }}">Public safety</a></li>
+                  <li><a href="{{ route('solutions') }}">Solutions</a></li>
+                  <li><a href="{{ route('public.safety') }}">Public safety</a></li>
                 </ul>
                 <div id="text-banner-overview" class="text">
                   <h1 class="viewport-holder slideDown delay-1">
@@ -22,7 +22,7 @@
                     monitoring.
                   </p>
                   <ul class="viewport-holder slideDown delay-3">
-                    <li><a href="{{ route('/solutions') }}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
+                    <li><a href="{{ route('solutions') }}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
                   </ul>
                 </div>
               </div>
@@ -139,7 +139,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/pose_detector')}}" class="more">Pose Detector</a>
+                        <a href="{{route('pose.detector')}}" class="more">Pose Detector</a>
                       </div>
                     </div>
                   </div>
@@ -150,7 +150,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/crowd_detector')}}" class="more">Crowd Detector</a>
+                        <a href="{{route('crowd.detector')}}" class="more">Crowd Detector</a>
                       </div>
                     </div>
                   </div>

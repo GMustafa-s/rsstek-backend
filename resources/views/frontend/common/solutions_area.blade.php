@@ -11,7 +11,7 @@
                         <div class="frame">
                             <img src="{{asset('frontend')}}/images/img-06.jpg" alt="image description">
                             <div class="txt-box">
-                                <a href="../Industries/retail.html" class="more">Retail</a>
+                                <a href="{{route('retail')}}" class="more">Retail</a>
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                         <div class="frame">
                             <img src="{{asset('frontend')}}/images/img-07.jpg" alt="image description">
                             <div class="txt-box">
-                                <a href="../Industries/industrial.html" class="more">Industrial</a>
+                                <a href="{{route('industrial')}}" class="more">Industrial</a>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <div class="frame">
                             <img src="{{asset('frontend')}}/images/img-08.jpg" alt="image description">
                             <div class="txt-box">
-                                <a href="../Industries/public-safety.html" class="more">Public Safety</a>
+                                <a href="{{route('public.safety')}}" class="more">Public Safety</a>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         <div class="frame">
                             <img src="{{asset('frontend')}}/images/img-09.jpg" alt="image description">
                             <div class="txt-box">
-                                <a href="../Industries/health-care.html" class="more">Health Care</a>
+                                <a href="{{route('health.care')}}" class="more">Health Care</a>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="frame">
                             <img src="{{asset('frontend')}}/images/img-10.jpg" alt="image description">
                             <div class="txt-box">
-                                <a href="../Industries/real-estate.html" class="more">Real Estate</a>
+                                <a href="{{route('real.estate')}}" class="more">Real Estate</a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <div class="frame">
                             <img src="{{asset('frontend')}}/images/img-11.jpg" alt="image description">
                             <div class="txt-box">
-                                <a href="../Industries/transport-and-storage.html" class="more">Transport/Storage</a>
+                                <a href="{{route('transport.and.storage')}}" class="more">Transport/Storage</a>
                             </div>
                         </div>
                     </div>

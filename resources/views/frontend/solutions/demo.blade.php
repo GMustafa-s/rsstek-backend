@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div id="promo-demo" class="promo product">
         <div class="frame">
@@ -7,7 +7,7 @@
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
                             <li><a href="{{ route('/') }}">Main</a></li>
-                            <li><a href="{{ route('/demo') }}">Get Demo</a></li>
+                            <li><a href="{{ route('demo') }}">Get Demo</a></li>
                         </ul>
                         <div id="#text-banner-overview" class="text">
                             <h1 class="viewport-holder slideDown delay-1">Get a demo

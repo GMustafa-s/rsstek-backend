@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div class="promo integ">
         <div class="frame">
@@ -7,13 +7,13 @@
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
                             <li><a href="{{route('/')}}">Main</a></li>
-                            <li><a href="{{route('/integrations')}}">Integrations</a></li>
+                            <li><a href="{{route('integrations')}}">Integrations</a></li>
                         </ul>
                         <div class="text">
                             <h1 class="viewport-holder slideDown delay-1">Ecosystem security in your hands</h1>
                             <p class="viewport-holder slideDown delay-2">Designed to integrate with the technology you use
                                 daily.</p>
-                            <a href="{{route('/demo')}}" class="btn sec">Get Demo</a>
+                            <a href="{{route('demo')}}" class="btn sec">Get Demo</a>
                         </div>
                     </div>
                 </div>

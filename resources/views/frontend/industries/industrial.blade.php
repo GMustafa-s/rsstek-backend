@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
       <div id="promo-industrial" class="promo product">
         <div class="frame">
@@ -7,8 +7,8 @@
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
                   <li><a href="{{ route('/') }}">Main</a></li>
-                  <li><a href="{{ route('/solutions') }}">Solutions</a></li>
-                  <li><a href="{{ route('/industrial') }}">Industrial</a></li>
+                  <li><a href="{{ route('solutions') }}">Solutions</a></li>
+                  <li><a href="{{ route('industrial') }}">Industrial</a></li>
                 </ul>
                 <div id="text-banner-overview" class="text">
                   <h1 class="viewport-holder slideDown delay-1">Industrial</h1>
@@ -24,7 +24,7 @@
                     necessity to all manufacturing industries.
                   </p>
                   <ul class="viewport-holder slideDown delay-3">
-                    <li><a href="{{ route('/solutions') }}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
+                    <li><a href="{{ route('solutions') }}" class="btn sec w-spe-btn-m">Get Solutions</a></li>
                   </ul>
                 </div>
               </div>
@@ -138,7 +138,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/hardhat_detector')}}" class="more">Hardhat Detector</a>
+                        <a href="{{route('hardhat.detector')}}" class="more">Hardhat Detector</a>
                       </div>
                     </div>
                   </div>
@@ -149,7 +149,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/social_distance_detector')}}" class="more">Social Distance Detector</a>
+                        <a href="{{route('social.distance.detector')}}" class="more">Social Distance Detector</a>
                       </div>
                     </div>
                   </div>
@@ -160,7 +160,7 @@
                         alt="image description"
                       />
                       <div class="txt-box">
-                        <a href="{{route('/workspace_detector')}}" class="more">Workspace Detector</a>
+                        <a href="{{route('workspace.detector')}}" class="more">Workspace Detector</a>
                       </div>
                     </div>
                   </div>

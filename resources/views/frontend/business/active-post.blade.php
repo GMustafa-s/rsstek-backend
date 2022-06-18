@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
     <div class="promo">
         <div class="frame">
@@ -7,13 +7,13 @@
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
                             <li><a href="{{ route('/') }}">Main</a></li>
-                            <li><a href="{{ route('/business') }}">Business</a></li>
-                            <li><a href="{{ route('/active_post') }}">Active POS</a></li>
+                            <li><a href="{{ route('business') }}">Business</a></li>
+                            <li><a href="{{ route('active.post') }}">Active POS</a></li>
                         </ul>
                         <div class="text">
                             <h1 class="viewport-holder slideDown delay-1">Active POS</h1>
                             <ul class="viewport-holder slideDown delay-2">
-                                <li><a href="{{ route('/demo') }}" class="btn"><span>Book a Demo</span></a></li>
+                                <li><a href="{{ route('demo') }}" class="btn"><span>Book a Demo</span></a></li>
                                 <li><a href="{{ route('/contactus') }}" class="btn add">How to Buy</a></li>
                             </ul>
                         </div>
@@ -80,31 +80,31 @@
                         <h2>Other Products</h2>
                         <ul class="accordion" data-accordion="close">
                             {{-- <li>
-                                <a href="{{ route('/active_post') }}">ActivePOS</a>
+                                <a href="{{ route('active.post') }}">ActivePOS</a>
 
                             </li> --}}
                             <li>
-                                <a href="{{ route('/workspace_detector') }}">Workspace Detector</a>
+                                <a href="{{ route('workspace.detector') }}">Workspace Detector</a>
 
                             </li>
                             <li>
-                                <a href="{{ route('/staff_tracker') }}">Staff Tracker</a>
+                                <a href="{{ route('staff.tracker') }}">Staff Tracker</a>
 
                             </li>
                             <li>
-                                <a href="{{ route('/shelf_detector') }}">Shelf Detector</a>
+                                <a href="{{ route('shelf.detector') }}">Shelf Detector</a>
 
                             </li>
                             <li>
-                                <a href="{{ route('/heat_map') }}">Heat Map on Map</a>
+                                <a href="{{ route('heat.map') }}">Heat Map on Map</a>
 
                             </li>
                             <li>
-                                <a href="{{ route('/neuro_counter') }}">Neuro Counter</a>
+                                <a href="{{ route('neuro.counter') }}">Neuro Counter</a>
 
                             </li>
                             <li>
-                                <a href="{{ route('/queue_counter') }}">Queue Counter</a>
+                                <a href="{{ route('queue.counter') }}">Queue Counter</a>
 
                             </li>
                         </ul>

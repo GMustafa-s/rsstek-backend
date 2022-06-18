@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
 <?php $_SESSION['previous'] = basename($_SERVER['PHP_SELF']); ?>
 		<div class="promo camera">
@@ -10,7 +10,7 @@
 								<li><a href="{{ route('/') }}">Main</a></li>
 								<li><a href="#">product</a></li>
 								<li><a href="#">Camera</a></li>
-								<li><a href="{{ route('/camera/compare') }}">Compare</a></li>
+								<li><a href="{{ route('camera.compare') }}">Compare</a></li>
 
 							</ul>
 							<div class="text">

@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layouts.app')
 @section('content')
 <div id="promo-about-rrstek" class="promo product">
     <div class="frame">

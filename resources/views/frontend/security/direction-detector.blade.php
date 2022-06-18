@@ -1,4 +1,4 @@
-@extends('frontend.index')
+@extends('frontend.layous.appt')
 @section('content')
       <div class="promo">
         <div class="frame">
@@ -7,8 +7,8 @@
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
                   <li><a href="{{ route('/') }}">Main</a></li>
-                  <li><a href="{{ route('/security') }}"> Security</a></li>
-                  <li><a href="{{ route('/direction_detector') }}">Direction Detector</a></li>
+                  <li><a href="{{ route('security') }}"> Security</a></li>
+                  <li><a href="{{ route('direction.detector') }}">Direction Detector</a></li>
                 </ul>
                 <div class="text">
                   <h1 class="viewport-holder slideDown delay-1">
@@ -93,29 +93,29 @@
                 <h2>Other Products</h2>
                 <ul class="accordion" data-accordion="close">
                   <li>
-                    <a href="Auto-anpr.html">Auto Anpr</a>
+                    <a href="{{route('auto.anpr')}}">Auto Anpr</a>
                   </li>
                   <li>
-                    <a href="neuro-left-object-detector.html"
+                    <a href="{{route('neuro.left.object.detector')}}"
                       >Neuro Left Object Detector</a
                     >
                   </li>
                   <li>
-                    <a href="pose-detector.html">Pose Detector</a>
+                    <a href="{{route('pose.detector')}}">Pose Detector</a>
                   </li>
                   <li>
-                    <a href="face-recognition.html">Face Recognition</a>
+                    <a href="{{route('face.recognition')}}">Face Recognition</a>
                   </li>
 
                   <li>
-                    <a href="neuro-detector.html">Neuro Detector</a>
+                    <a href="{{route('neuro.detector')}}">Neuro Detector</a>
                   </li>
-                  <!-- <li>
-									<a    href="direction-detector.html">Direction Detector</a>
-
-								</li> -->
                   <li>
-                    <a href="crowd-detector.html">Crowd Detector</a>
+									<a    href="{{route('direction.detector')}}">Direction Detector</a>
+
+								</li>
+                  <li>
+                    <a href="{{route('crowd.detector')}}">Crowd Detector</a>
                   </li>
                 </ul>
               </div>
