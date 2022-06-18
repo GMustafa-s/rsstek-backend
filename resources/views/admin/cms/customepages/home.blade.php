@@ -9,11 +9,13 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">Settings</h3>
+                    <h3 class="page-title">CMS</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">general settings</li>
+                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">custom pages</li>
+                           
+                            <li class="breadcrumb-item active" aria-current="page">home</li>
                         </ol>
                     </nav>
                 </div>

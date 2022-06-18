@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use App\Models\contactus;
+use App\Models\Demo;
+use App\Models\installationQuery;
 use Illuminate\Support\Facades\DB;
 
 
@@ -54,4 +56,57 @@ class ContactUsController extends Controller
         return response()->json(['captcha' => captcha_img()]);
     }
 
+
+
+    // demo queries
+    public function demoShow(){
+        $demo_messages = Demo::orderby('created_at','DESC')->paginate(15);
+        return view('admin.queries.demo',compact('demo_messages'));        
+    }
+
+    public function demoStore(Request $request){
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required',   
+                'email' => 'required|email',
+            ]
+        );
+        $demo = new Demo;
+        $demo->name = $request->name;
+        $demo->email = $request->email;
+        if($demo->save()){
+            return redirect()->back()->with('success','Your Query sent Successfully.');
+        }
+        else{
+            return redirect()->back()->with('erro','Something went wrong.');
+        }
+
+    }
+
+    // installation queries
+    public function intallationShow(){
+        $installation_messages = installationQuery::orderby('created_at','DESC')->paginate(15);
+        return view('admin.queries.insatallation',compact('installation_messages'));        
+    }
+
+    public function installationStore(Request $request){
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required',   
+                'phone' => 'required',
+            ]
+        );
+        $installation = new installationQuery;
+        $installation->name = $request->name;
+        $installation->phone = $request->phone;
+        if($installation->save()){
+            return redirect()->back()->with('success','Your Query sent Successfully.');
+        }
+        else{
+            return redirect()->back()->with('erro','Something went wrong.');
+        }
+
+    }
 }

@@ -1,15 +1,22 @@
 @php 
 $socilas = App\Models\SocialLink::all();
+$site_dat = App\Models\GeneralSetting::first();
 @endphp
 <footer id="footer">
     <div class="container">
       <div class="footer-t">
         <div class="col">
           <strong class="sub-logo">
-            <a href="/index.html">
-              <img src="{{asset('frontend')}}/images/logo.svg" alt="image description" />
+          <a href="{{url('/')}}">
+          <img src="{{asset('frontend')}}/images/@if($site_dat->logo!=null){{$site_dat->logo}} @endif" alt="RRSTEK | Home Automation System" width="109" height="37">
+            
+              <!-- <img src="{{asset('frontend')}}/images/logo.svg" alt="image description" /> -->
             </a>
           </strong>
+
+          @if($site_dat->description !=null)
+           <p>{{$site_dat->description}}</p>
+          @endif
         </div>
         <div class="col">
           <ul class="links">
@@ -80,7 +87,7 @@ $socilas = App\Models\SocialLink::all();
         </div>
         <div class="col">
           <p>
-            Copyright &copy; 2022 <a href="{{route('/')}}">RRSTEK</a> All rights reserved
+             @if($site_dat->copy_right_text !=null) {{$site_dat->copy_right_text}} @else Copyright &copy; 2022 <a href="{{route('/')}}">RRSTEK</a> All rights reserved @endif
           </p>
         </div>
       </div>
