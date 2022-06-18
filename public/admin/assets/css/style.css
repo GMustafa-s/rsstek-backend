@@ -8202,6 +8202,7 @@ ul.comment-list li ul.children {
 }
 .bg-ccc{
 	background-color : #ccc;
+	border-radius: 10px;
 }
 #pagination-svg svg{
 	height: 20px;

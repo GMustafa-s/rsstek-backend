@@ -1,9 +1,32 @@
-<header id="header">
+@php 
+$site_dat = App\Models\GeneralSetting::first();
+
+@endphp
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@if($site_dat !=null) {{$site_dat->site_title}} @else RRSTEK | Intelligent Video Analitycs @endif</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{asset('frontend/')}}/css/style.css">
+	<link rel="icon" type="image/x-icon" href="{{asset('frontend')}}/images/fevicon/@if($site_dat->favicon!=null)  {{$site_dat->favicon}} @endif">
+</head>
+
+<body>
+
+<?php 
+ $url = $_SERVER['REQUEST_URI']; 
+    if (!str_contains($url, '/camera/compare/')) { 
+        return  session()->forget('cart');
+    }
+?>
+
+<header id="header" class="sticky">
     <div class="header-t">
         <div class="container">
             <strong class="logo">
                 <a href="{{route('/')}}">
-                    <img src="{{asset('frontend')}}/images/logo.svg" alt="RRSTEK | Home Automation System">
+                    <img src="{{asset('frontend')}}/images/@if($site_dat->logo!=null){{$site_dat->logo}} @endif" alt="RRSTEK | Home Automation System">
                 </a>
             </strong>
             <nav id="nav">
