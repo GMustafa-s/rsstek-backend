@@ -141,7 +141,7 @@
                                     </div>
                                     <div class="col-4">
                                         <label>Aperture</label>
-                                        <input type="text" class="form-control" name="aperture" value="" required />
+                                        <input type="text" class="form-control" name="aperture" value=""  />
                                     </div>
                                 </div>
                                 <div class="row mb-4">

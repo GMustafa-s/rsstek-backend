@@ -14,7 +14,7 @@
 								</ul>
 							</li>
 						
-							@cam('jhdfhkjh')
+						
 								<li class="submenu">
 									<a href="{{url('/admin-dashboard')}}"><i class="la la-user"></i> <span> Users</span> <span class="menu-arrow"></span></a>
 									<ul style="display: none;">
@@ -22,7 +22,7 @@
 										<li><a href="{{route('users.index')}}">All Users</a></li>
 									</ul>
 								</li>
-							@endrole
+							
 							<li class="submenu">
 								<a href="{{route('roles.create')}}"><i class="la la-circle-thin"></i> <span> Roles</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
