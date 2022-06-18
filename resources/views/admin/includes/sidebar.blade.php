@@ -14,6 +14,27 @@
 								</ul>
 							</li>
 							<li class="submenu">
+								<a href="{{url('/admin-dashboard')}}"><i class="la la-user"></i> <span> Users</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a class="" href="">Add New</a></li>
+									<li><a href="">All Users</a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href=""><i class="la la-circle-thin"></i> <span> Roles</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a class="" href="">Add New</a></li>
+									<li><a href="">All Roles</a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href=""><i class="la la-circle-thin"></i> <span> Permissions</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a class="" href="">Add New</a></li>
+									<li><a href="">All Permission</a></li>
+								</ul>
+							</li>
+							<li class="submenu">
 								<a href="#"><i class="la la-cube"></i> <span> Apps</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="chat.html">Chat</a></li>

@@ -6,6 +6,8 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\cms\cumtom\HomeController;
 use App\Http\Controllers\cms\solution\SolutionController;
 use App\Http\Controllers\cms\camera\CameraController;
+use App\Http\Controllers\cms\camera\UserController;
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -260,21 +262,35 @@ Route::prefix('/camera/compare')->group(function () {
 
 
 // dashboard routes
-Route::get('/login', function () {
-    return view('admin.login');
-})->name('login-user');
+// Route::get('/login', function () {
+//     return view('admin.login');
+// })->name('login-user');
 
-Route::get('/register', function () {
-    return view('admin.register');
-});
+// Route::get('/register', function () {
+//     return view('admin.register');
+// });
 
 Route::get('/admin-dashboard', function () {
     return view('admin.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
+Route::group(['middleware' => ['auth', 'permission']], function() {
+    /**
+     * User Routes
+     */
+    Route::group(['prefix' => 'users'], function() {
+        Route::get('/', 'UserController@index')->name('users.index');
+        Route::get('/create', 'UserController@create')->name('users.create');
+        Route::post('/create', 'UserController@store')->name('users.store');
+        Route::get('/{user}/show', 'UserController@show')->name('users.show');
+        Route::get('/{user}/edit', 'UserController@edit')->name('users.edit');
+        Route::patch('/{user}/update', 'UserController@update')->name('users.update');
+        Route::delete('/{user}/delete', 'UserController@destroy')->name('users.destroy');
+    });
+});
 
 Route::prefix('settings')->group(function () { 
-   Route::resource('general',GeneralController::class);
+   Route::resource('general',GeneralController::class)->middleware('auth');;
    Route::post('add-site-info', [GeneralController::class, 'createSiteInfo'])->name('add.siteinfo');
    Route::post('add-contatct-info', [GeneralController::class, 'createContactInfo'])->name('add.contactInfo');
    Route::post('add-copy-right', [GeneralController::class, 'createCopyRight'])->name('add.copyright');
@@ -340,3 +356,7 @@ Route::prefix('cms/camera')->group(function () {
 });
 
 Route::get('camera/{any}',[CameraController::class, 'showSlug'])->name('camera.slug');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
