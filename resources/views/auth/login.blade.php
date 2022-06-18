@@ -20,6 +20,10 @@
                 <!-- Account Form -->
                 <form action="{{route('login')}}" method="POST">
                     @csrf
+                    @if (Session('error'))
+                    <div class="alert alert-danger">
+                        {{Session('error')}}
+                    @endif
                     <div class="form-group">
                         <label>Email Address</label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" >
@@ -36,7 +40,7 @@
                                 <label>Password</label>
                             </div>
                             <div class="col-auto">
-                                <a class="text-muted" href="forgot-password.html">
+                                <a class="text-muted" href="{{route('password.request')}}">
                                     Forgot password?
                                 </a>
                             </div>

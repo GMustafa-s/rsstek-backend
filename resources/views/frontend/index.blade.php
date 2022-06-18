@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
 	<div id="wrapper">
-
+        
 		<div class="visual">
 			<div class="video-holder">
 				<video width="100%" height="654" loop="true" autoplay="autoplay" muted>

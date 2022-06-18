@@ -1,3 +1,4 @@
+
 @extends('admin.layouts.app')
 
 @section('content')
@@ -13,7 +14,9 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome Admin!</h3>
+                                @if (session()->has('user'))    
+                                    <h3 class="page-title">Welcome {{ session()->get('user') }}</h3>
+                                @endif
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item active">Dashboard</li>
 								</ul>

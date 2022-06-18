@@ -1,10 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\settings\GeneralController;
-use App\Http\Controllers\ContactUsController;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\settings\GeneralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -279,7 +281,7 @@ Route::get('/camera/detail', function(){
 
 Route::get('/admin-dashboard', function () {
     return view('admin.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 
 Route::prefix('settings')->group(function () {
@@ -298,6 +300,53 @@ Route::prefix('contactus')->group(function () {
  Route::get('contactus', [ContactUsController::class, 'index'])->name('/contactus');
 
 
+Route::prefix('/admin')->group(function(){
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Auth::routes();
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/user/{id}', [App\Http\Controllers\HomeController::class, 'user'])->name('user');
+    Route::resource('roles', RoleController::class)->middleware('auth', 'role:admin');
+    Route::resource('permissions', PermissionController::class)->middleware('auth', 'role:admin');
+
+    //Assign permission to role
+    Route::post('roles/{role}/permissions', [RoleController::class, 'assignPermission'])->name('roles.assign.permissions');
+    //Revoke permission from role
+    Route::delete('roles/{role}/permissions/{permission}', [RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
+
+    // //Assign role to permission
+    // Route::post('permissions/{permission}/roles', [PermissionController::class, 'assignRole'])->name('permissions.assign.roles');
+
+    // //Revoke permission from role
+    // Route::delete('permissions/{permission}/roles/{role}', [PermissionController::class, 'revokeRole'])->name('permissions.roles.revoke');
+
+
+    //User Management roles and
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/user/store', [UserController::class, 'store'])->name('users.store');
+    Route::get('user/{id}/show', [UserController::class, 'show'])->name('users.show');
+    Route::get('user/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('user/{id}/update', [UserController::class, 'update'])->name('users.update');
+    Route::delete('user/{id}/destroy', [UserController::class, 'destroy'])->name('users.destroy');
+
+    //Assign role to user
+    Route::post('user/{user}/roles', [UserController::class, 'assignRole'])->name('users.assign.role');
+    //Revoke role from user
+    Route::delete('user/role/delete', [UserController::class, 'revokeRole'])->name('users.revoke.roles');
+
+
+    // //Assign permission to user
+    // Route::post('user/{user}/permissions', [UserController::class, 'assignPermission'])->name('users.assign.permission');
+    // //Revoke permission from user
+    // Route::delete('user/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.revoke.permission');
+});
+
+
+
+
+
+
+
+
+
+
