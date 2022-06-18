@@ -14,6 +14,13 @@ $site_dat = App\Models\GeneralSetting::first();
 
 <body>
 
+<?php 
+ $url = $_SERVER['REQUEST_URI']; 
+    if (!str_contains($url, '/camera/compare/')) { 
+        return  session()->forget('cart');
+    }
+?>
+
 <header id="header" class="sticky">
     <div class="header-t">
         <div class="container">

@@ -71,8 +71,8 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label>Header Video</label>
-                                            <input required name="video" class="form-control" type="file" accept="video/mp4,video/x-m4v,video/*" />
+                                            <label>Header Video URL</label>
+                                            <input required name="video" class="form-control" type="text"/>
                                         </div>
                                     </div>
                                 </div>

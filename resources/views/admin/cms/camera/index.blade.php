@@ -67,7 +67,7 @@
                     <thead>
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Page title</th>
-							<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 108.406px;">Sub pages</th>
+							<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 108.406px;">Sub Title</th>
 
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 108.406px;">Action</th>
                         </tr>
@@ -79,10 +79,10 @@
                             <td class="sorting_1">
 								<a href="{{route('camera.slug',$camera->slug)}}">{{$camera->title}}</a>	
 							</td>
-							<td class="sorting_1"></td>
+							<td class="sorting_1">{{$camera->sub_title}}</td>
                             <td style="font-size: 20px;"> <span>
-								<a href=""><i class="la la-eye"></i></a></span> | <span> <a href=""><i class="la la-edit"></i></a> </span> |
-								  <span> <a href=""><i class="la la-trash"></i> </a></span>
+								<a href="{{route('camera.slug',$camera->slug)}}"><i class="la la-eye"></i></a></span> | <span> <a href="{{route('cms.camera.edit',$camera->id)}}"><i class="la la-edit"></i></a> </span> |
+								  <span> <a href="{{route('cms.camera.delete',$camera->id)}}"><i class="la la-trash"></i> </a></span>
 								 </td>
                         </tr>
                         @endforeach

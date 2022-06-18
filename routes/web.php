@@ -241,18 +241,17 @@ Route::get('/integrations', function(){
 })->name('/integrations');
 
 
+Route::prefix('/camera/compare')->group(function () {
+    Route::get('/', [CameraController::class, 'compare'])->name('/camera/compare');
+    Route::get('/{id}', [CameraController::class, 'compareCamera'])->name('camera.compare');
 
-            //Camera Campare Card
-Route::get('/camera/compare', function(){
-    return view('frontend.camera.compare.camera-compare');
-
-})->name('/camera/compare');
+});
 
 
-Route::get('/camera/detail', function(){
-    return view('frontend.camera.compare.camera-detail');
+// Route::get('/camera/detail', function(){
+//     return view('frontend.camera.compare.camera-detail');
 
-})->name('/camera/detail');
+// })->name('/camera/detail');
 
 // Route::get('/camera/compare/detail/{id}', function(){
 //     return view('frontend.camera.compare.camera-detail');
@@ -328,12 +327,15 @@ Route::prefix('contactus')->group(function () {
 Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('category.slug');
 Route::get('solution/{solution}/{name}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');
 
-
 Route::prefix('cms/camera')->group(function () {
-
     Route::get('/', [CameraController::class, 'index'])->name('cms.camera.index');
     Route::get('/create', [CameraController::class, 'create'])->name('cms.camera.create');
     Route::post('/store', [CameraController::class, 'store'])->name('cms.camera.store');
+    Route::get('/edit/{id}', [CameraController::class, 'edit'])->name('cms.camera.edit');
+    Route::post('/update/{id}', [CameraController::class, 'update'])->name('cms.camera.update');
+    Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
+    Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
+   
 
 });
 

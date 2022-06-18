@@ -112,6 +112,7 @@ class SolutionController extends Controller
         $category = PageCategory::find($id);
         $sub_pages = SolutionSubPage::where('page_categories_id',$id)->get();
         foreach($sub_pages as $sub_page){
+            $delete_sections = $this->deleteAllSection($sub_page->id);
             $sub_page->delete();
         }
         if($category->delete()){
@@ -147,11 +148,7 @@ class SolutionController extends Controller
             $add_categ->fetaured_image = $filename;
         }
         if($request->video){
-            $file = $request->file('video');
-            $filename = rand().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('frontend').'/images/'.$categ_name.'/'.$request->title.'/';
-            $file->move($destinationPath,$filename);
-            $add_categ->video = $filename;
+            $add_categ->video = $request->video;
         }
         $add_categ->title = $request->title ;
         $add_categ->description = $request->description;
@@ -263,10 +260,7 @@ class SolutionController extends Controller
 
     public function subDelete($id){
         $sub_page = SolutionSubPage::find($id);
-        $section = SolutionSections::where('solution_sub_pages_id',$id)->first();
-        if($section !=null){
-            $section->delete();
-        }
+        $delete_sections = $this->deleteAllSection($id);
     if($sub_page->delete()){
         return redirect('/solution/sub-page')->with('success','sub solution  deleted successfully!');
     }
@@ -296,5 +290,14 @@ class SolutionController extends Controller
         if( $section->delete()){
             return redirect('/solution/sub-page')->with('success','section deleted  successfully!');
         }
+    }
+    public function deleteAllSection($id){
+        $sections = SolutionSections::where('solution_sub_pages_id',$id)->get();
+        if($sections !=null){
+            foreach($sections as $section){
+                $section->delete();
+            }
+        }
+       return ;
     }
 }
