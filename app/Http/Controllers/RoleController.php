@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\PermissionServiceProvider;
+use Illuminate\Support\Facades\DB;
+
 
 class RoleController extends Controller
 {
@@ -70,9 +72,19 @@ class RoleController extends Controller
      */
     public function edit(Role $role, Permission $permission)
     {
-        //
+
         $permissions = Permission::all();
-        return view('admin.roles.edit', ['role' => $role, 'permissions' => $permissions]);
+        $role_permissions = DB::table('role_has_permissions')->where('role_id',$role->id)
+        ->select('permission_id')
+        ->get()->toArray();
+        $rolespermission = [];
+        if($role_permissions !=null)
+        {
+        foreach($role_permissions as $key=>$value){
+                $rolespermission[] = $value->permission_id;
+        }
+        }
+        return view('admin.roles.edit', ['role' => $role, 'permissions' => $permissions,'role_permissions'=>$rolespermission]);
 
     }
 
@@ -85,7 +97,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+
         $validated = $request->validate([
             'name' => 'required|min:3',
         ]);
@@ -108,17 +120,18 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success', 'Role deleted successfully');
 
     }
-    public function assignPermission(Request $request, Role $role){
-        if($role->hasPermissionTo($request->permission)){
-            return back()->with('error', 'Role already has this permission');
-        }
-        $role->givePermissionTo($request->permission);
+    public function assignPermission(Request $request,$role){
+            foreach($request->permission as $permission){
+                $role_permission =DB::table('role_has_permissions')->insert([
+                    'permission_id' => $permission,
+                    'role_id' => $role,
+                ]);           
+            }
         return redirect()->back()->with('success', 'Permission assigned successfully');
     }
 
     public function revokePermission(Role $role, Permission $permission){
         if($role->hasPermissionTo($permission)){
-
             $role->revokePermissionTo($permission);
             return redirect()->back()->with('success', 'Permission revoked successfully');
         }
