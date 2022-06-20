@@ -13,6 +13,30 @@
 									<!-- <li><a href="employee-dashboard.html">Employee Dashboard</a></li> -->
 								</ul>
 							</li>
+						
+						@can('test permission')
+								<li class="submenu">
+									<a href="{{url('/admin-dashboard')}}"><i class="la la-user"></i> <span> Users</span> <span class="menu-arrow"></span></a>
+									<ul style="display: none;">
+										<li><a class="" href="{{route('users.create')}}">Add New</a></li>
+										<li><a href="{{route('users.index')}}">All Users</a></li>
+									</ul>
+								</li>
+						@endcan
+							<li class="submenu">
+								<a href="{{route('roles.create')}}"><i class="la la-circle-thin"></i> <span> Roles</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a class="" href="{{route('roles.create')}}">Add New</a></li>
+									<li><a href="{{route('roles.index')}}">All Roles</a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="{{route('permissions.create')}}"><i class="la la-circle-thin"></i> <span> Permissions</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a class="" href="{{route('permissions.create')}}">Add New</a></li>
+									<li><a href="{{route('permissions.index')}}">All Permission</a></li>
+								</ul>
+							</li>
 							<li class="submenu">
 								<a href="#"><i class="la la-cube"></i> <span> Apps</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
@@ -81,8 +105,8 @@
 									<li class="submenu">
 								<a href="#" class=""><span>Camera Pages</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="{{url('contactus/show')}}">Static Sections</a></li>
-									<li><a href="{{route('show.demo')}}">Dynamic</a></li>
+									<li><a href="{{route('cms.camera.index')}}">Camera Pages</a></li>
+									<li><a href="{{route('show.demo')}}">compare Page</a></li>
 								</ul>
 									</li>
 									<li class="submenu">

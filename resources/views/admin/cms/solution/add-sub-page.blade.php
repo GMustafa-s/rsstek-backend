@@ -71,8 +71,8 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label>Header Video</label>
-                                            <input required name="video" class="form-control" type="file" accept="video/mp4,video/x-m4v,video/*" />
+                                            <label>Header Video URL</label>
+                                            <input required name="video" class="form-control" type="text"/>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                     <label> Description</label>
                                     <textarea name="description" rows="4" class="form-control summernote" placeholder="Enter your content"></textarea>
                                 </div>
-                                <div id="section-container" ">
+                                <div id="section-container">
                                     <!-- here will be the new section content -->
                                 </div>
                                 <a id="add-sec-btn" href="javascript:void(0)" onclick="addSection()" style="float: right;"><i class="fa fa-plus"></i> Add section</a>

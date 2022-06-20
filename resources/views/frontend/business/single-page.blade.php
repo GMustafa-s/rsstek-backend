@@ -22,8 +22,9 @@
 						</div>
 						<div class="align-right">
 							<div class="video-holder  viewport-holder slideDown delay-2">
-								<video width="100%" height="320" loop="true" autoplay="autoplay" muted>
-									<source src="{{asset('frontend')}}/images/{{$main_page->name}}/{{$page->title}}/{{$page->video}}" type="video/mp4">
+							<video loop="true" autoplay="autoplay" muted="" id="fitvid330684" __idm_id__="147457">
+									<!-- <source src="../images/videos/ActivePOS.mp4" type="video/mp4"> -->
+									<source src="https://drive.google.com/uc?id={{$page->video}}" type="video/mp4">
 									Your browser does not support the video tag.
 								</video>
 							</div>
