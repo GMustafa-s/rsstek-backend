@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeed extends Seeder
 {
@@ -31,7 +32,14 @@ class UserSeeed extends Seeder
         $permissions = Permission::pluck('id','id')->all();
    
         $role->syncPermissions($permissions);
+
+        $model_has_role =DB::table('model_has_roles')->insert([
+            'model_type' => 'App\Models\User',
+            'role_id' => $role->id,
+            'model_id' => $user->id,
+        ]);
+        
+       
      
-        // $permissions->assignRole([$role->id]);
     }
 }

@@ -115,8 +115,6 @@ class PermissionsController extends Controller
     }
 
     public function revokeRole(Permission $permission, Role $role){
-        dd();
-
         if($permission->hasRole($role)){
             $permission->removeRole($role);
             return redirect()->back()->with('success', 'Role revoked successfully');

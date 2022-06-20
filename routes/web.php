@@ -278,7 +278,7 @@ Route::get('/admin-dashboard', function () {
     return view('admin.index');
 })->name('dashboard')->middleware('auth');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth','permission']], function() {
     /**
      * User Routes
      */
@@ -292,18 +292,20 @@ Route::group(['middleware' => ['auth']], function() {
         Route::delete('/{user}/delete',  [UserController::class,'destroy'])->name('users.destroy');
     });
 
+    Route::prefix('settings')->group(function () { 
+        Route::resource('general',GeneralController::class)->middleware('auth');;
+        Route::post('add-site-info', [GeneralController::class, 'createSiteInfo'])->name('add.siteinfo');
+        Route::post('add-contatct-info', [GeneralController::class, 'createContactInfo'])->name('add.contactInfo');
+        Route::post('add-copy-right', [GeneralController::class, 'createCopyRight'])->name('add.copyright');
+        Route::post('add-soacials', [GeneralController::class, 'createSocials'])->name('add.socials');
+        Route::post('edit-soacials/{id}', [GeneralController::class, 'editSocials'])->name('edit.socials');
+        Route::get('delete-soacials/{id}', [GeneralController::class, 'deleteSicials'])->name('del.socials');
+     });
+
     
 });
 
-Route::prefix('settings')->group(function () { 
-   Route::resource('general',GeneralController::class)->middleware('auth');;
-   Route::post('add-site-info', [GeneralController::class, 'createSiteInfo'])->name('add.siteinfo');
-   Route::post('add-contatct-info', [GeneralController::class, 'createContactInfo'])->name('add.contactInfo');
-   Route::post('add-copy-right', [GeneralController::class, 'createCopyRight'])->name('add.copyright');
-   Route::post('add-soacials', [GeneralController::class, 'createSocials'])->name('add.socials');
-   Route::post('edit-soacials/{id}', [GeneralController::class, 'editSocials'])->name('edit.socials');
-   Route::get('delete-soacials/{id}', [GeneralController::class, 'deleteSicials'])->name('del.socials');
-});
+
 
 Route::prefix('contactus')->group(function () { 
     Route::post('/add', [ContactUsController::class, 'store'])->name('add.contactus');

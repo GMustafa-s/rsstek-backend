@@ -74,6 +74,7 @@
                                 <input list="Country" class="form-control" id="region" type="text" placeholder="Region/Country" name="country" required>
                                 <datalist id="Country">
                                   @foreach($countries as $country)
+                               
                                     <option value="{{$country->country_name}}" />
                                   @endforeach
                                 </datalist>

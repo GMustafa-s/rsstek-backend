@@ -9,6 +9,7 @@ use Spatie\Permission\PermissionServiceProvider;
 use Illuminate\Support\Facades\DB;
 
 
+
 class RoleController extends Controller
 {
     /**
@@ -121,12 +122,8 @@ class RoleController extends Controller
 
     }
     public function assignPermission(Request $request,$role){
-            foreach($request->permission as $permission){
-                $role_permission =DB::table('role_has_permissions')->insert([
-                    'permission_id' => $permission,
-                    'role_id' => $role,
-                ]);           
-            }
+        $rol= Role::find($role);
+        $rol->syncPermissions($request->permission);
         return redirect()->back()->with('success', 'Permission assigned successfully');
     }
 

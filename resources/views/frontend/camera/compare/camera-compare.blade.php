@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="product-info">
+			<div class="product-info" id="sroll-here">
 				<div class="container">
 					<div class="product-frame">
 						<table class="table">
@@ -275,4 +275,10 @@
             @include('frontend.common.contact_form')
 
 		</main>
+		<script>
+			var camparings = <?PHP echo isset($comparings); ?>;
+			if(camparings){
+				document.getElementById("sroll-here").scrollIntoView();
+			}
+		</script>
 @endsection

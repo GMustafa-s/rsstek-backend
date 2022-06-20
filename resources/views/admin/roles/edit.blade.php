@@ -54,7 +54,7 @@
                     <tr>
                         <td>
                             <input type="checkbox" 
-                            name="permission[{{ $permission->name }}]"
+                            name="permission[]"
                             value="{{ $permission->id}}"
                             class='permission'
                             {{ in_array($permission->id, $role_permissions) 
@@ -63,7 +63,7 @@
                            
                         </td>
                         <td>{{ $permission->name }}</td>
-                        <td>{{-- $permission->guard_name --}}</td>
+                        <td>{{ $permission->guard_name }}</td>
                     </tr>
                 @endforeach
             </table>
