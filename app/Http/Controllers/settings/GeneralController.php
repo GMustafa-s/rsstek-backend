@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\SocialLink;
+use Session;
+
 
 class GeneralController extends Controller
 {
@@ -188,5 +190,11 @@ class GeneralController extends Controller
 
             return redirect()->back();
         }
+    }
+
+    public function changeLanguage($language)
+    {
+        $session=  Session::put('language',$language);
+        return redirect()->back();
     }
 }

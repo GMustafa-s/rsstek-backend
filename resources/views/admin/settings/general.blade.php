@@ -20,7 +20,23 @@
             </div>
         </div>
         <!-- /Page Header -->
-    
+        @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong>Success!</strong>  {{ session()->get('success') }}
+                                
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+                    @endif
+                    @if(session()->has('error'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong>Success!</strong> {{ session()->get('error') }}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+                    @endif
         <div class="row">
             <div class="col-md-12">
                 <form action="{{route('add.siteinfo')}}" method="post" enctype="multipart/form-data">
@@ -132,14 +148,20 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="form-group mb-4">
+                                        <form action="{{route('add.language')}}" method="post">
+                                            @csrf
                                         <label>select default language</label>
-                                        <select class="form-control" name="" id="">
-                                            <option value="" disabled selected>Default</option>
-                                            <option value="">ENG</option>
-                                            <option value="">NL</option>
-                                            <option value="">FR</option>
-                                            <option value="">ES</option>
+                                        <select class="form-control" name="language" id="">
+                                            <option value="@if($generals->language !=null) {{$generals->language}} @endif" disabled selected>{{$generals->language}}</option>
+                                            <option value="en">en</option>
+                                            <option value="nl">nl</option>
+                                            <option value="fr">fr</option>
+                                            <option value="es">es</option>
                                         </select>
+                                        <div class="submit-section">
+                                        <button type="submit" class="btn btn-primary submit-btn">Update</button>
+                                    </div>
+                                        </form>
                                     </div>
                                     
                                 </div>

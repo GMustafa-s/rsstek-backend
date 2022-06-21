@@ -19,6 +19,8 @@ $site_dat = App\Models\GeneralSetting::first();
     if (!str_contains($url, '/camera/compare/')) { 
         return  session()->forget('cart');
     }
+use Stichoza\GoogleTranslate\GoogleTranslate;
+$tr = new GoogleTranslate();
 ?>
 
 <header id="header" class="sticky">
@@ -33,7 +35,7 @@ $site_dat = App\Models\GeneralSetting::first();
                 <a href="#" class="open"><img src="{{asset('frontend')}}/images/menu-icon.svg" alt="image description"></a>
                 <div class="drop-down">
                     <ul class="lang">
-                        <li><a class="active" href="#">ENG</a></li>
+                        <li><a class="active" href="{{route('change.language','en')}}">ENG</a></li>
                         <li><a href="#">NL</a></li>
                         <li><a href="#">FR</a></li>
                         <li><a href="#">ES</a></li>
@@ -41,7 +43,9 @@ $site_dat = App\Models\GeneralSetting::first();
                     <div class="holder">
                         <ul class="list">
                             <li>
-                                <a href="{{route('/')}}" class="title">Home</a>
+                                <a href="{{route('/')}}" class="title">
+                                echo $tr->setSource('en')->setTarget({{$site_dat->language}})->translate('Home');
+                                </a>
                             </li>
                             <li class="has-dropdown">
                                 <a href="{{route('/business')}}" class="title">BUSINESS</a>

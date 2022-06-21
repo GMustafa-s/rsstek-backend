@@ -42,6 +42,9 @@ Route::get('migrate', function () {
     dd("migrated");
 
 });
+
+//change language
+Route::get('change-language/{language}', [GeneralController::class, 'changeLanguage'])->name('change.language');
             //Frontend
 Route::get('/', function () {
     return view('frontend.home');
@@ -278,7 +281,7 @@ Route::get('/admin-dashboard', function () {
     return view('admin.index');
 })->name('dashboard')->middleware('auth');
 
-Route::group(['middleware' => ['auth','permission']], function() {
+Route::group(['middleware' => ['auth']], function() {
     /**
      * User Routes
      */
@@ -300,6 +303,8 @@ Route::group(['middleware' => ['auth','permission']], function() {
         Route::post('add-soacials', [GeneralController::class, 'createSocials'])->name('add.socials');
         Route::post('edit-soacials/{id}', [GeneralController::class, 'editSocials'])->name('edit.socials');
         Route::get('delete-soacials/{id}', [GeneralController::class, 'deleteSicials'])->name('del.socials');
+        Route::post('add-language', [GeneralController::class, 'addLangugae'])->name('add.language');
+      
      });
 
     

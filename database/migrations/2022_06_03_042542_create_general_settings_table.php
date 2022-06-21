@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('favicon')->nullable();
             $table->string('logo')->nullable();
             $table->string('phone')->nullable();
+            $table->string('language')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->text('copy_right_text')->nullable();

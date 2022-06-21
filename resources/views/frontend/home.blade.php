@@ -13,6 +13,11 @@ $site_dat = App\Models\GeneralSetting::first();
 	<link rel="icon" type="image/x-icon" href="{{asset('frontend')}}/images/fevicon/{{$site_dat->favicon}}">
 </head>
 <body>
+    <?php
+use Stichoza\GoogleTranslate\GoogleTranslate;
+$tr = new GoogleTranslate();
+$language = session()->get('language');
+    ?>
 	<div id="wrapper">
 		<header id="header">
 			<div class="header-t">
@@ -26,22 +31,43 @@ $site_dat = App\Models\GeneralSetting::first();
                         <a href="#" class="open"><img src="{{asset('frontend')}}/images/menu-icon.svg" alt="image description"></a>
                         <div class="drop-down">
                             <ul class="lang">
-                                <li><a class="active" href="#">ENG</a></li>
-                                <li><a href="#">NL</a></li>
-                                <li><a href="#">FR</a></li>
-                                <li><a href="#">ES</a></li>
+                                <li><a class="active" href="{{route('change.language','en')}}">ENG</a></li>
+                                <li><a href="{{route('change.language','nl')}}">NL</a></li>
+                                <li><a href="{{route('change.language','fr')}}">FR</a></li>
+                                <li><a href="{{route('change.language','es')}}">ES</a></li>
                             </ul>
                             <div class="holder">
                                 <ul class="list">
                                     <li>
-                                        <a href="{{route('/')}}" class="title">Home</a>
+                                <a href="{{route('/')}}" class="title">
+                                @if($language)
+                                {{ $tr->setSource('en')->setTarget($language)->translate('Home')}}
+                                @else
+                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Home')}}
+                                @endif
+
+
+
+                                </a>
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="{{route('category.slug','category-1')}}" class="title">BUSINESS</a>
+                                        <a href="{{route('category.slug','category-1')}}" class="title">
+                                        @if($language)
+                                {{ $tr->setSource('en')->setTarget($language)->translate('BUSINESS')}}
+                                @else
+                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('BUSINESS')}}
+                                @endif
+                                        </a>
                                         <ul class="link">
                                             <li><a href="#" class="nav-back">Back</a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
-                                            <li><a href="{{route('/business')}}">Business</a></li>
+                                            <li><a href="{{route('/business')}}">
+                                            @if($language)
+                                {{ $tr->setSource('en')->setTarget($language)->translate('Business')}}
+                                @else
+                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Business')}}
+                                @endif
+                                            </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/health_care')}}">Healthcare</a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
@@ -101,7 +127,13 @@ $site_dat = App\Models\GeneralSetting::first();
 				<div class="container">
 					<div class="text-area">
 						<div class="text viewport-holder slideDown">
-							<h1>Smart Video <br> Surveillance Solutions<h1>
+							<h1>
+                            @if($language)
+                                {{ $tr->setSource('en')->setTarget($language)->translate(' Smart Video')}}
+                                @else
+                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate(' Smart Video')}}
+                                @endif
+                                <br> Surveillance Solutions<h1>
 						</div>
 						<div class="desc">
 							<p class="viewport-holder slideDown delay-1">We produce all types of devices: video recorders, IP cameras, (including IR and ultrawide-field-of-view cameras) analytical and software modules.</p>
