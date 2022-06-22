@@ -1,4 +1,4 @@
-@php 
+@php
 $site_dat = App\Models\GeneralSetting::first();
 
 @endphp
@@ -14,13 +14,21 @@ $site_dat = App\Models\GeneralSetting::first();
 
 <body>
 
-<?php 
- $url = $_SERVER['REQUEST_URI']; 
-    if (!str_contains($url, '/camera/compare/')) { 
-        return  session()->forget('cart');
+<?php
+    $url = $_SERVER['REQUEST_URI'];
+        if (!str_contains($url, '/camera/compare/')) {
+            return  session()->forget('cart');
+        }
+    use Stichoza\GoogleTranslate\GoogleTranslate;
+    $tr = new GoogleTranslate();
+    $language = session()->get('language');
+    if($language){
+        $site_language = $language;
     }
-use Stichoza\GoogleTranslate\GoogleTranslate;
-$tr = new GoogleTranslate();
+    else{
+        $site_language = $site_dat->language;
+
+    }
 ?>
 
 <header id="header" class="sticky">
@@ -36,73 +44,114 @@ $tr = new GoogleTranslate();
                 <div class="drop-down">
                     <ul class="lang">
                         <li><a class="active" href="{{route('change.language','en')}}">ENG</a></li>
-                        <li><a href="#">NL</a></li>
-                        <li><a href="#">FR</a></li>
-                        <li><a href="#">ES</a></li>
+                        <li><a href="{{route('change.language','nl')}}">NL</a></li>
+                        <li><a href="{{route('change.language','fr')}}">FR</a></li>
+                        <li><a href="{{route('change.language','es')}}">ES</a></li>
                     </ul>
                     <div class="holder">
                         <ul class="list">
                             <li>
-                                <a href="{{route('/')}}" class="title">
-                                echo $tr->setSource('en')->setTarget({{$site_dat->language}})->translate('Home');
-                                </a>
+                        <a href="{{route('/')}}" class="title">
+
+                        {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Home')}}
+                        </a>
                             </li>
                             <li class="has-dropdown">
-                                <a href="{{route('/business')}}" class="title">BUSINESS</a>
+                                <a href="{{route('category.slug','category-1')}}" class="title">
+
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('BUSINESS')}}
+                                </a>
                                 <ul class="link">
                                     <li><a href="#" class="nav-back">Back</a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/business')}}">Business</a></li>
+                                    <li><a href="{{route('/business')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/health_care')}}">Healthcare</a></li>
+                                    <li><a href="{{route('/health_care')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Healthcare')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/security')}}">Security</a></li>
+                                    <li><a href="{{route('/security')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/work_safety')}}">Work safety</a></li>
+                                    <li><a href="{{route('/work_safety')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Work safety')}}</a></li>
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="{{route('/solutions')}}" class="title">SOLUTIONS</a>
+                                <a href="{{route('/solutions')}}" class="title">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('SOLUTIONS')}}
+                                </a>
                                 <ul class="link">
-                                    <li><a href="#" class="nav-back">Back</a></li>
+                                    <li><a href="#" class="nav-back">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Back')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/solutions')}}">Solutions</a></li>
+                                    <li><a href="{{route('/solutions')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Solutions')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/cases')}}">Cases</a></li>
+                                    <li><a href="{{route('/cases')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Cases')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/demo')}}">demo</a></li>
+                                    <li><a href="{{route('/demo')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('demo')}}
+                                    </a></li>
                                 </ul>
                             </li>
 
                         </ul>
                         <ul class="list">
                             <li class="has-dropdown">
-                                <a href="{{route('/aboutus')}}" class="title">ABOUT US</a>
+                                <a href="{{route('/aboutus')}}" class="title">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('ABOUT US')}}
+                                </a>
                                 <ul class="link">
-                                    <li><a href="#" class="nav-back">Back</a></li>
+                                    <li><a href="#" class="nav-back">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Back')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/aboutus')}}">About RRSTEK</a></li>
+                                    <li><a href="{{route('/aboutus')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('About RRSTEK')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/contactus')}}">Contact Us</a></li>
+                                    <li><a href="{{route('/contactus')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Contact Us')}}
+                                    </a></li>
                                 </ul>
                             </li>
 
                             <li class="has-dropdown">
-                                <a href="#" class="title">SUPPORT</a>
+                                <a href="#" class="title">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('SUPPORT')}}
+                                </a>
                                 <ul class="link">
-                                    <li><a href="#" class="nav-back">Back</a></li>
+                                    <li><a href="#" class="nav-back">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Back')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/integrations')}}">Integrations</a></li>
+                                    <li><a href="{{route('/integrations')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Integrations')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/camera/compare')}}">Compare Camera</a></li>
+                                    <li><a href="{{route('/camera/compare')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Compare Camera')}}
+                                    </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="#">Car Charger</a></li>
+                                    <li><a href="#">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Car Charger')}}
+                                    </a></li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                     <div class="btn-holder">
-                        <a href="../Solutions/demo.html" class="btn secondary">Get Demo</a>
+                        <a href="../Solutions/demo.html" class="btn secondary">
+                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Get Demo')}}
+                        </a>
                     </div>
                 </div>
             </nav>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-@php 
+@php
 $site_dat = App\Models\GeneralSetting::first();
 @endphp
 <head>
@@ -27,7 +27,7 @@ else{
     ?>
 	<div id="wrapper">
 		<header id="header">
-			<div class="header-t">
+            <div class="header-t">
                 <div class="container">
                     <strong class="logo">
                         <a href="{{route('/')}}">
@@ -47,175 +47,97 @@ else{
                                 <ul class="list">
                                     <li>
                                 <a href="{{route('/')}}" class="title">
-                                @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Home')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Home')}}
-                                @endif
+
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Home')}}
                                 </a>
                                     </li>
                                     <li class="has-dropdown">
                                         <a href="{{route('category.slug','category-1')}}" class="title">
-                                        @if($language)
-                                        {{ $tr->setSource('en')->setTarget($language)->translate('BUSINESS')}}
-                                        @else
-                                        {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('BUSINESS')}}
-                                        @endif
+
+                                        {{ $tr->setSource('en')->setTarget($site_language)->translate('BUSINESS')}}
                                         </a>
                                         <ul class="link">
                                             <li><a href="#" class="nav-back">Back</a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/business')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Business')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Business')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/health_care')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Healthcare')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Healthcare')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Healthcare')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/security')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Security')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Security')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/work_safety')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Work Safety')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Work safety')}}
-                                            @endif</a></li>
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Work safety')}}</a></li>
                                         </ul>
                                     </li>
                                     <li class="has-dropdown">
                                         <a href="{{route('/solutions')}}" class="title">
-                                        @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('SOLUTIONS')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('SOLUTIONS')}}
-                                        @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('SOLUTIONS')}}
                                         </a>
                                         <ul class="link">
                                             <li><a href="#" class="nav-back">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Back')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Back')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Back')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/solutions')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Solutions')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Solutions')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Solutions')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/cases')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Cases')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Cases')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Cases')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/demo')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('demo')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('demo')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('demo')}}
                                             </a></li>
                                         </ul>
                                     </li>
-        
+
                                 </ul>
                                 <ul class="list">
                                     <li class="has-dropdown">
                                         <a href="{{route('/aboutus')}}" class="title">
-                                        @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('ABOUT US')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('ABOUT US')}}
-                                            @endif  
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('ABOUT US')}}
                                         </a>
                                         <ul class="link">
                                             <li><a href="#" class="nav-back">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Back')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Back')}}
-                                            @endif 
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Back')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/aboutus')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('About RRSTEK')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('About RRSTEK')}}
-                                            @endif 
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('About RRSTEK')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/contactus')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Contact Us')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Contact Us')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Contact Us')}}
                                             </a></li>
                                         </ul>
                                     </li>
-        
+
                                     <li class="has-dropdown">
                                         <a href="#" class="title">
-                                        @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('SUPPORT')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('SUPPORT')}}
-                                            @endif  
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('SUPPORT')}}
                                         </a>
                                         <ul class="link">
                                             <li><a href="#" class="nav-back">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Back')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Back')}}
-                                            @endif 
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Back')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/integrations')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Integrations')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Integrations')}}
-                                            @endif 
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Integrations')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('/camera/compare')}}">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Compare Camera')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Compare Camera')}}
-                                            @endif  
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Compare Camera')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="#">
-                                            @if($language)
-                                            {{ $tr->setSource('en')->setTarget($language)->translate('Car Charger')}}
-                                            @else
-                                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Car Charger')}}
-                                            @endif
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Car Charger')}}
                                             </a></li>
                                         </ul>
                                     </li>
@@ -223,11 +145,7 @@ else{
                             </div>
                             <div class="btn-holder">
                                 <a href="../Solutions/demo.html" class="btn secondary">
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Get Demo')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Get Demo')}}
-                                @endif
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Get Demo')}}
                                 </a>
                             </div>
                         </div>
@@ -239,7 +157,7 @@ else{
 					<div class="text-area">
 						<div class="text viewport-holder slideDown">
 							<h1>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Smart Video')}} <br> 
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Smart Video')}} <br>
                                 {{ $tr->setSource('en')->setTarget($site_language)->translate(' Surveillance Solutions')}}<h1>
 						</div>
 						<div class="desc">
@@ -277,13 +195,7 @@ else{
     <div class="video-holder">
         <video width="100%" height="654" loop="true" autoplay="autoplay" muted>
             <source src="{{asset('frontend')}}/images/videos/video-01.mp4" type="video/mp4">
-            
-            @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('Your browser does not support the video tag.')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Your browser does not support the video tag.')}}
-             @endif
-            
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
         </video>
     </div>
 </div>
@@ -291,49 +203,22 @@ else{
     <div id="link-holder-container" class="container">
         <ul class="links viewport-holder slideDown">
             <li><a href="#">
-            @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('What We Use')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('What We Use')}}
-            @endif
-
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('What We Use')}}
             </a></li>
             <li><a href="#">
-            @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('Our Product')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Our Product')}}
-            @endif
-
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('Our Product')}}
             </a></li>
             <li><a href="#">
-            @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('Video BroadCast')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Video BroadCast')}}
-            @endif
-
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('Video BroadCast')}}
             </a></li>
             <li><a href="/about-rrstek.html">
-            @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('About Our Product')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('About Our Product')}}
-            @endif      
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('About Our Product')}}
             </a></li>
             <li><a href="#">
-            @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('Choose Your Business')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Choose Your Business')}}
-            @endif
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('Choose Your Business')}}
             </a></li>
-            <li><a href="/Solutions/demo.html">Get Demo
-            @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('Get Demo')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Get Demo')}}
-            @endif
+            <li><a href="/Solutions/demo.html">
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('Get Demo')}}
             </a></li>
         </ul>
     </div>
@@ -343,17 +228,9 @@ else{
         <div class="container">
             <div class="heading-area">
                 <h1 class="viewport-holder slideDown"><span>
-                @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('WHAT WE USE')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('WHAT WE USE')}}
-                @endif
-                </span> 
-                @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('We use only high-Quality brands')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('We use only high-Quality brands')}}
-                @endif
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('WHAT WE USE')}}
+                </span>
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('We use only high-Quality brands')}}
             </h1>
             </div>
             <div class="brands-logo">
@@ -371,17 +248,9 @@ else{
         <div class="container">
             <div class="heading-area viewport-holder slideDown delay-3">
                 <h1><span>
-                @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('about us')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('about us')}}
-                @endif
-                </span> 
-                @if($language)
-                {{ $tr->setSource('en')->setTarget($language)->translate('Why RRSTEK: Bring security together')}}
-                @else
-                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Why RRSTEK: Bring security together')}}
-                @endif
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('about us')}}
+                </span>
+                {{ $tr->setSource('en')->setTarget($site_language)->translate('Why RRSTEK: Bring security together')}}
             </h1>
             </div>
             <div class="holder">
@@ -389,21 +258,12 @@ else{
                     <ol class="accordion" data-accordion="close">
                         <li class="viewport-holder slideDown delay-1">
                             <a class="opener" href="#">
-                            @if($language)
-                            {{ $tr->setSource('en')->setTarget($language)->translate('A compartible solution customization')}}
-                            @else
-                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('A compartible solution customization')}}
-                            @endif
+                            {{ $tr->setSource('en')->setTarget($site_language)->translate('A compartible solution customization')}}
                             </a>
                             <div class="drop">
                                 <hr class="border">
                                 <p>
-                                    @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Support 99,9% of IP-Cameras can be connected by: Navive integration (manufature protocol) ONVIF RTSP connectivity')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Support 99,9% of IP-Cameras can be connected by: Navive integration (manufature protocol) ONVIF RTSP connectivity')}}
-                                @endif
-                                
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Support 99,9% of IP-Cameras can be connected by: Navive integration (manufature protocol) ONVIF RTSP connectivity')}}
                                 </p>
                                 <div class="img-box">
                                     <img class="img" src="{{asset('frontend')}}/images/compatible-solution.svg" alt="image description">
@@ -412,20 +272,12 @@ else{
                         </li>
                         <li class="viewport-holder slideDown delay-2">
                             <a class="opener" href="#">
-                            @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Customized')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Customized')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Customized')}}
                             </a>
                             <div class="drop">
                                 <hr class="border">
                                 <p>
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Addresses unique challenges by using special rules and Phyton scripts')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Addresses unique challenges by using special rules and Phyton scripts')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Addresses unique challenges by using special rules and Phyton scripts')}}
                                 </p>
                                 <div class="img-box">
                                     <img class="img" src="{{asset('frontend')}}/images/customize-phyton.png" alt="image description">
@@ -434,20 +286,12 @@ else{
                         </li>
                         <li class="viewport-holder slideDown delay-3">
                             <a class="opener" href="#">
-                            @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Project Support')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Project Support')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Project Support')}}
                             </a>
                             <div class="drop">
                                 <hr class="border">
                                 <p>
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('RRSTEK professionals build complete solutions for your projects')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('RRSTEK professionals build complete solutions for your projects')}}
-                                @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('RRSTEK professionals build complete solutions for your projects')}}
                                 </p>
                                 <div class="img-box">
                                     <img class="img" src="{{asset('frontend')}}/images/project-support.svg" alt="image description">
@@ -456,20 +300,12 @@ else{
                         </li>
                         <li class="viewport-holder slideDown delay-4">
                             <a class="opener" href="#">
-                            @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Pre-Sale Demo')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Pre-Sale Demo')}}
-                                @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Pre-Sale Demo')}}
                             </a>
                             <div class="drop">
                                 <hr class="border">
                                 <p>
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Our engineers can demonstrate system functions remotly')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Our engineers can demonstrate system functions remotly')}}
-                                @endif
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Our engineers can demonstrate system functions remotly')}}
                                 </p>
                                 <div class="img-box">
                                     <img class="img" src="{{asset('frontend')}}/images/pre-sale-demo.png" alt="image description">
@@ -478,20 +314,12 @@ else{
                         </li>
                         <li class="viewport-holder slideDown delay-5">
                             <a class="opener" href="#">
-                            @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Technical Support')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Technical Support')}}
-                                @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Technical Support')}}
                             </a>
                             <div class="drop">
                                 <hr class="border">
                                 <p>
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Agile cutomer serviceand direct response to complaints')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Agile cutomer serviceand direct response to complaints')}}
-                                @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Agile cutomer serviceand direct response to complaints')}}
                                 </p>
                                 <div class="img-box">
                                     <img class="img" src="{{asset('frontend')}}/images/technical-support.png" alt="image description">
@@ -500,20 +328,12 @@ else{
                         </li>
                         <li class="viewport-holder slideDown delay-6">
                             <a class="opener" href="#">
-                            @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Advertising Support')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Advertising Support')}}
-                                @endif 
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Advertising Support')}}
                             </a>
                             <div class="drop">
                                 <hr class="border">
                                 <p>
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Printed and electronic promotional materials are available to the partners')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Printed and electronic promotional materials are available to the partners')}}
-                                @endif 
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Printed and electronic promotional materials are available to the partners')}}
                                 </p>
                                 <div class="img-box">
                                     <img class="img" src="{{asset('frontend')}}/images/Advertising Support.jpg" alt="image description">
@@ -530,24 +350,12 @@ else{
             <div class="container">
                 <div class="heading-area viewport-holder slideDown">
                     <h1><span>
-                    @if($language)
-                        {{ $tr->setSource('en')->setTarget($language)->translate('Features')}}
-                     @else
-                       {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Features')}}
-                    @endif
-                    </span> 
-                    @if($language)
-                        {{ $tr->setSource('en')->setTarget($language)->translate('Seamless TRASSIR Network integration')}}
-                     @else
-                       {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Seamless TRASSIR Network integration')}}
-                    @endif
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Features')}}
+                    </span>
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Seamless TRASSIR Network integration')}}
                 </h1>
                     <p>
-                    @if($language)
-                        {{ $tr->setSource('en')->setTarget($language)->translate('Easily incorporate Protect cameras into a new or existing  TRASSIR Network.')}}
-                     @else
-                       {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Easily incorporate Protect cameras into a new or existing  TRASSIR Network.')}}
-                    @endif
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Easily incorporate Protect cameras into a new or existing  TRASSIR Network.')}}
                     </p>
                 </div>
                 <div class="product viewport-holder slideDown delay-1">
@@ -562,17 +370,9 @@ else{
             <div class="container">
                 <div class="heading-area viewport-holder slideDown">
                     <h1><span>
-                    @if($language)
-                        {{ $tr->setSource('en')->setTarget($language)->translate('Business')}}
-                     @else
-                       {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Business')}}
-                    @endif
-                    </span> 
-                    @if($language)
-                        {{ $tr->setSource('en')->setTarget($language)->translate('Choose Your Business')}}
-                     @else
-                       {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Choose Your Business')}}
-                    @endif
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
+                    </span>
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Choose Your Business')}}
                 </h1>
                 </div>
                 <div class="holder">
@@ -582,18 +382,10 @@ else{
                         </div>
                         <div class="text">
                             <h2>
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Business')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Business')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                             </h2>
-                            <p>C
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('onfidence and security without constant control on your part, the stability of all processes in the company - that is what TRASSIR intelligent systems are all about.')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('onfidence and security without constant control on your part, the stability of all processes in the company - that is what TRASSIR intelligent systems are all about.')}}
-                            @endif
+                            <p>
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('onfidence and security without constant control on your part, the stability of all processes in the company - that is what TRASSIR intelligent systems are all about.')}}
                             </p>
                             <a href="/Business/index.html" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
                         </div>
@@ -604,18 +396,10 @@ else{
                         </div>
                         <div class="text">
                             <h2>
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Health Care')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Health Care')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Health Care')}}
                             </h2>
                             <p>
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Protect people’s health in your area with TRASSIR Healthcare Modules!')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Protect people’s health in your area with TRASSIR Healthcare Modules!')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Protect people’s health in your area with TRASSIR Healthcare Modules!')}}
                             </p>
                             <a href="/health-care/index.html" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
                         </div>
@@ -628,18 +412,10 @@ else{
                         </div>
                         <div class="text">
                             <h2>
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Security')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Security')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
                             </h2>
                             <p>
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Intelligent modules for warehouses, sales areas and lands. Protect your business more effectively without raising the number of security guards! Neural network-based systems analyze the data from video cameras, identify dangerous situations and instantly warn on them.')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Intelligent modules for warehouses, sales areas and lands. Protect your business more effectively without raising the number of security guards! Neural network-based systems analyze the data from video cameras, identify dangerous situations and instantly warn on them.')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Intelligent modules for warehouses, sales areas and lands. Protect your business more effectively without raising the number of security guards! Neural network-based systems analyze the data from video cameras, identify dangerous situations and instantly warn on them.')}}
                             </p>
                             <a href="/security/index.html" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
                         </div>
@@ -650,18 +426,10 @@ else{
                         </div>
                         <div class="text">
                             <h2>
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Work Safety')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Work Safety')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Work Safety')}}
                             </h2>
                             <p>
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Labor protection systems from TRASSIR are an investment to your reputation!')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Labor protection systems from TRASSIR are an investment to your reputation!')}}
-                            @endif
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Labor protection systems from TRASSIR are an investment to your reputation!')}}
                             </p>
                             <a href="/work-safety/index.html" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
                         </div>
@@ -674,17 +442,9 @@ else{
         <div class="container">
             <div class="heading-area viewport-holder slideDown">
                 <h1><span>
-                @if($language)
-                     {{ $tr->setSource('en')->setTarget($language)->translate('BROADCAST')}}
-                    @else
-                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('BROADCAST')}}
-                @endif
-                </span> 
-                @if($language)
-                     {{ $tr->setSource('en')->setTarget($language)->translate('Video Broadcast')}}
-                    @else
-                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Video Broadcast')}}
-                @endif
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate('BROADCAST')}}
+                </span>
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Video Broadcast')}}
             </h1>
             </div>
             <div class="holder">
@@ -745,25 +505,12 @@ else{
                 </div>
                 <div class="form-holder">
                     <h2 class="viewport-holder slideDown delay-2"><span>
-                    @if($language)
-                     {{ $tr->setSource('en')->setTarget($language)->translate('GET PRODUCT')}}
-                    @else
-                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('GET PRODUCT')}}
-                    @endif
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate('GET PRODUCT')}}
                     </span>
-                    @if($language)
-                     {{ $tr->setSource('en')->setTarget($language)->translate('Ready To Install?')}}
-                    @else
-                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Ready To Install?')}}
-                    @endif                
-
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Ready To Install?')}}
                 </h2>
                     <p class="viewport-holder slideDown delay-3">
-                    @if($language)
-                     {{ $tr->setSource('en')->setTarget($language)->translate('Fill your name and mobile number below so we can contact you to proceed to the next step')}}
-                    @else
-                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Fill your name and mobile number below so we can contact you to proceed to the next step')}}
-                    @endif  
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Fill your name and mobile number below so we can contact you to proceed to the next step')}}
                     </p>
                     <form  action="{{route('add.intallation')}}"method="POST" onsubmit="demoInstall()"  class="form">
                         @csrf
@@ -781,7 +528,7 @@ else{
 </div>
 
 
-    
+
 <script>
     var div_top = $('#header').offset().top;
 

@@ -23,6 +23,7 @@ class GeneralSetting extends Seeder
             'favicon' => 'favicon.ico',
             'logo' => 'logo.svg',
             'phone' => '545454456',
+            'language' => 'en',
             'email' => 'info@rrsteksecurity.com',
             'copy_right_text' => 'Copyright © 2022 RRSTEK All rights reserved',
         ]);
