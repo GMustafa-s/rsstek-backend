@@ -17,6 +17,13 @@ $site_dat = App\Models\GeneralSetting::first();
 use Stichoza\GoogleTranslate\GoogleTranslate;
 $tr = new GoogleTranslate();
 $language = session()->get('language');
+if($language){
+    $site_language = $language;
+}
+else{
+    $site_language = $site_dat->language;
+
+}
     ?>
 	<div id="wrapper">
 		<header id="header">
@@ -232,43 +239,19 @@ $language = session()->get('language');
 					<div class="text-area">
 						<div class="text viewport-holder slideDown">
 							<h1>
-                            @if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate(' Smart Video')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate(' Smart Video')}}
-                                @endif
-                                <br> 
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Surveillance Solutions')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Surveillance Solutions')}}
-                                @endif
-                            <h1>
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Smart Video')}} <br> 
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate(' Surveillance Solutions')}}<h1>
 						</div>
 						<div class="desc">
 							<p class="viewport-holder slideDown delay-1">
-                            @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('We produce all types of devices: video recorders, IP cameras, (including IR and ultrawide-field-of-view cameras) analytical and software modules.')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('We produce all types of devices: video recorders, IP cameras, (including IR and ultrawide-field-of-view cameras) analytical and software modules.')}}
-                                @endif
-                            <h1>  
-                            </p>
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate('  We produce all types of devices: video recorders, IP cameras, (including IR and ultrawide-field-of-view cameras) analytical and software modules.')}}</p>
 							<div class="btn-holder viewport-holder slideDown delay-2">
 								<a href="/Solutions/demo.html" class="btn secondary"><span>
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Get Demo')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Get Demo')}}
-                                @endif
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Get Demo')}}
                                 </span></a>
 								<a href="#" class="btn primary"><span>
-                                @if($language)
-                                    {{ $tr->setSource('en')->setTarget($language)->translate('Video')}}
-                                    @else
-                                    {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Video')}}
-                                @endif
-                                </span></a>
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Video')}}
+                                    </span></a>
 							</div>
 						</div>
 					</div>
@@ -783,30 +766,11 @@ $language = session()->get('language');
                     @endif  
                     </p>
                     <form  action="{{route('add.intallation')}}"method="POST" onsubmit="demoInstall()"  class="form">
-                    @csrf
-                            <input style="text-align:left" class="form-control" id="name" type="text"  
-                            placeholder="@if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Enter Name')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Enter Name')}}
-                                @endif" 
-                            name="name" required>
-
-                            <input class="form-control" id="phone" type="text" style="text-align:left" 
-                            placeholder="@if($language)
-                                {{ $tr->setSource('en')->setTarget($language)->translate('Enter Phone')}}
-                                @else
-                                {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Enter Phone')}}
-                                @endif" 
-                            name="phone" required>
-                            <input class="login-btn" type="submit" style="text-align:center"
-                            value="@if($language)
-                            {{ $tr->setSource('en')->setTarget($language)->translate('Book Now')}}
-                            @else
-                            {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Book Now')}}
-
-                            @endif">
-                        </form>
+                        @csrf
+                                <input class="form-control" id="name" type="text" placeholder="{{ $tr->setSource('en')->setTarget($site_language)->translate('Your Name')}}" name="name" required>
+                                <input class="form-control" id="phone" type="tel" placeholder="{{ $tr->setSource('en')->setTarget($site_language)->translate('Your Phone')}}" name="phone" required>
+                                <input class="login-btn" type="submit" value="{{ $tr->setSource('en')->setTarget($site_language)->translate('Book Now')}}">
+                            </form>
                 </div>
             </div>
         </div>
