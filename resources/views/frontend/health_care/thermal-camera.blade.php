@@ -1,28 +1,52 @@
 @extends('frontend.index')
 @section('content')
+
+@php
+$site_dat = App\Models\GeneralSetting::first();
+@endphp
+
+<?php
+    use Stichoza\GoogleTranslate\GoogleTranslate;
+    $tr = new GoogleTranslate();
+    $language = session()->get('language');
+    if($language){
+        $site_language = $language;
+    }
+    else{
+        $site_language = $site_dat->language;
+
+    }
+?>
     <div class="promo">
         <div class="frame">
             <div class="holder">
                 <div class="container">
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
-                            <li><a href="{{ route('/') }}">Main</a></li>
-                            <li><a href="{{ route('/health_care') }}">Health Care</a></li>
-                            <li><a href="{{ route('/thermal_camera') }}">Thermal Camera</a></li>
+                            <li><a href="{{ route('/') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Main')}}</a></li>
+
+                            <li><a href="{{ route('health.care') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Health Care')}}</a></li>
+
+                            <li><a href="{{ route('thermal.camera') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Thermal Camera')}}</a></li>
                         </ul>
                         <div class="text">
-                            <h1 class="viewport-holder slideDown delay-1">Thermal Camera</h1>
+                            <h1 class="viewport-holder slideDown delay-1">{{$tr->setSource('en')->setTarget($site_language)->translate('Thermal Camera')}}</h1>
+
                             <ul class="viewport-holder slideDown delay-2">
-                                <li><a href="{{ route('/demo') }}" class="btn"><span>Book a Demo</span></a></li>
-                                <li><a href="{{ route('/contactus') }}" class="btn add">How to Buy</a></li>
+                                <li><a href="{{ route('demo') }}" class="btn"><span>
+                                    {{$tr->setSource('en')->setTarget($site_language)->translate('Book a Demo')}}</span></a>
+                                </li>
+                                <li><a href="{{ route('/contactus') }}" class="btn add">
+                                    {{$tr->setSource('en')->setTarget($site_language)->translate('How to Buy')}}</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="align-right">
                         <div class="video-holder  viewport-holder slideDown delay-2">
                             <video width="100%" height="320" loop="true" autoplay="autoplay" muted>
-                                <source src="{{asset('frontend')}}/images/videos/Fisheye.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
+                                <source src="{{asset('frontend')}}/images/videos/Masks detector.mp4" type="video/mp4">
+                                    {{$tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
                             </video>
                         </div>
                     </div>
@@ -35,11 +59,17 @@
             <div class="container">
                 <div class="post">
                     <div class="viewport-holder slideDown">
-                        <h1><span>OVERVIEW</span><br> Thermal Camera</h1>
+                        <h1><span>
+                            {{$tr->setSource('en')->setTarget($site_language)->translate('OVERVIEW')}}</span>
+                            <br>
+                            {{$tr->setSource('en')->setTarget($site_language)->translate('Thermal Camera')}}
+                        </h1>
                         <div class="text">
-                            <p>The Thermal Camera module is intended to connect a thermal imaging camera to RRSTEK OS. It
-                                displays not only video data, but also the information of changing the body temperature of a
-                                person.</p>
+                            <p>
+                            {{$tr->setSource('en')->setTarget($site_language)->translate('The Thermal Camera module is intended to connect a thermal imaging camera to RRSTEK OS. It
+                            displays not only video data, but also the information of changing the body temperature of a
+                            person.')}}
+                            </p>
                             <!-- <p>TRASSIR Workplace Detector is designed to monitor and track employees' working time.</p> -->
                         </div>
                     </div>
@@ -58,18 +88,21 @@
                 </div>
                 <div class="product-box">
                     <div class="frame viewport-holder slideDown delay-1">
-                        <h2>Other Products</h2>
+                        <h2>
+                            {{$tr->setSource('en')->setTarget($site_language)->translate('Other Products')}}
+                        </h2>
                         <ul class="accordion" data-accordion="close">
                             <li>
-                                <a href="{{route('/social_distance_detector')}}">Social Distance Detector</a>
+                                <a href="{{ route('social.distance.detector') }}">
+                                {{$tr->setSource('en')->setTarget($site_language)->translate('Social Distance Detector')}} </a>
 
                             </li>
                             {{-- <li>
-                                <a  href="{{route('/thermal_camera')}}">Thermal Detector</a>
+                                <a href="{{ route('thermal.camera') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Thermal Detector')}}</a>
 
                             </li> --}}
                             <li>
-                                <a href="{{route('/face_mask_detector')}}">Face Mask Detector</a>
+                                <a href="{{ route('face.mask.detector') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Face Mask Detector')}}</a>
 
                             </li>
                         </ul>

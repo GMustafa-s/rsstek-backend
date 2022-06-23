@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-// slug based 
+// slug based
 
 // $all_slugs = App\Models\PageCategory::all();
 
@@ -93,92 +93,103 @@ Route::get('business/neuro_counter', function(){
 
 
 
-            //Health Care Card
-// Route::get('health_care', function(){
-//     return view('frontend.health_care.index');
+            // Health Care Card
 
-// })->name('/health_care');
+Route::prefix('/health_care')->group(function(){
 
-// Route::get('health_care/face_mask_detector', function(){
-//     return view('frontend.health_care.face-mask-detector');
+    Route::get('', function(){
+        return view('frontend.health_care.index');
 
-// })->name('face_mask_detector');
+    })->name('health.care');
 
-// Route::get('/health_care/social_distance_detector', function(){
-//     return view('frontend.health_care.social-distance-detector');
+    Route::get('/face_mask_detector', function(){
+        return view('frontend.health_care.face-mask-detector');
 
-// })->name('/social_distance_detector');
+    })->name('face.mask.detector');
 
-// Route::get('/health_care/thermal_camera', function(){
-//     return view('frontend.health_care.thermal-camera');
+    Route::get('/social_distance_detector', function(){
+        return view('frontend.health_care.social-distance-detector');
 
-// })->name('/thermal_camera');
+    })->name('social.distance.detector');
 
+    Route::get('/thermal_camera', function(){
+        return view('frontend.health_care.thermal-camera');
 
-
-
-
-
-
-        //Security Card
-Route::get('/security', function(){
-    return view('frontend.security.index');
-
-})->name('/security');
-Route::get('/security/auto_anpr', function(){
-    return view('frontend.security.auto-anpr');
-
-})->name('/auto_anpr');
-
-Route::get('/security/crowd_detector', function(){
-    return view('frontend.security.crowd-detector');
-
-})->name('/crowd_detector');
-
-Route::get('/security/direction_detector', function(){
-    return view('frontend.security.direction-detector');
-
-})->name('/direction_detector');
-
-Route::get('/security/face_recognition', function(){
-    return view('frontend.security.face-recognition');
-
-})->name('/face_recognition');
-
-Route::get('/security/neuro_detector', function(){
-    return view('frontend.security.neuro-detector');
-
-})->name('/neuro_detector');
-
-Route::get('/security/neuro_left_object_detector', function(){
-    return view('frontend.security.neuro-left-object-detector');
-
-})->name('/neuro_left_object_detector');
-
-Route::get('/security/pose_detector', function(){
-    return view('frontend.security.pose-detector');
-
-})->name('/pose_detector');
+    })->name('thermal.camera');
+});
 
 
 
 
-        //Work Safety Card
-Route::get('/work_safety', function(){
-    return view('frontend.work_safety.index');
 
-})->name('/work_safety');
+            //Security Card
+Route::prefix('/security')->group(function(){
 
-Route::get('/work_safety/hardhat_detector', function(){
-    return view('frontend.work_safety.hardhat-detector');
+    // Route::view('', 'frontend.security.index')->name('security');
+    Route::get('', function(){
+        return view('frontend.security.index');
 
-})->name('/hardhat_detector');
+    })->name('security');
 
-Route::get('/work_safety/wear_detector', function(){
-    return view('frontend.work_safety.wear-detector');
+    Route::get('/auto_anpr', function(){
+        return view('frontend.security.auto-anpr');
 
-})->name('/wear_detector');
+    })->name('auto.anpr');
 
+    Route::get('/crowd_detector', function(){
+        return view('frontend.security.crowd-detector');
+
+    })->name('crowd.detector');
+
+    Route::get('/direction_detector', function(){
+        return view('frontend.security.direction-detector');
+
+    })->name('direction.detector');
+
+    Route::get('/face_recognition', function(){
+        return view('frontend.security.face-recognition');
+
+    })->name('face.recognition');
+
+    Route::get('/neuro_detector', function(){
+        return view('frontend.security.neuro-detector');
+
+    })->name('neuro.detector');
+
+    Route::get('/neuro_left_object_detector', function(){
+        return view('frontend.security.neuro-left-object-detector');
+
+    })->name('neuro.left.object.detector');
+
+    Route::get('/pose_detector', function(){
+        return view('frontend.security.pose-detector');
+
+    })->name('pose.detector');
+
+
+});
+
+
+       //Work Safety Card
+
+
+Route::prefix('/work_safety')->group(function(){
+
+    Route::get('', function(){
+        return view('frontend.work_safety.index');
+
+    })->name('work.safety');
+
+    Route::get('/hardhat_detector', function(){
+        return view('frontend.work_safety.hardhat-detector');
+
+    })->name('hardhat.detector');
+
+    Route::get('/wear_detector', function(){
+        return view('frontend.work_safety.wear-detector');
+
+    })->name('wear.detector');
+});
 
 
 
@@ -197,7 +208,7 @@ Route::get('/solutions', function(){
 Route::get('/industries/health_care', function(){
     return view('frontend.industries.health-care');
 
-})->name('/health_care');
+})->name('industries/health_care');
 
 Route::get('/industries/industrial', function(){
     return view('frontend.industries.industrial');
@@ -239,7 +250,7 @@ Route::get('/cases', function(){
 Route::get('/solutions/demo', function(){
     return view('frontend.solutions.demo');
 
-})->name('/demo');
+})->name('demo');
 
 
 
@@ -295,7 +306,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::delete('/{user}/delete',  [UserController::class,'destroy'])->name('users.destroy');
     });
 
-    Route::prefix('settings')->group(function () { 
+    Route::prefix('settings')->group(function () {
         Route::resource('general',GeneralController::class)->middleware('auth');;
         Route::post('add-site-info', [GeneralController::class, 'createSiteInfo'])->name('add.siteinfo');
         Route::post('add-contatct-info', [GeneralController::class, 'createContactInfo'])->name('add.contactInfo');
@@ -304,37 +315,37 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('edit-soacials/{id}', [GeneralController::class, 'editSocials'])->name('edit.socials');
         Route::get('delete-soacials/{id}', [GeneralController::class, 'deleteSicials'])->name('del.socials');
         Route::post('add-language', [GeneralController::class, 'addLangugae'])->name('add.language');
-      
+
      });
 
-    
+
 });
 
 
 
-Route::prefix('contactus')->group(function () { 
+Route::prefix('contactus')->group(function () {
     Route::post('/add', [ContactUsController::class, 'store'])->name('add.contactus');
     Route::get('/show', [ContactUsController::class, 'show'])->name('show.contactus');
  });
 
  Route::get('contactus', [ContactUsController::class, 'index'])->name('/contactus');
  //demo routes
- Route::prefix('demo')->group(function () { 
+ Route::prefix('demo')->group(function () {
     Route::post('/add', [ContactUsController::class, 'demoStore'])->name('add.demo');
     Route::get('/show', [ContactUsController::class, 'demoShow'])->name('show.demo');
  });
 
- Route::prefix('intallation')->group(function () { 
+ Route::prefix('intallation')->group(function () {
     Route::post('/add', [ContactUsController::class, 'installationStore'])->name('add.intallation');
     Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
  });
 
- Route::prefix('cms')->group(function () { 
+ Route::prefix('cms')->group(function () {
     Route::get('/custom/home', [HomeController::class, 'index'])->name('cms.custom.home');
     Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('cms.show.intallation');
  });
 
- Route::prefix('solution')->group(function () { 
+ Route::prefix('solution')->group(function () {
     Route::get('/', [SolutionController::class, 'index'])->name('cms.solution.index');
     Route::get('/create', [SolutionController::class, 'create'])->name('cms.solution.create');
     Route::post('/store', [SolutionController::class, 'store'])->name('cms.solution.store');
@@ -349,7 +360,7 @@ Route::prefix('contactus')->group(function () {
     Route::get('/sub-page/delete/{id}', [SolutionController::class, 'subDelete'])->name('cms.solution.subdelete');
     Route::post('/add-section/{id}', [SolutionController::class, 'addSection'])->name('cms.solution.section.add');
     Route::post('/update-section/{id}', [SolutionController::class, 'updateSection'])->name('cms.solution.section.update');
-   
+
  });
  Route::get('/delete-section/{id}', [SolutionController::class, 'deleteSection'])->name('cms.solution.section.delete');
 
@@ -364,7 +375,7 @@ Route::prefix('cms/camera')->group(function () {
     Route::post('/update/{id}', [CameraController::class, 'update'])->name('cms.camera.update');
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
-   
+
 
 });
 

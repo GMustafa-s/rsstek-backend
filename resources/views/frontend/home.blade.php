@@ -63,15 +63,15 @@ else{
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
-                                            <li><a href="{{route('/health_care')}}">
+                                            <li><a href="{{route('health.care')}}">
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('Healthcare')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
-                                            <li><a href="{{route('/security')}}">
+                                            <li><a href="{{route('security')}}">
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
-                                            <li><a href="{{route('/work_safety')}}">
+                                            <li><a href="{{route('work.safety')}}">
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('Work safety')}}</a></li>
                                         </ul>
                                     </li>
@@ -92,7 +92,7 @@ else{
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('Cases')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
-                                            <li><a href="{{route('/demo')}}">
+                                            <li><a href="{{route('demo')}}">
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('demo')}}
                                             </a></li>
                                         </ul>
