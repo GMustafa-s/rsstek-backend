@@ -1,5 +1,22 @@
 @extends('frontend.index')
 @section('content')
+
+@php
+$site_dat = App\Models\GeneralSetting::first();
+@endphp
+
+<?php
+    use Stichoza\GoogleTranslate\GoogleTranslate;
+    $tr = new GoogleTranslate();
+    $language = session()->get('language');
+    if($language){
+        $site_language = $language;
+    }
+    else{
+        $site_language = $site_dat->language;
+
+    }
+?>
     <div id="wrapper">
 
         <div id="promo-health-care" class="promo product">
@@ -8,19 +25,26 @@
                     <div class="container">
                         <div class="box">
                             <ul class="breadcrumbs viewport-holder slideDown">
-                                <li><a href="{{ route('/') }}">Main</a></li>
-                                <li><a href="#">Products</a></li>
-                                <li><a href="#">Analitys</a></li>
-                                <li><a href="{{ route('/health_care') }}">Healthcare</a></li>
+                                <li><a href="{{ route('/') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Main')}}</a></li>
+
+                                <li><a href="#">{{$tr->setSource('en')->setTarget($site_language)->translate('Products')}}</a></li>
+
+                                <li><a href="#">{{$tr->setSource('en')->setTarget($site_language)->translate('Analytics')}}</a></li>
+
+                                <li><a href="{{route('health.care')}}">{{$tr->setSource('en')->setTarget($site_language)->translate('Health Care')}}</a></li>
                             </ul>
                             <div class="text">
-                                <h1 class="viewport-holder slideDown delay-1">Healthcare</h1>
+                                <h1 class="viewport-holder slideDown delay-1">{{$tr->setSource('en')->setTarget($site_language)->translate('Health Care')}}</h1>
+
                                 <p class="viewport-holder slideDown delay-2">
-                                    Protect people’s health in your area with RRSTEK Healthcare
-                                    Modules!
+                                    {{$tr->setSource('en')->setTarget($site_language)->translate('Protect people’s health in your area with RRSTEK Healthcare
+                                    Modules!')}}
                                 </p>
                                 <ul class="viewport-holder slideDown delay-3">
-                                    <li><a href="#" class="btn sec">Watch Video</a></li>
+                                    <li><a href="#" class="btn sec">
+                                        {{$tr->setSource('en')->setTarget($site_language)->translate('Watch Video')}}
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -31,9 +55,18 @@
         <div class="link-holder">
             <div class="container">
                 <ul class="links viewport-holder slideDown">
-                    <li><a href="{{ route('/face_mask_detector') }}">Face Mask Detector</a></li>
-                    <li><a href="{{ route('/social_distance_detector') }}">Social Distance Detector</a></li>
-                    <li><a href="{{ route('/thermal_camera') }}">Thermal Camera</a></li>
+                    <li><a href="{{ route('face.mask.detector') }}">
+                        {{$tr->setSource('en')->setTarget($site_language)->translate('Face Mask Detector')}}
+                        </a>
+                    </li>
+                    <li><a href="{{ route('social.distance.detector') }}">
+                        {{$tr->setSource('en')->setTarget($site_language)->translate('Social Distance Detector')}}
+                        </a>
+                    </li>
+                    <li><a href="{{ route('thermal.camera') }}">
+                        {{$tr->setSource('en')->setTarget($site_language)->translate('Thermal Camera')}}
+                        </a>
+                    </li>
             </div>
         </div>
         <main id="main">
@@ -46,15 +79,20 @@
                         </div>
                         <div class="text-box">
                             <h2 class="viewport-holder slideDown delay-2">
-                                <span><i>OUR PRODUCT</i></span> Face Mask Detector
+                                <span><i>
+                                {{$tr->setSource('en')->setTarget($site_language)->translate('OUR PRODUCT')}}
+                                </i></span>
+                                {{$tr->setSource('en')->setTarget($site_language)->translate('Face Mask Detector')}}
                             </h2>
                             <p class="viewport-holder slideDown delay-3">
-                                The Face Mask Detector module is designed to monitor compliance with security measures in a
+                                {{$tr->setSource('en')->setTarget($site_language)->translate('The Face Mask Detector module is designed to monitor compliance with security measures in a
                                 pandemic or
-                                epidemic - wearing a medical mask as a means of personal protection.
+                                epidemic - wearing a medical mask as a means of personal protection.')}}
+
                             </p>
-                            <a class="viewport-holder slideDown delay-4 more" href="face-mask-detector.html"><span>Read
-                                    More</span></a>
+                            <a class="viewport-holder slideDown delay-4 more" href="{{route('face.mask.detector')}}">
+                                <span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span>
+                            </a>
                         </div>
                     </article>
                     <article class="article">
@@ -64,16 +102,21 @@
                         </div>
                         <div class="text-box">
                             <h2 class="viewport-holder slideDown delay-2">
-                                <span><i>OUR PRODUCT</i></span> Social Distance Detector
+                                <span><i>
+                                {{$tr->setSource('en')->setTarget($site_language)->translate('OUR PRODUCT')}}
+                                </i></span>
+                                {{$tr->setSource('en')->setTarget($site_language)->translate('Social Distance Detector')}}
                             </h2>
                             <p class="viewport-holder slideDown delay-3">
-                                The Social Distance Detector module is designed to monitor the observance of social distance
+                                {{$tr->setSource('en')->setTarget($site_language)->translate(' The Social Distance Detector module is designed to monitor the observance of social distance
                                 between
-                                people in queues and in public places characterized by a crowd of people.
+                                people in queues and in public places characterized by a crowd of people.')}}
+
                             </p>
-                            <a href="social-distance-detector.html"
-                                class="viewport-holder slideDown delay-4 more"><span>Read
-                                    More</span></a>
+                            <a href="{{route('social.distance.detector')}}"
+                                class="viewport-holder slideDown delay-4 more">
+                                <span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span>
+                            </a>
                         </div>
                     </article>
                     <article class="article">
@@ -83,15 +126,21 @@
                         </div>
                         <div class="text-box">
                             <h2 class="viewport-holder slideDown delay-2">
-                                <span><i>OUR PRODUCT</i></span> Thermal Camera
+                                <span><i>
+                                    {{$tr->setSource('en')->setTarget($site_language)->translate('OUR PRODUCT')}}
+                                </i></span>
+                                {{$tr->setSource('en')->setTarget($site_language)->translate('Thermal Camera')}}
+
                             </h2>
                             <p class="viewport-holder slideDown delay-3">
-                                The Thermal Camera module is intended to connect a thermal imaging camera to Trassir OS. It
+                                {{$tr->setSource('en')->setTarget($site_language)->translate(' The Thermal Camera module is intended to connect a thermal imaging camera to Trassir OS. It
                                 displays not only video data, but also the information of changing the body temperature of a
-                                person.
+                                person.')}}
+
                             </p>
-                            <a href="thermal-camera.html" class="viewport-holder slideDown delay-4 more"><span>Read
-                                    More</span></a>
+                            <a href="{{route('thermal.camera')}}" class="viewport-holder slideDown delay-4 more">
+                                <span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span>
+                            </a>
                         </div>
                     </article>
                 </div>

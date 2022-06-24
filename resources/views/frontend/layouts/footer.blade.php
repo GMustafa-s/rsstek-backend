@@ -61,13 +61,13 @@ $language = session()->get('language');
                 <li><a href="{{route('/business')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                 </a></li>
-                <li><a href="{{route('/health_care')}}">
+                <li><a href="{{route('health.care')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Healthcare')}}
                 </a></li>
-                <li><a href="{{route('/security')}}">
+                <li><a href="{{route('security')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
                 </a></li>
-                <li><a href="{{route('/work_safety')}}">
+                <li><a href="{{route('work.safety')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Work safety')}}
                 </a></li>
               </ul>
@@ -83,7 +83,7 @@ $language = session()->get('language');
                 <li><a href="{{route('/cases')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Cases')}}
                 </a></li>
-                <li><a href="{{route('/demo')}}">
+                <li><a href="{{route('demo')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Demo')}}
                 </a></li>
               </ul>

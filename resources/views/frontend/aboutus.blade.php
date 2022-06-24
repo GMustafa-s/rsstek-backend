@@ -1,6 +1,12 @@
 @extends('frontend.index')
 @section('content')
 
+@php
+$site_dat = App\Models\GeneralSetting::first();
+
+@endphp
+
+
 <?php
 use Stichoza\GoogleTranslate\GoogleTranslate;
 $tr = new GoogleTranslate();
@@ -12,8 +18,8 @@ else{
     $site_language = $site_dat->language;
 
 }
-
 ?>
+
 <div id="promo-about-rrstek" class="promo product">
     <div class="frame">
       <div class="holder">

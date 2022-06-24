@@ -1,3 +1,17 @@
+@php
+    $site_dat = App\Models\GeneralSetting::first();
+@endphp
+<?php
+    use Stichoza\GoogleTranslate\GoogleTranslate;
+    $tr = new GoogleTranslate();
+    $language = session()->get('language');
+    if ($language) {
+        $site_language = $language;
+    } else {
+        $site_language = $site_dat->language;
+    }
+?>
+
 @extends('frontend.index')
 @section('content')
       <div class="promo">
@@ -6,20 +20,25 @@
             <div class="container">
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
-                  <li><a href="{{route('/')}}">Main</a></li>
-                  <li><a href="{{route('/work_safety')}}">Work Safety</a></li>
-                  <li><a href="{{route('/hardhat_detector')}}">Hardhat Detector</a></li>
+
+                    <li><a href="{{ route('/') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Main')}}</a></li>
+
+                    <li><a href="{{route('work.safety')}}">{{$tr->setSource('en')->setTarget($site_language)->translate('Work Safety')}}</a></li>
+
+                    <li><a href="{{route('hardhat.detector')}}">{{$tr->setSource('en')->setTarget($site_language)->translate('Hardhat Detector')}}</a></li>
                 </ul>
                 <div class="text">
                   <h1 class="viewport-holder slideDown delay-1">
-                    Hardhat Detector
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('Hardhat Detector')}}
                   </h1>
                   <ul class="viewport-holder slideDown delay-2">
-                    <li>
-                      <a href="{{route('/demo')}}" class="btn"><span>Book a Demo</span></a>
-                    </li>
-                    <li><a href="{{route('/contactus')}}" class="btn add">How to Buy</a></li>
-                  </ul>
+                        <li><a href="{{ route('demo') }}" class="btn"><span>
+                            {{$tr->setSource('en')->setTarget($site_language)->translate('Book a Demo')}}</span></a>
+                        </li>
+                        <li><a href="{{ route('/contactus') }}" class="btn add">
+                            {{$tr->setSource('en')->setTarget($site_language)->translate('How to Buy')}}</a>
+                        </li>
+                    </ul>
                 </div>
               </div>
               <div class="align-right">
@@ -35,7 +54,7 @@
                       src="{{asset('frontend')}}/images/videos/video-01.mp4"
                       type="video/mp4"
                     />
-                    Your browser does not support the video tag.
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
                   </video>
                 </div>
               </div>
@@ -48,48 +67,61 @@
           <div class="container">
             <div class="post">
               <div class="viewport-holder slideDown">
-                <h1>
-                  <span>OVERVIEW</span><br />
-                  Hardhat Detector
+                <h1><span>
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('OVERVIEW')}}</span>
+                    <br>
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('Hardhat Detector')}}
                 </h1>
                 <div class="text">
                   <p>
-                    Safety helmet presence detector helps to monitor safety
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('Safety helmet presence detector helps to monitor safety
                     compliance. If an employee appears in the work area without
                     a protective helmet, the intelligent module sends a
                     notification in real time and saves a frame for the
-                    evidentiary base.
+                    evidentiary base.')}}
                   </p>
                 </div>
               </div>
               <div class="viewport-holder slideDown delay-1">
-                <h2>Functionality</h2>
+                <h2>
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('Functionality')}}
+                </h2>
                 <div class="text">
                   <ul>
-                    <li>Reduction of industrial injuries,</li>
-                    <li>Improving employee discipline,</li>
-                    <li>Reducing the cost of paying sick leave,</li>
-                    <li>Reduction of the company's reputational risks.</li>
+                    <li>
+                        {{$tr->setSource('en')->setTarget($site_language)->translate('Reduction of industrial injuries,')}}
+                    </li>
+                    <li>
+                        {{$tr->setSource('en')->setTarget($site_language)->translate('Improving employee discipline,')}}
+                    </li>
+                    <li>
+                        {{$tr->setSource('en')->setTarget($site_language)->translate('Reducing the cost of paying sick leave,')}}
+                    </li>
+                    <li>
+                        {{$tr->setSource('en')->setTarget($site_language)->translate('Reduction of the company reputational risks.')}}
+                    </li>
                   </ul>
                   <p>
-                    The Hardhat Detector module automates and simplifies the
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('The Hardhat Detector module automates and simplifies the
                     work of operators, but its capabilities are not limitless -
                     if you cannot see whether a person is wearing a helmet while
                     watching a video, then the module will also not be able to
-                    recognize it.
+                    recognize it.')}}
                   </p>
                 </div>
               </div>
             </div>
             <div class="product-box">
               <div class="frame viewport-holder slideDown delay-1">
-                <h2>Other Products</h2>
+                <h2>
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('Other Products')}}
+                </h2>
                 <ul class="accordion" data-accordion="close">
                   {{-- <li>
-                    <a href="{{route('/hardhat_detector')}}">Hardhat Detector </a>
+                    <a href="{{route('hardhat.detector')}}">{{$tr->setSource('en')->setTarget($site_language)->translate('Hardhat Detector')}}</a>
                   </li> --}}
                   <li>
-                    <a href="{{route('/wear_detector')}}">Wear Detector</a>
+                    <a href="{{route('wear.detector')}}">{{$tr->setSource('en')->setTarget($site_language)->translate('Wear Detector')}}</a>
                   </li>
                 </ul>
               </div>

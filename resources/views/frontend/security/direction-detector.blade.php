@@ -1,24 +1,42 @@
 @extends('frontend.index')
 @section('content')
+@php
+    $site_dat = App\Models\GeneralSetting::first();
+    @endphp
+    <?php
+    use Stichoza\GoogleTranslate\GoogleTranslate;
+    $tr = new GoogleTranslate();
+    $language = session()->get('language');
+    if ($language) {
+        $site_language = $language;
+    } else {
+        $site_language = $site_dat->language;
+    }
+?>
       <div class="promo">
         <div class="frame">
           <div class="holder">
             <div class="container">
               <div class="box">
                 <ul class="breadcrumbs viewport-holder slideDown">
-                  <li><a href="{{ route('/') }}">Main</a></li>
-                  <li><a href="{{ route('/security') }}"> Security</a></li>
-                  <li><a href="{{ route('/direction_detector') }}">Direction Detector</a></li>
+                  <li><a href="{{ route('/') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Main')}}</a></li>
+
+                  <li><a href="{{ route('security') }}"> {{$tr->setSource('en')->setTarget($site_language)->translate('Security')}}</a></li>
+
+                  <li><a href="{{ route('direction.detector') }}">{{$tr->setSource('en')->setTarget($site_language)->translate('Direction Detector')}}</a></li>
+
                 </ul>
                 <div class="text">
                   <h1 class="viewport-holder slideDown delay-1">
-                    Direction Detector
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('Direction Detector')}}
                   </h1>
                   <ul class="viewport-holder slideDown delay-2">
                     <li>
-                      <a href="../Solutions/demo.html" class="btn"><span>Book a Demo</span></a>
+                      <a href="{{route('demo')}}" class="btn">
+                        <span>{{ $tr->setSource('en')->setTarget($site_language)->translate('Book a Demo') }}</span>
+                    </a>
                     </li>
-                    <li><a href="../contact-us.html" class="btn add">How to Buy</a></li>
+                    <li><a href="{{route('/contactus')}}" class="btn add">{{ $tr->setSource('en')->setTarget($site_language)->translate('How to Buy') }}</a></li>
                   </ul>
                 </div>
               </div>
@@ -35,7 +53,7 @@
                       src="{{asset('frontend')}}/images/videos/Face Tracker_Recognizer.mp4"
                       type="video/mp4"
                     />
-                    Your browser does not support the video tag.
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.') }}
                   </video>
                 </div>
               </div>
@@ -49,37 +67,43 @@
             <div class="post">
               <div class="viewport-holder slideDown">
                 <h1>
-                  <span>OVERVIEW</span><br />
-                  Direction Detector
-                </h1>
+                    <span>
+                      {{ $tr->setSource('en')->setTarget($site_language)->translate('OVERVIEW') }}</span>
+                    <br/>
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Direction Detector') }}
+                  </h1>
                 <div class="text">
                   <p>
-                    The module is used to ensure safety, track the movement of
+
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate('The module is used to ensure safety, track the movement of
                     objects - people, cars, bicycles - in a prohibited
                     direction. When crossing a predetermined line or changing
                     the trajectory of movement, the module sends alarm
                     notifications to the guard and saves the frame for the
-                    evidentiary base.
+                    evidentiary base.') }}
                   </p>
                 </div>
               </div>
               <div class="viewport-holder slideDown delay-1">
-                <h2>Functionality</h2>
+                <h2>{{ $tr->setSource('en')->setTarget($site_language)->translate('Functionality') }}</h2>
                 <div class="text">
                   <ul>
                     <li>
-                      Works on the basis of a neural object detector, which
-                      allows you to recognize objects with high accuracy.
+                        {{ $tr->setSource('en')->setTarget($site_language)->translate('Works on the basis of a neural object detector, which
+                        allows you to recognize objects with high accuracy.') }}
                     </li>
-                    <li>Uses an object tracking mechanism to count unique objects and analyze their movement
-										</li>
                     <li>
-                      The operator can mark up to 16 lines on the screen for motion analysis.
+                        {{ $tr->setSource('en')->setTarget($site_language)->translate('Uses an object tracking mechanism to count unique objects and analyze their movement') }}
+					</li>
+                    <li>
+                        {{ $tr->setSource('en')->setTarget($site_language)->translate('The operator can mark up to 16 lines on the screen for motion analysis.') }}
                     </li>
-                    <li>Generates notifications if an object crosses the line in a prohibited direction
-										</li>
                     <li>
-                      It is possible to expand the basic functionality using scripts
+                        {{ $tr->setSource('en')->setTarget($site_language)->translate('Generates notifications if an object crosses the line in a prohibited direction') }}
+                    </li>
+                    <li>
+                        {{ $tr->setSource('en')->setTarget($site_language)->translate('It is possible to expand the basic functionality using scripts') }}
+
                     </li>
                     <!-- <li>Flexible configuration of the recognition module.</li>
 									<li>Delegation of computing on a server with a GPU from low-power DVRs.</li> -->
@@ -89,36 +113,35 @@
               </div>
             </div>
             <div class="product-box">
-              <div class="frame viewport-holder slideDown delay-1">
-                <h2>Other Products</h2>
-                <ul class="accordion" data-accordion="close">
-                  <li>
-                    <a href="Auto-anpr.html">Auto Anpr</a>
-                  </li>
-                  <li>
-                    <a href="neuro-left-object-detector.html"
-                      >Neuro Left Object Detector</a
-                    >
-                  </li>
-                  <li>
-                    <a href="pose-detector.html">Pose Detector</a>
-                  </li>
-                  <li>
-                    <a href="face-recognition.html">Face Recognition</a>
-                  </li>
+                <div class="frame viewport-holder slideDown delay-1">
+                    <h2>
+                        {{ $tr->setSource('en')->setTarget($site_language)->translate('Other Products') }}
+                    </h2>
+                    <ul class="accordion" data-accordion="close">
 
-                  <li>
-                    <a href="neuro-detector.html">Neuro Detector</a>
-                  </li>
-                  <!-- <li>
-									<a    href="direction-detector.html">Direction Detector</a>
-
-								</li> -->
-                  <li>
-                    <a href="crowd-detector.html">Crowd Detector</a>
-                  </li>
-                </ul>
-              </div>
+                        <li>
+                            <a href="{{route('auto.anpr')}}">{{$tr->setSource('en')->setTarget($site_language)->translate('Auto ANPR')}}</a>
+                        </li>
+                        <li>
+                            <a href="{{route('neuro.left.object.detector')}}">{{ $tr->setSource('en')->setTarget($site_language)->translate('Neuro Left Object Detector') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{route('pose.detector')}}">{{ $tr->setSource('en')->setTarget($site_language)->translate('Pose Detector') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{route('face.recognition')}}">{{ $tr->setSource('en')->setTarget($site_language)->translate('Face Recognition') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{route('neuro.detector')}}">{{ $tr->setSource('en')->setTarget($site_language)->translate('Neuro Detector') }}</a>
+                        </li>
+                        {{-- <li>
+                            <a href="{{route('direction.detector')}}">{{ $tr->setSource('en')->setTarget($site_language)->translate('Direction Detector') }}</a>
+                         </li> --}}
+                        <li>
+                            <a href="{{route('crowd.detector')}}">{{ $tr->setSource('en')->setTarget($site_language)->translate('Crowd Detector') }}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
           </div>
         </div>

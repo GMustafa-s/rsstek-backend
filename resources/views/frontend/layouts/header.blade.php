@@ -1,7 +1,3 @@
-@php
-$site_dat = App\Models\GeneralSetting::first();
-
-@endphp
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +7,10 @@ $site_dat = App\Models\GeneralSetting::first();
 	<link rel="stylesheet" href="{{asset('frontend/')}}/css/style.css">
 	<link rel="icon" type="image/x-icon" href="{{asset('frontend')}}/images/fevicon/@if($site_dat->favicon!=null)  {{$site_dat->favicon}} @endif">
 </head>
-
-<body>
-
+@php
+$site_dat = App\Models\GeneralSetting::first();
+@endphp
 <?php
-    $url = $_SERVER['REQUEST_URI'];
-        if (!str_contains($url, '/camera/compare/')) {
-            return  session()->forget('cart');
-        }
     use Stichoza\GoogleTranslate\GoogleTranslate;
     $tr = new GoogleTranslate();
     $language = session()->get('language');
@@ -68,15 +60,15 @@ $site_dat = App\Models\GeneralSetting::first();
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                                     </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/health_care')}}">
+                                    <li><a href="{{route('health.care')}}">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Healthcare')}}
                                     </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/security')}}">
+                                    <li><a href="{{route('security')}}">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
                                     </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/work_safety')}}">
+                                    <li><a href="{{route('work.safety')}}">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Work safety')}}</a></li>
                                 </ul>
                             </li>
@@ -97,7 +89,7 @@ $site_dat = App\Models\GeneralSetting::first();
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Cases')}}
                                     </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/demo')}}">
+                                    <li><a href="{{route('demo')}}">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('demo')}}
                                     </a></li>
                                 </ul>
