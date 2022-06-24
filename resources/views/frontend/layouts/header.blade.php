@@ -1,3 +1,6 @@
+@php
+$site_dat = App\Models\GeneralSetting::first();
+@endphp
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +10,6 @@
 	<link rel="stylesheet" href="{{asset('frontend/')}}/css/style.css">
 	<link rel="icon" type="image/x-icon" href="{{asset('frontend')}}/images/fevicon/@if($site_dat->favicon!=null)  {{$site_dat->favicon}} @endif">
 </head>
-@php
-$site_dat = App\Models\GeneralSetting::first();
-@endphp
 <?php
     use Stichoza\GoogleTranslate\GoogleTranslate;
     $tr = new GoogleTranslate();
@@ -45,7 +45,7 @@ $site_dat = App\Models\GeneralSetting::first();
                             <li>
                         <a href="{{route('/')}}" class="title">
 
-                        {{ $tr->setSource('en')->setTarget($site_dat->language)->translate('Home')}}
+                        {{ $tr->setSource('en')->setTarget($site_language)->translate('Home')}}
                         </a>
                             </li>
                             <li class="has-dropdown">

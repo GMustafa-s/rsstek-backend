@@ -31,8 +31,8 @@
           <ul class="links viewport-holder slideDown">
             <li><a href="{{route('/transport_and_storage')}}">Transport and storage</a></li>
             <li><a href="{{route('/public_safety')}}">Public safety</a></li>
-            <li><a href="{{route('/health_care')}}">Healthcare</a></li>
-            <li><a href="{{route('/real_state')}}">Real estate</a></li>
+            <li><a href="{{route('health.care')}}">Healthcare</a></li>
+            <li><a href="#">Real estate</a></li>
             <li><a href="{{route('/retail')}}">Retail</a></li>
             <li><a href="{{route('/industrial')}}">Industrial</a></li>
           </ul>
