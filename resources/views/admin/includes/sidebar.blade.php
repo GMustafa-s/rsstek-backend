@@ -93,21 +93,7 @@
 							<li class="submenu">
 								<a href="#" class=""><i class="la la-desktop"></i> <span>CMS</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li>
-									<li class="submenu">
-								<a href="#" class=""><span>Custome Pages</span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
-									<!-- <li><a href="{{route('cms.custom.home')}}">Home</a></li>
-									<li><a href="{{route('show.demo')}}">About Us</a></li>
-									<li><a href="{{route('show.intallation')}}">Contact Us</a></li>
-									<li><a href="{{route('show.demo')}}">Demo</a></li>
-									<li><a href="{{route('show.demo')}}">Cases</a></li>
-									<li><a href="{{route('show.demo')}}">Integration</a></li>
-									<li><a href="{{route('show.demo')}}">Camera Compare</a></li> -->
-
-								</ul>
-							</li>
-									</li>
+									<li><a href="{{route('cms.custom.index')}}">Custom Pages</a></li>
 									<li>
 									<li class="submenu">
 								<a href="#" class=""><span>Camera Pages</span> <span class="menu-arrow"></span></a>

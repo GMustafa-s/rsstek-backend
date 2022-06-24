@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        // Schema::create('countries', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->integer('phone_code');
-        //     $table->string('country_code');
-        //     $table->string('country_name');
-        //     $table->timestamps();
-        // });
+        Schema::create('custom_pages', function (Blueprint $table) {
+            $table->id();
+            $table->string('page_title');
+            $table->string('meta_name');
+            $table->text('meta_description');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_countries');
+        Schema::dropIfExists('custom_pages');
     }
 };

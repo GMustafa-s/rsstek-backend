@@ -9,6 +9,7 @@ use App\Http\Controllers\cms\camera\CameraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\cms\custom\CustomPagesController;
 
 
 
@@ -362,6 +363,15 @@ Route::prefix('cms/camera')->group(function () {
     Route::post('/store', [CameraController::class, 'store'])->name('cms.camera.store');
     Route::get('/edit/{id}', [CameraController::class, 'edit'])->name('cms.camera.edit');
     Route::post('/update/{id}', [CameraController::class, 'update'])->name('cms.camera.update');
+    Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
+    Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
+   
+
+});
+Route::prefix('cms/custompages')->group(function () {
+    Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');
+    Route::get('/edit/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
+    Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update');
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
    

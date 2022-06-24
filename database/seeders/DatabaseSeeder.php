@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(CountriesSeeder::class);
+        $this->call(CustomPagesSeeder::class);
         $this->call(GeneralSetting::class);
         $this->call(PermissionSeeder::class);
         $this->call(UserSeeed::class);
