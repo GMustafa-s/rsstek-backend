@@ -15,4 +15,6 @@ class HomeController extends Controller
         $social_links = SocialLink::all();
       return view('admin.cms.customepages.home',compact('generals','social_links'));
     }
+
+    
 }
