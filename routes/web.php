@@ -358,6 +358,10 @@ Route::prefix('contactus')->group(function () {
     Route::post('/update-section/{id}', [SolutionController::class, 'updateSection'])->name('cms.solution.section.update');
 
  });
+
+ // all solution listings here
+Route::get('/all-solutions', [SolutionController::class, 'allSolutions'])->name('all.solutions');
+
  Route::get('/delete-section/{id}', [SolutionController::class, 'deleteSection'])->name('cms.solution.section.delete');
 
 Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('category.slug');
@@ -394,6 +398,4 @@ Route::resource('roles', RoleController::class);
 Route::post('roles/assign-permission/{id}', [RoleController::class,'assignPermission'])->name('roles.assign.permissions');
 Route::post('roles/revok', [PermissionsController::class,'revokeRole'])->name('users.revoke.roles');
 
-Route::get('/solution-index', function () {
-    return view('frontend.solutions.demo');
-})->name('/');
+

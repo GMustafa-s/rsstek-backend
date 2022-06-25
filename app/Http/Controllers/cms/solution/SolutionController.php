@@ -11,6 +11,12 @@ use Illuminate\Support\Str;
 
 class SolutionController extends Controller
 {
+
+    public function allSolutions(){
+        $solutions = PageCategory::all();
+        // dd($solutions);
+        return view('frontend.solutions.index',compact('solutions'));
+    }
      public function showSlug($slug)
     {
         $page = PageCategory::whereSlug($slug)->first();
