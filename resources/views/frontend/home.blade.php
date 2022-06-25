@@ -76,7 +76,7 @@ else{
                                         </ul>
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="{{route('/solutions')}}" class="title">
+                                        <a href="javascriopt:vod(0)" class="title">
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('SOLUTIONS')}}
                                         </a>
                                         <ul class="link">
@@ -101,7 +101,7 @@ else{
                                 </ul>
                                 <ul class="list">
                                     <li class="has-dropdown">
-                                        <a href="{{route('/aboutus')}}" class="title">
+                                        <a href="javascriopt:vod(0)" class="title">
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('ABOUT US')}}
                                         </a>
                                         <ul class="link">
@@ -120,7 +120,7 @@ else{
                                     </li>
 
                                     <li class="has-dropdown">
-                                        <a href="#" class="title">
+                                        <a href="javascriopt:vod(0)" class="title">
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('SUPPORT')}}
                                         </a>
                                         <ul class="link">

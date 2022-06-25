@@ -13,7 +13,7 @@
                             <h1 class="viewport-holder slideDown delay-1">Ecosystem security in your hands</h1>
                             <p class="viewport-holder slideDown delay-2">Designed to integrate with the technology you use
                                 daily.</p>
-                            <a href="{{route('/demo')}}" class="btn sec">Get Demo</a>
+                            <a href="{{route('demo')}}" class="btn sec">Get Demo</a>
                         </div>
                     </div>
                 </div>

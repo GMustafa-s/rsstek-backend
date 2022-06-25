@@ -48,14 +48,14 @@ $site_dat = App\Models\GeneralSetting::first();
                         </a>
                             </li>
                             <li class="has-dropdown">
-                                <a href="{{route('category.slug','category-1')}}" class="title">
+                                <a href="javascript:vod(0)" class="title">
 
                                 {{ $tr->setSource('en')->setTarget($site_language)->translate('BUSINESS')}}
                                 </a>
                                 <ul class="link">
                                     <li><a href="#" class="nav-back">Back</a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('/business')}}">
+                                    <li><a href="{{route('category.slug','category-1')}}">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                                     </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
@@ -72,7 +72,7 @@ $site_dat = App\Models\GeneralSetting::first();
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="{{route('/solutions')}}" class="title">
+                                <a href="javascript:vod(0)" class="title">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('SOLUTIONS')}}
                                 </a>
                                 <ul class="link">
@@ -97,7 +97,7 @@ $site_dat = App\Models\GeneralSetting::first();
                         </ul>
                         <ul class="list">
                             <li class="has-dropdown">
-                                <a href="{{route('/aboutus')}}" class="title">
+                                <a href="javascript:vod(0)" class="title">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('ABOUT US')}}
                                 </a>
                                 <ul class="link">
@@ -116,7 +116,7 @@ $site_dat = App\Models\GeneralSetting::first();
                             </li>
 
                             <li class="has-dropdown">
-                                <a href="#" class="title">
+                                <a href="javascript:vod(0)" class="title">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('SUPPORT')}}
                                 </a>
                                 <ul class="link">
