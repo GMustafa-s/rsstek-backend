@@ -256,7 +256,7 @@
 									<h4 class="card-title">Today Absent <span class="badge bg-inverse-danger ml-2">5</span></h4>
 									<div class="leave-info-box">
 										<div class="media align-items-center">
-											<a href="profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/user.jpg"></a>
+											<a href="profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/user.jpg"></a>
 											<div class="media-body">
 												<div class="text-sm my-0">Martin Lewis</div>
 											</div>
@@ -273,7 +273,7 @@
 									</div>
 									<div class="leave-info-box">
 										<div class="media align-items-center">
-											<a href="profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/user.jpg"></a>
+											<a href="profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/user.jpg"></a>
 											<div class="media-body">
 												<div class="text-sm my-0">Martin Lewis</div>
 											</div>
@@ -435,7 +435,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="#" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-19.jpg"></a>
+															<a href="#" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-19.jpg"></a>
 															<a href="client-profile.html">Barry Cuda <span>CEO</span></a>
 														</h2>
 													</td>
@@ -464,7 +464,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="#" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-19.jpg"></a>
+															<a href="#" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-19.jpg"></a>
 															<a href="client-profile.html">Tressa Wexler <span>Manager</span></a>
 														</h2>
 													</td>
@@ -493,7 +493,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-07.jpg"></a>
+															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-07.jpg"></a>
 															<a href="client-profile.html">Ruby Bartlett <span>CEO</span></a>
 														</h2>
 													</td>
@@ -522,7 +522,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-06.jpg"></a>
+															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-06.jpg"></a>
 															<a href="client-profile.html"> Misty Tison <span>CEO</span></a>
 														</h2>
 													</td>
@@ -551,7 +551,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-14.jpg"></a>
+															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-14.jpg"></a>
 															<a href="client-profile.html"> Daniel Deacon <span>CEO</span></a>
 														</h2>
 													</td>

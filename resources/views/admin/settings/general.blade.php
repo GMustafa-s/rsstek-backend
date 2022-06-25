@@ -12,7 +12,7 @@
                     <h3 class="page-title">Settings</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="route('dashboard')">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">general settings</li>
                         </ol>
                     </nav>

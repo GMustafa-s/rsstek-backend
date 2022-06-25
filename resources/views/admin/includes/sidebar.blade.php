@@ -8,9 +8,9 @@
 							</li>
 							@can('dashbord')
 							<li class="submenu">
-								<a href="{{url('/admin-dashboard')}}"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+								<a href="route('dashboard')"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a class="active" href="{{url('/admin-dashboard')}}">Admin Dashboard</a></li>
+									<li><a class="active" href="route('dashboard')">Admin Dashboard</a></li>
 									<!-- <li><a href="employee-dashboard.html">Employee Dashboard</a></li> -->
 								</ul>
 							</li>
@@ -18,7 +18,7 @@
 						
 						@can('users.view')
 								<li class="submenu">
-									<a href="{{url('/admin-dashboard')}}"><i class="la la-user"></i> <span> Users</span> <span class="menu-arrow"></span></a>
+									<a href="route('dashboard')"><i class="la la-user"></i> <span> Users</span> <span class="menu-arrow"></span></a>
 									<ul style="display: none;">
 									@can('users.create')
 										<li><a class="" href="{{route('users.create')}}">Add New</a></li>

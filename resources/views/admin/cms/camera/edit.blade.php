@@ -10,7 +10,7 @@
                     <h3 class="page-title">Edit {{$camera->title}}</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">dashboard</a></li>
                             <li class="breadcrumb-item"><a href="{{route('cms.camera.index')}}">camera</a></li>
                             <li class="breadcrumb-item"><a href="">Edit {{$camera->title}} </a></li>
                         </ol>

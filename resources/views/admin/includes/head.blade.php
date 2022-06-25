@@ -8,32 +8,32 @@
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
         <!-- Datatable CSS -->
-		<link rel="stylesheet" href="{{asset('admin')}}/assets/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="{{asset('adminn')}}/assets/css/dataTables.bootstrap4.min.css">
         <title>Admin-Dashboard</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin')}}/assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('adminn')}}/assets/img/favicon.png">
 		
 			<!-- Bootstrap CSS -->
-            <link rel="stylesheet" href="{{asset('admin')}}/assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="{{asset('adminn')}}/assets/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="{{asset('admin')}}/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{asset('adminn')}}/assets/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="{{asset('admin')}}/assets/css/line-awesome.min.css">
+        <link rel="stylesheet" href="{{asset('adminn')}}/assets/css/line-awesome.min.css">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="{{asset('admin')}}/assets/css/select2.min.css">
+		<link rel="stylesheet" href="{{asset('adminn')}}/assets/css/select2.min.css">
 		
 		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="{{asset('admin')}}/assets/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="{{asset('adminn')}}/assets/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Summernote CSS -->
-		<link rel="stylesheet" href="{{asset('admin')}}/assets/plugins/summernote/dist/summernote-bs4.css">
+		<link rel="stylesheet" href="{{asset('adminn')}}/assets/plugins/summernote/dist/summernote-bs4.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="{{asset('admin')}}/assets/css/style.css">
+        <link rel="stylesheet" href="{{asset('adminn')}}/assets/css/style.css">
 
     </head>
 	

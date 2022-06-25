@@ -282,16 +282,9 @@ Route::prefix('/camera/compare')->group(function () {
 // })->name('/camera/compare/detail/{id}');
 
 
-// dashboard routes
-// Route::get('/login', function () {
-//     return view('admin.login');
-// })->name('login-user');
 
-// Route::get('/register', function () {
-//     return view('admin.register');
-// });
+Route::get('/admin', function () {
 
-Route::get('/admin-dashboard', function () {
     return view('admin.index');
 })->name('dashboard')->middleware('auth');
 

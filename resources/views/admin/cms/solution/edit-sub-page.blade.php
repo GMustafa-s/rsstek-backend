@@ -10,7 +10,7 @@
                     <h3 class="page-title">Edit {{$sub_page->title}}</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">dashboard</a></li>
                             <li class="breadcrumb-item"><a href="{{url('/solution')}}">solution</a></li>
                             <li class="breadcrumb-item"><a href="{{url('/solution/sub-page')}}">sub pages</a></li>
 

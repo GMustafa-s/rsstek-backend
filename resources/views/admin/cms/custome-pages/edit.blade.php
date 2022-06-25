@@ -12,7 +12,7 @@
                     <h3 class="page-title">Edit {{$page->page_title}}</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">dashboard</a></li>
                             <li class="breadcrumb-item"><a href="{{route('cms.custom.index')}}">custom-pages</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit {{$page->page_title}}</li>
                         </ol>

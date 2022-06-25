@@ -7,7 +7,7 @@
 				
 					<!-- Account Logo -->
 					<div class="account-logo">
-						<a href="{{url('/')}}"><img src="{{asset('admin')}}/assets/img/logo2.png" alt="Dreamguy's Technologies"></a>
+						<a href="{{url('/')}}"><img src="{{asset('adminn')}}/assets/img/logo2.png" alt="Dreamguy's Technologies"></a>
 					</div>
 					<!-- /Account Logo -->
 					

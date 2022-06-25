@@ -11,7 +11,7 @@
                     <h3 class="page-title">Demo Queries</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="route('dashboard')">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">demo queries</li>
                         </ol>
                     </nav>
