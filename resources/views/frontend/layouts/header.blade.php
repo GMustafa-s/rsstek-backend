@@ -19,7 +19,6 @@ $site_dat = App\Models\GeneralSetting::first();
     }
     else{
         $site_language = $site_dat->language;
-
     }
 ?>
 

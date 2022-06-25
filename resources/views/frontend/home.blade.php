@@ -52,15 +52,15 @@ else{
                                 </a>
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="{{route('category.slug','category-1')}}" class="title">
+                                        <a href="javascriopt:vod(0)" class="title">
 
                                         {{ $tr->setSource('en')->setTarget($site_language)->translate('BUSINESS')}}
                                         </a>
                                         <ul class="link">
                                             <li><a href="#" class="nav-back">Back</a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
-                                            <li><a href="{{route('/business')}}">
-                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
+                                            <li><a href="{{route('camera.slug','tr-d3181ir3-v2-36')}}">
+                                            {{ $tr->setSource('en')->setTarget($site_language)->translate('Camera')}}
                                             </a></li>
                                             <!-- <li><span class="label">Text Label</span></li> -->
                                             <li><a href="{{route('health.care')}}">
