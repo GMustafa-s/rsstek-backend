@@ -1,5 +1,18 @@
 @extends('frontend.index')
 @section('content')
+
+<?php
+ use Stichoza\GoogleTranslate\GoogleTranslate;
+ $tr = new GoogleTranslate();
+ $language = session()->get('language');
+ if($language){
+     $site_language = $language;
+ }
+ else{
+     $site_language = $site_dat->language;
+ }
+
+?>
     <div id="promo-demo" class="promo product">
         <div class="frame">
             <div class="holder">
@@ -7,7 +20,7 @@
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
                             <li><a href="{{ route('/') }}">Main</a></li>
-                            <li><a href="{{ route('/demo') }}">Get Demo</a></li>
+                            <li><a href="">Get Demo</a></li>
                         </ul>
                         <div id="#text-banner-overview" class="text">
                             <h1 class="viewport-holder slideDown delay-1">Get a demo

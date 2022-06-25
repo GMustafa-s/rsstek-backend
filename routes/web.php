@@ -393,3 +393,7 @@ Route::resource('permissions', PermissionsController::class);
 Route::resource('roles', RoleController::class);
 Route::post('roles/assign-permission/{id}', [RoleController::class,'assignPermission'])->name('roles.assign.permissions');
 Route::post('roles/revok', [PermissionsController::class,'revokeRole'])->name('users.revoke.roles');
+
+Route::get('/solution-index', function () {
+    return view('frontend.solutions.demo');
+})->name('/');
