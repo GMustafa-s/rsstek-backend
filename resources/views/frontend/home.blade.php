@@ -38,10 +38,10 @@ else{
                         <a href="#" class="open"><img src="{{asset('frontend')}}/images/menu-icon.svg" alt="image description"></a>
                         <div class="drop-down">
                             <ul class="lang">
-                                <li><a class="active" href="{{route('change.language','en')}}">ENG</a></li>
-                                <li><a href="{{route('change.language','nl')}}">NL</a></li>
-                                <li><a href="{{route('change.language','fr')}}">FR</a></li>
-                                <li><a href="{{route('change.language','es')}}">ES</a></li>
+                                <li><a class="@if($site_language=='en') active @endif" href="{{route('change.language','en')}}">ENG</a></li>
+                                <li><a class="@if($site_language=='nl') active @endif" href="{{route('change.language','nl')}}">NL</a></li>
+                                <li><a class="@if($site_language=='fr') active @endif" href="{{route('change.language','fr')}}">FR</a></li>
+                                <li><a class="@if($site_language=='es') active @endif" href="{{route('change.language','es')}}">ES</a></li>
                             </ul>
                             <div class="holder">
                                 <ul class="list">
