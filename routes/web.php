@@ -1,20 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\settings\GeneralController;
-use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\cms\cumtom\HomeController;
-use App\Http\Controllers\cms\solution\SolutionController;
-use App\Http\Controllers\cms\camera\CameraController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PermissionsController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\cms\custom\CustomPagesController;
-
-
-
-
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\cms\cumtom\HomeController;
+use App\Http\Controllers\settings\GeneralController;
+
+
+
+
+use App\Http\Controllers\cms\camera\CameraController;
+use App\Http\Controllers\cms\solution\SolutionController;
+use App\Http\Controllers\cms\custom\CustomPagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,13 +35,13 @@ use Illuminate\Support\Facades\DB;
 
 // Make applicaton refresh
 Route::get('cache', function () {
-    \Artisan::call('optimize:clear');
+    Artisan::call('optimize:clear');
     dd("Cache is cleared");
 
 });
 Route::get('migrate', function () {
-    \Artisan::call('migrate:refresh');
-    \Artisan::call('db:seed');
+    Artisan::call('migrate:refresh');
+    Artisan::call('db:seed');
     dd("migrated");
 
 });
@@ -385,7 +387,7 @@ Route::prefix('cms/custompages')->group(function () {
     Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update');
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
-   
+
 
 });
 
