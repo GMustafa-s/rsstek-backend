@@ -17,6 +17,7 @@ use App\Http\Controllers\settings\GeneralController;
 use App\Http\Controllers\cms\camera\CameraController;
 use App\Http\Controllers\cms\solution\SolutionController;
 use App\Http\Controllers\cms\custom\CustomPagesController;
+use App\Http\Controllers\HomePageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -314,7 +315,6 @@ Route::group(['middleware' => ['auth']], function() {
 
      });
 
-
 });
 
 
@@ -381,6 +381,9 @@ Route::prefix('cms/custompages')->group(function () {
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
 
+    //home page dynamic ..all routes
+    Route::post('/feature', [CustomPagesController::class, 'homeFeatureSection'])->name('cms.custome.feature.update');
+    Route::post('/choice-us', [CustomPagesController::class, 'homeChoiceUsSection'])->name('cms.custome.choice-us-section.update');
 
 });
 

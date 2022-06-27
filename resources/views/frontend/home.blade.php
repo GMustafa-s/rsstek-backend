@@ -2,11 +2,18 @@
 <html lang="en">
 @php
 $site_dat = App\Models\GeneralSetting::first();
+$header_info = App\Models\CustomPage::find(1);
+$feature_section = App\Models\HomeFeatureSection::findOrFail(1);
+
+// $choice_us_section = App\Models\HomeChoiceUsSection::findOrFail(1);
+// dd($choice_us_section);
+
 @endphp
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="name" content="{{$header_info->meta_name}}">
+	<meta name="description" content="{{$header_info->meta_description}}">
 	<title>@if($site_dat !=null) {{$site_dat->site_title}} @else RRSTEK | Intelligent Video Analitycs @endif</title>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('frontend/')}}/css/style.css">
@@ -120,7 +127,7 @@ else{
                                     </li>
 
                                     <li class="has-dropdown">
-                                        <a href="javascriopt:vod(0)" class="title">
+                                        <a href="javascript:vod(0)" class="title">
                                             {{ $tr->setSource('en')->setTarget($site_language)->translate('SUPPORT')}}
                                         </a>
                                         <ul class="link">
@@ -349,17 +356,16 @@ else{
         <div class="feature-area">
             <div class="container">
                 <div class="heading-area viewport-holder slideDown">
-                    <h1><span>
-                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Features')}}
-                    </span>
-                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Seamless TRASSIR Network integration')}}
-                </h1>
+                    <h1>
+                        <span>{{ $tr->setSource('en')->setTarget($site_language)->translate('Features')}}</span>
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate($feature_section->feature_heading)}}
+                    </h1>
                     <p>
-                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Easily incorporate Protect cameras into a new or existing  TRASSIR Network.')}}
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate($feature_section->feature_description)}}
                     </p>
                 </div>
                 <div class="product viewport-holder slideDown delay-1">
-                    <img class="viewport-holder slideDown delay-2" src="{{asset('frontend')}}/images/network-integration.png" alt="image description">
+                    <img class="viewport-holder slideDown delay-2" src="{{asset('frontend')}}/images/home_feature_section/{{$feature_section->feature_image}}" alt="image description">
 
                     <!-- <img class="viewport-holder slideDown delay-1" src="images/home-illustration-Background-Image.png" alt="image description">
                     <img class="image-2 viewport-holder slideDown delay-2"  src="images/home-illustration-Names-And-Arrows.png" alt="image description"> -->
