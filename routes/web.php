@@ -358,6 +358,10 @@ Route::prefix('contactus')->group(function () {
     Route::post('/update-section/{id}', [SolutionController::class, 'updateSection'])->name('cms.solution.section.update');
 
  });
+
+ // all solution listings here
+Route::get('/all-solutions', [SolutionController::class, 'allSolutions'])->name('all.solutions');
+
  Route::get('/delete-section/{id}', [SolutionController::class, 'deleteSection'])->name('cms.solution.section.delete');
 
 Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('category.slug');
