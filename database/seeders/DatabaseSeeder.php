@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GeneralSetting::class);
         $this->call(PermissionSeeder::class);
         $this->call(UserSeeed::class);
+        $this->call(AboutusPageSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 
