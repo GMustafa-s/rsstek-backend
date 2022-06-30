@@ -35,7 +35,7 @@ $site_dat = App\Models\GeneralSetting::first();
                             <h1 class="viewport-holder slideDown delay-1">{{$tr->setSource('en')->setTarget($site_language)->translate($camera->title)}}</h1>
 
                             <p class="viewport-holder slideDown delay-2">{{$tr->setSource('en')->setTarget($site_language)->translate($camera->sub_title)}}</p>
-                            
+
                             <div class="btn-holder viewport-holder slideDown delay-2">
                                 <a href="{{ route('/solutions') }}" class="btn primary"><span>{{$tr->setSource('en')->setTarget($site_language)->translate('Book a Demo')}}</span></a>
                                 <a href="{{ route('/contactus') }}" class="btn default"><span>{{$tr->setSource('en')->setTarget($site_language)->translate('How To Buy')}}</span></a>
@@ -63,7 +63,7 @@ $site_dat = App\Models\GeneralSetting::first();
                         </h1>
                         <div class="text">
                             <p>
-                                {{$tr->setSource('en')->setTarget($site_language)->translate($camera->description)}}
+                                {!! $tr->setSource('en')->setTarget($site_language)->translate($camera->description) !!}
                             </p>
                             <!-- <p>TRASSIR Workplace Detector is designed to monitor and track employees' working time.</p> -->
                         </div>
@@ -75,7 +75,7 @@ $site_dat = App\Models\GeneralSetting::first();
                             {{$tr->setSource('en')->setTarget($site_language)->translate($section ->title)}}
                         </h2>
                         <div class="text">
-                            {{$tr->setSource('en')->setTarget($site_language)->translate($section ->description)}}
+                            {!! $tr->setSource('en')->setTarget($site_language)->translate($section ->description) !!}
                         </div>
                     </div>
                     @endforeach

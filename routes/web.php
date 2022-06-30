@@ -19,6 +19,7 @@ use App\Http\Controllers\cms\camera\CameraController;
 use App\Http\Controllers\cms\solution\SolutionController;
 use App\Http\Controllers\cms\custom\CustomPagesController;
 use App\Http\Controllers\cms\custom\EditAboutusController;
+use App\Http\Controllers\cms\custom\IntegrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -421,6 +422,16 @@ Route::prefix('cms/custompages')->group(function () {
     // make contactus page dynamic ..all routes
     Route::get('/edit/contactus/{id}', [EditAboutusController::class, 'editContactus'])->name('cms.custome.edit.contactus');
     Route::post('/main-page-section', [EditAboutusController::class, 'mainPageUpdate'])->name('cms.custome.main-page-section.updata');
+
+    // make integration page dynamic ..all routes
+    Route::get('/edit/integration/{id}', [IntegrationController::class, 'editIntegration'])->name('cms.custome.edit.integration');
+
+    Route::post('/header/update', [IntegrationController::class, 'headerUpdate'])->name('cms.custome.integration-header.update');
+    Route::post('/camera-section/update', [IntegrationController::class, 'cameraSectionUpdate'])->name('cms.custome.integration-camera_section.update');
+    
+    Route::post('/second-camera-section/update', [IntegrationController::class, 'secondCameraSectionUpdate'])->name('cms.custome.integration-second-camera-section.update');
+
+    Route::delete('/second-camera-section/delete/{id}', [IntegrationController::class, 'secondCameraSectionDelete'])->name('cms.custome.integration-second-camera-section.delete');
 
 
 });

@@ -101,6 +101,9 @@
                                 @if ($page->id == 3)
                                 <a disabled="disabled" href="{{route('cms.custome.edit.contactus',$page->id)}}"> <i class="la la-edit"></i> </a>
                                 @endif
+                                @if ($page->id == 4)
+                                <a disabled="disabled" href="{{route('cms.custome.edit.integration',$page->id)}}"> <i class="la la-edit"></i> </a>
+                                @endif
 
                             </td>
                         </tr>

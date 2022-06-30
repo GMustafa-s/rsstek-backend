@@ -178,9 +178,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->wdr !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->wdr)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -188,9 +190,11 @@ $site_dat = App\Models\GeneralSetting::first();
                                     <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Max. Vid. Output Resulution')}}</th>
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->max_resoluton !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->max_resoluton)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -198,9 +202,11 @@ $site_dat = App\Models\GeneralSetting::first();
                                     <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Resolution')}}</th>
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->resoluton !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->resoluton)}}
                                         </td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -209,9 +215,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->sensor)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -220,9 +228,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->ir_range !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->ir_range)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -231,9 +241,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->focal_length !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->focal_length)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -242,9 +254,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->horizontal_fov !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->horizontal_fov)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -253,9 +267,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->aperture !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->aperture)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -264,9 +280,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->aspect_ratio !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->aspect_ratio)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -275,9 +293,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->zoom_focus !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->zoom_focus)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -292,9 +312,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->retention !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->retention)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -303,9 +325,11 @@ $site_dat = App\Models\GeneralSetting::first();
 
 									@isset($comparings)
 									@foreach($comparings as $compare)
+                                    @if($compare->audio_analytics !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->audio_analytics)}}
 										</td>
+                                    @endif
 									@endforeach
 									@endisset
 								</tr>
@@ -320,8 +344,12 @@ $site_dat = App\Models\GeneralSetting::first();
                                             </h3>
 
                                             <h4>{{$tr->setSource('en')->setTarget($site_language)->translate($camera->title)}}</h4>
-                                            
-											<p>{{$tr->setSource('en')->setTarget($site_language)->translate($camera->description)}}</p>
+
+											<p>
+                                                @if($camera->description !=null)
+                                                {!! $tr->setSource('en')->setTarget($site_language)->translate($camera->description) !!}
+                                                @endif
+                                            </p>
 
 											<a href="{{route('camera.slug',$camera->slug)}}" class="more">{{$tr->setSource('en')->setTarget($site_language)->translate('See Details')}}</a>
 										</div>
