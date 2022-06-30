@@ -80,10 +80,6 @@
             </div>
         </div>
         {{-- /Header --}}
-
-       
-
-        @if($page->id==1)
         {{-- Home page top content --}}
 
         <div class="row">
@@ -157,13 +153,6 @@
                 </form>
             </div>
         </div>
-
-
-
-        {{--end hero section--}}
-
-
-
         <div class="card leave-box" id="leave_annual">
             <div class="card-body">
                 <div class="card-body">
@@ -234,8 +223,7 @@
                 </div>
             </div>
         </div>
-
-
+       
 
         <div class="card leave-box" id="leave_annual">
             <div class="card-body">
@@ -254,22 +242,24 @@
                                 </div>
                                 <div class="card-body">
 
-                                    <form action="">
+                                <form action="{{route('cms.custom.aboutus.title')}}" method="post">
+                                        @csrf
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-9">
                                                 <div class="form-group">
-                                                    <label>About Us Heading</label>
-                                                    <input type="text" class="form-control" name="url" value="facebook.com">
+                                                    <label>AboutUs Heading  </label>
+                                                    <input type="text" class="form-control" name="about_us_heading" value="{{$home_page_data->about_us_heading}}">
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button type="submit" class="btn btn-info">Update</button>
+                                                <button type="submit" style="margin-top: 10px;" class="btn add-btn"> <i class="fa fa-edit"></i> update</button>
                                             </div>
                                         </div>
                                     <hr>
+                                       
                                     </form>
 
-                                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_about_us_feature"><i class="fa fa-plus"></i> Add new festure</a>
+                                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_about_us_feature"><i class="fa fa-plus"></i> Add new Feture</a>
                                     <br><br>
                                     <div class="table-responsive table table-bordered">
                                         <table class="table mb-0">
@@ -311,10 +301,216 @@
                 </div>
             </div>
         </div>
-        {{-- Home page Why use RRSTEK section --}}
 
-  
-        @endif
+
+        {{-- Features Section --}}
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{route('cms.custom.features.update')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                <div class="card leave-box mb-5" id="leave_annual">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4 bg-ccc">
+                                <div class="h3 card-title with-switch">
+                                    <br />
+                                    Features Section
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="form-group mb-4">
+                                    <label>Features Section title</label>
+                                    <input type="text" class="form-control" name="features_heading" value="{{$home_page_data->features_heading}}" required />
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label>Features Secttion description</label>
+                                    <input type="text" class="form-control" name="features_description" value="{{$home_page_data->features_description}}" required />
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                    <div class="form-group">
+                                        <label> Features Section Image</label>
+                                        <input name="features_image" type="file" class="form-control">
+                                     </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <img width="100%" src="{{asset('frontend')}}/images/{{$home_page_data->features_image}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="submit-section">
+                                    <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-edit"></i> update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        {{-- /Features --}}
+        <div class="card leave-box" id="leave_annual">
+            <div class="card-body">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 bg-ccc">
+                            <div class="h3 card-title with-switch">
+                                <br>
+                              Business Section
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0">Business</h4>
+                                </div>
+                                <div class="card-body">
+
+                                <form action="{{route('cms.custom.business.title')}}" method="post">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <div class="form-group">
+                                                    <label>section title</label>
+                                                    <input type="text" class="form-control" name="business_heding" value="{{$home_page_data->business_heding}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-3 mt-4">
+                                                <button type="submit" style="margin-top: 10px;" class="btn add-btn"> <i class="fa fa-edit"></i> update</button>
+                                            </div>
+                                        </div>
+                                    <hr>
+                                       
+                                    </form>
+
+                                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#business"><i class="fa fa-plus"></i> Add new business</a>
+                                    <br><br>
+                                    <div class="table-responsive table table-bordered">
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Business Heading</th>
+                                                    <th>Business Heading</th>
+                                                    <th> Description</th>
+                                                    <th>Image</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if($business !=null)
+                                                @foreach($business as $feature)
+                                                <tr>
+                                                    <td>
+                                                       {{$feature->title}}
+                                                    </td>
+                                                    <td>
+                                                        {{$feature->description}}
+                                                    </td>
+                                                    <td>
+                                                        <img height="50" src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$feature->image}}" alt="">
+                                                    </td>
+                                                    <td>
+                                               
+                                                    <a class="dropdown-item" href="{{route('cms.custom.business.delete',$feature->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                                @endif
+                                                                                                     </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card leave-box" id="leave_annual">
+            <div class="card-body">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 bg-ccc">
+                            <div class="h3 card-title with-switch">
+                                <br>
+                              BroadCast Section
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0">Broadcast</h4>
+                                </div>
+                                <div class="card-body">
+
+                                <form action="{{route('cms.custom.broadcast.title')}}" method="post">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <div class="form-group">
+                                                    <label>section title</label>
+                                                    <input type="text" class="form-control" name="broadcast_heding" value="{{$home_page_data->broadcast_heding}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-3 mt-4">
+                                                <button type="submit" style="margin-top: 10px;" class="btn add-btn"> <i class="fa fa-edit"></i> update</button>
+                                            </div>
+                                        </div>
+                                    <hr>
+                                       
+                                    </form>
+
+                                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#broadcast"><i class="fa fa-plus"></i> Add new broadcast</a>
+                                    <br><br>
+                                    <div class="table-responsive table table-bordered">
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Camera</th>
+                                                    <th>Locationing</th>
+                                                    <th>Digree</th>
+                                                    <th>Temprature</th>
+                                                    <th>Image</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if($broadcasts !=null)
+                                                @foreach($broadcasts as $feature)
+                                                <tr>
+                                                    <td>
+                                                       {{$feature->cam}}
+                                                    </td>
+                                                    <td>
+                                                        {{$feature->location}}
+                                                    </td>
+                                                    <td>
+                                                       {{$feature->degree}}
+                                                    </td>
+                                                    <td>
+                                                        {{$feature->temperature}}
+                                                    </td>
+                                                    <td>
+                                                        <img height="50" src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$feature->image}}" alt="">
+                                                    </td>
+                                                    <td>
+                                               
+                                                    <a class="dropdown-item" href="{{route('cms.custom.broadcast.delete',$feature->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                                @endif
+                                                                                                     </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
 <div class="modal custom-modal fade" id="add_what_we_use" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
@@ -372,6 +568,98 @@
                             <div class="form-group">
                                 <label>Feature Description</label>
                                 <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" ></textarea>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="m-t-20 text-center">
+                        <button class="btn btn-primary submit-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal custom-modal fade" id="business" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+            <div class="modal-body">
+                <h5 class="modal-title text-center mb-3">Add new business</h5>
+                <form action="{{route('cms.custom.business.add')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Business Title</label>
+                                <input type="text" name="title" placeholder="" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Business Image</label>
+                                <input name="image" type="file" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Business Description</label>
+                                <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" ></textarea>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="m-t-20 text-center">
+                        <button class="btn btn-primary submit-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal custom-modal fade" id="broadcast" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+            <div class="modal-body">
+                <h5 class="modal-title text-center mb-3">Add new broadcast</h5>
+                <form action="{{route('cms.custom.broadcast.add')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Camera</label>
+                                <input type="text" name="cam" placeholder="" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Locationing</label>
+                                <input type="text" name="location" placeholder="" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Temperature</label>
+                                <input type="text" name="temperature" placeholder="" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Temperature</label>
+                                <input type="text" name="temperature" placeholder="" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Business Image</label>
+                                <input name="image" type="file" class="form-control" required />
                             </div>
                         </div>
                         

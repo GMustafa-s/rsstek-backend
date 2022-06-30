@@ -16,6 +16,10 @@ $site_dat = App\Models\GeneralSetting::first();
 
     }
 ?>
+@section('meta')
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
+@endsection
 <div class="promo">
 			<div style="margin-top: 36px" class="frame">
 				<div class="holder">

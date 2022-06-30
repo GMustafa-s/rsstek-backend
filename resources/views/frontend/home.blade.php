@@ -7,7 +7,8 @@ $wwu = App\Models\whatWeUseImage::get();
 $aboutus_features = App\Models\AboutUsFeature::get();
 $header_info = App\Models\CustomPage::find(1);
 $feature_section = App\Models\HomeFeatureSection::findOrFail(1);
-
+$business = App\Models\HomePageBusinessSection::get();
+$broadcast = App\Models\HomePageroadcastSection::get();
 // $choice_us_section = App\Models\HomeChoiceUsSection::findOrFail(1);
 // dd($choice_us_section);
 
@@ -325,65 +326,24 @@ else{
                 </h1>
                 </div>
                 <div class="holder">
+                @foreach($business as $biz)
                     <div class="col viewport-holder slideDown">
                         <div class="image-holder">
-                            <img src="{{asset('frontend')}}/images/img-01.jpg" alt="image description">
+                            <img src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$biz->image}}" alt="image description">
                         </div>
                         <div class="text">
                             <h2>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($biz->title)}}
                             </h2>
                             <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('onfidence and security without constant control on your part, the stability of all processes in the company - that is what TRASSIR intelligent systems are all about.')}}
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($biz->description)}}
                             </p>
-                            <a href="/Business/index.html" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
+                            <a href="javascript:voide(0)" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
                         </div>
                     </div>
-                    <div class="col viewport-holder slideDown delay-1">
-                        <div class="image-holder">
-                            <img src="{{asset('frontend')}}/images/img-02.jpg" alt="image description">
-                        </div>
-                        <div class="text">
-                            <h2>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Health Care')}}
-                            </h2>
-                            <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Protect people’s health in your area with TRASSIR Healthcare Modules!')}}
-                            </p>
-                            <a href="/health-care/index.html" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="holder">
-                    <div class="col viewport-holder slideDown">
-                        <div class="image-holder">
-                            <img src="{{asset('frontend')}}/images/img-03.jpg" alt="image description">
-                        </div>
-                        <div class="text">
-                            <h2>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
-                            </h2>
-                            <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Intelligent modules for warehouses, sales areas and lands. Protect your business more effectively without raising the number of security guards! Neural network-based systems analyze the data from video cameras, identify dangerous situations and instantly warn on them.')}}
-                            </p>
-                            <a href="/security/index.html" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
-                        </div>
-                    </div>
-                    <div class="col viewport-holder slideDown delay-1">
-                        <div class="image-holder">
-                            <img src="{{asset('frontend')}}/images/img-04.jpg" alt="image description">
-                        </div>
-                        <div class="text">
-                            <h2>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Work Safety')}}
-                            </h2>
-                            <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Labor protection systems from TRASSIR are an investment to your reputation!')}}
-                            </p>
-                            <a href="/work-safety/index.html" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -397,52 +357,32 @@ else{
             </h1>
             </div>
             <div class="holder">
+                @foreach($broadcast as $broad)
                 <div class="col viewport-holder slideDown">
                     <div class="video-box">
-                        <img src="{{asset('frontend')}}/images/img-01.jpg" alt="image description">
+                        <img src="{{asset('frontend')}}/images/custompages/home/broadcast/{{$broad->image}}" alt="image description">
                     </div>
                     <ul class="info">
                         <li>
                             <i class="ico"><img src="{{asset('frontend')}}/images/ico-camera.svg" alt="image description"></i>
-                            <span class="txt">Trassir TR-D4111IR1</span>
+                            <span class="txt">{{$broad->cam}}</span>
                         </li>
                         <li>
                             <i class="ico"><img src="{{asset('frontend')}}/images/ico-temperature.svg" alt="image description"></i>
-                            <span class="txt">20°C</span>
+                            <span class="txt">{{$broad->temperature}}</span>
                         </li>
                         <li>
                             <i class="ico"><img src="{{asset('frontend')}}/images/ico-location.svg" alt="image description"></i>
-                            <span class="txt">Location here DSSL</span>
+                            <span class="txt">{{$broad->location}}</span>
                         </li>
                         <li>
                             <i class="ico"><img src="{{asset('frontend')}}/images/ico-degree.svg" alt="image description"></i>
-                            <span class="txt">100°</span>
+                            <span class="txt">{{$broad->degree}}</span>
                         </li>
                     </ul>
                 </div>
-                <div class="col viewport-holder slideDown delay-1">
-                    <div class="video-box">
-                        <img src="{{asset('frontend')}}/images/img-01.jpg" alt="image description">
-                    </div>
-                    <ul class="info">
-                        <li>
-                            <i class="ico"><img src="{{asset('frontend')}}/images/ico-camera.svg" alt="image description"></i>
-                            <span class="txt">Trassir TR-D4111IR1</span>
-                        </li>
-                        <li>
-                            <i class="ico"><img src="{{asset('frontend')}}/images/ico-temperature.svg" alt="image description"></i>
-                            <span class="txt">20°C</span>
-                        </li>
-                        <li>
-                            <i class="ico"><img src="{{asset('frontend')}}/images/ico-location.svg" alt="image description"></i>
-                            <span class="txt">Location here DSSL</span>
-                        </li>
-                        <li>
-                            <i class="ico"><img src="{{asset('frontend')}}/images/ico-degree.svg" alt="image description"></i>
-                            <span class="txt">100°</span>
-                        </li>
-                    </ul>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>

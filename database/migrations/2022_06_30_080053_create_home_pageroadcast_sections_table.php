@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('page_categories', function (Blueprint $table) {
+        Schema::create('home_pageroadcast_sections', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->string('bg_image');
-            $table->string('slug');
-            $table->string('meta_name')->nullable();
-            $table->string('meta_description')->nullable();
+            $table->string('cam');
+            $table->string('temperature');
+            $table->string('location');
+            $table->string('degree');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_categories');
+        Schema::dropIfExists('home_pageroadcast_sections');
     }
 };

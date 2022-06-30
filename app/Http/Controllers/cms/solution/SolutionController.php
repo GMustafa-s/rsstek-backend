@@ -306,4 +306,22 @@ class SolutionController extends Controller
         }
        return ;
     }
+
+
+    public function solutionPageMetaInfo(Request $request , $id){
+        $solution = PageCategory::find($id);
+        $solution->meta_name = $request->meta_name;
+        $solution->meta_description = $request->meta_description;
+        if($solution->save()){
+            return redirect('/solution')->with('success','solution updated successfully!');
+        }
+    } 
+    public function solutionSubPageMetaInfo(Request $request , $id){
+        $sub_page = SolutionSubPage::find($id);
+        $sub_page->meta_name = $request->meta_name;
+        $sub_page->meta_description = $request->meta_description;
+        if($sub_page->save()){
+            return redirect('/cms/camera')->with('success','solution updated successfully!');
+        }
+    } 
 }

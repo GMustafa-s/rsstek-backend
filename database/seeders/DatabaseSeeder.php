@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutUsFeatureSeeder::class);
         $this->call(SolutionPageSeeder::class);
         $this->call(AboutusPageSeeder::class);
+        $this->call(HomePageBusinesses::class);
+        $this->call(HomePageroadcastSection::class);
+
 
         // \App\Models\User::factory(10)->create();
 

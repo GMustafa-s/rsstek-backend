@@ -15,6 +15,10 @@ $site_dat = App\Models\GeneralSetting::first();
 
     }
 ?>
+@section('meta')
+<meta name="name" content="{{$camera->meta_name}}">
+<meta name="description" content="{{$camera->meta_description}}">
+@endsection
     <div class="promo camera-detail">
         <div class="frame">
             <div class="holder">

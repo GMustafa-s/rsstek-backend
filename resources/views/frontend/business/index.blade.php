@@ -3,7 +3,12 @@
 
 @php
 $site_dat = App\Models\GeneralSetting::first();
+
 @endphp
+@section('meta')
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
+@endsection
 <?php
 
     use Stichoza\GoogleTranslate\GoogleTranslate;

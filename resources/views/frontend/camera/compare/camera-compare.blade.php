@@ -15,6 +15,7 @@ $site_dat = App\Models\GeneralSetting::first();
 
     }
 ?>
+
 <?php $_SESSION['previous'] = basename($_SERVER['PHP_SELF']); ?>
 		<div class="promo camera">
 			<div class="frame">

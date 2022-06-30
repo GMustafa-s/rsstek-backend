@@ -78,4 +78,36 @@
                     </div>
                 </div>
                 </form>
+
+                <div class="row">
+            <div class="col-md-12">
+                <form action="{{route('cms.solution..meta.update',$category->id)}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                <div class="card leave-box mb-5" id="leave_annual">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4 bg-ccc">
+                                <div class="h3 card-title with-switch">
+                                    <br />
+                                    Meta Information
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="form-group mb-4">
+                                    <label>Meta Name</label>
+                                    <input type="text" class="form-control" name="meta_name" value="{{$category->meta_name}}" required />
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label>Meta Description</label>
+                                    <textarea required name="meta_description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" >{{$category->meta_description}}</textarea>
+                                </div>
+                               
+                                <div class="submit-section">
+                                    <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-edit"></i> update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 @endsection

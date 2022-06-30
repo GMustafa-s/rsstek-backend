@@ -389,8 +389,21 @@ Route::prefix('cms/custompages')->group(function () {
     Route::post('what-we-use/update', [CustomPagesController::class, 'homeWhatWeUseUpdate'])->name('cms.custom.update.wwu');
     Route::post('what-we-use/add', [CustomPagesController::class, 'homeWhatWeUseUpadd'])->name('cms.custom.add.wwu');
     Route::get('what-we-use/delete/{id}', [CustomPagesController::class, 'homeWhatWeUseDelete'])->name('cms.custom.delete.wwu');
+    Route::post('aboutus/title', [CustomPagesController::class, 'aboutusTitle'])->name('cms.custom.aboutus.title');
     Route::post('aboutus/add', [CustomPagesController::class, 'aboutusAdd'])->name('cms.custom.aboutus.add');
     Route::get('aboutus/delete/{id}', [CustomPagesController::class, 'aboutusDelete'])->name('cms.custom.aboutus.delete');
+    //features section
+    Route::post('features/update', [CustomPagesController::class, 'faturesUpdate'])->name('cms.custom.features.update');
+    //business section
+    Route::post('business/title', [CustomPagesController::class, 'busniessTitle'])->name('cms.custom.business.title');
+    Route::post('business/add', [CustomPagesController::class, 'busniessadd'])->name('cms.custom.business.add');
+    Route::get('business/delete/{id}', [CustomPagesController::class, 'businessDelete'])->name('cms.custom.business.delete');
+      //broadcast section
+      Route::post('broadcast/title', [CustomPagesController::class, 'broadcastTitle'])->name('cms.custom.broadcast.title');
+      Route::post('broadcast/add', [CustomPagesController::class, 'broadcastadd'])->name('cms.custom.broadcast.add');
+      Route::get('broadcast/delete/{id}', [CustomPagesController::class, 'broadcastDelete'])->name('cms.custom.broadcast.delete');
+
+
 
     Route::get('/update/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
@@ -440,3 +453,7 @@ Route::get('/solution-index', function () {
 })->name('/');
 
 
+//solution meta routes
+Route::post('cms/solution/update/{id}', [SolutionController::class,'solutionPageMetaInfo'])->name('cms.solution..meta.update');
+Route::post('cms/solution/subpage/meta/update/{id}', [SolutionController::class,'solutionSubPageMetaInfo'])->name('cms.solution.sub.meta.update');
+Route::post('cms/camera/meta/update/{id}', [CameraController::class,'MetaInfo'])->name('cms.camera.meta.update');

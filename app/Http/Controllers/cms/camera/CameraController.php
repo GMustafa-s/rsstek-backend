@@ -373,4 +373,14 @@ class CameraController extends Controller
 
         
     }
+
+    public function MetaInfo(Request $request,$id)
+    {
+        $camera = Camera::find($id);
+        $camera->meta_name = $request->meta_name;
+        $camera->meta_description = $request->meta_description;
+        if($camera->save()){
+            return redirect('/cms/camera')->with('success','camera updated successfully!');
+        }
+    }
 }
