@@ -22,13 +22,13 @@
 
 
                         </pre>
-                    
+
                     </div> -->
 					<!-- /Page Header -->
 					@if(session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
 								<strong>Success!</strong>  {{ session()->get('success') }}
-                                
+
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
@@ -44,8 +44,8 @@
                     @endif
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="card mb-0"> 
-							
+							<div class="card mb-0">
+
 								<div class="card-body">
 
 									<d<div class="table-responsive">
@@ -63,10 +63,10 @@
                         </select>
                         entries
                     </label>
-				
+
                 </div>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col-sm-12">
@@ -85,14 +85,23 @@
                          @foreach($pages as $page)
                         <tr role="row" class="odd">
                             <td class="sorting_1">
-								<a href="">{{$page->page_title}}</a>	
+								<a href="">{{$page->page_title}}</a>
 							</td>
                             <td>
                                 {{$page->meta_name}}
                             </td>
-                            
-                            <td style="font-size: 20px;"> 
-                                <a href="{{route('cms.custom.edit',$page->id)}}"> <i class="la la-edit"></i> </a>   
+
+                            <td style="font-size: 20px;">
+                                @if($page->id==1)
+                                <a href="{{route('cms.custome.edit.aboutus',$page->id)}}"><i class="la la-edit"></i></a>
+                                @endif
+                                @if($page->id ==2)
+                                <a href="{{route('cms.custome.edit.aboutus',$page->id)}}"><i class="la la-edit"></i></a>
+                                @endif
+                                @if ($page->id == 3)
+                                <a disabled="disabled" href="{{route('cms.custome.edit.contactus',$page->id)}}"> <i class="la la-edit"></i> </a>
+                                @endif
+
                             </td>
                         </tr>
                         @endforeach
@@ -101,7 +110,7 @@
                             No data
                         </tr>
                         @endif
-                       
+
                     </tbody>
                 </table>
             </div>
@@ -127,8 +136,8 @@
 							</div>
 						</div>
 					</div>
-				
-				</div>			
+
+				</div>
 			</div>
             <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.6.0/ace.js" integrity="sha512-mCwKQ3CvPxkAIwyhkfKGNMEH7mE7VAyoBq3pJIuer8G9BXEDAqnfuMHlt26sdPApAgKAXCPNkLAmMXlEVHezqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <script>
@@ -138,8 +147,8 @@
                     autoScrollEditorIntoView: true,
                     maxLines: 30,
                     minLines: 2
-                   
-                });   
+
+                });
                 console.log(editor2.getValue());
             </script> -->
             <script>

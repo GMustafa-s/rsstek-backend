@@ -6,18 +6,19 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\cms\cumtom\HomeController;
+
+
+
+
 use App\Http\Controllers\settings\GeneralController;
-
-
-
-
 use App\Http\Controllers\cms\camera\CameraController;
 use App\Http\Controllers\cms\solution\SolutionController;
 use App\Http\Controllers\cms\custom\CustomPagesController;
-use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\cms\custom\EditAboutusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -394,9 +395,32 @@ Route::prefix('cms/custompages')->group(function () {
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
 
-    //home page dynamic ..all routes
+    // make home page dynamic ..all routes
     Route::post('/feature', [CustomPagesController::class, 'homeFeatureSection'])->name('cms.custome.feature.update');
     Route::post('/choice-us', [CustomPagesController::class, 'homeChoiceUsSection'])->name('cms.custome.choice-us-section.update');
+
+    // make aboutus page dynamic ..all routes
+    Route::get('/edit/aboutus/{id}', [EditAboutusController::class, 'editAboutus'])->name('cms.custome.edit.aboutus');
+
+    Route::post('/aboutus-page-heading', [EditAboutusController::class, 'aboutusHeadingUpdate'])->name('cms.custome.aboutus_page_heading.update');
+
+    Route::post('/aboutus-top_info-section', [EditAboutusController::class, 'topInfoSectionUpdate'])->name('cms.custome.top_info_section.update');
+
+    Route::post('/aboutus-section', [EditAboutusController::class, 'aboutusSectionUpdate'])->name('cms.custome.aboutus_section.update');
+
+    Route::post('/ourwork-section', [EditAboutusController::class, 'ourworkSectionUpdate'])->name('cms.custome.ourwork_section.update');
+
+    Route::post('/chief-officer', [EditAboutusController::class, 'chiefOfficeUpdate'])->name('cms.custome.chief-office.update');
+
+    Route::post('/our-product', [EditAboutusController::class, 'ourProductUpdate'])->name('cms.custome.our-product.update');
+
+    Route::post('/product-info-section', [EditAboutusController::class, 'productInfoSectionUpdate'])->name('cms.custome.product-info-section.update');
+
+    Route::post('/our-customer', [EditAboutusController::class, 'ourCustomerUpdate'])->name('cms.custome.our-customer.update');
+    // make contactus page dynamic ..all routes
+    Route::get('/edit/contactus/{id}', [EditAboutusController::class, 'editContactus'])->name('cms.custome.edit.contactus');
+    Route::post('/main-page-section', [EditAboutusController::class, 'mainPageUpdate'])->name('cms.custome.main-page-section.updata');
+
 
 });
 
