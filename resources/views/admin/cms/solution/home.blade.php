@@ -93,7 +93,7 @@
                                     </p>
                                     @else
                                     <p id="sub-pages" class="text-hide">
-                                        <a href="{{route('category.sub.slug',['solution'=>$categ->slug,'name'=>$sub_categ->slug])}}">
+                                        <a href="{{route('category.slug',$categ->slug)}}">
                                     {{$sub_categ->title}}</a>
                                     @if($n==$sub_category->count())
                                     <span id="seeless" class="text-hide"> <a onclick="showtext()">...see less</a></span>
@@ -110,7 +110,7 @@
                             </td>
                           
                             <td style="font-size: 20px;"> <span>
-								<a href="{{route('category.slug',$categ->name)}}"><i class="la la-eye"></i></a></span> | <span> <a href="{{route('cms.solution.edit',$categ->id)}}"><i class="la la-edit"></i></a> </span> |
+								<a href="{{route('category.slug',$categ->slug)}}"><i class="la la-eye"></i></a></span> | <span> <a href="{{route('cms.solution.edit',$categ->id)}}"><i class="la la-edit"></i></a> </span> |
 								  <span> <a href="{{route('cms.solution.destroy',$categ->id)}}"><i class="la la-trash"></i> </a></span>
 								 </td>
                         </tr>

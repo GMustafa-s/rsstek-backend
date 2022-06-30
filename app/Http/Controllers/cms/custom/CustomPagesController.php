@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\HomeFeatureSection;
 use App\Http\Controllers\Controller;
 use App\Models\HomeChoiceUsSection;
+use App\Models\HomePage;
+use App\Models\whatWeUseImage;
+use App\Models\AboutUsFeature;
+
+
 
 class CustomPagesController extends Controller
 {
@@ -19,9 +24,12 @@ class CustomPagesController extends Controller
 
     public function edit($id){
         $page = CustomPage::find($id);
+        $home_page_data =  HomePage::first();
+        $home_page_wwu = whatWeUseImage::get();
+        $aboutus_features = AboutUsFeature::get();
         $feature = HomeFeatureSection::find(1);
         $choieUs = HomeChoiceUsSection::find(1);
-        return view('admin.cms.custome-pages.edit',compact('page', 'feature', 'choieUs'));
+        return view('admin.cms.custome-pages.edit',compact('page', 'feature', 'choieUs','home_page_data','home_page_wwu','aboutus_features'));
     }
 
     public function update(Request $request,$id){
@@ -33,7 +41,30 @@ class CustomPagesController extends Controller
             return redirect()->route('cms.custom.index')->with('success','Page Updated Successfully!');
         }
     }
+    public function homeHeaderUpdate(Request $request){
+        $page = HomePage::first();
+        $page->header_heading = $request->header_heading;
+        $page->header_description = $request->header_description;
+        if($page->save()){
+            return redirect()->route('cms.custom.index')->with('success','Page Updated Successfully!');
+        }
+    }
 
+    public function homeHeroSectionUpdate(Request $request){
+        $page = HomePage::first();
+        $page->hero_section_video = $request->hero_section_video;
+        if($page->save()){
+            return redirect()->route('cms.custom.index')->with('success','Page Updated Successfully!');
+        }
+    }
+
+    public function homeWhatWeUseUpdate(Request $request){
+        $page = HomePage::first();
+        $page->what_we_use_heading = $request->what_we_use_heading;
+        if($page->save()){
+            return redirect()->route('cms.custom.index')->with('success','Page Updated Successfully!');
+        }
+    }
     //home page feature section
     public function homeFeatureSection(Request $request)
     {
@@ -109,6 +140,52 @@ class CustomPagesController extends Controller
         }
 
 
+    }
+
+    public function homeWhatWeUseUpadd(Request $request){
+        $wwu = new whatWeUseImage;
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/custompages/home/what-we-use/';
+            $file->move($destinationPath,$filename);
+            $wwu->image = $filename;
+            if($wwu->save()){
+                return redirect()->back()->with('success', 'added successfully');
+            }
+            
+    }
+    public function homeWhatWeUseDelete($id){
+        $wwu = whatWeUseImage::find($id);
+        if($wwu->delete()){
+            return redirect()->back()->with('success', 'deleted successfully');
+        }
+
+    }
+
+    public function aboutusAdd(Request $request){
+        $feature = new AboutUsFeature;
+        $feature->title = $request->title;
+        $feature->description = $request->description;
+        if($request->image){
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/custompages/home/about-features/';
+            $file->move($destinationPath,$filename);
+            $feature->image = $filename;
+        }
+        if($feature->save()){
+
+            return redirect()->back()->with('success', 'added successfully');
+        }
+       
+
+    }
+
+    public function aboutusDelete($id){
+        $feature = AboutUsFeature::find($id);
+        if($feature->delete()){
+            return redirect()->back()->with('success', 'deleted successfully');
+        }
     }
 
 }

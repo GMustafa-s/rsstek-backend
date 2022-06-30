@@ -2,6 +2,9 @@
 <html lang="en">
 @php
 $site_dat = App\Models\GeneralSetting::first();
+$home_data = App\Models\HomePage::first();
+$wwu = App\Models\whatWeUseImage::get();
+$aboutus_features = App\Models\AboutUsFeature::get();
 $header_info = App\Models\CustomPage::find(1);
 $feature_section = App\Models\HomeFeatureSection::findOrFail(1);
 
@@ -164,12 +167,12 @@ else{
 					<div class="text-area">
 						<div class="text viewport-holder slideDown">
 							<h1>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Smart Video')}} <br>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate(' Surveillance Solutions')}}<h1>
+                                
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($home_data->header_heading)}}<h1>
 						</div>
 						<div class="desc">
 							<p class="viewport-holder slideDown delay-1">
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('  We produce all types of devices: video recorders, IP cameras, (including IR and ultrawide-field-of-view cameras) analytical and software modules.')}}</p>
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($home_data->header_description)}}</p>
 							<div class="btn-holder viewport-holder slideDown delay-2">
 								<a href="/Solutions/demo.html" class="btn secondary"><span>
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Get Demo')}}
@@ -201,7 +204,7 @@ else{
 <div class="visual">
     <div class="video-holder">
         <video width="100%" height="654" loop="true" autoplay="autoplay" muted>
-            <source src="{{asset('frontend')}}/images/videos/video-01.mp4" type="video/mp4">
+            <source src="{{asset('frontend')}}/images/videos/{{$home_data->hero_section_video}}" type="video/mp4">
                 {{ $tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
         </video>
     </div>
@@ -237,16 +240,21 @@ else{
                 <h1 class="viewport-holder slideDown"><span>
                 {{ $tr->setSource('en')->setTarget($site_language)->translate('WHAT WE USE')}}
                 </span>
-                {{ $tr->setSource('en')->setTarget($site_language)->translate('We use only high-Quality brands')}}
+                {{ $tr->setSource('en')->setTarget($site_language)->translate($home_data->what_we_use_heading)}}
             </h1>
             </div>
             <div class="brands-logo">
                 <ul class="slick-slider">
-                    <li class="viewport-holder slideDown delay-5"><img src="{{asset('frontend')}}/images/TRASSIR.png" alt="TRASSIR"></li>
+                @if($wwu !=null)
+                    @foreach($wwu as $img)
+                    <li class="viewport-holder slideDown delay-5"><img  src="{{asset('frontend')}}/images/custompages/home/what-we-use/{{$img->image}}" alt="image"></li>
+                    @endforeach
+                    @endif
+                    <!-- <li class="viewport-holder slideDown delay-5"><img src="{{asset('frontend')}}/images/" alt="TRASSIR"></li>
                     <li class="viewport-holder slideDown delay-2"><img src="{{asset('frontend')}}/images/brand-logo-02.svg" alt="VIVOTEK"></li>
                     <li class="viewport-holder slideDown delay-3"><img src="{{asset('frontend')}}/images/brand-logo-03.svg" alt="HIKVISION"></li>
                     <li class="viewport-holder slideDown delay-4"><img src="{{asset('frontend')}}/images/brand-logo-04.svg" alt="ADHUSA"></li>
-                    <li class="viewport-holder slideDown delay-1"><img src="{{asset('frontend')}}/images/brand-logo-01.svg" alt="AXIS"></li>
+                    <li class="viewport-holder slideDown delay-1"><img src="{{asset('frontend')}}/images/brand-logo-01.svg" alt="AXIS"></li> -->
                 </ul>
             </div>
         </div>
@@ -257,96 +265,31 @@ else{
                 <h1><span>
                 {{ $tr->setSource('en')->setTarget($site_language)->translate('about us')}}
                 </span>
-                {{ $tr->setSource('en')->setTarget($site_language)->translate('Why RRSTEK: Bring security together')}}
+                {{ $tr->setSource('en')->setTarget($site_language)->translate($home_data->about_us_heading)}}
             </h1>
             </div>
             <div class="holder">
                 <div class="text-holder">
                     <ol class="accordion" data-accordion="close">
+                        @if($aboutus_features!=null)
+                        @foreach($aboutus_features as $feature)
                         <li class="viewport-holder slideDown delay-1">
                             <a class="opener" href="#">
-                            {{ $tr->setSource('en')->setTarget($site_language)->translate('A compartible solution customization')}}
+                            {{ $tr->setSource('en')->setTarget($site_language)->translate($feature->title)}}
                             </a>
                             <div class="drop">
                                 <hr class="border">
                                 <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Support 99,9% of IP-Cameras can be connected by: Navive integration (manufature protocol) ONVIF RTSP connectivity')}}
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($feature->description)}}
                                 </p>
                                 <div class="img-box">
-                                    <img class="img" src="{{asset('frontend')}}/images/compatible-solution.svg" alt="image description">
+                                    <img class="img" src="{{asset('frontend')}}/images/custompages/home/about-features/{{$feature->image}}" alt="image description">
                                 </div>
                             </div>
                         </li>
-                        <li class="viewport-holder slideDown delay-2">
-                            <a class="opener" href="#">
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Customized')}}
-                            </a>
-                            <div class="drop">
-                                <hr class="border">
-                                <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Addresses unique challenges by using special rules and Phyton scripts')}}
-                                </p>
-                                <div class="img-box">
-                                    <img class="img" src="{{asset('frontend')}}/images/customize-phyton.png" alt="image description">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="viewport-holder slideDown delay-3">
-                            <a class="opener" href="#">
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Project Support')}}
-                            </a>
-                            <div class="drop">
-                                <hr class="border">
-                                <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('RRSTEK professionals build complete solutions for your projects')}}
-                                </p>
-                                <div class="img-box">
-                                    <img class="img" src="{{asset('frontend')}}/images/project-support.svg" alt="image description">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="viewport-holder slideDown delay-4">
-                            <a class="opener" href="#">
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Pre-Sale Demo')}}
-                            </a>
-                            <div class="drop">
-                                <hr class="border">
-                                <p>
-                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Our engineers can demonstrate system functions remotly')}}
-                                </p>
-                                <div class="img-box">
-                                    <img class="img" src="{{asset('frontend')}}/images/pre-sale-demo.png" alt="image description">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="viewport-holder slideDown delay-5">
-                            <a class="opener" href="#">
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Technical Support')}}
-                            </a>
-                            <div class="drop">
-                                <hr class="border">
-                                <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Agile cutomer serviceand direct response to complaints')}}
-                                </p>
-                                <div class="img-box">
-                                    <img class="img" src="{{asset('frontend')}}/images/technical-support.png" alt="image description">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="viewport-holder slideDown delay-6">
-                            <a class="opener" href="#">
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Advertising Support')}}
-                            </a>
-                            <div class="drop">
-                                <hr class="border">
-                                <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate('Printed and electronic promotional materials are available to the partners')}}
-                                </p>
-                                <div class="img-box">
-                                    <img class="img" src="{{asset('frontend')}}/images/Advertising Support.jpg" alt="image description">
-                                </div>
-                            </div>
-                        </li>
+                        @endforeach
+                        @endif
+                        
                     </ol>
                 </div>
             </div>
@@ -358,14 +301,14 @@ else{
                 <div class="heading-area viewport-holder slideDown">
                     <h1>
                         <span>{{ $tr->setSource('en')->setTarget($site_language)->translate('Features')}}</span>
-                       {{ $tr->setSource('en')->setTarget($site_language)->translate($feature_section->feature_heading)}}
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate($home_data->features_heading)}}
                     </h1>
                     <p>
-                       {{ $tr->setSource('en')->setTarget($site_language)->translate($feature_section->feature_description)}}
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate($home_data->features_description)}}
                     </p>
                 </div>
                 <div class="product viewport-holder slideDown delay-1">
-                    <img class="viewport-holder slideDown delay-2" src="{{asset('frontend')}}/images/home_feature_section/{{$feature_section->feature_image}}" alt="image description">
+                    <img class="viewport-holder slideDown delay-2" src="{{asset('frontend')}}/images/{{$home_data->features_image}}" alt="image description">
 
                     <!-- <img class="viewport-holder slideDown delay-1" src="images/home-illustration-Background-Image.png" alt="image description">
                     <img class="image-2 viewport-holder slideDown delay-2"  src="images/home-illustration-Names-And-Arrows.png" alt="image description"> -->
@@ -378,7 +321,7 @@ else{
                     <h1><span>
                        {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                     </span>
-                       {{ $tr->setSource('en')->setTarget($site_language)->translate('Choose Your Business')}}
+                       {{ $tr->setSource('en')->setTarget($site_language)->translate($home_data->business_heding)}}
                 </h1>
                 </div>
                 <div class="holder">
@@ -450,7 +393,7 @@ else{
                 <h1><span>
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('BROADCAST')}}
                 </span>
-                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Video Broadcast')}}
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate($home_data->broadcast_heding)}}
             </h1>
             </div>
             <div class="holder">

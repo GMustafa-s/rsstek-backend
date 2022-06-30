@@ -381,7 +381,16 @@ Route::prefix('cms/camera')->group(function () {
 Route::prefix('cms/custompages')->group(function () {
     Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');
     Route::get('/edit/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
-    Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update');
+    Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update.meta');
+    Route::post('home-header/update', [CustomPagesController::class, 'homeHeaderUpdate'])->name('cms.custom.update.header');
+    Route::post('hero-section/update', [CustomPagesController::class, 'homeHeroSectionUpdate'])->name('cms.custom.update.hero');
+    Route::post('what-we-use/update', [CustomPagesController::class, 'homeWhatWeUseUpdate'])->name('cms.custom.update.wwu');
+    Route::post('what-we-use/add', [CustomPagesController::class, 'homeWhatWeUseUpadd'])->name('cms.custom.add.wwu');
+    Route::get('what-we-use/delete/{id}', [CustomPagesController::class, 'homeWhatWeUseDelete'])->name('cms.custom.delete.wwu');
+    Route::post('aboutus/add', [CustomPagesController::class, 'aboutusAdd'])->name('cms.custom.aboutus.add');
+    Route::get('aboutus/delete/{id}', [CustomPagesController::class, 'aboutusDelete'])->name('cms.custom.aboutus.delete');
+
+    Route::get('/update/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
 
@@ -404,3 +413,5 @@ Route::post('roles/revok', [PermissionsController::class,'revokeRole'])->name('u
 Route::get('/solution-index', function () {
     return view('frontend.solutions.demo');
 })->name('/');
+
+
