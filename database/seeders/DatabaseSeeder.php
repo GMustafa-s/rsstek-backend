@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(HomePageBusinesses::class);
         $this->call(HomePageroadcastSection::class);
 
+        $this->call(IntegrationsPageSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

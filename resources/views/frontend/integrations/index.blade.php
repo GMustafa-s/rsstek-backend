@@ -1,5 +1,23 @@
 @extends('frontend.index')
 @section('content')
+@php
+    $site_dat = App\Models\GeneralSetting::first();
+    $heading_section = App\Models\Integration::find(1);
+    $cameras = App\Models\Camera::all();
+    $second_camera_sections = App\Models\IntegrationSecondCameraSection::all();
+
+@endphp
+<?php
+    use Stichoza\GoogleTranslate\GoogleTranslate;
+    $tr = new GoogleTranslate();
+    $language = session()->get('language');
+    if($language){
+        $site_language = $language;
+    }
+    else{
+        $site_language = $site_dat->language;
+    }
+?>
     <div class="promo integ">
         <div class="frame">
             <div class="holder">
@@ -10,9 +28,16 @@
                             <li><a href="{{route('/integrations')}}">Integrations</a></li>
                         </ul>
                         <div class="text">
-                            <h1 class="viewport-holder slideDown delay-1">Ecosystem security in your hands</h1>
-                            <p class="viewport-holder slideDown delay-2">Designed to integrate with the technology you use
-                                daily.</p>
+                            <h1 class="viewport-holder slideDown delay-1">
+                                @if($heading_section->header_heading)
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($heading_section->header_heading)}} 
+                                 @endif
+                            </h1>
+                            <p class="viewport-holder slideDown delay-2">
+                                @if($heading_section->header_description) 
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($heading_section->header_description)}} 
+                                @endif
+                            </p>
                             <a href="{{route('demo')}}" class="btn sec">Get Demo</a>
                         </div>
                     </div>
@@ -36,11 +61,17 @@
     <main id="main">
         <div class="text-frame">
             <div class="container">
-                <h2 class="viewport-holder slideDown"><span><i>CAMERA</i></span> With RRSTEK, you don't need to rip and
-                    replace.</h2>
-                <p class="viewport-holder slideDown delay-1">Unlock enhanced flexibility and integrate the systems, tools,
-                    and devices your teams use every day to get the most out of the TRASSIR Cloud™ video management system,
-                    Ava Cloud Connector</p>
+                <h2 class="viewport-holder slideDown"><span><i>CAMERA</i></span>
+                    @if($heading_section->camera_heading) 
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate($heading_section->camera_heading)}} 
+                    @endif
+                    
+                <h2>
+                <p class="viewport-holder slideDown delay-1">
+                    @if($heading_section->camera_description)
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate($heading_section->camera_description)}} 
+                    @endif
+                </p>
             </div>
         </div>
         <div class="items-holder">
@@ -50,108 +81,69 @@
                         <h2><span><i>PRODUCT</i></span>RRSTEK Camera</h2>
                     </div>
                     <div class="frame">
-                        <div class="item viewport-holder slideDown delay-2">
-                            <div class="box viewport-holder slideDown">
-                                <div class="img viewport-holder slideDown delay-3">
-                                    <img src="{{asset('frontend')}}/images/products/camera-02.png" alt="image description">
-                                </div>
-                                <div class="txt">
-                                    <h3 class="viewport-holder slideDown delay-4">TR-D3181IR3</h3>
-                                    <p class="viewport-holder slideDown delay-5">IP-camera adapted for outdoor use in places
-                                        of direct access, regardless of the season: protection of the case against moisture
-                                        and ....</p>
-                                    <a href="" class="details viewport-holder slideDown delay-6">See Details</a>
-                                </div>
-                            </div>
-                        </div>
+                        @if($cameras != null)
+                        @foreach ($cameras as $camera)
                         <div class="item viewport-holder slideDown delay-3">
                             <div class="box viewport-holder slideDown">
                                 <div class="img viewport-holder slideDown delay-4">
-                                    <img src="{{asset('frontend')}}/images/products/camera-02.png" alt="image description">
+                                    <img src="{{asset('frontend')}}/images/camera/{{$camera->image}}" 
+                                    alt="{!! $tr->setSource('en')->setTarget($site_language)->translate($camera->title) !!}">
                                 </div>
                                 <div class="txt">
-                                    <h3 class=" viewport-holder slideDown delay-5">TR-D3183ZIR3 v2</h3>
-                                    <p class=" viewport-holder slideDown delay-6">IP-camera adapted for outdoor use in
-                                        places of direct access, regardless of the season: protection of the case against
-                                        moisture and ....</p>
-                                    <a href="#" class="details  viewport-holder slideDown delay-7">See Details</a>
+                                    <h3 class="viewport-holder slideDown delay-5">
+                                        @if($camera->title !=null)
+                                        {!! $tr->setSource('en')->setTarget($site_language)->translate($camera->title) !!} 
+                                        @endif
+                                    </h3>
+                                    <p class="viewport-holder slideDown delay-6">
+                                        @if($camera->description !=null)
+                                        {!! $tr->setSource('en')->setTarget($site_language)->translate($camera->description) !!} 
+                                        @endif
+                                    </p>
+                                    <a href="{{route('camera.slug', $camera->slug)}}" class="details viewport-holder slideDown delay-7">See Details</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="item viewport-holder slideDown delay-2">
-                            <div class="box viewport-holder slideDown">
-                                <div class="img viewport-holder slideDown delay-3">
-                                    <img src="{{asset('frontend')}}/images/products/camera-03.png" alt="image description">
-                                </div>
-                                <div class="txt">
-                                    <h3 class="viewport-holder slideDown delay-4">TR-D2183IR6 v2</h3>
-                                    <p class="viewport-holder slideDown delay-5">IP-camera adapted for outdoor use in places
-                                        of direct access, regardless of the season: protection of the case against moisture
-                                        and ....</p>
-                                    <a href="#" class="details viewport-holder slideDown delay-6">See Details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item viewport-holder slideDown delay-3">
-                            <div class="box viewport-holder slideDown">
-                                <div class="img viewport-holder slideDown delay-4">
-                                    <img src="{{asset('frontend')}}/images/products/camera-03.png" alt="image description">
-                                </div>
-                                <div class="txt">
-                                    <h3 class="viewport-holder slideDown delay-5">TR-D2183IR6 v2</h3>
-                                    <p class="viewport-holder slideDown delay-6">IP-camera adapted for outdoor use in places
-                                        of direct access, regardless of the season: protection of the case against moisture
-                                        and ....</p>
-                                    <a href="#" class="details viewport-holder slideDown delay-7">See Details</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+                        @else
+                            <p class="text-center">No Camera Page Available</p>
+                        @endif
                     </div>
                 </div>
                 <div class="holder">
                     <div class="heading viewport-holder slideDown delay-1">
-                        <h2><span><i>CAMERA</i></span>Third-party security cameras</h2>
+                        <h2><span><i>CAMERA</i></span>
+                            @if($heading_section->second_camera_heading !=null)
+                            {!! $tr->setSource('en')->setTarget($site_language)->translate($heading_section->second_camera_heading) !!} 
+                            @endif
+                        </h2>
                     </div>
                     <div class="frame">
-                        <div class="item viewport-holder slideDown delay-2">
-                            <div class="box viewport-holder slideDown">
-                                <div class="img viewport-holder slideDown delay-3">
-                                    <img src="{{asset('frontend')}}/images/camera-onvif.png" alt="image description">
-                                </div>
-                                <div class="txt">
-                                    <h3 class="viewport-holder slideDown delay-4">ONIV</h3>
-                                    <p class="viewport-holder slideDown delay-5">Your ONVIF-conformant IP physical security
-                                        products integrate with the flexible Aware Cloud VMS.</p>
-                                    <a href="#" class="details viewport-holder slideDown delay-6">See Details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item viewport-holder slideDown delay-3">
-                            <div class="box viewport-holder slideDown">
-                                <div class="img viewport-holder slideDown delay-4">
-                                    <img src="{{asset('frontend')}}/images/camera-vapix.png" alt="image description">
-                                </div>
-                                <div class="txt">
-                                    <h3 class="viewport-holder slideDown delay-5">VAPIX</h3>
-                                    <p class="viewport-holder slideDown delay-6">Connect your existing Axis security cameras
-                                        with the Aware Cloud VMS to gain proactive insights.</p>
-                                    <a href="#" class="details viewport-holder slideDown delay-7">See Details</a>
-                                </div>
-                            </div>
-                        </div>
+                        @if($second_camera_sections !=null)
+                        @foreach ($second_camera_sections as $second_camera_section)
+                            
+                        @endforeach
                         <div class="item viewport-holder slideDown delay-2">
                             <div class="box viewport-holder slideDown">
                                 <div class="img viewport-holder slideDown delay-3">
                                     <img src="{{asset('frontend')}}/images/camera-vivotek.png" alt="image description">
                                 </div>
                                 <div class="txt">
-                                    <h3 class="viewport-holder slideDown delay-4">Vivotek</h3>
-                                    <p class="viewport-holder slideDown delay-5">Connect your existing Vivotek security
-                                        cameras with the Aware Cloud VMS to gain proactive insights.</p>
+                                    <h3 class="viewport-holder slideDown delay-4">
+                                        @if($second_camera_section->name !=null)
+                                        {!! $tr->setSource('en')->setTarget($site_language)->translate($second_camera_section->name) !!} 
+                                        @endif
+                                    </h3>
+                                    <p class="viewport-holder slideDown delay-5">
+                                        @if($second_camera_section->description !=null)
+                                        {!! $tr->setSource('en')->setTarget($site_language)->translate($second_camera_section->description) !!} 
+                                        @endif
+                                    </p>
                                     <a href="#" class="details viewport-holder slideDown delay-6">See Details</a>
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="holder">

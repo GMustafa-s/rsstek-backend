@@ -145,9 +145,9 @@
                                             <label for="">Icon</label>
                                             <input type="file" class="form-control" name="icon_1" value=""/>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="imgColor" class="col-4">
                                             @if($top_info_section->icon_1 !=null)
-                                            <img src="{{asset('frontend')}}/images/About-rrstek/top-info-section-icon/{{$top_info_section->icon_1}}" alt="icon" width="auto" height="100" />
+                                            <img  src="{{asset('frontend')}}/images/About-rrstek/top-info-section-icon/{{$top_info_section->icon_1}}" alt="icon" width="auto" height="100" />
                                             @else
                                                 <p class="row mt-4"> no icon </p>
                                             @endif
@@ -170,7 +170,7 @@
                                             <label for="">Icon</label>
                                             <input type="file" class="form-control" name="icon_2" value=""/>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="imgColor" class="col-4">
                                             @if($top_info_section->icon_2 !=null)
                                             <img src="{{asset('frontend')}}/images/About-rrstek/top-info-section-icon/{{$top_info_section->icon_2}}" alt="icon" width="auto" height="100" />
                                             @else
@@ -195,7 +195,7 @@
                                             <label for="">Icon</label>
                                             <input type="file" class="form-control" name="icon_3" value="" />
                                         </div>
-                                        <div class="col-4">
+                                        <div class="imgColor" class="col-4">
                                             @if($top_info_section->icon_3 !=null)
                                             <img src="{{asset('frontend')}}/images/About-rrstek/top-info-section-icon/{{$top_info_section->icon_3}}" alt="icon" width="auto" height="100" />
                                             @else

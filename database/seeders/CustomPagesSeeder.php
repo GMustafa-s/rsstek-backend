@@ -26,12 +26,17 @@ class CustomPagesSeeder extends Seeder
             ],
             [
                 'page_title' =>'About Us',
-                'meta_name' =>'Home page',
+                'meta_name' =>'About us page',
                 'meta_description' =>'meta descriptio will be here',
             ],
             [
                 'page_title' =>'Contact Us',
-                'meta_name' =>'Home page',
+                'meta_name' =>'Contact us page',
+                'meta_description' =>'meta descriptio will be here',
+            ],
+            [
+                'page_title' =>'Integration',
+                'meta_name' =>'Integration page',
                 'meta_description' =>'meta descriptio will be here',
             ],
         ];
