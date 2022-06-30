@@ -380,6 +380,7 @@ Route::prefix('cms/camera')->group(function () {
 
 });
 Route::prefix('cms/custompages')->group(function () {
+    Route::post('/header/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update');
     Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');
     Route::get('/edit/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update.meta');
