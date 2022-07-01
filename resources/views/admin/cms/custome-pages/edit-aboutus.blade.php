@@ -39,10 +39,10 @@
                 </button>
             </div>
         @endif
-            {{-- Header --}}
+            {{-- meta section --}}
         <div class="row">
             <div class="col-md-12">
-                <form action="{{route('cms.custom.update',$page->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('cms.custom.update.meta',$page->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
@@ -50,7 +50,7 @@
                             <div class="col-4 bg-ccc">
                                 <div class="h3 card-title with-switch">
                                     <br />
-                                    Header Information
+                                    Meta Information
                                 </div>
                             </div>
                             <div class="col-8">
@@ -78,7 +78,7 @@
                 </form>
             </div>
         </div>
-        {{-- /Header --}}
+        {{-- /meta section --}}
 
          {{-- About Us Page  --}}
 

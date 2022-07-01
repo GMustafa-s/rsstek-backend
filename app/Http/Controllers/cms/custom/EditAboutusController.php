@@ -6,6 +6,7 @@ use App\Models\CustomPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\ContactUs;
 use Illuminate\Support\Facades\File;
 
 class EditAboutusController extends Controller
@@ -519,12 +520,30 @@ class EditAboutusController extends Controller
 
                 //contactus functions for  dynamic page content
     public function editContactus(Request $request){
-        $page = CustomPage::find(3);
 
-        return view('admin.cms.custome-pages.edit-contactus', compact('page'));
+        $page = CustomPage::find(3);
+        $contactus = ContactUs::find(1);
+        return view('admin.cms.custome-pages.edit-contactus', compact('page','contactus'));
     }
     //main page section
-    public function mainPageUpdate(){
-        dd('function');
+    public function contactusMainUpdate(Request $request){
+        $data = ContactUs::find(1);
+        if($data !=null){
+            $data = new ContactUs;
+        }
+        if($request->main_heading){
+            $data->main_heading = $request->main_heading;
+        }
+        if($request->small_description){
+            $data->small_description = $request->small_description;
+        }
+        if($data->save)
+        {
+            return redirect()->back()->with('success' , 'Contact us page data has been updated successfully');
+        }else{
+            return redirect()->back()->with('error' , 'Something went wrong!');
+
+        }
+
     }
 }

@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 class HomePageroadcastSection extends Seeder
 {
     /**
@@ -28,6 +29,6 @@ class HomePageroadcastSection extends Seeder
             'degree' => '100°',
             'image' => 'img-01.jpg',
         ]);
-        
+
     }
 }

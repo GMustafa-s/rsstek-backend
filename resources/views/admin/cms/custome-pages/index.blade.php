@@ -90,21 +90,8 @@
                             <td>
                                 {{$page->meta_name}}
                             </td>
-
                             <td style="font-size: 20px;">
-                                @if($page->id==1)
                                 <a href="{{route('cms.custom.edit',$page->id)}}"><i class="la la-edit"></i></a>
-                                @endif
-                                @if($page->id ==2)
-                                <a href="{{route('cms.custome.edit.aboutus',$page->id)}}"><i class="la la-edit"></i></a>
-                                @endif
-                                @if ($page->id == 3)
-                                <a disabled="disabled" href="{{route('cms.custome.edit.contactus',$page->id)}}"> <i class="la la-edit"></i> </a>
-                                @endif
-                                @if ($page->id == 4)
-                                <a disabled="disabled" href="{{route('cms.custome.edit.integration',$page->id)}}"> <i class="la la-edit"></i> </a>
-                                @endif
-
                             </td>
                         </tr>
                         @endforeach

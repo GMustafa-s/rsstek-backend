@@ -381,7 +381,6 @@ Route::prefix('cms/camera')->group(function () {
 
 });
 Route::prefix('cms/custompages')->group(function () {
-    Route::post('/header/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update');
     Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');
     Route::get('/edit/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update.meta');
@@ -406,7 +405,6 @@ Route::prefix('cms/custompages')->group(function () {
 
 
 
-    Route::get('/update/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
 
@@ -415,7 +413,7 @@ Route::prefix('cms/custompages')->group(function () {
     Route::post('/choice-us', [CustomPagesController::class, 'homeChoiceUsSection'])->name('cms.custome.choice-us-section.update');
 
     // make aboutus page dynamic ..all routes
-    Route::get('/edit/aboutus/{id}', [EditAboutusController::class, 'editAboutus'])->name('cms.custome.edit.aboutus');
+    Route::get('/aboutus/edit/{id}', [EditAboutusController::class, 'editAboutus'])->name('cms.custome.edit.aboutus');
 
     Route::post('/aboutus-page-heading', [EditAboutusController::class, 'aboutusHeadingUpdate'])->name('cms.custome.aboutus_page_heading.update');
 
@@ -432,19 +430,62 @@ Route::prefix('cms/custompages')->group(function () {
     Route::post('/product-info-section', [EditAboutusController::class, 'productInfoSectionUpdate'])->name('cms.custome.product-info-section.update');
 
     Route::post('/our-customer', [EditAboutusController::class, 'ourCustomerUpdate'])->name('cms.custome.our-customer.update');
+
     // make contactus page dynamic ..all routes
-    Route::get('/edit/contactus/{id}', [EditAboutusController::class, 'editContactus'])->name('cms.custome.edit.contactus');
-    Route::post('/main-page-section', [EditAboutusController::class, 'mainPageUpdate'])->name('cms.custome.main-page-section.updata');
+    Route::get('/contactus/edit/{id}', [EditAboutusController::class, 'editContactus'])->name('cms.custome.edit.contactus');
+    Route::post('/contactus-main-section', [EditAboutusController::class, 'contactusMainUpdate'])->name('cms.custome.contactus-main-section.update');
 
     // make integration page dynamic ..all routes
-    Route::get('/edit/integration/{id}', [IntegrationController::class, 'editIntegration'])->name('cms.custome.edit.integration');
+    Route::get('/integration/edit/{id}', [IntegrationController::class, 'editIntegration'])->name('cms.custome.edit.integration');
 
+    //header update
     Route::post('/header/update', [IntegrationController::class, 'headerUpdate'])->name('cms.custome.integration-header.update');
-    Route::post('/camera-section/update', [IntegrationController::class, 'cameraSectionUpdate'])->name('cms.custome.integration-camera_section.update');
-    
-    Route::post('/second-camera-section/update', [IntegrationController::class, 'secondCameraSectionUpdate'])->name('cms.custome.integration-second-camera-section.update');
 
+    //camera section heading and description update
+    Route::post('/camera-section/update', [IntegrationController::class, 'cameraSectionUpdate'])->name('cms.custome.integration-camera_section.update');
+
+    // second camera section heading update
+    Route::post('/second-camera-section/update', [IntegrationController::class, 'secondCameraSectionUpdate'])->name('cms.custome.integration-second-camera-section.update');
+    // second camera section create
+    Route::post('/second-camera-section/create', [IntegrationController::class, 'secondCameraSectionCreate'])->name('cms.custome.integration-second-camera-section.create');
+    // second camera section delete
     Route::delete('/second-camera-section/delete/{id}', [IntegrationController::class, 'secondCameraSectionDelete'])->name('cms.custome.integration-second-camera-section.delete');
+
+    // control section heading update
+    Route::post('/control-section/update', [IntegrationController::class, 'controlSectionUpdate'])->name('cms.custome.integration-control-section.update');
+    // control section create
+    Route::post('/control-section/create', [IntegrationController::class, 'controlSectionCreate'])->name('cms.custome.integration-control-section.create');
+    // control section delete
+    Route::delete('/control-section/delete/{id}', [IntegrationController::class, 'controlSectionDelete'])->name('cms.custome.integration-control-section.delete');
+
+    // outputs section heading update
+    Route::post('/outputs-section/update', [IntegrationController::class, 'outputsSectionUpdate'])->name('cms.custome.integration-outputs-section.update');
+    // outputs section create
+    Route::post('/outputs-section/create', [IntegrationController::class, 'outputsSectionCreate'])->name('cms.custome.integration-outputs-section.create');
+    // outputs section delete
+    Route::delete('/outputs-section/delete/{id}', [IntegrationController::class, 'outputsSectionDelete'])->name('cms.custome.integration-outputs-section.delete');
+
+    // management section heading update
+    Route::post('/management-section/update', [IntegrationController::class, 'managementSectionUpdate'])->name('cms.custome.integration-management-section.update');
+    // management section create
+    Route::post('/management-section/create', [IntegrationController::class, 'managementSectionCreate'])->name('cms.custome.integration-management-section.create');
+    // management section delete
+    Route::delete('/management-section/delete/{id}', [IntegrationController::class, 'managementSectionDelete'])->name('cms.custome.integration-management-section.delete');
+
+    // providers section heading update
+    Route::post('/providers-section/update', [IntegrationController::class, 'providersSectionUpdate'])->name('cms.custome.integration-providers-section.update');
+    // providers section create
+    Route::post('/providers-section/create', [IntegrationController::class, 'providersSectionCreate'])->name('cms.custome.integration-providers-section.create');
+    // providers section delete
+    Route::delete('/providers-section/delete/{id}', [IntegrationController::class, 'providersSectionDelete'])->name('cms.custome.integration-providers-section.delete');
+
+    // communication tools section heading update
+    Route::post('/communication-tools-section/update', [IntegrationController::class, 'communicationToolsSectionUpdate'])->name('cms.custome.integration-communication-tools-section.update');
+    // communication tools section create
+    Route::post('/communication-tools-section/create', [IntegrationController::class, 'communicationToolsSectionCreate'])->name('cms.custome.integration-communication-tools-section.create');
+    // communication tools section delete
+    Route::delete('/communication-tools-section/delete/{id}', [IntegrationController::class, 'communicationToolsSectionDelete'])->name('cms.custome.integration-communication-tools-section.delete');
+
 
 
 });

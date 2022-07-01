@@ -39,10 +39,10 @@
                 </button>
             </div>
         @endif
-            {{-- Header --}}
+            {{-- meta section --}}
         <div class="row">
             <div class="col-md-12">
-                <form action="{{route('cms.custom.update',$page->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('cms.custom.update.meta',$page->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
@@ -50,7 +50,7 @@
                             <div class="col-4 bg-ccc">
                                 <div class="h3 card-title with-switch">
                                     <br />
-                                    Header Information
+                                    Meta Information
                                 </div>
                             </div>
                             <div class="col-8">
@@ -78,13 +78,14 @@
                 </form>
             </div>
         </div>
-        {{-- /Header --}}
+            {{-- /meta section --}}
+
 
 
         {{-- contactus main section--}}
         <div class="row">
             <div class="col-md-12">
-                <form action="{{route('cms.custome.main-page-section.updata')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('cms.custome.contactus-main-section.update')}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
@@ -98,27 +99,12 @@
                             <div class="col-8">
                                 <div class="form-group mb-4">
                                     <label>Main Heading</label>
-                                    <input type="text" class="form-control" name="our_heading" value="" required />
+                                    <input type="text" class="form-control" name="main_heading" value="@if($contactus->main_heading !=null){{$contactus->main_heading}} @endif" required />
                                 </div>
 
                                 <div class="form-group mb-4">
                                     <label>Small Description</label>
-                                    <textarea rows="3" cols="5" maxlength="200" class="form-control" name="our_description"  required></textarea>
-                                </div>
-                                <div class="form-group mb-4 ">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label>Background Image</label>
-                                            <input type="file" name="our_image" class="form-control">
-                                        </div>
-                                        <div class="col-6">
-                                            {{-- @if($aboutus_section->our_image !=null)
-                                            <img src="{{asset('frontend')}}/images/About-rrstek/aboutus-section/{{$aboutus_section->our_image}}" alt="img" width="auto" height="100" />
-                                            @else
-                                                <p class="row mt-4" > no image</p>
-                                            @endif --}}
-                                        </div>
-                                    </div>
+                                    <textarea rows="3" cols="5" maxlength="200" class="form-control" name="small_description"  required>"@if($contactus->main_heading !=null){{$contactus->small_description}} @endif</textarea>
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-edit"></i> update</button>

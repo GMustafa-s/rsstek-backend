@@ -109,6 +109,7 @@ class AboutusPageSeeder extends Seeder
             'image' => 'img-world-map.png',
 
         ]);
+        
 
     }
 }

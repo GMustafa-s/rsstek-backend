@@ -27,6 +27,17 @@ class CustomPagesController extends Controller
     }
 
     public function edit($id){
+        if($id == 2){
+            return redirect()->route('cms.custome.edit.aboutus', $id);
+        }
+        else if($id == 3){
+            return redirect()->route('cms.custome.edit.contactus', $id);
+
+        }
+        else if($id == 4){
+            return redirect()->route('cms.custome.edit.integration', $id);
+
+        }
         $page = CustomPage::find($id);
         $home_page_data =  HomePage::first();
         $home_page_wwu = whatWeUseImage::get();
@@ -82,7 +93,7 @@ class CustomPagesController extends Controller
             if($wwu->save()){
                 return redirect()->back()->with('success', 'added successfully');
             }
-            
+
     }
     public function homeWhatWeUseDelete($id){
         $wwu = whatWeUseImage::find($id);
@@ -115,7 +126,7 @@ class CustomPagesController extends Controller
 
             return redirect()->back()->with('success', 'added successfully');
         }
-       
+
 
     }
 
@@ -178,7 +189,7 @@ public function busniessadd(Request $request){
         if($home_page_data->save()){
             return redirect()->back()->with('success', 'updated successfully');
         }
-    
+
     }
 
     public function broadcastadd(Request $request){

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutUsFeatureSeeder::class);
         $this->call(SolutionPageSeeder::class);
         $this->call(AboutusPageSeeder::class);
+        $this->call(ContactUsSeeder::class);
         $this->call(HomePageBusinesses::class);
         $this->call(HomePageroadcastSection::class);
 
