@@ -306,7 +306,7 @@
                                             <input type="file" class="form-control" name="sub_heading_1_icon"  />
                                         </div>
                                     </div>
-                                    <div class="col-2 mt-4">
+                                    <div class="col-2 workImage">
                                         @if($ourwork_section->sub_heading_1_icon !=null)
                                         <img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_1_icon}}" alt="icon" width="auto" height="50  " />
                                         @else
@@ -330,7 +330,7 @@
                                             <input type="file" class="form-control" name="sub_heading_2_icon" />
                                         </div>
                                     </div>
-                                    <div class="col-2 mt-4">
+                                    <div class="col-2 workImage">
                                         @if($ourwork_section->sub_heading_2_icon !=null)
                                         <img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_2_icon}}" alt="icon" width="auto" height="50  " />
                                         @else
@@ -354,7 +354,7 @@
                                             <input type="file" class="form-control" name="sub_heading_3_icon"  />
                                         </div>
                                     </div>
-                                    <div class="col-2 mt-4">
+                                    <div class="col-2 workImage">
                                         @if($ourwork_section->sub_heading_3_icon !=null)
                                         <img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_3_icon}}" alt="icon" width="auto" height="50  " />
                                         @else
@@ -378,7 +378,7 @@
                                             <input type="file" class="form-control" name="sub_heading_4_icon" />
                                         </div>
                                     </div>
-                                    <div class="col-2 mt-4">
+                                    <div class="col-2 workImage">
                                         @if($ourwork_section->sub_heading_4_icon !=null)
                                         <img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_4_icon}}" alt="icon" width="auto" height="50  " />
                                         @else
@@ -478,7 +478,7 @@
                                         <label for="icon_1">Icon</label>
                                         <input type="file" class="form-control" name="icon_1"/>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2 ourProductImage">
                                         @if($our_product->icon_1 !=null)
                                         <img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_1}}" alt="img" width="auto" height="100" />
                                         @else
@@ -497,7 +497,7 @@
                                         <label for="icon_2">Icon</label>
                                         <input type="file" class="form-control" name="icon_2" value=""/>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2 ourProductImage">
                                         @if($our_product->icon_2 !=null)
                                         <img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_2}}" alt="img" width="auto" height="100" />
                                         @else
@@ -516,7 +516,7 @@
                                         <label for="icon_3">Icon</label>
                                         <input type="file" class="form-control" name="icon_3" value=""/>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2 ourProductImage">
                                         @if($our_product->icon_3 !=null)
                                         <img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_3}}" alt="img" width="auto" height="100" />
                                         @else
@@ -535,7 +535,7 @@
                                         <label for="icon_4">Icon</label>
                                         <input type="file" class="form-control" name="icon_4" value=""/>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2 ourProductImage">
                                         @if($our_product->icon_4 !=null)
                                         <img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_4}}" alt="img" width="50" height="50" />
                                         @else
@@ -588,7 +588,7 @@
                                             <label for="icon_1">Icon</label>
                                             <input type="file" class="form-control" name="icon_1" value="" required />
                                         </div>
-                                        <div class="col-4 py-4">
+                                        <div class="imgColor" class="col-4">
                                             @if($product_info_section->icon_1 !=null)
                                             <img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_1}}" alt="img" width="auto" height="100" />
                                             @else
@@ -613,7 +613,7 @@
                                             <label for="icon_2">Icon</label>
                                             <input type="file" class="form-control" name="icon_2" value="" required />
                                         </div>
-                                        <div class="col-4 py-4">
+                                        <div class="imgColor" class="col-4">
                                             @if($product_info_section->icon_2 !=null)
                                             <img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_2}}" alt="img" width="auto" height="100" />
                                             @else
@@ -638,7 +638,7 @@
                                             <label for="icon_3">Icon</label>
                                             <input type="file" class="form-control" name="icon_3" value="" required />
                                         </div>
-                                        <div class="col-4 py-4">
+                                        <div class="imgColor" class="col-4">
                                             @if($product_info_section->icon_3 !=null)
                                             <img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_3}}" alt="img" width="auto" height="100" />
                                             @else
@@ -663,7 +663,7 @@
                                             <label for="icon_4">Icon</label>
                                             <input type="file" class="form-control" name="icon_4" value="" required />
                                         </div>
-                                        <div class="col-4 py-4">
+                                        <div class="imgColor" class="col-4">
                                             @if($product_info_section->icon_4 !=null)
                                             <img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_4}}" alt="img" width="auto" height="100" />
                                             @else

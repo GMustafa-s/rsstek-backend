@@ -1123,6 +1123,27 @@ table.dataTable thead > tr > td.sorting {
 
 /* custome styling */
 .imgColor{
+    padding: 12px;
+    margin: 9px;
+    border-radius: 8px;
+    background: #00c5fb;
+	background: -moz-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
+	background: -webkit-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
+	background: -ms-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
+	background: linear-gradient(to right, #00c5fb 0%, #0253cc 100%);
+}
+.workImage{
+    padding: 30px;
+    border-radius: 8px;
+    background: #00c5fb;
+	background: -moz-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
+	background: -webkit-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
+	background: -ms-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
+	background: linear-gradient(to right, #00c5fb 0%, #0253cc 100%);
+}
+.ourProductImage{
+    padding: 6px;
+    border-radius: 8px;
     background: #00c5fb;
 	background: -moz-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
 	background: -webkit-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
