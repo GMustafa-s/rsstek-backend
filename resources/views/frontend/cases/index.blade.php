@@ -6,7 +6,7 @@
                 <div class="container">
                     <div class="box">
                         <ul class="breadcrumbs viewport-holder slideDown">
-                            <li><a href="{{ route('/work_safety') }}">Main</a></li>
+                            <li><a href="{{ route('work.safety') }}">Main</a></li>
                             <li><a href="{{ route('/cases') }}">cases</a></li>
                         </ul>
                         <div id="text-banner-overview" class="text">

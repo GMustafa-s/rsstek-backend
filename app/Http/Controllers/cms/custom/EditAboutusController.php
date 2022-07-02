@@ -527,17 +527,16 @@ class EditAboutusController extends Controller
     }
     //main page section
     public function contactusMainUpdate(Request $request){
-        $data = ContactUs::find(1);
+        $data = ContactUs::first();
         if($data !=null){
-            $data = new ContactUs;
+            if($request->main_heading){
+                $data->main_heading = $request->main_heading;
+            }
+            if($request->small_description){
+                $data->small_description = $request->small_description;
+            }
         }
-        if($request->main_heading){
-            $data->main_heading = $request->main_heading;
-        }
-        if($request->small_description){
-            $data->small_description = $request->small_description;
-        }
-        if($data->save)
+        if($data->save())
         {
             return redirect()->back()->with('success' , 'Contact us page data has been updated successfully');
         }else{

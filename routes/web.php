@@ -14,6 +14,8 @@ use App\Http\Controllers\cms\cumtom\HomeController;
 
 
 
+use App\Http\Controllers\cms\custom\DemoController;
+use App\Http\Controllers\cms\custom\CasesController;
 use App\Http\Controllers\settings\GeneralController;
 use App\Http\Controllers\cms\camera\CameraController;
 use App\Http\Controllers\cms\solution\SolutionController;
@@ -45,7 +47,7 @@ Route::get('cache', function () {
 Route::get('migrate', function () {
     Artisan::call('migrate:refresh');
     Artisan::call('db:seed');
-    dd("migrated");
+    dd("migrated and db seeded");
 
 });
 
@@ -485,7 +487,12 @@ Route::prefix('cms/custompages')->group(function () {
     Route::post('/communication-tools-section/create', [IntegrationController::class, 'communicationToolsSectionCreate'])->name('cms.custome.integration-communication-tools-section.create');
     // communication tools section delete
     Route::delete('/communication-tools-section/delete/{id}', [IntegrationController::class, 'communicationToolsSectionDelete'])->name('cms.custome.integration-communication-tools-section.delete');
+                //Cases Page
+    Route::get('/cases/edit/{id}', [CasesController::class, 'editCases'])->name('cms.custome.edit.cases');
 
+
+                //Demo Page
+    Route::get('/demo/edit/{id}', [DemoController::class, 'editDemo'])->name('cms.custome.edit.demo');
 
 
 });

@@ -38,6 +38,14 @@ class CustomPagesController extends Controller
             return redirect()->route('cms.custome.edit.integration', $id);
 
         }
+        else if($id == 5){
+            return redirect()->route('cms.custome.edit.cases', $id);
+
+        }
+        else if($id == 6){
+            return redirect()->route('cms.custome.edit.demo', $id);
+
+        }
         $page = CustomPage::find($id);
         $home_page_data =  HomePage::first();
         $home_page_wwu = whatWeUseImage::get();

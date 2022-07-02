@@ -17,6 +17,7 @@
         @endif
 @php
 $site_dat = App\Models\GeneralSetting::first();
+$contactus = App\Models\ContactUs::first();
 @endphp
 
 <?php
@@ -42,10 +43,16 @@ $site_dat = App\Models\GeneralSetting::first();
                         </ul>
 
                         <div id="text-banner-overview" class="text">
-                            <h1 class="viewport-holder slideDown delay-1">{{$tr->setSource('en')->setTarget($site_language)->translate('Have a question?')}}</h1>
+                            <h1 class="viewport-holder slideDown delay-1">
+                                @if($contactus->main_heading !=null)
+                                {{$tr->setSource('en')->setTarget($site_language)->translate($contactus->main_heading)}}
+                                @endif
+                            </h1>
 
                             <p class=" viewport-holder slideDown delay-2">
-                                {{$tr->setSource('en')->setTarget($site_language)->translate('Lets talk about what you need. Fill out the form and well get back to you.')}}
+                                @if($contactus->small_description !=null)
+                                {{$tr->setSource('en')->setTarget($site_language)->translate($contactus->small_description)}}
+                                @endif
                             </p>
                             <div></div>
                             <div class="vl viewport-holder slideDown delay-3"></div>
@@ -116,7 +123,7 @@ $site_dat = App\Models\GeneralSetting::first();
                                     placeholder="Region/Country" name="country" required>
                                 <datalist id="Country">
                                     @foreach ($countries as $country)
-                                        <option value="{{$tr->setSource('en')->setTarget($site_language)->translate('$country->country_name')}}" />
+                                        <option value="{{$tr->setSource('en')->setTarget($site_language)->translate($country->country_name)}}" />
                                     @endforeach
                                 </datalist>
                             </div>

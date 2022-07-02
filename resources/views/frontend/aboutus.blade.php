@@ -143,8 +143,10 @@ else{
                     <span><i>
                     {{$tr->setSource('en')->setTarget($site_language)->translate('OUR WORK')}}
                     </i></span>
+                    @if($ourwork_section->our_work_heading !=null)
                     {{$tr->setSource('en')->setTarget($site_language)
                     ->translate($ourwork_section->our_work_heading)}}
+                    @endif
                 </h2>
             </div>
             <div id="linebreak2" class="holder">
@@ -152,7 +154,9 @@ else{
                     <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_1_icon}}" alt="image"></i>
                     <div class="frame">
                         <p>
+                            @if($ourwork_section->sub_heading_1 !=null)
                             {{$tr->setSource('en')->setTarget($site_language)->translate($ourwork_section->sub_heading_1)}}
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -160,7 +164,9 @@ else{
                     <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_2_icon}}" alt="image"></i>
                     <div class="frame">
                         <p>
+                            @if($ourwork_section->sub_heading_2 !=null)
                             {{$tr->setSource('en')->setTarget($site_language)->translate($ourwork_section->sub_heading_2)}}
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -168,7 +174,9 @@ else{
                     <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_3_icon}}" alt="image"></i>
                     <div class="frame">
                         <p>
+                            @if($ourwork_section->sub_heading_3 !=null)
                             {{$tr->setSource('en')->setTarget($site_language)->translate($ourwork_section->sub_heading_3)}}
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -176,7 +184,10 @@ else{
                     <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_4_icon}}" alt="image"></i>
                     <div class="frame">
                         <p>
+
+                            @if($ourwork_section->sub_heading_4 !=null)
                             {{$tr->setSource('en')->setTarget($site_language)->translate($ourwork_section->sub_heading_4)}}
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -195,11 +206,15 @@ else{
                 <span><i>
                     {{$tr->setSource('en')->setTarget($site_language)->translate('Chief Executive Officer')}}
                 </i></span>
+                @if($chief_officer->name !=null)
                 {{$tr->setSource('en')->setTarget($site_language)->translate($chief_officer->name)}}
+                @endif
               </h2>
               <p class="viewport-holder slideDown delay-3">
+                @if($chief_officer->about !=null)
                 {{$tr->setSource('en')->setTarget($site_language)
                 ->translate($chief_officer->about)}}
+                @endif
 
               </p>
               <!-- <a href="active-post.html" class="viewport-holder slideDown delay-4 more"
@@ -215,7 +230,9 @@ else{
                 <h2><span><i>
                 {{$tr->setSource('en')->setTarget($site_language)->translate('ABOUT OUR PRODUCT')}}
                 </i></span>
+                @if($our_product->heading !=null)
                 {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->heading)}}
+                @endif
                 </h2>
             </div>
             <div class="holder">
@@ -224,7 +241,9 @@ else{
                         <i><img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_1}}" alt="image"></i>
                     </div>
                     <p>
+                        @if($our_product->text_1 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->text_1)}}
+                        @endif
                     </p>
                 </div>
                 <div class="box viewport-holder slideDown delay-3">
@@ -232,7 +251,9 @@ else{
                         <i><img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_2}}" alt="image"></i>
                     </div>
                     <p>
+                        @if($our_product->text_2 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->text_2)}}
+                        @endif
                     </p>
                 </div>
                 <div class="box viewport-holder slideDown delay-4">
@@ -240,7 +261,9 @@ else{
                         <i><img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_3}}" alt="image"></i>
                     </div>
                     <p>
+                        @if($our_product->text_3 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->text_3)}}
+                        @endif
                     </p>
                 </div>
                 <div class="box viewport-holder slideDown delay-5">
@@ -248,8 +271,10 @@ else{
                         <i><img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_4}}" alt="image"></i>
                     </div>
                     <p>
+                        @if($our_product->text_4 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->text_4)}}
-                        </p>
+                        @endif
+                    </p>
                 </div>
             </div>
         </div>
@@ -259,38 +284,55 @@ else{
             <div id="linebreak" class="holder">
                 <div  class="text-box viewport-holder slideDown delay-2">
                     <h3>
+                        @if($product_info_section->value_1 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->value_1)}}
+                        @endif
                         <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_1}}" alt="image"></i>
                     </h3>
 
                     <p id="p1">
+                        @if($product_info_section->text_1 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->text_1)}}
+                        @endif
 
                     </p>
                 </div>
                 <div class="text-box viewport-holder slideDown delay-3">
                     <h3>
+                        @if($product_info_section->value_2 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->value_2)}}
+                        @endif
                         <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_2}}" alt="image"></i>
                     </h3>
                     <p>
+                        @if($product_info_section->text_2 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->text_2)}}
+                        @endif
                     </p>
                 </div>
                 <div class="text-box viewport-holder slideDown delay-4">
                     <h3>
+                        @if($product_info_section->value_3 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->value_3)}}
+                        @endif
+
                         <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_3}}" alt="image"></i></h3>
                     <p>
+                        @if($product_info_section->text_3 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->text_3)}}
+                        @endif
                     </p>
                 </div>
                 <div class="text-box viewport-holder slideDown delay-5">
                     <h3>
+                        @if($product_info_section->value_4 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->value_4)}}
+                        @endif
                         <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_4}}" alt="image"></i></h3>
                     <p>
+                        @if($product_info_section->text_4 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->text_4)}}
+                        @endif
                     </p>
                 </div>
             </div>
@@ -303,7 +345,9 @@ else{
                     <span><i>
                         {{$tr->setSource('en')->setTarget($site_language)->translate('OUR Customer')}}
                     </i></span>
+                    @if($our_customer->heading !=null)
                     {{$tr->setSource('en')->setTarget($site_language)->translate($our_customer->heading)}}
+                    @endif
                 </h2>
             </div>
         </div>

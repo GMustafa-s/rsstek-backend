@@ -2,6 +2,7 @@
 @section('content')
 
 <?php
+$site_dat = App\Models\GeneralSetting::first();
  use Stichoza\GoogleTranslate\GoogleTranslate;
  $tr = new GoogleTranslate();
  $language = session()->get('language');

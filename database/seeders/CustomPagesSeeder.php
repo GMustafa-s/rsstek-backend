@@ -39,6 +39,16 @@ class CustomPagesSeeder extends Seeder
                 'meta_name' =>'Integration page',
                 'meta_description' =>'meta descriptio will be here',
             ],
+            [
+                'page_title' =>'Cases',
+                'meta_name' =>'Cases page',
+                'meta_description' =>'meta descriptio will be here',
+            ],
+            [
+                'page_title' =>'Demo',
+                'meta_name' =>'Demo page',
+                'meta_description' =>'meta descriptio will be here',
+            ],
         ];
 
         foreach($customes as $custom){
