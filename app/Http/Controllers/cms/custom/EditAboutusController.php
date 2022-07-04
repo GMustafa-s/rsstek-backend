@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\cms\custom;
 
+use App\Models\ContactUs;
+use App\Models\contact_us;
 use App\Models\CustomPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\ContactUs;
 use Illuminate\Support\Facades\File;
 
 class EditAboutusController extends Controller
@@ -522,12 +523,12 @@ class EditAboutusController extends Controller
     public function editContactus(Request $request){
 
         $page = CustomPage::find(3);
-        $contactus = ContactUs::find(1);
+        $contactus = contact_us::find(1);
         return view('admin.cms.custome-pages.edit-contactus', compact('page','contactus'));
     }
     //main page section
     public function contactusMainUpdate(Request $request){
-        $data = ContactUs::first();
+        $data = contact_us::first();
         if($data !=null){
             if($request->main_heading){
                 $data->main_heading = $request->main_heading;

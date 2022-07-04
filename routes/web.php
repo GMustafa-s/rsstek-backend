@@ -487,8 +487,12 @@ Route::prefix('cms/custompages')->group(function () {
     Route::post('/communication-tools-section/create', [IntegrationController::class, 'communicationToolsSectionCreate'])->name('cms.custome.integration-communication-tools-section.create');
     // communication tools section delete
     Route::delete('/communication-tools-section/delete/{id}', [IntegrationController::class, 'communicationToolsSectionDelete'])->name('cms.custome.integration-communication-tools-section.delete');
+    //End integration page
+
                 //Cases Page
     Route::get('/cases/edit/{id}', [CasesController::class, 'editCases'])->name('cms.custome.edit.cases');
+    //heading section
+    Route::post('/cases/header/update', [CasesController::class, 'headerUpdate'])->name('cms.custome.cases-header.update');
 
 
                 //Demo Page

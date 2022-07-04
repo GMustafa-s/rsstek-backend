@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
-use App\Models\contactus;
+// use App\Models\contactuses;
 use App\Models\ContactUsForm;
 use App\Models\Demo;
 use App\Models\installationQuery;

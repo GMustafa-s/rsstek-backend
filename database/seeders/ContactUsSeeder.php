@@ -17,7 +17,7 @@ class ContactUsSeeder extends Seeder
     {
         //
         //cantact us page section
-        DB::table('contact_us')->insert([
+        DB::table('contact_uses')->insert([
             'main_heading' => 'Have a question?',
             'small_description' => 'Lets talk about what you need. Fill out the form and we\'ll get back to you.',
 

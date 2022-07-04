@@ -12,12 +12,13 @@
             <div class="alert-error">
                 <p>
                     {{ session()->get('error') }}
-                </p>
+            </p>
             </div>
         @endif
 @php
 $site_dat = App\Models\GeneralSetting::first();
-$contactus = App\Models\ContactUs::first();
+$contactus = App\Models\contact_us::first();
+// dd($contactus)
 @endphp
 
 <?php
