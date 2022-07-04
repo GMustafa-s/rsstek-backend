@@ -15,6 +15,7 @@ $broadcast = App\Models\HomePageroadcastSection::get();
 @endphp
 
 <body>
+@include('frontend.layouts.header')
     <?php
 use Stichoza\GoogleTranslate\GoogleTranslate;
 $tr = new GoogleTranslate();
@@ -281,7 +282,6 @@ else{
     @include('frontend.common.demo_booking')
 </main>
 @include('frontend.layouts.footer')
-@include('frontend.layouts.header')
 </div>
 
 
