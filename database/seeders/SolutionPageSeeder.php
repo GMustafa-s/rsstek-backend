@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SolutionPageSeeder extends Seeder
 {
@@ -15,6 +15,8 @@ class SolutionPageSeeder extends Seeder
      */
     public function run()
     {
+
+        // solution pages
         DB::table('page_categories')->insert([
             'name' => 'hardhat',
             'description' => 'Support 99,9% of IP-Cameras can be connected by: Navive integratio (manufature protocol) ONVIF RTSP connectivity',
@@ -23,5 +25,7 @@ class SolutionPageSeeder extends Seeder
         ]);
 
         
+
+
     }
 }
