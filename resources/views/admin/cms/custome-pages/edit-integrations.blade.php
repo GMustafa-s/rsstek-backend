@@ -740,7 +740,7 @@
 </div>
 {{-- /control section popup form --}}
 
-{{-- control section popup form --}}
+{{-- outputs section popup form --}}
 <div class="modal custom-modal fade" id="outputs_section" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
@@ -779,7 +779,7 @@
         </div>
     </div>
 </div>
-{{-- /control section popup form --}}
+{{-- /outputs section popup form --}}
 
 {{-- management section popup form --}}
 <div class="modal custom-modal fade" id="management_section" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">

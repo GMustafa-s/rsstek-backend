@@ -32,6 +32,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AllCountriesSeeder::class);
 
         $this->call(CasesSeeder::class);
+        $this->call(OurWorkSeeder::class);
+
+        $this->call(DemoSeeder::class);
 
 
         // \App\Models\User::factory(10)->create();

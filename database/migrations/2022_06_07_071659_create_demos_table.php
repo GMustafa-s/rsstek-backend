@@ -15,8 +15,16 @@ return new class extends Migration
     {
         Schema::create('demos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
+            $table->string('main_heading');
+            $table->string('main_description');
+
+            $table->string('demo_section_heading');
+
+            $table->string('security_section_heading');
+            $table->string('security_section_description');
+            $table->string('security_section_image');
+
+
             $table->timestamps();
         });
     }

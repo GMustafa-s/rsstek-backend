@@ -493,10 +493,27 @@ Route::prefix('cms/custompages')->group(function () {
     Route::get('/cases/edit/{id}', [CasesController::class, 'editCases'])->name('cms.custome.edit.cases');
     //heading section
     Route::post('/cases/header/update', [CasesController::class, 'headerUpdate'])->name('cms.custome.cases-header.update');
+    // ourwork section heading update
+    // it is common page
+    Route::post('/our-work/header' , [CasesController::class, 'ourWorkSectionHeadingUpdate'])->name('our-work-common-page-heading');
+    // ourwork section update
+    Route::post('/our-work/update', [CasesController::class, 'ourWorkSectionUpdate'])->name('cms.custome.our-work-section.update');
+    // ourwork section delete
+    Route::delete('/our-work/delete/{id}', [CasesController::class, 'ourWorkSectionDelete'])->name('cms.custome.our-work-section.delete');
 
 
                 //Demo Page
     Route::get('/demo/edit/{id}', [DemoController::class, 'editDemo'])->name('cms.custome.edit.demo');
+     // demo page heading update
+     Route::post('/demo/header' , [DemoController::class, 'demoHeadingUpdate'])->name('cms.custome.demo-heading.update');
+     // get demo section heading update
+     Route::post('/get-demo/heading/update' , [DemoController::class, 'getDemoHeadingUpdate'])->name('cms.custome.get-demo-heading.update');
+     // get demo section update
+     Route::post('/get-demo/update' , [DemoController::class, 'getDemoUpdate'])->name('cms.custome.get-demo.update');
+     // get demo section delete
+     Route::delete('/get-demo/delete/{id}' , [DemoController::class, 'getDemoDelete'])->name('cms.custome.get-demo.delete');
+     // regular security needs section delete
+     Route::post('/security-needs' , [DemoController::class, 'securityNeedsUpdate'])->name('cms.custome.security-needs.update');
 
 
 });

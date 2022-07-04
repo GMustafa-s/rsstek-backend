@@ -72,7 +72,7 @@ $site_dat = App\Models\GeneralSetting::first();
                                 </h1>
 							<div class="text viewport-holder slideDown delay-1">
 								<p class="viewport-holder slideDown delay-2">
-                                    {{$tr->setSource('en')->setTarget($site_language)->translate($page->description)}}
+                                    {!! $tr->setSource('en')->setTarget($site_language)->translate($page->description) !!}
                                 </p>
 							</div>
 						</div>
@@ -83,7 +83,7 @@ $site_dat = App\Models\GeneralSetting::first();
                                 {{$tr->setSource('en')->setTarget($site_language)->translate($section->title)}}
                             </h2>
 							<div class="text viewport-holder slideDown delay-5">
-                                {{$tr->setSource('en')->setTarget($site_language)->translate($section->body)}}
+                                {!! $tr->setSource('en')->setTarget($site_language)->translate($section->body) !!}
 							</div>
 						</div>
 						@endforeach
