@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('video');
             $table->string('slug');
             $table->string('meta_name')->nullable();
-            $table->string('meta_description')->nullable();
+            $table->longText('meta_description')->nullable();
             $table->timestamps();
         });
     }
