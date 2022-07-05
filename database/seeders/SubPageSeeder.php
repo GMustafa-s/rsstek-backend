@@ -23,7 +23,7 @@ class SubPageSeeder extends Seeder
             'description' => 'sub page description',
             'fetaured_image' => 'Bg-Image.png',
             'video' => 'video.mp4',
-            'slug' => 'hardhat sub page 1',
+            'slug' => 'hardhat-sub-page-1',
             'meta_name' => 'hardhat sub page 1 meta name',
             'meta_description' => 'hardhat sub page 1 meta description',
         ]);
@@ -53,7 +53,7 @@ class SubPageSeeder extends Seeder
             'description' => 'sub page description',
             'fetaured_image' => 'Bg-Image.png',
             'video' => 'video.mp4',
-            'slug' => 'hardhat sub page 1',
+            'slug' => 'hardhat-sub-page-12',
             'meta_name' => 'hardhat sub page 1 meta name',
             'meta_description' => 'hardhat sub page 1 meta description',
         ]);

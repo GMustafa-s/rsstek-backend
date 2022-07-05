@@ -21,7 +21,7 @@ class PageCategory extends Seeder
             'name' => 'Business',
         ]);
         DB::table('page_categories')->insert([
-            'name' => 'Healthcared',
+            'name' => 'Healthcare',
         ]);
         DB::table('page_categories')->insert([
             'name' => 'Security',
