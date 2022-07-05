@@ -23,7 +23,7 @@ class UserController extends Controller
 
         // dd($user->getRoleName('Hacker'));
 
-        $users = User::all();
+        $users = User::where('name', '!=' , 'admin')->get();
         $roles = Role::all();
         return view('admin.users.index', compact('users','roles'));
     }
@@ -70,7 +70,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-       
+
         $user = User::findOrFail($id);
         return view('admin.users.show', ['user'=>$user]);
     }
@@ -84,7 +84,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $roles = Role::all();
+        $roles = Role::where('name', '!=', 'admin')->get();
 
         $assigned_roles = DB::table('model_has_roles')->where('model_id',$id)
         ->join('roles','roles.id','=','model_has_roles.role_id')

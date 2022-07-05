@@ -3,6 +3,7 @@
 
 @php
 $site_dat = App\Models\GeneralSetting::first();
+$pc = App\Models\PageCategory::all();
 
 @endphp
 @section('meta')
@@ -69,6 +70,7 @@ style="background-image: url('{{ asset('frontend/images/' . $page->name.'/'.$pag
         <div class="container">
 
             @if($sub_pages->count()>0)
+
                 @foreach($sub_pages as $sub_page)
                 <?php $n = 1; ?>
                 @if($n % 2 == 0)
@@ -101,9 +103,10 @@ style="background-image: url('{{ asset('frontend/images/' . $page->name.'/'.$pag
                         {{$tr->setSource('en')->setTarget($site_language)->translate($sub_page->title)}}
                     </h2>
                     <p class="viewport-holder slideDown delay-3">
-                        {{$tr->setSource('en')->setTarget($site_language)->translate($sub_page->description)}}
+                        {!! $tr->setSource('en')->setTarget($site_language)->translate($sub_page->description) !!}
                     </p>
-                    <a class="viewport-holder slideDown delay-4 more" href="workspace-detector.html">
+
+                    <a class="viewport-holder slideDown delay-4 more" href="{{route('category.sub.slug',['solution'=>$sub_page->parent_slug,'name'=>$sub_page->slug])}}">
                         <span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span>
                     </a>
                 </div>

@@ -320,9 +320,6 @@ class EditAboutusController extends Controller
                  $filename_1 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
                 $file->move($destinationPath, $filename_1);
-                $data_array = [
-                    'icon_1' => $filename_1,
-                ];
 
             }
             if($request->text_2){
@@ -333,9 +330,6 @@ class EditAboutusController extends Controller
                 $filename_2 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
                 $file->move($destinationPath, $filename_2);
-                $data_array = [
-                    'icon_2' => $filename_2,
-                ];
 
             }
             if($request->text_3){
@@ -346,10 +340,6 @@ class EditAboutusController extends Controller
                 $filename_3 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
                 $file->move($destinationPath, $filename_3);
-                $data_array = [
-                    'icon_3' => $filename_3,
-                ];
-
             }
             if($request->text_4){
                 $t4 = $request->text_4;
@@ -359,9 +349,6 @@ class EditAboutusController extends Controller
                 $filename_4 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
                 $file->move($destinationPath, $filename_4);
-                $a = [
-                    'icon_4' => $filename_4,
-                ];
 
             }
             $result = DB::table('aboutus_about_our_product_section')->where('id', '1')->update([

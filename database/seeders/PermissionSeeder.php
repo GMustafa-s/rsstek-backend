@@ -53,6 +53,10 @@ class PermissionSeeder extends Seeder
                 'guard_name' =>'web'
             ],
             [
+                'name' =>'general.settings.view',
+                'guard_name' =>'web'
+            ],
+            [
                 'name' =>'contactus.quesries.view',
                 'guard_name' =>'web'
             ],
@@ -62,6 +66,10 @@ class PermissionSeeder extends Seeder
             ],
             [
                 'name' =>'demo.quesries.view',
+                'guard_name' =>'web'
+            ],
+            [
+                'name' =>'cms.custome.pages.index',
                 'guard_name' =>'web'
             ],
             [
@@ -113,9 +121,9 @@ class PermissionSeeder extends Seeder
                 'guard_name' =>'web'
             ],
 
-            
-            
-            
+
+
+
         ];
 
         foreach($permissions as $permission){

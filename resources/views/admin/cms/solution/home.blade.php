@@ -19,7 +19,7 @@
 					@if(session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
 								<strong>Success!</strong>  {{ session()->get('success') }}
-                                
+
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
@@ -35,11 +35,11 @@
                     @endif
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="card mb-0"> 
-							
+							<div class="card mb-0">
+
 								<div class="card-body">
 
-									<d<div class="table-responsive">
+									<div class="table-responsive">
     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
         <div class="row">
             <div class="col-sm-12 col-md-6">
@@ -54,7 +54,7 @@
                         </select>
                         entries
                     </label>
-				
+
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
@@ -77,18 +77,18 @@
                          @foreach($category as $categ)
                         <tr role="row" class="odd">
                             <td class="sorting_1">
-								<a href="{{route('category.slug',$categ->slug)}}">{{$categ->name}}</a>	
+								<a href="{{route('category.slug',$categ->slug)}}">{{$categ->name}}</a>
 							</td>
 							<td class="sorting_1">
                                 <?php
                                 $n=1;
-                                ?> 
+                                ?>
                                 @foreach($sub_category as $sub_categ)
                                     @if($sub_categ->page_categories_id == $categ->id)
                                     @if($n==1)
                                     <p>
                                     <a href="{{route('category.sub.slug',['solution'=>$categ->slug,'name'=>$sub_categ->slug])}}">{{$sub_categ->title}}</a>
-                                  
+
                                     <span id="seemore"> <a onclick="showtext()">...see more</a></span>
                                     </p>
                                     @else
@@ -99,8 +99,8 @@
                                     <span id="seeless" class="text-hide"> <a onclick="showtext()">...see less</a></span>
                                     @endif
                                     </p>
-                                   
-                                       
+
+
                                     @endif
                                     @endif
                                     <?php
@@ -108,7 +108,7 @@
                                 ?>
                                 @endforeach
                             </td>
-                          
+
                             <td style="font-size: 20px;"> <span>
 								<a href="{{route('category.slug',$categ->slug)}}"><i class="la la-eye"></i></a></span> | <span> <a href="{{route('cms.solution.edit',$categ->id)}}"><i class="la la-edit"></i></a> </span> |
 								  <span> <a href="{{route('cms.solution.destroy',$categ->id)}}"><i class="la la-trash"></i> </a></span>
@@ -121,7 +121,7 @@
                         </tr>
 
                         @endif
-                       
+
                     </tbody>
                 </table>
             </div>
@@ -147,8 +147,8 @@
 							</div>
 						</div>
 					</div>
-				
-				</div>			
+
+				</div>
 			</div>
             <script>
                 function showtext(){

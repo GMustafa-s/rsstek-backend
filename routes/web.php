@@ -297,7 +297,7 @@ Route::group(['middleware' => ['auth']], function() {
     /**
      * User Routes
      */
-    Route::group(['prefix' => 'users'], function() {
+    Route::prefix('users')->middleware(['auth', 'can:users.view'])->group(function() {
         Route::get('/', [UserController::class,'index'])->name('users.index');
         Route::get('/create',  [UserController::class,'create'])->name('users.create');
         Route::post('/create',  [UserController::class,'store'])->name('users.store');
@@ -307,7 +307,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::delete('/{user}/delete',  [UserController::class,'destroy'])->name('users.destroy');
     });
 
-    Route::prefix('settings')->group(function () {
+    Route::prefix('settings')->middleware(['auth', 'can:general.settings.view'])->group(function () {
         Route::resource('general',GeneralController::class)->middleware('auth');;
         Route::post('add-site-info', [GeneralController::class, 'createSiteInfo'])->name('add.siteinfo');
         Route::post('add-contatct-info', [GeneralController::class, 'createContactInfo'])->name('add.contactInfo');
@@ -323,19 +323,19 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 
-Route::prefix('contactus')->group(function () {
+Route::prefix('contactus')->middleware(['auth', 'can:contactus.quesries.view'])->group(function () {
     Route::post('/add', [ContactUsController::class, 'store'])->name('add.contactus');
     Route::get('/show', [ContactUsController::class, 'show'])->name('show.contactus');
  });
 
  Route::get('contactus', [ContactUsController::class, 'index'])->name('/contactus');
  //demo routes
- Route::prefix('demo')->group(function () {
+ Route::prefix('demo')->middleware(['auth', 'can:demo.quesries.view'])->group(function () {
     Route::post('/add', [ContactUsController::class, 'demoStore'])->name('add.demo');
     Route::get('/show', [ContactUsController::class, 'demoShow'])->name('show.demo');
  });
 
- Route::prefix('intallation')->group(function () {
+ Route::prefix('intallation')->middleware(['auth' , 'can:installation.quesries.view'])->group(function () {
     Route::post('/add', [ContactUsController::class, 'installationStore'])->name('add.intallation');
     Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
  });
@@ -345,19 +345,20 @@ Route::prefix('contactus')->group(function () {
     Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('cms.show.intallation');
  });
 
- Route::prefix('solution')->group(function () {
-    Route::get('/', [SolutionController::class, 'index'])->name('cms.solution.index');
-    Route::get('/create', [SolutionController::class, 'create'])->name('cms.solution.create');
-    Route::post('/store', [SolutionController::class, 'store'])->name('cms.solution.store');
-    Route::get('/edit/{id}', [SolutionController::class, 'edit'])->name('cms.solution.edit');
+ Route::prefix('solution')->middleware(['auth'])->group(function () {
+    Route::get('/', [SolutionController::class, 'index'])->name('cms.solution.index')->middleware('can:cms.solution.view');
+    Route::get('/create', [SolutionController::class, 'create'])->name('cms.solution.create')->middleware('can:cms.solution.create');
+    Route::post('/store', [SolutionController::class, 'store'])->name('cms.solution.store')->middleware('can:cms.solution.edit');
+    Route::get('/edit/{id}', [SolutionController::class, 'edit'])->name('cms.solution.edit')->middleware('can:cms.solution.edit');
     Route::post('/update/{id}', [SolutionController::class, 'update'])->name('cms.solution.update');
-    Route::get('/delete/{id}', [SolutionController::class, 'destroy'])->name('cms.solution.destroy');
-    Route::get('/sub-page', [SolutionController::class, 'subPage'])->name('cms.solution.subpage');
-    Route::get('/sub-page/create', [SolutionController::class, 'subCreate'])->name('cms.solution.subcreate');
-    Route::post('/sub-page/store', [SolutionController::class, 'sobStore'])->name('cms.solution.substore');
-    Route::get('/sub-page/edit/{id}', [SolutionController::class, 'subEdit'])->name('cms.solution.subEdit');
+    Route::get('/delete/{id}', [SolutionController::class, 'destroy'])->name('cms.solution.destroy')->middleware('can:cms.solution.delete');
+
+    Route::get('/sub-page', [SolutionController::class, 'subPage'])->name('cms.solution.subpage')->middleware('can:cms.solution.sub-page.view');
+    Route::get('/sub-page/create', [SolutionController::class, 'subCreate'])->name('cms.solution.subcreate')->middleware('can:cms.solution.sub-page.create');
+    Route::post('/sub-page/store', [SolutionController::class, 'sobStore'])->name('cms.solution.substore')->middleware('can:cms.solution.sub-page.edit');
+    Route::get('/sub-page/edit/{id}', [SolutionController::class, 'subEdit'])->name('cms.solution.subEdit')->middleware('can:cms.solution.sub-page.edit');
     Route::post('/sub-page/update/{id}', [SolutionController::class, 'subUpdate'])->name('cms.solution.subupdate');
-    Route::get('/sub-page/delete/{id}', [SolutionController::class, 'subDelete'])->name('cms.solution.subdelete');
+    Route::get('/sub-page/delete/{id}', [SolutionController::class, 'subDelete'])->name('cms.solution.subdelete')->middleware('can:cms.solution.sub-page.delete');
     Route::post('/add-section/{id}', [SolutionController::class, 'addSection'])->name('cms.solution.section.add');
     Route::post('/update-section/{id}', [SolutionController::class, 'updateSection'])->name('cms.solution.section.update');
 
@@ -371,18 +372,18 @@ Route::get('/all-solutions', [SolutionController::class, 'allSolutions'])->name(
 Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('category.slug');
 Route::get('solution/{solution}/{name}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');
 
-Route::prefix('cms/camera')->group(function () {
-    Route::get('/', [CameraController::class, 'index'])->name('cms.camera.index');
-    Route::get('/create', [CameraController::class, 'create'])->name('cms.camera.create');
+Route::prefix('cms/camera')->middleware('auth')->group(function () {
+    Route::get('/', [CameraController::class, 'index'])->name('cms.camera.index')->middleware('can:cms.camera.view');
+    Route::get('/create', [CameraController::class, 'create'])->name('cms.camera.create')->middleware('can:cms.camera.create');
     Route::post('/store', [CameraController::class, 'store'])->name('cms.camera.store');
-    Route::get('/edit/{id}', [CameraController::class, 'edit'])->name('cms.camera.edit');
+    Route::get('/edit/{id}', [CameraController::class, 'edit'])->name('cms.camera.edit')->middleware('can:cms.camera.edit');
     Route::post('/update/{id}', [CameraController::class, 'update'])->name('cms.camera.update');
-    Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
-    Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
+    Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete')->middleware('can:cms.camera.delete');
+    Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection')->middleware('can:cms.camera.delete');
 
 
 });
-Route::prefix('cms/custompages')->group(function () {
+Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.index'])->group(function () {
     Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');
     Route::get('/edit/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update.meta');
@@ -400,10 +401,10 @@ Route::prefix('cms/custompages')->group(function () {
     Route::post('business/title', [CustomPagesController::class, 'busniessTitle'])->name('cms.custom.business.title');
     Route::post('business/add', [CustomPagesController::class, 'busniessadd'])->name('cms.custom.business.add');
     Route::get('business/delete/{id}', [CustomPagesController::class, 'businessDelete'])->name('cms.custom.business.delete');
-      //broadcast section
-      Route::post('broadcast/title', [CustomPagesController::class, 'broadcastTitle'])->name('cms.custom.broadcast.title');
-      Route::post('broadcast/add', [CustomPagesController::class, 'broadcastadd'])->name('cms.custom.broadcast.add');
-      Route::get('broadcast/delete/{id}', [CustomPagesController::class, 'broadcastDelete'])->name('cms.custom.broadcast.delete');
+    //broadcast section
+    Route::post('broadcast/title', [CustomPagesController::class, 'broadcastTitle'])->name('cms.custom.broadcast.title');
+    Route::post('broadcast/add', [CustomPagesController::class, 'broadcastadd'])->name('cms.custom.broadcast.add');
+    Route::get('broadcast/delete/{id}', [CustomPagesController::class, 'broadcastDelete'])->name('cms.custom.broadcast.delete');
 
 
 
