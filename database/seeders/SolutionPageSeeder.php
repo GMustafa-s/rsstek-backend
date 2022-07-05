@@ -51,15 +51,6 @@ class SolutionPageSeeder extends Seeder
             'bg_image' => 'bg-image.png',
             'slug' => 'work-safety',
         ]);
-        // Work Safety Page ID=5
-        DB::table('page_categories')->insert([
-            'name' => 'Industrial',
-            'type' => '2'
-            'description' => 'Video analytics systems are beneficial for large manufacturing industries and factories. They are efficient to the entire security process. The security system data can be used in a better way to raise labor safety. It also helps to get an emergency response with other systems, including police, fire control and traffic control. Theft and damage of equipment, machine and cargo are prominent all thetime in the industry. To avoid it, video solutions have become a necessity to all manufacturing industries.',
-            'bg_image' => 'bg-image.png',
-            'slug' => 'industrial',
-        ]);
-
 
 
 
