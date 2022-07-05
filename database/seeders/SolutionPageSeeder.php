@@ -22,7 +22,7 @@ class SolutionPageSeeder extends Seeder
         DB::table('page_categories')->insert([
             'name' => 'Business',
             'description' => 'Confidence and security without constant control on your part, the stability of all processes in the company - that is what RRSTEK intelligent systems are all about.',
-            'bg_image' => 'bg-image.png',
+            'bg_image' => 'bg-img.png',
             'slug' => 'business',
         ]);
 
@@ -30,7 +30,7 @@ class SolutionPageSeeder extends Seeder
         DB::table('page_categories')->insert([
             'name' => 'Healthcare',
             'description' => 'Protect people’s health in your area with RRSTEK Healthcare Modules!',
-            'bg_image' => 'bg-image.png',
+            'bg_image' => 'bg-img.png',
             'slug' => 'healthcare',
         ]);
 
@@ -39,7 +39,7 @@ class SolutionPageSeeder extends Seeder
         DB::table('page_categories')->insert([
             'name' => 'Security',
             'description' => 'Intelligent modules for warehouses, sales areas and lands. Protect your business more effectively without raising the number of security guards! Neural network-based systems analyze the data from video cameras, identify dangerous situations and instantly warn on them.',
-            'bg_image' => 'bg-image.png',
+            'bg_image' => 'bg-img.png',
             'slug' => 'security',
         ]);
 
@@ -48,7 +48,7 @@ class SolutionPageSeeder extends Seeder
         DB::table('page_categories')->insert([
             'name' => 'Work Safety',
             'description' => 'Labor protection systems from TRASSIR are an investment to your reputation!',
-            'bg_image' => 'bg-image.png',
+            'bg_image' => 'bg-img.png',
             'slug' => 'work-safety',
         ]);
 
