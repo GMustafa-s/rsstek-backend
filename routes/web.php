@@ -22,6 +22,7 @@ use App\Http\Controllers\cms\solution\SolutionController;
 use App\Http\Controllers\cms\custom\CustomPagesController;
 use App\Http\Controllers\cms\custom\EditAboutusController;
 use App\Http\Controllers\cms\custom\IntegrationController;
+use App\Http\Controllers\cms\industries\IndustriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -372,6 +373,20 @@ Route::get('/all-solutions', [SolutionController::class, 'allSolutions'])->name(
 Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('category.slug');
 Route::get('solution/{solution}/{name}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');
 
+
+// cms industries pages
+Route::prefix('admin/cms/industries')->middleware('auth')->group(function(){
+    Route::get('/', [IndustriesController::class, 'index'])->name('cms.industries.index');
+    Route::get('/create', [IndustriesController::class, 'create'])->name('cms.industries.create');
+    Route::post('/store', [IndustriesController::class, 'store'])->name('cms.industries.store');
+    Route::get('/edit/{id}', [IndustriesController::class, 'edit'])->name('cms.industries.edit');
+    Route::get('/delete/{id}', [IndustriesController::class, 'delete'])->name('cms.industries.delete');
+
+    Route::get('/section', [IndustriesController::class, 'sectionIndex'])->name('cms.industries.section.index');
+    Route::get('/section', [IndustriesController::class, 'sectionIndex'])->name('cms.industries.section.index');
+});
+
+
 Route::prefix('cms/camera')->middleware('auth')->group(function () {
     Route::get('/', [CameraController::class, 'index'])->name('cms.camera.index')->middleware('can:cms.camera.view');
     Route::get('/create', [CameraController::class, 'create'])->name('cms.camera.create')->middleware('can:cms.camera.create');
@@ -383,7 +398,12 @@ Route::prefix('cms/camera')->middleware('auth')->group(function () {
 
 
 });
+
 Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.index'])->group(function () {
+    //add new custome page routes
+    Route::get('/add', [CustomPagesController::class, 'addNewCustomePage'])->name('cms.add.custom-page');
+
+    
     Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');
     Route::get('/edit/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update.meta');
@@ -518,6 +538,7 @@ Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.ind
 
 
 });
+
 
 Route::get('camera/{any}',[CameraController::class, 'showSlug'])->name('camera.slug');
 

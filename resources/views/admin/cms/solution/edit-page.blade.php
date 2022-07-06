@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <!-- /Page Header -->	
+        <!-- /Page Header -->
         @if(session()->has('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Error!</strong>
@@ -30,7 +30,7 @@
                         </button>
                     </div>
             @endif
-    
+
         <div class="row">
             <div class="col-md-12">
                 <form action="{{route('cms.solution.update',$category->id)}}" method="post" enctype="multipart/form-data">
@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
                                     <div class="col-2"></div>
-                                   
+
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-edit"></i> update</button>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-8">
                                 <div class="form-group mb-4">
-                                    <label>Meta Name</label>
+                                    <label>Meta title</label>
                                     <input type="text" class="form-control" name="meta_name" value="{{$category->meta_name}}" required />
                                 </div>
 
@@ -102,7 +102,7 @@
                                     <label>Meta Description</label>
                                     <textarea required name="meta_description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" >{{$category->meta_description}}</textarea>
                                 </div>
-                               
+
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-edit"></i> update</button>
                                 </div>

@@ -128,7 +128,16 @@
 											<li><a href="{{route('cms.solution.subpage')}}">Sub Pages</a></li>
                                             @endcanany
 										</ul>
-											</li>
+									</li>
+
+                                    <li class="submenu">
+										<a href="javascript:void(0)" class=""><span>Industries Pages</span>
+                                        <span class="menu-arrow"></span></a>
+										<ul style="display: none;">
+											<li><a href="{{route('cms.industries.index')}}">Pages</a></li>
+                                            <li><a href="{{route('cms.industries.section.index')}}">Pages Sections</a></li>
+										</ul>
+									</li>
 									<!-- <li><a href="{{route('cms.solution.index')}}">Solution Pages</a></li> -->
 								</ul>
 

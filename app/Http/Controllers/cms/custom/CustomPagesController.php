@@ -223,5 +223,9 @@ public function busniessadd(Request $request){
             return redirect()->back()->with('success', 'deleted successfully');
         }
     }
-
+    //add new custome page
+    public function addNewCustomePage(){
+        
+        return view('admin.cms.custome-pages.add-custome-page');
+    }
 }

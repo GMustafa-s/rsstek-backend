@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label>Meta Name</label>
+                                    <label>Meta title</label>
                                     <input type="text" class="form-control" name="meta_name" value="{{$page->meta_name}}" required />
                                 </div>
 
@@ -92,7 +92,7 @@
                             <div class="col-4 bg-ccc">
                                 <div class="h3 card-title with-switch">
                                     <br />
-                                 Header Section 
+                                 Header Section
                                 </div>
                             </div>
                             <div class="col-8">
@@ -139,7 +139,7 @@
                                         <div class="col-12">
                                             <label>Hero Section Video URL </label>
                                             <input class="form-control" type="text" name="hero_section_video" value="{{$home_page_data->hero_section_video}}">
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +184,7 @@
                                             </div>
                                         </div>
                                     <hr>
-                                       
+
                                     </form>
 
                                     <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_what_we_use"><i class="fa fa-plus"></i> Add new</a>
@@ -202,12 +202,12 @@
                                                 @if($home_page_wwu !=null)
                                                 @foreach($home_page_wwu as $wwu_img)
                                                 <tr>
-                                                   
+
                                                     <td>
                                                         <img width="100" height="100" src="{{asset('frontend')}}/images/custompages/home/what-we-use/{{$wwu_img->image}}" alt="">
                                                     </td>
                                                     <td>
-                                               
+
                                                     <a class="dropdown-item" href="{{route('cms.custom.delete.wwu',$wwu_img->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
@@ -223,7 +223,7 @@
                 </div>
             </div>
         </div>
-       
+
 
         <div class="card leave-box" id="leave_annual">
             <div class="card-body">
@@ -256,7 +256,7 @@
                                             </div>
                                         </div>
                                     <hr>
-                                       
+
                                     </form>
 
                                     <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_about_us_feature"><i class="fa fa-plus"></i> Add new Feture</a>
@@ -285,7 +285,7 @@
                                                         <img height="50" src="{{asset('frontend')}}//images/custompages/home/about-features/{{$feature->image}}" alt="">
                                                     </td>
                                                     <td>
-                                               
+
                                                     <a class="dropdown-item" href="{{route('cms.custom.aboutus.delete',$feature->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
@@ -380,7 +380,7 @@
                                             </div>
                                         </div>
                                     <hr>
-                                       
+
                                     </form>
 
                                     <a href="#" class="btn add-btn" data-toggle="modal" data-target="#business"><i class="fa fa-plus"></i> Add new business</a>
@@ -410,7 +410,7 @@
                                                         <img height="50" src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$feature->image}}" alt="">
                                                     </td>
                                                     <td>
-                                               
+
                                                     <a class="dropdown-item" href="{{route('cms.custom.business.delete',$feature->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
@@ -458,7 +458,7 @@
                                             </div>
                                         </div>
                                     <hr>
-                                       
+
                                     </form>
 
                                     <a href="#" class="btn add-btn" data-toggle="modal" data-target="#broadcast"><i class="fa fa-plus"></i> Add new broadcast</a>
@@ -495,7 +495,7 @@
                                                         <img height="50" src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$feature->image}}" alt="">
                                                     </td>
                                                     <td>
-                                               
+
                                                     <a class="dropdown-item" href="{{route('cms.custom.broadcast.delete',$feature->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
@@ -511,7 +511,7 @@
                 </div>
             </div>
         </div>
-        
+
 <div class="modal custom-modal fade" id="add_what_we_use" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
@@ -570,7 +570,7 @@
                                 <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" ></textarea>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="m-t-20 text-center">
                         <button class="btn btn-primary submit-btn">Submit</button>
@@ -610,7 +610,7 @@
                                 <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" ></textarea>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="m-t-20 text-center">
                         <button class="btn btn-primary submit-btn">Submit</button>
@@ -662,7 +662,7 @@
                                 <input name="image" type="file" class="form-control" required />
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="m-t-20 text-center">
                         <button class="btn btn-primary submit-btn">Submit</button>
