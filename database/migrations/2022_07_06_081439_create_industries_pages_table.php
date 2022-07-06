@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cameras', function (Blueprint $table) {
+        Schema::create('industries_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('meta_name')->nullable();
-            $table->longText('meta_description')->nullable();
-            $table->string('title');
-            $table->string('sub_title');
-            $table->string('image');
-            $table->string('slug');
+            $table->string('name');
             $table->longText('description');
+            $table->string('bg_image');
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cameras');
+        Schema::dropIfExists('industries_pages');
     }
 };

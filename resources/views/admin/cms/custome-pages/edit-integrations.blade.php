@@ -60,7 +60,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label>Meta Name</label>
+                                    <label>Meta title</label>
                                     <input type="text" class="form-control" name="meta_name" value="{{$page->meta_name}}" required />
                                 </div>
 

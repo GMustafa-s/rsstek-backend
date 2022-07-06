@@ -37,6 +37,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(DemoSeeder::class);
 
+        $this->call(CameraPageSeeder::class);
+        $this->call(IndustriesPageSeeder::class);
+
+
 
         // \App\Models\User::factory(10)->create();
 

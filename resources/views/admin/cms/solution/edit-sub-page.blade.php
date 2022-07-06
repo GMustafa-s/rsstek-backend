@@ -30,7 +30,7 @@
             </button>
         </div>
       @endif
-    
+
         <div class="row">
             <div class="col-md-12">
                 <form action="{{route('cms.solution.subupdate',$sub_page->id)}}" method="post" enctype="multipart/form-data">
@@ -59,12 +59,12 @@
                                         <label> Sub Page Title</label>
                                         <input type="text" class="form-control" name="title" value="{{$sub_page->title}}" required />
                                     </div>
-                                    <!-- 
+                                    <!--
                                 <div class="form-group mb-4">
                                     <label>Description</label>
                                     <textarea  name="description" rows="3" cols="5" class="form-control" maxlength="165" placeholder=" description here" >{{$sub_page->description}}</textarea>
                                 </div> -->
-                                  
+
                                     <div class="row mb-4">
                                         <div class="col-6">
                                             <img src="{{asset('frontend/images')}}/{{$category->name}}/{{$sub_page->title}}/{{$sub_page->fetaured_image}}" width="100%" height="250" alt="" />
@@ -91,7 +91,7 @@
                                     <div id="section-container">
                                         <?php $n=1; ?>
                                         @if($sections->count()>0)
-                                       
+
                                         @foreach($sections as $section)
                                         <hr>
                                         <h2 class="text-center">{{$section->title}}</h2>
@@ -101,7 +101,7 @@
                                             <label>Section Title</label>
                                             <input class="form-control" value="{{$section->title}}" type="text" name='title_{{$n}}' />
                                         </div>
-                                  
+
                                 <div class="form-group">
                                     <label>Section body</label>
                                     <textarea name="description_{{$n}}" rows="4" class="form-control summernote" placeholder="Enter your content">{{$section->body}}</textarea>
@@ -111,7 +111,7 @@
                                         @endif
                                         <!-- here will be the new section content -->
                                     </div>
-                                  
+
                                     @if($n <=3)
                                     <a id="add-sec-btn" href="javascript:void(0)" onclick="addSection()" style="float: right;"><i class="fa fa-plus"></i> Add section</a>
                                     @endif
@@ -140,7 +140,7 @@
                             </div>
                             <div class="col-8">
                                 <div class="form-group mb-4">
-                                    <label>Meta Name</label>
+                                    <label>Meta title</label>
                                     <input type="text" class="form-control" name="meta_name" value="{{$sub_page->meta_name}}" required />
                                 </div>
 
@@ -148,7 +148,7 @@
                                     <label>Meta Description</label>
                                     <textarea required name="meta_description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" >{{$sub_page->meta_description}}</textarea>
                                 </div>
-                               
+
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-edit"></i> update</button>
                                 </div>
@@ -167,7 +167,7 @@ function addSection() {
    );
    $("#section-container #body-"+i).summernote('insertText', 'Section description');
   if(i==7){
-   $('#add-sec-btn').css("display","none"); 
+   $('#add-sec-btn').css("display","none");
   }
 }
 </script>

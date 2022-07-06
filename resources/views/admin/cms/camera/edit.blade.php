@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-8">
                                 <div class="form-group mb-4">
-                                    <label>Meta Name</label>
+                                    <label>Meta title</label>
                                     <input type="text" class="form-control" name="meta_name" value="{{$camera->meta_name}}" required />
                                 </div>
                                 <div class="form-group mb-4">
@@ -87,8 +87,8 @@
                                         <label> Camera Title</label>
                                         <input type="text" class="form-control" name="title" value="{{$camera->title}}" required />
                                     </div>
-                                 
-                                  
+
+
                                     <div class="row mb-4">
                                         <div class="col-6">
                                             <img src="{{asset('frontend/images')}}/camera/{{$camera->image}}" width="100%" height="250" alt="" />
@@ -109,7 +109,7 @@
                                         <label>Resoluton</label>
                                         <input type="text" class="form-control" name="resoluton" value="{{$specifications->resoluton}}"  />
                                     </div>
-                                   
+
                                     <div class="col-4">
                                         <label>Sensor</label>
                                         <input type="text" class="form-control" name="sensor" value="{{$specifications->sensor}}" />
@@ -220,7 +220,7 @@
                                     <div id="section-container">
                                         <?php $n=1; ?>
                                         @if($sections->count()>0)
-                                       
+
                                         @foreach($sections as $section)
                                         <hr>
                                         <h2 class="text-center">{{$section->title}}</h2>
@@ -230,7 +230,7 @@
                                             <label>Section Title</label>
                                             <input class="form-control" value="{{$section->title}}" type="text" name='title_{{$n}}' />
                                         </div>
-                                  
+
                                 <div class="form-group">
                                     <label>Section body</label>
                                     <textarea name="description_{{$n}}" rows="4" class="form-control summernote" placeholder="Enter your content">{{$section->description}}</textarea>
@@ -240,7 +240,7 @@
                                         @endif
                                         <!-- here will be the new section content -->
                                     </div>
-                                  
+
                                     @if($n <=3)
                                     <a id="add-sec-btn" href="javascript:void(0)" onclick="addSection()" style="float: right;"><i class="fa fa-plus"></i> Add section</a>
                                     @endif
@@ -264,7 +264,7 @@ function addSection() {
    );
    $("#section-container #body-"+i).summernote('insertText', 'Section description');
   if(i==7){
-   $('#add-sec-btn').css("display","none"); 
+   $('#add-sec-btn').css("display","none");
   }
 }
 </script>
