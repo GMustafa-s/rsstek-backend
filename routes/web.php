@@ -401,9 +401,11 @@ Route::prefix('cms/camera')->middleware('auth')->group(function () {
 
 Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.index'])->group(function () {
     //add new custome page routes
+    Route::get('user/custome-page', [CustomPagesController::class, 'userCustomePage'])->name('user.custome.page');
     Route::get('/add', [CustomPagesController::class, 'addNewCustomePage'])->name('cms.add.custom-page');
+    Route::post('/store', [CustomPagesController::class, 'storeNewCustomePage'])->name('cms.store.custom-page');
 
-    
+
     Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');
     Route::get('/edit/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update.meta');

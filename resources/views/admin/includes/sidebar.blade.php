@@ -99,6 +99,10 @@
                                     @can('cms.custome.pages.index')
 									<li><a href="{{route('cms.custom.index')}}">Custom Pages</a></li>
                                     @endcan
+
+									<li><a href="{{route('user.custome.page')}}">New Custom Pages</a></li>
+
+
 									<li>
 									<li class="submenu">
                                         @canany(['cms.camera.view','cms.camera.create', 'cms.camera.edit', 'cms.camera.delete'])

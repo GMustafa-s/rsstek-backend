@@ -8,12 +8,12 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">New custome page</h3>
+                    <h3 class="page-title">Add new custome page</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">dashboard</a></li>
                             <li class="breadcrumb-item"><a href="{{route('cms.custom.index')}}">custom-pages</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">New custome page</li>
+                            <li class="breadcrumb-item active" aria-current="page">Add new custome page</li>
                         </ol>
                     </nav>
                 </div>
@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{route('cms.store.custom-page')}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group mb-4">
                                     <label>Meta Description</label>
-                                    <textarea required name="meta_description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" ></textarea>
+                                    <textarea required name="meta_description" rows="3" cols="5" class="form-control" placeholder="description here" ></textarea>
                                 </div>
 
                                 <div class="form-group mb-4">
@@ -76,22 +76,22 @@
 
                                 <div class="form-group mb-4">
                                     <label>Header Description</label>
-                                    <textarea required name="header_description " rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" ></textarea>
+                                    <textarea required name="header_description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" ></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-8">
                                         <label for="">Backgroung image</label>
-                                        <input class="form-control" type="file" name="bg_image" id="">
+                                        <input class="form-control" required type="file" name="bg_image" id="">
                                     </div>
                                     <div class="col-4">
                                        <img src="" alt="" srcset="">
                                     </div>
                                 </div>
 
-                                <h2 style="text-align: center;">Body</h2>
+                                <h2 style="text-align: center;" class="mt-2">Body</h2>
                                 <div class="form-group mb-4">
                                     <label> Description</label>
-                                    <textarea name="description" rows="4" class="form-control summernote" placeholder="Enter your content"></textarea>
+                                    <textarea name="body" rows="4" class="form-control summernote" placeholder="Enter your content"></textarea>
                                 </div>
                                 <div id="section-container">
                                     <!-- here will be the new section content -->

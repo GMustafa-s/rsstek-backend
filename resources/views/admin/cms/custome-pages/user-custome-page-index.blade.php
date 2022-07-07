@@ -7,10 +7,10 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Custom Pages</h3>
+								<h3 class="page-title">User Custom Pages</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="{{url('/')}}">dashboard</a></li>
-									<li class="breadcrumb-item active">custom-pages</li>
+									<li class="breadcrumb-item active">user custom-pages</li>
 								</ul>
 							</div>
 						</div>
@@ -47,6 +47,7 @@
 							<div class="card mb-0">
 
 								<div class="card-body">
+                                    <a href="{{route('cms.add.custom-page')}}" style="position:absolute; margin-top:5px; margin-left:880px;" class=" btn add-btn">Add new</a>
 
 									<div class="table-responsive">
     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -82,8 +83,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if($pages !=null)
-                         @foreach($pages as $page)
+                        @if($custome_pages !=null)
+                         @foreach($custome_pages as $page)
                         <tr role="row" class="odd">
                             <td class="sorting_1">
 								<a href="">{{$page->page_title}}</a>
@@ -92,6 +93,8 @@
                                 {{$page->meta_name}}
                             </td>
                             <td style="font-size: 20px;">
+                                <a href="{{route('cms.custom.edit',$page->id)}}"><i class="la la-edit"></i></a>
+                                <a href="{{route('cms.custom.edit',$page->id)}}"><i class="la la-edit"></i></a>
                                 <a href="{{route('cms.custom.edit',$page->id)}}"><i class="la la-edit"></i></a>
                             </td>
                         </tr>
