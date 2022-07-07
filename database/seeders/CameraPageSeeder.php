@@ -1,7 +1,5 @@
 <?php
-
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,6 +13,7 @@ class CameraPageSeeder extends Seeder
      */
     public function run()
     {
+        //
 
 
 // Camera Page "name" & ID=1

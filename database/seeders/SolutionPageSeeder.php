@@ -22,7 +22,7 @@ class SolutionPageSeeder extends Seeder
         DB::table('page_categories')->insert([
             'name' => 'Business',
             'description' => 'Confidence and security without constant control on your part, the stability of all processes in the company - that is what RRSTEK intelligent systems are all about.',
-            'bg_image' => 'bg-img.png',
+            'bg_image' => 'bg-img.jpg',
             'slug' => 'business',
         ]);
 
@@ -39,7 +39,7 @@ class SolutionPageSeeder extends Seeder
         DB::table('page_categories')->insert([
             'name' => 'Security',
             'description' => 'Intelligent modules for warehouses, sales areas and lands. Protect your business more effectively without raising the number of security guards! Neural network-based systems analyze the data from video cameras, identify dangerous situations and instantly warn on them.',
-            'bg_image' => 'bg-img.png',
+            'bg_image' => 'bg-img.jpg',
             'slug' => 'security',
         ]);
 
