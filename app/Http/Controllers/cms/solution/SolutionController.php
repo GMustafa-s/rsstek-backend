@@ -31,9 +31,9 @@ class SolutionController extends Controller
 
     public function showSubSlug($slg,$slug)
     {
-        
+
         $page = SolutionSubPage::whereSlug($slug)->first();
-      
+
         if($page == null){
             abort(404);
         }
@@ -41,7 +41,7 @@ class SolutionController extends Controller
             $other_pages = SolutionSubPage::where('page_categories_id',$page->page_categories_id)->where('id','!=',$page->id)->get();
             $main_page = PageCategory::find($page->page_categories_id);
             $sections = SolutionSections::where('solution_sub_pages_id',$page->id)->get();
-           
+
             return view('frontend.business.single-page',compact('page','other_pages','main_page','sections'));
         }
     }
@@ -50,7 +50,7 @@ class SolutionController extends Controller
         $category = PageCategory::orderby('created_at','DESC')->get();
          $sub_category = SolutionSubPage::all();
         return view('admin.cms.solution.home',compact('category','sub_category'));
-       
+
     }
 
     public function create(){
@@ -63,7 +63,7 @@ class SolutionController extends Controller
             return redirect('/solution/create')->with('error','page name already exist!');
         }
         else{
-        $add_categ = new PageCategory;  
+        $add_categ = new PageCategory;
         if($request->bg_image){
             $file = $request->file('bg_image');
             $filename = rand().'.'.$file->getClientOriginalExtension();
@@ -85,7 +85,7 @@ class SolutionController extends Controller
 
     public function edit($id){
         $category = PageCategory::find($id);
-        return view('admin.cms.solution.edit-page',compact('category')); 
+        return view('admin.cms.solution.edit-page',compact('category'));
 
     }
 
@@ -111,7 +111,7 @@ class SolutionController extends Controller
         else{
             return redirect('/solution')->with('error','Something went Wrong!');
         }
-        
+
     }
 
     public function destroy($id){
@@ -137,7 +137,7 @@ class SolutionController extends Controller
     }
 
     public function sobStore(Request $request){
-      
+
         $check_page = SolutionSubPage::where('title',$request->title)->first();
         if($check_page !=null){
             return redirect('/solution/sub-page/create')->with('error','page name already exist!');
@@ -160,16 +160,16 @@ class SolutionController extends Controller
         $add_categ->description = $request->description;
         $add_categ->page_categories_id = $request->page_categories_id;
         $add_categ->slug = Str::slug($request->title);
-      
+
         if($add_categ->save()){
             if($request->title_1 && $request->description_1 ){
-                $section_1 = $this->addSection($add_categ->id,$request->title_1,$request->description_1);         
+                $section_1 = $this->addSection($add_categ->id,$request->title_1,$request->description_1);
             }
             if($request->title_2 && $request->description_2 ){
-                $section_2 = $this->addSection($add_categ->id,$request->title_2,$request->description_2);         
+                $section_2 = $this->addSection($add_categ->id,$request->title_2,$request->description_2);
             }
             if($request->title_3 && $request->description_3 ){
-                $section_3 = $this->addSection($add_categ->id,$request->title_3,$request->description_3);         
+                $section_3 = $this->addSection($add_categ->id,$request->title_3,$request->description_3);
             }
             return redirect('/solution/sub-page')->with('success','sub solution created succssfully!');
         }
@@ -184,11 +184,11 @@ class SolutionController extends Controller
         $category = PageCategory::where('id',$sub_page->page_categories_id)->first();
         $categories = PageCategory::where('id','!=',$category->id)->get();
         $sections = SolutionSections::where('solution_sub_pages_id',$id)->get();
-        return view('admin.cms.solution.edit-sub-page',compact('sub_page','category','categories','sections')); 
+        return view('admin.cms.solution.edit-sub-page',compact('sub_page','category','categories','sections'));
     }
 
     public function subUpdate(Request $request,$id){
-       
+
         $sub_page = SolutionSubPage::find($id);
         $sub_page->title =$request->title;
         $sub_page->description =$request->description;
@@ -207,57 +207,51 @@ class SolutionController extends Controller
         }
 
         if($request->video){
-            $categ_name = PageCategory::find($sub_page->page_categories_id);
-            $categ_name = $categ_name->name;
-            $file = $request->file('video');
-            $filename = rand().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('frontend').'/images/'.$categ_name.'/'.$request->title.'/';
-            $file->move($destinationPath,$filename);
-            $add_categ->video = $filename;
+            $sub_page->video = $request->video;
         }
         if($sub_page->save()){
-          
+
             // updating old sections
 
             if($request->title_1 && $request->description_1 ){
-      
+
                 if($request->section_id_1){
                     $section_1 = $this->updateSection($request->section_id_1,$request->title_1,$request->description_1);
-                }     
+                }
             }
             if($request->title_2 && $request->description_2 ){
-      
+
                 if($request->section_id_2){
                     $section_2 = $this->updateSection($request->section_id_2,$request->title_2,$request->description_2);
-                }     
+                }
             }
 
             if($request->title_3 && $request->description_3 ){
-      
+
                 if($request->section_id_3){
                     $section_3 = $this->updateSection($request->section_id_3,$request->title_3,$request->description_3);
-                }     
+                }
             }
 
             // Adding new sections
             if($request->title_5 && $request->description_5){
-               
+
                 $section_1 = $this->addSection($sub_page->id,$request->title_5,$request->description_5);
             }
             if($request->title_6 && $request->description_6){
-               
+
                 $section_2 = $this->addSection($sub_page->id,$request->title_6,$request->description_6);
             }
             if($request->title_7 && $request->description_7){
-               
+
                 $section_3 = $this->addSection($sub_page->id,$request->title_7,$request->description_7);
             }
-          
+
             // if($request->title_2 && $request->description_2 ){
-            //     $section_2 = $this->updateSection($request->section_id_2,$request->title_2,$request->description_2);         
+            //     $section_2 = $this->updateSection($request->section_id_2,$request->title_2,$request->description_2);
             // }
             // if($request->title_3 && $request->description_3 ){
-            //     $section_3 = $this->updateSection($request->section_id_1,$request->title_3,$request->description_3);         
+            //     $section_3 = $this->updateSection($request->section_id_1,$request->title_3,$request->description_3);
             // }
             return redirect('/solution/sub-page')->with('success','sub solution updated successfully!');
         }
@@ -315,7 +309,7 @@ class SolutionController extends Controller
         if($solution->save()){
             return redirect('/solution')->with('success','solution updated successfully!');
         }
-    } 
+    }
     public function solutionSubPageMetaInfo(Request $request , $id){
         $sub_page = SolutionSubPage::find($id);
         $sub_page->meta_name = $request->meta_name;
@@ -323,5 +317,5 @@ class SolutionController extends Controller
         if($sub_page->save()){
             return redirect('/cms/camera')->with('success','solution updated successfully!');
         }
-    } 
+    }
 }

@@ -78,7 +78,7 @@
                                             <img src="{{asset('frontend')}}/video.png" width="100%" height="250" alt="" />
                                             <div class="form-group">
                                                 <label>Change Video</label>
-                                                <input name="video" class="form-control" type="file" accept="video/mp4,video/x-m4v,video/*" />
+                                                <input name="video" class="form-control" type="text"/>
                                             </div>
                                         </div>
                                     </div>
