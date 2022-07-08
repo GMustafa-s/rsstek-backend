@@ -348,7 +348,7 @@ $site_dat = App\Models\GeneralSetting::first();
 
 											<p>
                                                 @if($camera->description !=null)
-												{{ $tr->setSource('en')->setTarget($site_language)->translate( Illuminate\Support\Str::of(strip_tags( $camera->description))->words(15)) }}
+												{{ $tr->setSource('en')->setTarget($site_language)->translate( Illuminate\Support\Str::of(strip_tags( $camera->description))->words(25)) }}
                                                 @endif
                                             </p>
 
