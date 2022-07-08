@@ -3885,7 +3885,7 @@ font-size: 14px;
 	}
 	.business-area .holder{
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		padding: 0 55px;
 	}
 	.container{
