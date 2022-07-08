@@ -22,16 +22,16 @@ class SolutionPageSeeder extends Seeder
         DB::table('page_categories')->insert([
             'name' => 'Business',
             'description' => 'Confidence and security without constant control on your part, the stability of all processes in the company - that is what RRSTEK intelligent systems are all about.',
-            'bg_image' => 'bg-img.jpg',
+            'bg_image' => 'bg-img.png',
             'slug' => 'business',
         ]);
 
         // Healthcare Page ID=2
         DB::table('page_categories')->insert([
-            'name' => 'Healthcare',
+            'name' => 'Health Care',
             'description' => 'Protect people’s health in your area with RRSTEK Healthcare Modules!',
             'bg_image' => 'bg-img.png',
-            'slug' => 'healthcare',
+            'slug' => 'health-care',
         ]);
 
 

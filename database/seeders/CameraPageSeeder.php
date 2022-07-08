@@ -25,7 +25,7 @@ class CameraPageSeeder extends Seeder
             'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TR-D2183ZIR6 v2 2.7-13.5',
             'meta_description' => '<ul style="margin-right: 0px; margin-bottom: 21px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; list-style: none; color: rgba(51, 51, 51, 0.8);"><li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;">8 MP (3840 × 2160) IP-camera is adapted for outdoor use regardless of the season: protection of the case against moisture and dust meets the requirements of the IP67 standard, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V ( high voltage suppressor up to 2000 V). Suitable for night surveillance - equipped with IR illumination with a range of 60 m.<br></li></ul>',
-            'image' => 'TR-D2183ZIR6 v2 2.7-13.5.jpg',
+            'image' => 'TR-D2183ZIR6 v2 2.7-13.5.png',
             'slug' => 'tr-d2183ZIR6-v2-2.7-13.5',
             'description' => '<ul style="margin-right: 0px; margin-bottom: 21px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; list-style: none; color: rgba(51, 51, 51, 0.8);"><li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;">8 MP (3840 × 2160) IP-camera is adapted for outdoor use regardless of the season: protection of the case against moisture and dust meets the requirements of the IP67 standard, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V ( high voltage suppressor up to 2000 V). Suitable for night surveillance - equipped with IR illumination with a range of 60 m.<br></li></ul>',
             
@@ -87,7 +87,7 @@ class CameraPageSeeder extends Seeder
             'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TRASSIR TR-D2181IR3 v2 (2.8 mm)',
             'meta_description' => '<p><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation: the metal case is protected from moisture and dust according to the IP67 standard, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V, range integrated lighting action - 35 m.</span><br></p>',
-            'image' => 'TR-D2181IR3 v2 2.8.jpg',
+            'image' => 'TR-D2181IR3 v2 2.8.png',
             'slug' => 'tr-d2181IR3-v2-2.8',
             'description' => '<p><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation: the metal case is protected from moisture and dust according to the IP67 standard, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V, range integrated lighting action - 35 m.</span><br></p>',
             
@@ -150,7 +150,7 @@ class CameraPageSeeder extends Seeder
             'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TRASSIR TR-D2181IR3 v2 (3.6 mm)',
             'meta_description' => '<p><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation: the metal case is protected from moisture and dust according to the IP67 standard, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V, range integrated lighting action - 35 m.</span><br></p>',
-            'image' => 'TR-D2181IR3 v2 3.6.jpg',
+            'image' => 'TR-D2181IR3 v2 3.6.png',
             'slug' => 'tr-d2181IR3-v2-3.6',
             'description' => '<p><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation: the metal case is protected from moisture and dust according to the IP67 standard, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V, range integrated lighting action - 35 m.</span><br></p>',
             
@@ -211,7 +211,7 @@ class CameraPageSeeder extends Seeder
             'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TRASSIR TR-D2183IR6 v2 2.7-13.5',
             'meta_description' => '<ul style="margin-right: 0px; margin-bottom: 21px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; list-style: none; color: rgba(51, 51, 51, 0.8);"><li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation: the metal case is protected from moisture and dust according to the IP67 standard, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V, range integrated lighting action - 35 m.<br></li></ul>',
-            'image' => 'TR-D2183IR6 v2 2.7-13.5.jpg',
+            'image' => 'TR-D2183IR6 v2 2.7-13.5.png',
             'slug' => 'tr-d2183IR6-v2-2.7-13.5',
             'description' => '<ul style="margin-right: 0px; margin-bottom: 21px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; list-style: none; color: rgba(51, 51, 51, 0.8);"><li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation: the metal case is protected from moisture and dust according to the IP67 standard, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V, range integrated lighting action - 35 m.<br></li></ul>',
             
@@ -275,7 +275,7 @@ class CameraPageSeeder extends Seeder
             'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TR-D3181IR3 v2 2.8',
             'meta_description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; position: relative; color: rgba(51, 51, 51, 0.8);">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation in places out of sight of security personnel: the metal case is protected from mechanical impacts according to the IK10 code, from moisture and dust - according to the IP67 standard, operating temperatures - –40 ° C… +60 ° C, lightning protection - TVS 2000 V, range of integrated backlighting - 30 m.<br></li>',
-            'image' => 'TR-D3181IR3 v2 2.8.jpg',
+            'image' => 'TR-D3181IR3 v2 2.8.png',
             'slug' => 'tr-d3181IR3-v2-2.8',
             'description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; position: relative; color: rgba(51, 51, 51, 0.8);">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation in places out of sight of security personnel: the metal case is protected from mechanical impacts according to the IK10 code, from moisture and dust - according to the IP67 standard, operating temperatures - –40 ° C… +60 ° C, lightning protection - TVS 2000 V, range of integrated backlighting - 30 m.<br></li>',
             
@@ -336,7 +336,7 @@ class CameraPageSeeder extends Seeder
             'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TRASSIR TR-D3181IR3 v2 (3.6 mm)',
             'meta_description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;"><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation in places out of sight of security personnel: the metal case is protected from mechanical impacts according to the IK10 code, from moisture and dust - according to the IP67 standard, operating temperatures - –40 ° C… +60 ° C, lightning protection - TVS 2000 V, range of integrated backlighting - 30 m.</span><br></li>',
-            'image' => 'TR-D3181IR3 v2 3.6.jpg',
+            'image' => 'TR-D3181IR3 v2 3.6.png',
             'slug' => 'tr-d3181IR3-v2-3.6',
             'description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;"><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation in places out of sight of security personnel: the metal case is protected from mechanical impacts according to the IK10 code, from moisture and dust - according to the IP67 standard, operating temperatures - –40 ° C… +60 ° C, lightning protection - TVS 2000 V, range of integrated backlighting - 30 m.</span><br></li>',
             
@@ -397,7 +397,7 @@ class CameraPageSeeder extends Seeder
             'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TR-D3183ZIR3 v2',
             'meta_description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;"><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera adapted for outdoor use in places of direct access, regardless of the season: protection of the case against moisture and dust - IP67, against mechanical influences - IK10, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V.</span><br></li>',
-            'image' => 'TR-D3183ZIR3 v2 2.7-13.5.jpg',
+            'image' => 'TR-D3183ZIR3 v2 2.7-13.5.png',
             'slug' => 'tr-d3183ZIR3-v2-2.7-13.5',
             'description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;"><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera adapted for outdoor use in places of direct access, regardless of the season: protection of the case against moisture and dust - IP67, against mechanical influences - IK10, operating temperatures - –40 ° C ... +60 ° C, lightning protection - TVS 2000 V.</span><br></li>',
             
@@ -459,7 +459,7 @@ class CameraPageSeeder extends Seeder
             'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TR-D8181IR3 v2 2.8',
             'meta_description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;"><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation in places out of sight of security personnel: the metal case is protected from mechanical impacts according to the IK10 code, from moisture and dust - according to the IP67 standard, operating temperatures - –40 ° C… +60 ° C, lightning protection - TVS 2000 V, range of integrated backlighting - 30 m.</span><br></li>',
-            'image' => 'TR-D8181IR3 v2 2.8.jpg',
+            'image' => 'TR-D8181IR3 v2 2.8.png',
             'slug' => 'tr-d8181IR3-v2-2.8',
             'description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;"><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation in places out of sight of security personnel: the metal case is protected from mechanical impacts according to the IK10 code, from moisture and dust - according to the IP67 standard, operating temperatures - –40 ° C… +60 ° C, lightning protection - TVS 2000 V, range of integrated backlighting - 30 m.</span><br></li>',
             
