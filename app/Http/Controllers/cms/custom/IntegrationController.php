@@ -14,7 +14,7 @@ use App\Models\IntegrationManagementSection;
 use App\Models\IntegrationOutputSection;
 use App\Models\IntegrationProviderSection;
 use App\Models\IntegrationSecondCameraSection;
-use Illuminate\support\str;
+use Illuminate\Support\Str;
 
 class IntegrationController extends Controller
 {
