@@ -320,7 +320,7 @@ $site_dat = App\Models\GeneralSetting::first();
 									@endisset
 								</tr>
 								<tr>
-                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Ingress_protection')}}</th>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Ingress Protection')}}</th>
 									@isset($comparings)
 									@foreach($comparings as $compare)
                                     @if($compare->sensor !=null)
