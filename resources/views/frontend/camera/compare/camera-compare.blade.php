@@ -192,28 +192,12 @@ $site_dat = App\Models\GeneralSetting::first();
 									@endisset
 								</tr>
 								<tr>
-                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Max. Vid. Output Resulution')}}</th>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Max Resulution')}}</th>
 									@isset($comparings)
 									@foreach($comparings as $compare)
                                     @if($compare->max_resoluton !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->max_resoluton)}}
-										</td>
-                                    @else
-									<td>
-										<p>-</p>
-									</td>
-									@endif
-									@endforeach
-									@endisset
-								</tr>
-								<tr>
-                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Max. Vid. Output Resulution')}}</th>
-									@isset($comparings)
-									@foreach($comparings as $compare)
-                                    @if($compare->wdr !=null)
-										<td>
-											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->wdr)}}
 										</td>
                                     @else
 									<td>
@@ -231,10 +215,6 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->resoluton)}}
                                         </td>
-                                    @else
-									<td>
-										<p>-</p>
-									</td>
 									@else
 									<td>
 										<p>-</p>
@@ -245,12 +225,187 @@ $site_dat = App\Models\GeneralSetting::first();
 								</tr>
 								<tr>
                                     <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Sensor format')}}</th>
-
 									@isset($comparings)
 									@foreach($comparings as $compare)
                                     @if($compare->sensor !=null)
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->sensor)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Bitrate')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->bitrate)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Power Supply')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->power_supply)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Lens')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->lens)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Weight')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->weight)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Senstivity')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->senstivity)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Ingress_protection')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->ingress_protection)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Dimensions')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->Dimensions)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Power Consumption')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->power_consumption)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Temprature')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->temprature)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Mode')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->mode)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Network Interface')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->sensor !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->network_interface)}}
 										</td>
                                     @else
 									<td>
@@ -377,7 +532,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->retention)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -390,7 +549,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->audio_analytics)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
