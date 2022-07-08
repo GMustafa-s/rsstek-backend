@@ -236,7 +236,7 @@ class SubPageSeeder extends Seeder
             'description' => 'An intelligent module for recognizing state registration plates of cars is designed for automatic identification of license plates of vehicles that come into the field of view of a video camera. The automatic license plate recognition system allows you to track the passage of the vehicle of interest from the archive on screenshots and video fragments.
 
             Supported maintenance, generation of detailed reports, hierarchical logging of recognized autonomous groups, integration with speed measuring devices and security complexes, including access control and fire alarm equipment (barriers, barriers, barriers). In automatic mode, the module detects vehicles that are stolen or violate parking rules.',
-            'fetaured_image' => 'bg-img.png',
+            'fetaured_image' => 'bg-img.jpg',
             'video' => 'video.mp4',
             'slug' => 'auto-anrp',
             'meta_name' => 'Auto ANPR',
@@ -269,7 +269,7 @@ class SubPageSeeder extends Seeder
             The detector is built on the basis of neural technology, which reduces the number of false positives.
             
             Crowd Detector works with NeuroStation series servers. Supports Offload analytics - processes streams from other RRSTEK DVRs.',
-            'fetaured_image' => 'bg-img.png',
+            'fetaured_image' => 'bg-img.jpg',
             'video' => 'video.mp4',
             'slug' => 'crowd-detector',
             'meta_name' => 'Crowd Detector',
@@ -287,7 +287,7 @@ class SubPageSeeder extends Seeder
                 'page_categories_id' => '3',
                 'title' => 'Direction Detector',
                 'description' => 'The module is used to ensure safety, track the movement of objects - people, cars, bicycles - in a prohibited direction. When crossing a predetermined line or changing the trajectory of movement, the module sends alarm notifications to the guard and saves the frame for the evidentiary base.',
-                'fetaured_image' => 'bg-img.png',
+                'fetaured_image' => 'bg-img.jpg',
                 'video' => 'video.mp4',
                 'slug' => 'direction-detector',
                 'meta_name' => 'Direction Detector',
@@ -311,7 +311,7 @@ class SubPageSeeder extends Seeder
                 'page_categories_id' => '3',
                 'title' => 'Face Recognition',
                 'description' => 'The face recognition module consists of FaceSDK to compare faces and Face Search to search for faces in the database.',
-                'fetaured_image' => 'bg-img.png',
+                'fetaured_image' => 'bg-img.jpg',
                 'video' => 'video.mp4',
                 'slug' => 'face-recognition',
                 'meta_name' => 'Face Recognition',
@@ -339,7 +339,7 @@ class SubPageSeeder extends Seeder
                 'page_categories_id' => '3',
                 'title' => 'Neuro Detector',
                 'description' => 'Object detector (people, people&#39;s heads, cars, bicycles) based on neural networks, for use in security purposes. Allows you to accurately detect objects in the frame. When a foreign object enters the specified area, the detector generates an alarm. Allows to significantly reduce the number of false alarms by filtering foreign objects and noise. Works on the NeuroStation server. Offload analytics is possible (multiple RRSTEK servers transmit images to 1 server for processing).',
-                'fetaured_image' => 'bg-img.png',
+                'fetaured_image' => 'bg-img.jpg',
                 'video' => 'video.mp4',
                 'slug' => 'neuro-detector',
                 'meta_name' => 'Neuro Detector',
@@ -366,7 +366,7 @@ class SubPageSeeder extends Seeder
                 'description' => 'The module is designed to detect orphan and forgotten objects left in the field of view of the camera. The detector is used in areas where security is especially important, for example, at airports, train stations, in the "Safe City" on street cameras, etc.
 
                 Neuro Left Object Detector works on the basis of a detector of objects and people - unlike the classical one, it does not depend on the background and works better in difficult conditions. The detector is based on two grids and tracking. The first network detects people and several classes of objects: suitcase, backpack, box, bag, duffle and bag. The second uses frames of objects recognized by the first network to create their unique features. Tracking is the main part of the object detector. Works on the basis of the unique features of objects. Having carried out basic heuristics over the tracks, he determines the owner of the object (by the nature of movement and proximity to the object), whether he left the frame or moved away a certain distance.',
-                'fetaured_image' => 'bg-img.png',
+                'fetaured_image' => 'bg-img.jpg',
                 'video' => 'video.mp4',
                 'slug' => 'neuro-left-object-detector',
                 'meta_name' => 'Neuro Left Object Detector',
@@ -389,16 +389,8 @@ class SubPageSeeder extends Seeder
              DB::table('solution_sub_pages')->insert([
                 'page_categories_id' => '3',
                 'title' => 'Pose Detector',
-                'description' => 'The neural detector detects and classifies various postures of people - to track atypical behavior (unusual posture at the ATM, falling, raised arms during an attack, etc.). TRASSIR Pose Detector consists of a neural network, tracking, and a script (you can add new poses to the classification). The neural network detects a person and finds the position of his body parts. By tracking the detected detection, the Pose Detector determines what the pose corresponds to at the moment (the average position of body parts in 2 seconds), and classifies it using a script.
-
-                It is possible to customize the size of detected objects, zones where you need to define poses, sensitivity, quality and speed of recognition:
-                
-                Quality: the detector operates in two modes - simple and advanced; in advanced mode recognizes smaller poses using the high definition network and requires more powerful equipment.
-                
-                Recognition speed: 6 fps, 12 fps, constantly - in each frame; the fewer frames per second, the more difficult it is for the detector to recognize the pose.
-                
-                Sensitivity: the higher this value, the more susceptible the detector is to changes in posture; a decrease in the indicator eliminates false positives.',
-                'fetaured_image' => 'bg-img.png',
+                'description' => '<p style="margin-right: 0px; margin-bottom: 20px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; color: rgba(51, 51, 51, 0.8);">The neural detector detects and classifies various postures of people - to track atypical behavior (unusual posture at the ATM, falling, raised arms during an attack, etc.). TRASSIR Pose Detector consists of a neural network, tracking, and a script (you can add new poses to the classification). The neural network detects a person and finds the position of his body parts. By tracking the detected detection, the Pose Detector determines what the pose corresponds to at the moment (the average position of body parts in 2 seconds), and classifies it using a script.</p><p style="margin-right: 0px; margin-bottom: 20px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; color: rgba(51, 51, 51, 0.8);">It is possible to customize the size of detected objects, zones where you need to define poses, sensitivity, quality and speed of recognition:</p><p style="margin-right: 0px; margin-bottom: 20px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; color: rgba(51, 51, 51, 0.8);"><span style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: bolder; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">Quality:&nbsp;</span>the detector operates in two modes - simple and advanced; in advanced mode recognizes smaller poses using the high definition network and requires more powerful equipment.</p><p style="margin-right: 0px; margin-bottom: 20px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; color: rgba(51, 51, 51, 0.8);"><span style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: bolder; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">Recognition speed:</span>&nbsp;6 fps, 12 fps, constantly - in each frame; the fewer frames per second, the more difficult it is for the detector to recognize the pose.</p><p style="margin-right: 0px; margin-bottom: 20px; margin-left: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: Poppins, sans-serif; vertical-align: baseline; color: rgba(51, 51, 51, 0.8);"><span style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: bolder; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">Sensitivity:</span>&nbsp;the higher this value, the more susceptible the detector is to changes in posture; a decrease in the indicator eliminates false positives.</p>',
+                'fetaured_image' => 'bg-img.jpg',
                 'video' => 'video.mp4',
                 'slug' => 'pose-detector',
                 'meta_name' => 'Pose Detector',

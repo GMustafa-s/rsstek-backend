@@ -12,10 +12,7 @@ use App\Models\whatWeUseImage;
 use App\Models\AboutUsFeature;
 use App\Models\HomePageBusinessSection;
 use App\Models\HomePageroadcastSection;
-
-
-
-
+use App\Models\NewCustomePage;
 
 class CustomPagesController extends Controller
 {
@@ -223,9 +220,52 @@ public function busniessadd(Request $request){
             return redirect()->back()->with('success', 'deleted successfully');
         }
     }
+
+    //custome page
+    public function userCustomePage(){
+        $custome_pages = NewCustomePage::all();
+        return view('admin.cms.custome-pages.user-custome-page-index', compact('custome_pages'));
+    }
     //add new custome page
     public function addNewCustomePage(){
-        
+
         return view('admin.cms.custome-pages.add-custome-page');
+    }
+    //store new custome page
+    public function storeNewCustomePage(Request $request){
+        $data = new NewCustomePage;
+        if($request->page_title){
+            $data->page_title = $request->page_title;
+        }
+        if($request->meta_name){
+            $data->meta_name = $request->meta_name;
+        }
+        if($request->meta_description){
+            $data->meta_description = $request->meta_description;
+        }
+        if($request->header_heading){
+            $data->header_heading = $request->header_heading;
+        }
+        if($request->header_description){
+            $data->header_description = $request->header_description;
+        }
+        if($request->bg_image){
+            $file = $request->file('bg_image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/user-custome-pages/';
+            $file->move($destinationPath, $filename);
+            $data->bg_image = $filename;
+        }
+        if($request->body){
+            $data->body = $request->body;
+        }
+        if($data->save()){
+            return redirect()->route('user.custome.page')->with('success', 'New Custome Page added successfully');
+
+        }
+        else{
+            return redirect()->route('user.custome.page')->with('error', 'Something went wrong!');
+
+        }
     }
 }
