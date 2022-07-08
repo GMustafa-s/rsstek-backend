@@ -183,7 +183,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->wdr)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -195,7 +199,27 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->max_resoluton)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
+									@endforeach
+									@endisset
+								</tr>
+								<tr>
+                                    <th>{{$tr->setSource('en')->setTarget($site_language)->translate('Max. Vid. Output Resulution')}}</th>
+									@isset($comparings)
+									@foreach($comparings as $compare)
+                                    @if($compare->wdr !=null)
+										<td>
+											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->wdr)}}
+										</td>
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -207,7 +231,15 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->resoluton)}}
                                         </td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -220,7 +252,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->sensor)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -233,7 +269,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->ir_range)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -246,7 +286,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->focal_length)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -259,7 +303,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->horizontal_fov)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -272,7 +320,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->aperture)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -285,7 +337,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->aspect_ratio)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
@@ -298,7 +354,11 @@ $site_dat = App\Models\GeneralSetting::first();
 										<td>
 											{{$tr->setSource('en')->setTarget($site_language)->translate($compare->zoom_focus)}}
 										</td>
-                                    @endif
+                                    @else
+									<td>
+										<p>-</p>
+									</td>
+									@endif
 									@endforeach
 									@endisset
 								</tr>
