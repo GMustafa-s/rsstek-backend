@@ -898,12 +898,14 @@ nav{
 	padding: 0 0 72px;
 }
 .business-area .holder{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	overflow: hidden;
 	padding: 15px 48px 0;
 }
 .business-area .col{
-	float: left;
-	width: 48.7%;
+	/* float: left; */
+	width: 95.7%;
 	position: relative;
 	margin-bottom: 32px;
 }
@@ -3404,7 +3406,7 @@ font-size: 14px;
 		padding: 15px 55px 0;
 	}
 	.business-area .col{
-		width: 48.3%;
+		/* width: 48.3%; */
 		margin-bottom: 18px;
 	}
 	.business-area .text{
@@ -3882,6 +3884,8 @@ font-size: 14px;
 		margin: 0 auto;
 	}
 	.business-area .holder{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 		padding: 0 55px;
 	}
 	.container{
