@@ -8,12 +8,12 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">Add new custome page</h3>
+                    <h3 class="page-title">Edit user custome page</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('cms.custom.index')}}">custom-pages</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Add new custome page</li>
+                            <li class="breadcrumb-item"><a href="{{route('user.custome.page')}}">user custom-pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit </li>
                         </ol>
                     </nav>
                 </div>
@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <form action="{{route('cms.store.user-custom-page')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('cms.update.user-custom-page', $custome_page->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
@@ -57,41 +57,41 @@
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <label>Page Title</label>
-                                        <input type="text" class="form-control" name="page_title" value="" required />
+                                        <input type="text" class="form-control" name="page_title" value="@if($custome_page->page_title !=null) {{$custome_page->page_title}} @endif" required />
                                     </div>
                                     <div class="col-6">
                                         <label>Meta title</label>
-                                        <input type="text" class="form-control" name="meta_name" value="" required />
+                                        <input type="text" class="form-control" name="meta_name" value="@if($custome_page->meta_name !=null) {{$custome_page->meta_name}} @endif" required />
                                     </div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label>Meta Description</label>
-                                    <textarea required name="meta_description" rows="3" cols="5" class="form-control" placeholder="description here" ></textarea>
+                                    <textarea required name="meta_description" rows="3" cols="5" class="form-control" placeholder="description here" >@if($custome_page->meta_description != null) {{$custome_page->meta_description}} @endif</textarea>
                                 </div>
 
                                 <div class="form-group mb-4">
                                     <label>Header Heading</label>
-                                    <input type="text" class="form-control" name="header_heading" value="" required />
+                                    <input type="text" class="form-control" name="header_heading" value="@if($custome_page->header_heading  !=null) {{$custome_page->header_heading}} @endif" required />
                                 </div>
 
                                 <div class="form-group mb-4">
                                     <label>Header Description</label>
-                                    <textarea required name="header_description" rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" ></textarea>
+                                    <textarea required name="header_description" rows="3" cols="5" class="form-control"  placeholder=" description here" >@if($custome_page->header_description !=null) {{$custome_page->header_description}} @endif</textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-8">
                                         <label for="">Backgroung image</label>
-                                        <input class="form-control" required type="file" name="bg_image" id="">
+                                        <input class="form-control" type="file" name="bg_image" id="">
                                     </div>
                                     <div class="col-4">
-                                       <img src="" alt="" srcset="">
+                                       <img width="100px" height="100px" src="{{asset('frontend')}}/images/user-custome-pages/{{$custome_page->bg_image}}" alt="image" >
                                     </div>
                                 </div>
 
                                 <h2 style="text-align: center;" class="mt-2">Body</h2>
                                 <div class="form-group mb-4">
                                     <label> Description</label>
-                                    <textarea name="body" rows="4" class="form-control summernote" placeholder="Enter your content"></textarea>
+                                    <textarea name="body" rows="4" class="form-control summernote" placeholder="Enter your content">@if($custome_page->body !=null) {{$custome_page->body}} @endif</textarea>
                                 </div>
                                 <div id="section-container">
                                     <!-- here will be the new section content -->

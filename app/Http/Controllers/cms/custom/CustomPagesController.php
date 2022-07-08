@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\cms\custom;
 
+use App\Models\HomePage;
 use App\Models\CustomPage;
 use Illuminate\Http\Request;
-use App\Models\HomeFeatureSection;
-use App\Http\Controllers\Controller;
-use App\Models\HomeChoiceUsSection;
-use App\Models\HomePage;
-use App\Models\whatWeUseImage;
 use App\Models\AboutUsFeature;
+use App\Models\NewCustomePage;
+use App\Models\whatWeUseImage;
+use App\Models\HomeFeatureSection;
+use App\Models\HomeChoiceUsSection;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Models\HomePageBusinessSection;
 use App\Models\HomePageroadcastSection;
-use App\Models\NewCustomePage;
 
 class CustomPagesController extends Controller
 {
@@ -264,6 +265,66 @@ public function busniessadd(Request $request){
 
         }
         else{
+            return redirect()->route('user.custome.page')->with('error', 'Something went wrong!');
+
+        }
+    }
+    //edit custome page
+    public function editNewCustomePage($id){
+        $custome_page =  NewCustomePage::find($id);
+        return view('admin.cms.custome-pages.edit-user-custome-page', compact('custome_page'));
+    }
+    //update user custome page
+    public function updateNewCustomePage(Request $request, $id){
+
+        $data =  NewCustomePage::find($id);
+        if($request->page_title){
+            $data->page_title = $request->page_title;
+        }
+        if($request->meta_name){
+            $data->meta_name = $request->meta_name;
+        }
+        if($request->meta_description){
+            $data->meta_description = $request->meta_description;
+        }
+        if($request->header_heading){
+            $data->header_heading = $request->header_heading;
+        }
+        if($request->header_description){
+            $data->header_description = $request->header_description;
+        }
+        if($request->bg_image != null){
+             //delete file form folder functionality
+             $path =  public_path('frontend').'/images/user-custome-pages/'.
+             $data->bg_image;
+             if(File::exists($path)){
+                 File::delete($path);
+             }
+            $file = $request->file('bg_image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/user-custome-pages/';
+            $file->move($destinationPath, $filename);
+            $data->bg_image = $filename;
+        }
+        if($request->body){
+            $data->body = $request->body;
+        }
+        if($data->save()){
+            return redirect()->route('user.custome.page')->with('success', $request->page_title.' custome Page updated successfully');
+
+        }
+        else{
+            return redirect()->route('user.custome.page')->with('error', 'Something went wrong!');
+
+        }
+    }
+
+    //delete user custome page
+    public function deleteNewCustomePage($id){
+        $data = NewCustomePage::find($id);
+        if($data->delete()){
+            return redirect()->route('user.custome.page')->with('success', '$data->page_title'. ' custome Page delete successfully');
+        }else{
             return redirect()->route('user.custome.page')->with('error', 'Something went wrong!');
 
         }

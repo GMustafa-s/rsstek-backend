@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IndustriesPage extends Model
+class IndustriesSecuritySection extends Model
 {
     use HasFactory;
-    public function industriesSecuritySections(){
-        return $this->hasMany(IndustriesSecuritySection::class);
+    public function industriesPage(){
+        return $this->belongsTo(IndustriesPage::class);
     }
 }

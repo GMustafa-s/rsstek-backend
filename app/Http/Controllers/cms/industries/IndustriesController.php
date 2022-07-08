@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\cms\industries;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\IndustriesPage;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use App\Models\IndustriesSecuritySection;
 
 class IndustriesController extends Controller
 {
@@ -14,11 +18,9 @@ class IndustriesController extends Controller
      */
     public function index()
     {
-        //
 
-        dd('index');
-        // $industries_pages = Industries::all();
-        // return view('admin.cms.industries.home',compact('industries_pages'));
+        $industries_pages = IndustriesPage::all();
+        return view('admin.cms.industries.home', compact('industries_pages'));
     }
 
     /**
@@ -29,7 +31,7 @@ class IndustriesController extends Controller
     public function create()
     {
         //
-        return view('admin.cms.industries.add-page');
+        return view('admin.cms.industries.add-industries-page');
     }
 
     /**
@@ -39,7 +41,44 @@ class IndustriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+        $page_title = IndustriesPage::all();
+        foreach($page_title as $title){
+            if($title->page_title == $request->page_title){
+                return redirect()->back()->with('error', 'Same page having title of '. $request->page_title.' is already exits!');
+            }
+        }
+        $industries_page = new IndustriesPage;
+        if($request->page_title){
+            $industries_page->page_title = $request->page_title;
+        }
+        if($request->meta_name){
+            $industries_page->meta_name = $request->meta_name;
+        }
+        if($request->meta_description){
+            $industries_page->meta_description = $request->meta_description;
+        }
+        if($request->header_heading){
+            $industries_page->header_heading = $request->header_heading;
+        }
+        if($request->header_description){
+            $industries_page->header_description = $request->header_description;
+        }
+        $industries_page->slug = Str::slug($request->page_title);
+        if($request->bg_image){
+            $file = $request->file('bg_image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/industries/';
+            $file->move($destinationPath, $filename);
+            $industries_page->bg_image = $filename;
+        }
+        if($industries_page->save()){
+            return redirect()->route('cms.industries.index')->with('success', 'industrial Page added successfully');
 
+        }
+        else{
+            return redirect()->route('cms.industries.index')->with('error', 'Something went wrong!');
+
+        }
     }
 
     /**
@@ -61,12 +100,9 @@ class IndustriesController extends Controller
      */
     public function edit($id)
     {
-        dd('edit');
-        // if($id==1){
-        //     return redirect()->route('/');
-        // }
-        // $page = Industries::find($id);
-        // return view('admin.cms.industries.edit-page', compact('page'));
+        // dd('edit');
+        $industries_page = IndustriesPage::find($id);
+        return view('admin.cms.industries.edit-industries-page', compact('industries_page'));
     }
 
     /**
@@ -79,6 +115,46 @@ class IndustriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $industries_page = IndustriesPage::find($id);
+        // dd($request->page_title);
+        if($request->page_title){
+            $industries_page->page_title = $request->page_title;
+        }
+        if($request->meta_name){
+            $industries_page->meta_name = $request->meta_name;
+        }
+        if($request->meta_description){
+            $industries_page->meta_description = $request->meta_description;
+        }
+        if($request->header_heading){
+            $industries_page->header_heading = $request->header_heading;
+        }
+        if($request->header_description){
+            $industries_page->header_description = $request->header_description;
+        }
+        if($request->bg_image != null){
+            //delete previous image from folder
+            $path =  public_path('frontend').'/images/industries/'.
+            $industries_page->bg_image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+
+            $file = $request->file('bg_image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/industries/';
+            $file->move($destinationPath, $filename);
+            $industries_page->bg_image = $filename;
+        }
+        $industries_page->slug = Str::slug($request->page_title);
+        if($industries_page->save()){
+            return redirect()->route('cms.industries.index')->with('success', 'industrial Page updated successfully');
+
+        }
+        else{
+            return redirect()->route('cms.industries.index')->with('error', 'Something went wrong!');
+
+        }
     }
 
     /**
@@ -90,12 +166,77 @@ class IndustriesController extends Controller
     public function destroy($id)
     {
         //
+        $industries_page = IndustriesPage::find($id);
+        $security_sections = IndustriesSecuritySection::where('industries_page_id', $id)->get();
+        // dd($security_sections);
+        // code to delete security sections
+        foreach($security_sections as $security_section){
+            $delete_sections = $this->deleteAllSection($security_section->id);
+            $security_section->delete();
+        }
+
+        if($industries_page->delete()){
+            return redirect()->route('cms.industries.index')->with('success', 'industrial page and it\'s security sections deleted successfully');
+        }
+        else{
+            return redirect()->route('cms.industries.index')->with('error', 'Something went wrong!');
+
+        }
+    }
+    // function to delete all section of a singal industrial page
+    public function deleteAllSection($id){
+        // dd($id);
+        $security_sections = IndustriesSecuritySection::find($id);
+        // dd($security_sections);
+        if($security_sections->delete()){
+            return redirect()->route('cms.industries.index')->with('success', 'industrial page and it\'s security sections deleted successfully');
+
+        }
+        else{
+            return redirect()->route('cms.industries.index')->with('error', 'Something went wrong!');
+
+        }
     }
 
 
-    //section
-    public function sectionIndex(){
-        
-       return view('admin.cms.industries.add-regular-security-section');
+
+
+
+    //security section
+    public function securitySectionIndex(){
+
+        $industries_pages = IndustriesPage::all();
+        $security_sections = IndustriesSecuritySection::all();
+       return view('admin.cms.industries.security-section-page-index', compact('industries_pages', 'security_sections'));
+    }
+    //store security section
+    public function storeSecuritySection(Request $request){
+        // dd($request->all());
+        $security_section = new IndustriesSecuritySection;
+
+        if($request->industries_page_id){
+            $security_section->industries_page_id = $request->industries_page_id;
+        }
+        if($request->heading){
+            $security_section->heading = $request->heading;
+        }
+        if($request->description){
+            $security_section->description = $request->description;
+        }
+        if($request->image){
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/industries/security-section/';
+            $file->move($destinationPath, $filename);
+            $security_section->image = $filename;
+        }
+        if($security_section->save()){
+            return redirect()->route('cms.industries.security-section.index')->with('success', 'industrial security section added successfully');
+
+        }
+        else{
+            return redirect()->route('cms.industries.index')->with('error', 'Something went wrong!');
+
+        }
     }
 }

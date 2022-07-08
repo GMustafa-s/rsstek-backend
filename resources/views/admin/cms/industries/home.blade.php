@@ -67,6 +67,8 @@
                     <thead>
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Page Name</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Meta Name</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Bg Image</th>
 
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 108.406px;">Action</th>
                         </tr>
@@ -76,12 +78,24 @@
                         @foreach ($industries_pages as $industries_page)
                             <tr>
                                 <td>
-                                    {{$industries_page->page_name}}
+                                    {{$industries_page->page_title}}
                                 </td>
-                                <td style="font-size: 20px;">
-                                    <span><a href=""><i class="la la-eye"></i></a></span> |
-                                    <span> <a href="{{route('cms.industries.edit', $industries_page->id)}}"><i class="la la-edit"></i></a> </span> |
-                                    <span> <a href=""><i class="la la-trash"></i> </a></span>
+                                <td>
+                                    {{$industries_page->meta_name}}
+                                </td>
+                                <td>
+                                    <img width="50px" height="50px" src="{{asset('frontend')}}/images/industries/{{$industries_page->bg_image}}" alt="image" srcset="">
+                                </td>
+                                <td style="font-size: 20px;display: flex;gap: 10px;">
+                                    {{-- <a href="{{route('cms.edit.user-custom-page',$page->id)}}" class="btn btn-warning btn-sm">show</a> --}}
+                                    <a href="{{route('cms.industries.edit', $industries_page->id)}}" class="btn btn-primary btn-sm">edit</a>
+
+                                    <form action="{{route('cms.industries.delete', $industries_page->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick= "return confirm('Are you sure want to delete record? it will aslo delete it\'s security section!')" type="submit" class="btn btn-danger btn-sm">delete</button>
+                                    </form>
+
                                 </td>
                             </tr>
                         @endforeach

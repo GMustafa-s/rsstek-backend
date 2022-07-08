@@ -374,16 +374,22 @@ Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('cate
 Route::get('solution/{solution}/{name}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');
 
 
+
+// all industrial listings here
+Route::get('industrial/{any}',[IndustriesController::class, 'showSlug'])->name('industrial.slug');
+
 // cms industries pages
 Route::prefix('admin/cms/industries')->middleware('auth')->group(function(){
     Route::get('/', [IndustriesController::class, 'index'])->name('cms.industries.index');
     Route::get('/create', [IndustriesController::class, 'create'])->name('cms.industries.create');
     Route::post('/store', [IndustriesController::class, 'store'])->name('cms.industries.store');
     Route::get('/edit/{id}', [IndustriesController::class, 'edit'])->name('cms.industries.edit');
-    Route::get('/delete/{id}', [IndustriesController::class, 'delete'])->name('cms.industries.delete');
-
-    Route::get('/section', [IndustriesController::class, 'sectionIndex'])->name('cms.industries.section.index');
-    Route::get('/section', [IndustriesController::class, 'sectionIndex'])->name('cms.industries.section.index');
+    Route::post('/update/{id}', [IndustriesController::class, 'update'])->name('cms.industries.update');
+    Route::delete('/delete/{id}', [IndustriesController::class, 'destroy'])->name('cms.industries.delete');
+    
+    //indsutries security section
+    Route::get('/security-section', [IndustriesController::class, 'securitySectionIndex'])->name('cms.industries.security-section.index');
+    Route::post('/add-security-section', [IndustriesController::class, 'storeSecuritySection'])->name('cms.industries.security-section.store');
 });
 
 
@@ -401,9 +407,18 @@ Route::prefix('cms/camera')->middleware('auth')->group(function () {
 
 Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.index'])->group(function () {
     //add new custome page routes
-    Route::get('user/custome-page', [CustomPagesController::class, 'userCustomePage'])->name('user.custome.page');
-    Route::get('/add', [CustomPagesController::class, 'addNewCustomePage'])->name('cms.add.custom-page');
-    Route::post('/store', [CustomPagesController::class, 'storeNewCustomePage'])->name('cms.store.custom-page');
+    //sidebar link route index page
+    Route::get('/user/custome-page', [CustomPagesController::class, 'userCustomePage'])->name('user.custome.page');
+    //add new button for form
+    Route::get('/add', [CustomPagesController::class, 'addNewCustomePage'])->name('cms.add.user-custom-page');
+    // store user custome page
+    Route::post('/store', [CustomPagesController::class, 'storeNewCustomePage'])->name('cms.store.user-custom-page');
+    // edit user custome page
+    Route::get('/user/custome-page/edit/{id}', [CustomPagesController::class, 'editNewCustomePage'])->name('cms.edit.user-custom-page');
+    // update user custome page
+    Route::post('/user/custome-page/update/{id}', [CustomPagesController::class, 'updateNewCustomePage'])->name('cms.update.user-custom-page');
+    // delete user custome page
+    Route::delete('/user/custome-page/delete/{id}', [CustomPagesController::class, 'deleteNewCustomePage'])->name('cms.delete.user-custom-page');
 
 
     Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');

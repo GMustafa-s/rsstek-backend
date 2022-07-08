@@ -9,7 +9,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">New Industrial Page</h3>
+                    <h3 class="page-title">Edit @if($industries_page->page_title != null){{$industries_page->page_title}} @endif</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">dashboard</a></li>
@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <form action="{{route('cms.industries.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('cms.industries.update', $industries_page->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
@@ -50,37 +50,54 @@
                             <div class="col-4 bg-ccc">
                                 <div class="h3 card-title with-switch">
                                     <br />
-                                    Header Information
+                                    Meta Info & Header Section
                                 </div>
                             </div>
                             <div class="col-8">
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <label>Page Title</label>
+                                        <input  type="text" class="form-control" name="page_title" value="@if($industries_page->page_title != null){{$industries_page->page_title}} @endif" required />
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Meta title</label>
+                                        <input type="text" class="form-control" name="meta_name" value="@if($industries_page->meta_name != null){{$industries_page->meta_name}} @endif" required />
+                                    </div>
+                                </div>
                                 <div class="form-group mb-4">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" name="name" value="" required />
+                                    <label>Meta Description</label>
+                                    <textarea required name="meta_description" rows="3" cols="5" class="form-control" placeholder="description here" >@if($industries_page->meta_description != null){{$industries_page->meta_description}} @endif</textarea>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label>Header Heading</label>
+                                    <input type="text" class="form-control" name="header_heading" value="@if($industries_page->header_heading != null){{$industries_page->header_heading}} @endif" required />
                                 </div>
 
                                 <div class="form-group mb-4">
                                     <label>Header Description</label>
-                                    <textarea required name="description" rows="3" cols="5" class="form-control" maxlength="165" placeholder=" description here" ></textarea>
+                                    <textarea required name="header_description" rows="5" cols="5" class="form-control" placeholder=" description here" >@if($industries_page->header_description != null){{$industries_page->header_description}} @endif</textarea>
                                 </div>
-                                <div class="row mb-4">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label>Header Background Image</label>
-                                            <input required name="bg_image" class="form-control" type="file" />
-                                        </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <label for="">Backgroung image</label>
+                                        <input class="form-control" type="file" name="bg_image" id="">
+                                    </div>
+                                    <div class="col-4">
+                                        @if($industries_page->bg_image != null)
+                                        <img width="50px" height="50px" src="{{asset('frontend')}}/images/industries/{{$industries_page->bg_image}}" alt="image" srcset="">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Create Now</button>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
                 </form>
-
-
-
-
+            </div>
+        </div>
 @endsection
