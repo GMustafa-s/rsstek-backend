@@ -84,7 +84,7 @@ style="background-image: url('{{ asset('frontend/images/' . $page->name.'/'.$pag
                             {{$tr->setSource('en')->setTarget($site_language)->translate($sub_page->title)}}
                         </h2>
                         <p class="viewport-holder slideDown delay-3">
-                        {{ $tr->setSource('en')->setTarget($site_language)->translate( Illuminate\Support\Str::of(strip_tags($sub_page->description))->words(30)) }}
+                        {{ $tr->setSource('en')->setTarget($site_language)->translate( Illuminate\Support\Str::of(strip_tags($sub_page->description))->words(25)) }}
                         </p>
                         <a href="active-post.html" class="viewport-holder slideDown delay-4 more">
                             <span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span>
@@ -103,7 +103,7 @@ style="background-image: url('{{ asset('frontend/images/' . $page->name.'/'.$pag
                         {{$tr->setSource('en')->setTarget($site_language)->translate($sub_page->title)}}
                     </h2>
                     <p class="viewport-holder slideDown delay-3">
-                        {!! $tr->setSource('en')->setTarget($site_language)->translate($sub_page->description) !!}
+                    {{ $tr->setSource('en')->setTarget($site_language)->translate( Illuminate\Support\Str::of(strip_tags($sub_page->description))->words(25)) }}
                     </p>
 
                    

@@ -337,7 +337,7 @@ $site_dat = App\Models\GeneralSetting::first();
 								<tr>
 									<th></th>
 									@if($cameras !=null)
-									@foreach($cameras as $camera)
+									@foreach($cameras->take(3) as $camera)
 									<td>
 										<div class="holder">
 											<h3>
