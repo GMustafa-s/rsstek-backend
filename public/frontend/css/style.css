@@ -3370,9 +3370,9 @@ font-size: 14px;
 	.header-t{
 		margin: 0 0 4px;
 	}
-	.header-b{
+	/* .header-b{
 		padding: 0 0 101px;
-	}
+	} */
 	.header-b .text{
 		padding: 0 0 0 55px;
 	}
