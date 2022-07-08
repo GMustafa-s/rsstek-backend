@@ -102,7 +102,7 @@
                                     </h3>
                                     <p class="viewport-holder slideDown delay-6">
                                         @if($camera->description !=null)
-                                        {!! $tr->setSource('en')->setTarget($site_language)->translate($camera->description) !!}
+                                        {!! $tr->setSource('en')->setTarget($site_language)->translate(Illuminate\Support\Str::of($camera->description)->words(10) !!}
                                         @endif
                                     </p>
                                     <a href="{{route('camera.slug', $camera->slug)}}" class="details viewport-holder slideDown delay-7">See Details</a>
