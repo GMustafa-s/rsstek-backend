@@ -333,7 +333,7 @@ class CameraPageSeeder extends Seeder
         // main table
         DB::table('cameras')->insert([
             'title' => 'TR-D3181IR3 v2 3.6',
-            'sub_title' => '',
+            'sub_title' => 'Outdoor IP camera with IR illumination',
             'meta_name' => 'TRASSIR TR-D3181IR3 v2 (3.6 mm)',
             'meta_description' => '<li style="margin: 0px; padding: 0px 0px 0px 26px; border: 0px; font: inherit; vertical-align: baseline; position: relative;"><span style="color: rgba(51, 51, 51, 0.8); font-family: Poppins, sans-serif; font-size: 16px;">8 MP (3840 × 2160) IP-camera is designed taking into account the conditions of round-the-clock year-round outdoor operation in places out of sight of security personnel: the metal case is protected from mechanical impacts according to the IK10 code, from moisture and dust - according to the IP67 standard, operating temperatures - –40 ° C… +60 ° C, lightning protection - TVS 2000 V, range of integrated backlighting - 30 m.</span><br></li>',
             'image' => 'TR-D3181IR3 v2 3.6.jpg',

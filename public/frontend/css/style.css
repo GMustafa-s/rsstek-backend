@@ -2554,7 +2554,7 @@ font-size: 14px;
 .compare-section .slick-dots li{
 	display: inline-block;
 	vertical-align: top;
-	width: 20%;
+	width: 10%;
 }
 .compare-section .slick-dots .slick-active button{
 	background: #fff;
