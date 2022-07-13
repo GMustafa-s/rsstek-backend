@@ -10,6 +10,10 @@ $pc = App\Models\PageCategory::all();
 <meta name="name" content="{{$page->meta_name}}">
 <meta name="description" content="{{$page->meta_description}}">
 @endsection
+@section('title')
+<title>@if($page->name !=null) {{$page->name}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
+
 <?php
 
     use Stichoza\GoogleTranslate\GoogleTranslate;

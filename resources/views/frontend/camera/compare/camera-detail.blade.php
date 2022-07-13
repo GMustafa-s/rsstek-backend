@@ -19,6 +19,9 @@ $site_dat = App\Models\GeneralSetting::first();
 <meta name="name" content="{{$camera->meta_name}}">
 <meta name="description" content="{{$camera->meta_description}}">
 @endsection
+@section('title')
+<title>@if($camera->title !=null) {{$camera->title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
     <div class="promo camera-detail">
         <div class="frame">
             <div class="holder">

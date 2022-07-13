@@ -20,6 +20,9 @@ $site_dat = App\Models\GeneralSetting::first();
 <meta name="name" content="{{$page->meta_name}}">
 <meta name="description" content="{{$page->meta_description}}">
 @endsection
+@section('title')
+<title>@if($page->title !=null) {{$page->title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
 <div class="promo">
 			<div style="margin-top: 36px" class="frame">
 				<div class="holder">

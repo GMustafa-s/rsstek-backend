@@ -4,6 +4,9 @@
     $site_dat = App\Models\GeneralSetting::first();
     $data = App\Models\Cases::first();
     $our_works = App\Models\OurWork::all();
+    $casesPage = App\Models\CustomPage::find(5);
+    
+
     @endphp
     <?php
     use Stichoza\GoogleTranslate\GoogleTranslate;
@@ -15,6 +18,15 @@
         $site_language = $site_dat->language;
     }
     ?>
+@section('meta')
+<meta name="name" content="{{$casesPage->meta_name}}">
+<meta name="description" content="{{$casesPage->meta_description}}">
+@endsection
+<?php dd($casesPage->meta_description)?>
+
+@section('title')
+<title>@if($casesPage->page_title !=null) {{$casesPage->page_title}}   @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
     <div id="promo-cases" class="promo product">
         <div class="frame">
             <div class="holder">
