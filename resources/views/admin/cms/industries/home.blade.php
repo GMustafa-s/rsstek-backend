@@ -78,7 +78,7 @@
                         @foreach ($industries_pages as $industries_page)
                             <tr>
                                 <td>
-                                    {{$industries_page->page_title}}
+                                    <a href="{{route('industries.slug', $industries_page->slug)}}">{{$industries_page->page_title}}</a>
                                 </td>
                                 <td>
                                     {{$industries_page->meta_name}}

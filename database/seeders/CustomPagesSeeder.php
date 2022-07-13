@@ -49,6 +49,11 @@ class CustomPagesSeeder extends Seeder
                 'meta_name' =>'Demo page',
                 'meta_description' =>'meta descriptio will be here',
             ],
+            [
+                'page_title' =>'Camera Compare',
+                'meta_name' =>'Camera Compare',
+                'meta_description' =>'Camera Compare meta description',
+            ],
         ];
 
         foreach($customes as $custom){

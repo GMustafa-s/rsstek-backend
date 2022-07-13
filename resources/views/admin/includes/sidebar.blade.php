@@ -139,7 +139,7 @@
                                         <span class="menu-arrow"></span></a>
 										<ul style="display: none;">
 											<li><a href="{{route('cms.industries.index')}}">Pages</a></li>
-                                            <li><a href="{{route('cms.industries.security-section.index')}}">Industries Security Sections</a></li>
+                                            <li><a href="{{route('cms.industries.security-section.index')}}">Sections</a></li>
 										</ul>
 									</li>
 									<!-- <li><a href="{{route('cms.solution.index')}}">Solution Pages</a></li> -->

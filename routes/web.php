@@ -18,11 +18,13 @@ use App\Http\Controllers\cms\custom\DemoController;
 use App\Http\Controllers\cms\custom\CasesController;
 use App\Http\Controllers\settings\GeneralController;
 use App\Http\Controllers\cms\camera\CameraController;
+use App\Http\Controllers\cms\custom\CameraComparePageController;
 use App\Http\Controllers\cms\solution\SolutionController;
 use App\Http\Controllers\cms\custom\CustomPagesController;
 use App\Http\Controllers\cms\custom\EditAboutusController;
 use App\Http\Controllers\cms\custom\IntegrationController;
 use App\Http\Controllers\cms\industries\IndustriesController;
+use App\Models\CameraComparePage;
 
 /*
 |--------------------------------------------------------------------------
@@ -374,10 +376,6 @@ Route::get('solution/{any}',[SolutionController::class, 'showSlug'])->name('cate
 Route::get('solution/{solution}/{name}',[SolutionController::class, 'showSubSlug'])->name('category.sub.slug');
 
 
-
-// all industrial listings here
-Route::get('industrial/{any}',[IndustriesController::class, 'showSlug'])->name('industrial.slug');
-
 // cms industries pages
 Route::prefix('admin/cms/industries')->middleware('auth')->group(function(){
     Route::get('/', [IndustriesController::class, 'index'])->name('cms.industries.index');
@@ -386,11 +384,20 @@ Route::prefix('admin/cms/industries')->middleware('auth')->group(function(){
     Route::get('/edit/{id}', [IndustriesController::class, 'edit'])->name('cms.industries.edit');
     Route::post('/update/{id}', [IndustriesController::class, 'update'])->name('cms.industries.update');
     Route::delete('/delete/{id}', [IndustriesController::class, 'destroy'])->name('cms.industries.delete');
-    
+
     //indsutries security section
     Route::get('/security-section', [IndustriesController::class, 'securitySectionIndex'])->name('cms.industries.security-section.index');
     Route::post('/add-security-section', [IndustriesController::class, 'storeSecuritySection'])->name('cms.industries.security-section.store');
+    Route::get('/security-section/{id}', [IndustriesController::class, 'showSecuritySection'])->name('cms.industries.security-section.show');
+
+    Route::get('/security-section/edit/{id}', [IndustriesController::class, 'editSecuritySection'])->name('cms.industries.security-section.edit');
+    Route::post('/security-section/update/{id}', [IndustriesController::class, 'updateSecuritySection'])->name('cms.industries.security-section.update');
+
+    Route::delete('/delete-security-section/{id}', [IndustriesController::class, 'deleteSecuritySection'])->name('cms.industries.security-section.delete');
 });
+
+// all industrial page and its security section listings here
+Route::get('industries/{any}',[IndustriesController::class, 'showSlug'])->name('industries.slug');
 
 
 Route::prefix('cms/camera')->middleware('auth')->group(function () {
@@ -401,9 +408,12 @@ Route::prefix('cms/camera')->middleware('auth')->group(function () {
     Route::post('/update/{id}', [CameraController::class, 'update'])->name('cms.camera.update');
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete')->middleware('can:cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection')->middleware('can:cms.camera.delete');
-
-
 });
+
+
+//all new custome page listings here
+Route::get('{any}',[CustomPagesController::class, 'showSlug'])->name('custome-page.slug');
+
 
 Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.index'])->group(function () {
     //add new custome page routes
@@ -552,6 +562,11 @@ Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.ind
      Route::delete('/get-demo/delete/{id}' , [DemoController::class, 'getDemoDelete'])->name('cms.custome.get-demo.delete');
      // regular security needs section delete
      Route::post('/security-needs' , [DemoController::class, 'securityNeedsUpdate'])->name('cms.custome.security-needs.update');
+
+                //Camera Compare Page
+    Route::get('/camera-compare/edit/{id}', [CameraComparePageController::class, 'editCameraCompare'])->name('cms.custome.edit.camera-compare');
+     // demo page heading update
+     Route::post('/camera-compare/update' , [CameraComparePageController::class, 'cameraCompareUpdate'])->name('cms.custome.camera-compare.update');
 
 
 });

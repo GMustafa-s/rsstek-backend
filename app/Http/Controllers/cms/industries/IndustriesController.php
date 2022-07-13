@@ -183,7 +183,7 @@ class IndustriesController extends Controller
 
         }
     }
-    // function to delete all section of a singal industrial page
+    // function to delete all security section of a single industrial page
     public function deleteAllSection($id){
         // dd($id);
         $security_sections = IndustriesSecuritySection::find($id);
@@ -198,11 +198,7 @@ class IndustriesController extends Controller
         }
     }
 
-
-
-
-
-    //security section
+    //security section crud
     public function securitySectionIndex(){
 
         $industries_pages = IndustriesPage::all();
@@ -237,6 +233,39 @@ class IndustriesController extends Controller
         else{
             return redirect()->route('cms.industries.index')->with('error', 'Something went wrong!');
 
+        }
+    }
+    //show security section
+    public function showSecuritySection($id)
+    {
+        dd('show');
+    }
+    //edit security section
+    public function editSecuritySection($id)
+    {
+        dd('editSecuritySection');
+    }
+    //update security section
+    public function updateSecuritySection(Request $request)
+    {
+        dd('updateSecuritySection');
+    }
+    //delete security section
+    public function deleteSecuritySection($id)
+    {
+        dd('deleteSecuritySection');
+    }
+
+    //show industries on frontend
+    public function showSlug($slug)
+    {
+        $page = IndustriesPage::whereSlug($slug)->first();
+        if($page == null){
+            abort(404);
+        }
+        else{
+            $security_sections = IndustriesSecuritySection::where('industries_page_id',$page->id)->get();
+            return view('frontend.industries.index',compact('page' ,'security_sections'));
         }
     }
 }

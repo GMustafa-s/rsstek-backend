@@ -87,7 +87,7 @@
                          @foreach($custome_pages as $page)
                         <tr role="row" class="odd">
                             <td class="sorting_1">
-								<a href="">{{$page->page_title}}</a>
+								<a href="{{route('custome-page.slug', $page->slug)}}">{{$page->page_title}}</a>
 							</td>
                             <td>
                                 {{$page->meta_name}}

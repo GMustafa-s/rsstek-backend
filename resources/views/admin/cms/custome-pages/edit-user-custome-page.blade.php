@@ -98,7 +98,7 @@
                                 </div>
                                 {{-- <a id="add-sec-btn" href="javascript:void(0)" onclick="addSection()" style="float: right;"><i class="fa fa-plus"></i> Add section</a> --}}
                                 <div class="submit-section">
-                                    <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Create Now</button>
+                                    <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Update</button>
                                 </div>
                             </div>
 
