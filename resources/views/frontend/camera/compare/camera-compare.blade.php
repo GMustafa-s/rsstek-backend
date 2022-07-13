@@ -2,6 +2,8 @@
 @section('content')
 @php
 $site_dat = App\Models\GeneralSetting::first();
+$camera_compare = App\Models\CameraComparePage::first();
+
 @endphp
 <?php
     use Stichoza\GoogleTranslate\GoogleTranslate;
@@ -17,7 +19,7 @@ $site_dat = App\Models\GeneralSetting::first();
 ?>
 
 <?php $_SESSION['previous'] = basename($_SERVER['PHP_SELF']); ?>
-		<div class="promo camera">
+		<div class="promo camera" style="background-image: url('{{ asset('frontend/images/' .  $camera_compare->bg_image) }}')">
 			<div class="frame">
 				<div class="holder">
 					<div class="container">
@@ -31,10 +33,12 @@ $site_dat = App\Models\GeneralSetting::first();
 							</ul>
 							<div class="text">
 								<h1 class="viewport-holder slideDown delay-1">
-                                    {{$tr->setSource('en')->setTarget($site_language)->translate('Find the camera needs for your Smart Video Surveillance')}}
+                                    @if($camera_compare->header_heading != null){{$tr->setSource('en')->setTarget($site_language)->translate($camera_compare->header_heading)}}
+                                    @endif
                                 </h1>
 								<p class="viewport-holder slideDown delay-2">
-                                    {{$tr->setSource('en')->setTarget($site_language)->translate('Protect your mission with an AI-powered cloud-connected video surveillance camera.')}}
+                                    @if($camera_compare->header_description != null){{$tr->setSource('en')->setTarget($site_language)->translate($camera_compare->header_description)}}
+                                    @endif
                                 </p>
 							</div>
 						</div>
@@ -48,7 +52,9 @@ $site_dat = App\Models\GeneralSetting::first();
 					<div class="heading">
 						<h2 class="viewport-holder slideDown delay-3">
                             <span>{{$tr->setSource('en')->setTarget($site_language)->translate('COMPARE CAMERAS')}}</span>
-                            {{$tr->setSource('en')->setTarget($site_language)->translate('Smart Survaillance Video choice for you')}}
+
+                            @if($camera_compare->product_crousal_heading != null){{$tr->setSource('en')->setTarget($site_language)->translate($camera_compare->product_crousal_heading)}}
+                            @endif
                         </h2>
 					</div>
 					<div class="slick-slider-compare">
@@ -78,10 +84,12 @@ $site_dat = App\Models\GeneralSetting::first();
 								<th>
 									<h2>
                                         <span><i>{{$tr->setSource('en')->setTarget($site_language)->translate('Compare')}}</i></span>
-                                        {{$tr->setSource('en')->setTarget($site_language)->translate('Compare Our Product')}}
+                                        @if($camera_compare->table_heading != null){{$tr->setSource('en')->setTarget($site_language)->translate($camera_compare->table_heading)}}
+                                         @endif
                                     </h2>
 									<p>
-                                        {{$tr->setSource('en')->setTarget($site_language)->translate('Select up to three models to compare below')}}
+                                        @if($camera_compare->table_description != null){{$tr->setSource('en')->setTarget($site_language)->translate($camera_compare->table_description)}}
+                                         @endif
                                     </p>
 								</th>
 								@isset($comparings)

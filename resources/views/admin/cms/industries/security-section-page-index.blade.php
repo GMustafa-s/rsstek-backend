@@ -7,10 +7,10 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Industries Security Section</h3>
+								<h3 class="page-title">Section</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="{{url('/')}}">dashboard</a></li>
-									<li class="breadcrumb-item active">industries security section</li>
+									<li class="breadcrumb-item active"> section</li>
 								</ul>
 							</div>
 						</div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
-			<a href="#" class="btn add-btn" data-toggle="modal" data-target="#regular_security_section"><i class="fa fa-plus"></i> Add new security section</a>
+			<a href="#" class="btn add-btn" data-toggle="modal" data-target="#regular_security_section"><i class="fa fa-plus"></i> Add new</a>
 			</div>
         </div>
         <div class="row">
@@ -66,7 +66,7 @@
                 <table class="datatable table table-stripped mb-0 dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                     <thead>
                         <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Security Section Heading</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Section Heading</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Industries Page</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 187.141px;">Section Image</th>
 
@@ -88,10 +88,15 @@
                                 <td>
                                     <img width="50px" height="50px" src="{{asset('frontend')}}/images/industries/security-section/{{$ss->image}}" alt="image" srcset="">
                                 </td>
-                                <td style="font-size: 20px;">
-                                    <span> <a href=""><i class="la la-eye"></i></a> </span> |
-                                    <span> <a href=""><i class="la la-edit"></i></a> </span> |
-                                    <span> <a href=""><i class="la la-trash"></i> </a></span>
+                                <td style="font-size: 20px; display:flex; justify-content:space-between">
+                                    <a href="{{route('cms.industries.security-section.show', $ss->id)}}" class="btn btn-warning btn-sm">show</a>
+                                    <a href="{{route('cms.industries.security-section.edit', $ss->id)}}" class="btn btn-primary btn-sm">edit</a>
+
+                                <form action="{{route('cms.industries.security-section.delete', $ss->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button onclick= "return confirm('Are you sure want to delete record?')" type="submit" class="btn btn-danger btn-sm">delete</button>
+                                </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -133,7 +138,7 @@
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
             <div class="modal-body">
-                <h5 class="modal-title text-center mb-3">Add New Control System</h5>
+                <h5 class="modal-title text-center mb-3">Add New Section</h5>
                 <form action="{{route('cms.industries.security-section.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">

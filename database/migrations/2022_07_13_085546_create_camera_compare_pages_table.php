@@ -13,16 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('new_custome_pages', function (Blueprint $table) {
+        Schema::create('camera_compare_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('page_title');
-            $table->string('meta_name');
-            $table->string('meta_description');
+            
             $table->string('header_heading');
-            $table->string('header_description');
+            $table->longText('header_description');
             $table->text('bg_image');
-            $table->string('slug')->nullable();
-            $table->text('body');
+
+            $table->string('product_crousal_heading');
+
+            $table->string('table_heading');
+            $table->longText('table_description');
+
+
+
             $table->timestamps();
         });
     }
@@ -34,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('new_custome_pages');
+        Schema::dropIfExists('camera_compare_pages');
     }
 };

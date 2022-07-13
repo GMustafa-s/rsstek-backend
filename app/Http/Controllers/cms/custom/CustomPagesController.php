@@ -4,6 +4,7 @@ namespace App\Http\Controllers\cms\custom;
 
 use App\Models\HomePage;
 use App\Models\CustomPage;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\AboutUsFeature;
 use App\Models\NewCustomePage;
@@ -42,6 +43,10 @@ class CustomPagesController extends Controller
         }
         else if($id == 6){
             return redirect()->route('cms.custome.edit.demo', $id);
+
+        }
+        else if($id == 7){
+            return redirect()->route('cms.custome.edit.camera-compare', $id);
 
         }
         $page = CustomPage::find($id);
@@ -250,6 +255,7 @@ public function busniessadd(Request $request){
         if($request->header_description){
             $data->header_description = $request->header_description;
         }
+        $data->slug = Str::slug($request->page_title);
         if($request->bg_image){
             $file = $request->file('bg_image');
             $filename = rand().'.'.$file->getClientOriginalExtension();
@@ -293,6 +299,7 @@ public function busniessadd(Request $request){
         if($request->header_description){
             $data->header_description = $request->header_description;
         }
+        $data->slug = Str::slug($request->page_title);
         if($request->bg_image != null){
              //delete file form folder functionality
              $path =  public_path('frontend').'/images/user-custome-pages/'.
@@ -310,7 +317,7 @@ public function busniessadd(Request $request){
             $data->body = $request->body;
         }
         if($data->save()){
-            return redirect()->route('user.custome.page')->with('success', $request->page_title.' custome Page updated successfully');
+            return redirect()->route('user.custome.page')->with('success', ''.$request->page_title.' custome Page updated successfully');
 
         }
         else{
@@ -323,10 +330,25 @@ public function busniessadd(Request $request){
     public function deleteNewCustomePage($id){
         $data = NewCustomePage::find($id);
         if($data->delete()){
-            return redirect()->route('user.custome.page')->with('success', '$data->page_title'. ' custome Page delete successfully');
+            return redirect()->route('user.custome.page')->with('success', ''.$data->page_title.' custome Page deleted successfully');
         }else{
             return redirect()->route('user.custome.page')->with('error', 'Something went wrong!');
 
         }
     }
+
+
+    //show custome page on frontend
+    public function showSlug($slug)
+    {
+        $page = NewCustomePage::whereSlug($slug)->first();
+        if($page == null){
+            abort(404);
+        }
+        else{
+            // $sub_pages = SolutionSubPage::where('page_categories_id',$page->id)->get();
+            return view('frontend.new-custome-page.index',compact('page'));
+        }
+    }
+
 }
