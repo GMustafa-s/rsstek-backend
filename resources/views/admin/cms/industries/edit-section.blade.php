@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{route('cms.industries.security-section.update', $data->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
@@ -56,26 +56,28 @@
                             <div class="col-8">
                                 <div class="row mb-4">
                                     <div class="col-6">
-                                        <label>Industries page</label>
-                                        <select name="" id=""></select>
+                                        <select class="form-control" name="industries_page_id" id="" required>
+                                        <option value="@if($data->industries_page_id == $ipn->id) {{$ipn->id}} @endif" selected>@if($data->industries_page_id == $ipn->id) {{$ipn->page_title}} @endif</option>
+                                        @if($industries_pages->count()>0)
+                                        @foreach ($industries_pages as $ip)
+                                        <option value="{{$ip->id}}">{{$ip->page_title}}</option>
+                                        @endforeach
+                                        @endif
+                                        </select>
                                     </div>
                                     <div class="col-6">
                                         <label>Heading</label>
-                                        <input  type="text" class="form-control" name="page_title" value="@if($data->heading != null){{$data->heading}} @endif" required />
+                                        <input  type="text" class="form-control" name="heading" value="@if($data->heading != null){{$data->heading}} @endif" required />
                                     </div>
                                     <div class="col-6">
                                         <label>Description</label>
-                                        <input type="text" class="form-control" name="meta_name" value="@if($data->description != null){{$data->description}} @endif" required />
+                                        <input type="text" class="form-control" name="description" value="@if($data->description != null){{$data->description}} @endif" required />
                                     </div>
                                 </div>
-                                {{-- <div class="form-group mb-4">
-                                    <label>Header Heading</label>
-                                    <input type="text" class="form-control" name="header_heading" value="@if($industries_page->header_heading != null){{$industries_page->header_heading}} @endif" required />
-                                </div> --}}
                                 <div class="row">
                                     <div class="col-8">
                                         <label for="">Backgroung image</label>
-                                        <input class="form-control" type="file" name="image" id="">
+                                        <input type="file" class="form-control" name="image" id="">
                                     </div>
                                     <div class="col-4">
                                         @if($data->image != null)

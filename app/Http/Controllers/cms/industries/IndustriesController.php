@@ -8,6 +8,8 @@ use App\Models\IndustriesPage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Models\IndustriesSecuritySection;
+use App\Models\PageCategory;
+use App\Models\SolutionSubPage;
 
 class IndustriesController extends Controller
 {
@@ -202,8 +204,12 @@ class IndustriesController extends Controller
     public function securitySectionIndex(){
 
         $industries_pages = IndustriesPage::all();
-        $security_sections = IndustriesSecuritySection::all();
-       return view('admin.cms.industries.security-section-page-index', compact('industries_pages', 'security_sections'));
+        // $security_sections = IndustriesSecuritySection::all();
+
+        $security_sections = IndustriesSecuritySection::join('industries_pages','industries_pages.id','=','industries_security_sections.industries_page_id')->select('industries_security_sections.*','industries_pages.page_title as page_title')->get();
+
+        // dd($security_sections);
+       return view('admin.cms.industries.security-section-page-index', compact('security_sections','industries_pages'));
     }
     //store security section
     public function storeSecuritySection(Request $request){
@@ -239,19 +245,56 @@ class IndustriesController extends Controller
     public function showSecuritySection($id)
     {
         $data = IndustriesSecuritySection::find($id);
-        return view('admin.cms.industries.show-section', compact('data'));
+        $ipn = IndustriesPage::where('id', '=', $data->industries_page_id)->first();
+        $name = $ipn->page_title;
+        return view('admin.cms.industries.show-section', compact('data', 'name'));
     }
     //edit security section
     public function editSecuritySection($id)
     {
         $data = IndustriesSecuritySection::find($id);
-        return view('admin.cms.industries.edit-section', compact('data'));
+        $ipn = IndustriesPage::where('id', '=', $data->industries_page_id)->first();
+        $industries_pages = IndustriesPage::all();
+
+        return view('admin.cms.industries.edit-section', compact('data', 'ipn', 'industries_pages'));
 
     }
     //update security section
-    public function updateSecuritySection(Request $request)
+    public function updateSecuritySection(Request $request,$id)
     {
-        dd('updateSecuritySection');
+        // dd($request->all());
+        $data = IndustriesSecuritySection::find($id);
+
+        if($request->industries_page_id){
+            $data->industries_page_id = $request->industries_page_id;
+        }
+        if($request->heading){
+            $data->heading = $request->heading;
+        }
+        if($request->description){
+            $data->description = $request->description;
+        }
+        if($request->image){
+            //delete previous image from folder
+            $path =  public_path('frontend').'/images/industries/security-section/'.
+            $data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/industries/security-section/';
+            $file->move($destinationPath, $filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+            return redirect()->route('cms.industries.security-section.index')->with('success', 'industrial security section update successfully');
+
+        }
+        else{
+            return redirect()->route('cms.industries.security-section.index')->with('error', 'Something went wrong!');
+
+        }
     }
     //delete security section
     public function deleteSecuritySection($id)
@@ -271,6 +314,11 @@ class IndustriesController extends Controller
     public function showSlug($slug)
     {
         $page = IndustriesPage::whereSlug($slug)->first();
+        // // dd($page);
+        // $pc = PageCategory::where('slug', '=', $page->slug)->first();
+        // // dd($pc);
+        // $sub_pages = SolutionSubPage::where('page_categories_id', $pc->id)->get();
+        // // dd($sub_pages);
         if($page == null){
             abort(404);
         }

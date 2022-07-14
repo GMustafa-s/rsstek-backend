@@ -81,9 +81,7 @@
                                     {{$ss->heading}}
                                 </td>
                                 <td>
-                                    {{-- @if ($ss->industries_page_id == $ss->industriesPage()->id)
-                                        {{$ss->industriesPage()->page_title}}
-                                    @endif --}}
+                                        {{$ss->page_title}}
                                 </td>
                                 <td>
                                     <img width="50px" height="50px" src="{{asset('frontend')}}/images/industries/security-section/{{$ss->image}}" alt="image" srcset="">

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('industries_page_id')->unsigned();
             $table->string('heading');
-            $table->string('description');
+            $table->longText('description');
             $table->text('image');
             $table->string('slug')->nullable();
 

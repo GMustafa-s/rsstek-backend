@@ -40,29 +40,30 @@ style="background-image: url('{{ asset('frontend/images/industries/' . $page->bg
                         <h1 class="viewport-holder slideDown delay-1">
                             {{$tr->setSource('en')->setTarget($site_language)->translate($page->header_heading)}}
                         </h1>
-                        <p class="viewport-holder slideDown delay-2">
-                            {{$tr->setSource('en')->setTarget($site_language)->translate($page->header_description)}}
+                        <p style="width: 1000px" class="viewport-holder slideDown delay-2">
+                            {!! $tr->setSource('en')->setTarget($site_language)->translate($page->header_description) !!}
                         </p>
-                        {{-- <ul class="viewport-holder slideDown delay-3">
+                        <ul class="viewport-holder slideDown delay-3">
 
-                            <li><a href="#" class="btn sec">{{$tr->setSource('en')->setTarget($site_language)->translate('Watch Video')}}</a></li>
-                        </ul> --}}
+                            <li><a href="#" class="btn sec">{{$tr->setSource('en')->setTarget($site_language)->translate('Get Solution')}}</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+
+{{-- second try --}}
 <div class="link-holder col2-tab">
     <div class="container">
         <ul class="links viewport-holder slideDown">
             @if($security_sections->count()>0)
                 @foreach($security_sections as $security_section)
-                    <li><a  href="">
-                    {{$tr->setSource('en')->setTarget($site_language)->translate($security_section->heading)}}</a></li>
+                    <li><a onclick="myfunc({{$security_section->heading}})" href="">{{$tr->setSource('en')->setTarget($site_language)->translate($security_section->heading)}}</a></li>
                 @endforeach
             @endif
-
         </ul>
     </div>
 </div>
@@ -119,16 +120,77 @@ style="background-image: url('{{ asset('frontend/images/industries/' . $page->bg
 
         </div>
     </div>
-    @include('frontend.common.our_work')
+    <div class="solution-area">
+        <div class="container">
+          <h2 class="viewport-holder slideDown">
+            <span>OUR PRODUCT</span> <br />
+            Effective RRSTEK solutions
+          </h2>
+          <div class="btn-holder">
+            <a href="#" class="show-all"
+              ><span class="active">See All</span>
+              <span class="show-less">Show Less</span></a
+            >
+        </div>
+          <div class="carousel">
+            <div class="mask">
+              <div class="slideset">
+
+                {{-- @if($sub_pages->count()>0 && $page->slug == 'health-care')
+                    @foreach($sub_pages as $sp)
+                <div class="slide viewport-holder slideDown">
+                  <div class="frame">
+                    <video  loop="true" autoplay="autoplay" muted="" id="fitvid330684" __idm_id__="147457">
+                        <!-- <source src="../images/videos/ActivePOS.mp4" type="video/mp4"> -->
+                        <source  src="https://drive.google.com/uc?id={{$sp->video}}" type="video/mp4">
+                            {{$tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
+                    </video>
+
+                    <div class="txt-box">
+                      <a href="../health-care/thermal-camera.html" class="more">{{$sp->title}}</a>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
+                @endif --}}
+                {{-- <div class="slide viewport-holder slideDown delay-1">
+                  <div class="frame">
+                    <img
+                      src="../images/Industries/Healthcare/SocialDistance.png"
+                      alt="image description"
+                    />
+                    <div class="txt-box">
+                      <a href="../health-care/social-distance-detector.html" class="more">Social Distance Detector</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="slide viewport-holder slideDown delay-2">
+                  <div class="frame">
+                    <img
+                      src="../images/Industries/Healthcare/FaceMaskDetector.png"
+                      alt="image description"
+                    />
+                    <div class="txt-box">
+                      <a href="../health-care/face-mask-detector.html" class="more">Face Mask Detector</a>
+                    </div>
+                  </div>
+                </div> --}}
+              </div>
+            </div>
+            <div class="pagination"></div>
+          </div>
+        </div>
+      </div>
+
 
 
     @include('frontend.common.demo_booking')
 
 </main>
 
-<script>
-    $("#down").click(function(){
-        window.alert('clicked');
-    });
+<script type="text/javascript">
+    function myfunc($id){
+        console.log($id);
+    }
 </script>
 @endsection
