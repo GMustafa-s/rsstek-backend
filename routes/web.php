@@ -412,7 +412,7 @@ Route::prefix('cms/camera')->middleware('auth')->group(function () {
 
 
 //all new custome page listings here
-Route::get('{any}',[CustomPagesController::class, 'showSlug'])->name('custome-page.slug');
+Route::get('user/custome-page/{any}',[CustomPagesController::class, 'showSlug'])->name('custome-page.slug');
 
 
 Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.index'])->group(function () {

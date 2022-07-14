@@ -238,12 +238,15 @@ class IndustriesController extends Controller
     //show security section
     public function showSecuritySection($id)
     {
-        dd('show');
+        $data = IndustriesSecuritySection::find($id);
+        return view('admin.cms.industries.show-section', compact('data'));
     }
     //edit security section
     public function editSecuritySection($id)
     {
-        dd('editSecuritySection');
+        $data = IndustriesSecuritySection::find($id);
+        return view('admin.cms.industries.edit-section', compact('data'));
+
     }
     //update security section
     public function updateSecuritySection(Request $request)
@@ -253,7 +256,15 @@ class IndustriesController extends Controller
     //delete security section
     public function deleteSecuritySection($id)
     {
-        dd('deleteSecuritySection');
+        $data = IndustriesSecuritySection::find($id);
+        if($data->delete()){
+            return redirect()->route('cms.industries.security-section.index')->with('success', $data->heading.' Sections deleted successfully');
+
+        }
+        else{
+            return redirect()->route('cms.industries.security-section.index')->with('error', 'Something went wrong!');
+
+        }
     }
 
     //show industries on frontend
