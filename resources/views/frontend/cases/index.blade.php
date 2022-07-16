@@ -22,7 +22,7 @@
 <meta name="name" content="{{$casesPage->meta_name}}">
 <meta name="description" content="{{$casesPage->meta_description}}">
 @endsection
-<?php dd($casesPage->meta_description)?>
+
 
 @section('title')
 <title>@if($casesPage->page_title !=null) {{$casesPage->page_title}}   @else RRSTEK | Intelligent Video Analitycs @endif</title>

@@ -1501,9 +1501,9 @@ nav{
 	padding: 33px 0 61px;
 	color: #fff;
 }
-.promo .text p{
+/* .promo .text p{
 	margin-bottom: 62px;
-}
+} */
 .promo .text li{
 	display: inline-block;
 	vertical-align: middle;
@@ -1631,7 +1631,7 @@ nav{
 	margin: 0 auto;
 }
 .promo .video-holder video{
-	height: 324px;
+	height: 280px;
 	width: 589px;
 	border-radius: 5px;
 	padding: 11px 4px;
@@ -3110,6 +3110,7 @@ font-size: 14px;
 	display: block;
 	max-width: 100%;
 	height: auto;
+	margin: auto;
 }
 .bann-head{
 	display: flex;

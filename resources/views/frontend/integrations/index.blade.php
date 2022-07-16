@@ -23,6 +23,15 @@
         $site_language = $site_dat->language;
     }
 ?>
+@section('meta')
+<meta name="name" content="{{$integratonsPage->meta_name}}">
+<meta name="description" content="{{$integrationsPage->meta_description}}">
+@endsection
+
+
+@section('title')
+<title>@if($integrationsPage->page_title !=null) {{$integrationsPage->page_title}}   @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
     <div class="promo integ">
         <div class="frame">
             <div class="holder">
