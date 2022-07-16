@@ -17,7 +17,7 @@
                     <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Industries Page</label>
-                                <input type="text" class="form-control" id="name" name="name"  value="{{$data->industries_page_id}}">
+                                <input type="text" class="form-control" id="name" name="name"  value="{{$name}}">
 
                             </div>
                             <div class="form-group">
@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Description</label>
-                                <input type="email" class="form-control" id="email" name="email"  value="{{$data->description}}">
+                                <input type="email" class="form-control" id="" name=""  value="{{$data->description}}">
 
                             </div>
                             <div class="form-group">

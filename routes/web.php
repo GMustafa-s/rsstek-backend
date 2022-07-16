@@ -216,35 +216,35 @@ Route::get('/solutions', function(){
 
 
             //Industries Solution Card
-Route::get('/industries/health_care', function(){
-    return view('frontend.industries.health-care');
+// Route::get('/industries/health_care', function(){
+//     return view('frontend.industries.health-care');
 
-})->name('industries/health_care');
+// })->name('industries/health_care');
 
-Route::get('/industries/industrial', function(){
-    return view('frontend.industries.industrial');
+// // Route::get('/industries/industrial', function(){
+//     // return view('frontend.industries.industrial');
 
-})->name('/industrial');
+// // })->name('/industrial');
 
-Route::get('/industries/public_safety', function(){
-    return view('frontend.industries.public-safety');
+// Route::get('/industries/public_safety', function(){
+//     return view('frontend.industries.public-safety');
 
-})->name('/public_safety');
+// })->name('/public_safety');
 
-Route::get('/industries/real_estate', function(){
-    return view('frontend.industries.real-estate');
+// Route::get('/industries/real_estate', function(){
+//     return view('frontend.industries.real-estate');
 
-})->name('/real_estate');
+// })->name('/real_estate');
 
-Route::get('/industries/retail', function(){
-    return view('frontend.industries.retail');
+// // Route::get('/industries/retail', function(){
+//     // return view('frontend.industries.retail');
 
-})->name('/retail');
+// // })->name('/retail');
 
-Route::get('/industries/transport_and_storage', function(){
-    return view('frontend.industries.transport-and-storage');
+// Route::get('/industries/transport_and_storage', function(){
+//     return view('frontend.industries.transport-and-storage');
 
-})->name('/transport_and_storage');
+// })->name('/transport_and_storage');
 
 
 
