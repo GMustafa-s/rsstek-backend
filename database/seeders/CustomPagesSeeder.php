@@ -52,7 +52,12 @@ class CustomPagesSeeder extends Seeder
             [
                 'page_title' =>'Camera Compare',
                 'meta_name' =>'Camera Compare',
-                'meta_description' =>'Camera Compare meta description',
+                'meta_description' =>'meta descriptio will be here',
+            ],
+            [
+                'page_title' =>'Solution Industries',
+                'meta_name' =>'Solution industries',
+                'meta_description' =>'meta descriptio will be here',
             ],
         ];
 

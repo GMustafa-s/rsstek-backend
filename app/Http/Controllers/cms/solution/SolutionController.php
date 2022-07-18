@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\cms\solution;
 
 use App\Http\Controllers\Controller;
+use App\Models\IndustriesPage;
 use Illuminate\Http\Request;
 use App\Models\PageCategory;
 use App\Models\SolutionSubPage;
@@ -317,5 +318,11 @@ class SolutionController extends Controller
         if($sub_page->save()){
             return redirect('/cms/camera')->with('success','solution updated successfully!');
         }
+    }
+    //showing industries pages in frontend/solutions/index
+    public function industriesPagesListing(){
+        $industries_pages = IndustriesPage::all();
+        // dd($industries_pages);
+        return view('frontend.solutions.industries_pages', compact('industries_pages'));
     }
 }

@@ -1,5 +1,6 @@
 @extends('frontend.index')
 @section('content')
+
 @php
     $site_dat = App\Models\GeneralSetting::first();
     $data = App\Models\SolutionIndustries::first();
@@ -43,11 +44,11 @@
       <div class="link-holder">
         <div class="container">
           <ul class="links viewport-holder slideDown">
-            @isset($solutions)
-            @if($solutions->count()>0)
-            @foreach($solutions as $solution)
-            <li><a href="{{route('category.slug',$solution->slug)}}">
-                {{$tr->setSource('en')->setTarget($site_language)->translate($solution->name)}}</a></li>
+            @isset($industries_pages)
+            @if($industries_pages->count()>0)
+            @foreach($industries_pages as $industries_page)
+            <li><a href="{{route('industries.slug', $industries_page->slug)}}">
+                {{$tr->setSource('en')->setTarget($site_language)->translate($industries_page->page_title)}}</a></li>
             @endforeach
             @endif
             @endisset
@@ -57,31 +58,27 @@
       <main id="main">
         <div class="article-holder">
           <div class="container">
-          @isset($solutions)
-          @if($solutions->count()>0)
+          @isset($industries_pages)
+          @if($industries_pages->count()>0)
           <?php $n = 1; ?>
-                @foreach($solutions as $solution)
+                @foreach($industries_pages as $industries_page)
 
                 @if($n % 2 == 0)
             <article class="article">
               <div class="img-box viewport-holder slideDown delay-1">
               <img
-                  src="{{asset('frontend')}}/images/{{$solution->name}}/{{$solution->bg_image}}"
+                  src="{{asset('frontend')}}/images/industries/{{$industries_page->bg_image}}"
                   alt="image description"
                 />
               </div>
               <div class="text-box">
                 <h2 class="viewport-holder slideDown delay-2">
-                <span><i>
-                {{$tr->setSource('en')->setTarget($site_language)->translate($solution->name)}}</i></span>
-
-                {{$tr->setSource('en')->setTarget($site_language)->translate($solution->name)}}
+                <span><i>{{$tr->setSource('en')->setTarget($site_language)->translate($industries_page->page_title)}}</i></span> {{$tr->setSource('en')->setTarget($site_language)->translate($industries_page->page_title)}}
                 </h2>
                 <p class="viewport-holder slideDown delay-3">
-                {{$tr->setSource('en')->setTarget($site_language)->translate($solution->description)}}
+                    {{$tr->setSource('en')->setTarget($site_language)->translate($industries_page->header_description)}}
                 </p>
-                <a class="viewport-holder slideDown delay-4 more" href="{{route('category.slug',$solution->slug)}}"
-                  ><span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span></a
+                <a class="viewport-holder slideDown delay-4 more" href="{{route('industries.slug', $industries_page->slug)}}"><span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span></a
                 >
               </div>
             </article>
@@ -89,23 +86,18 @@
             <article class="article">
               <div class="img-box viewport-holder slideDown delay-1">
                 <img
-                  src="{{asset('frontend')}}/images/{{$solution->name}}/{{$solution->bg_image}}"
+                  src="{{asset('frontend')}}/images/industries/{{$industries_page->bg_image}}"
                   alt="image description"
                 />
               </div>
               <div class="text-box">
                 <h2 class="viewport-holder slideDown delay-2">
-                  <span><i>
-                    {{$tr->setSource('en')->setTarget($site_language)->translate($solution->name)}}
-                   </i></span>
-                    {{$tr->setSource('en')->setTarget($site_language)->translate($solution->name)}}
-
+                  <span><i>{{$tr->setSource('en')->setTarget($site_language)->translate($industries_page->page_title)}}</i></span> {{$tr->setSource('en')->setTarget($site_language)->translate($industries_page->page_title)}}
                 </h2>
                 <p class="viewport-holder slideDown delay-3">
-                    {{$tr->setSource('en')->setTarget($site_language)->translate($solution->description)}}
-
+                    {{$tr->setSource('en')->setTarget($site_language)->translate($industries_page->header_description)}}
                 </p>
-                <a href="{{route('category.slug',$solution->slug)}}" class="viewport-holder slideDown delay-4 more"
+                <a href="{{route('industries.slug', $industries_page->slug)}}" class="viewport-holder slideDown delay-4 more"
                   ><span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span></a
                 >
               </div>

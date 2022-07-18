@@ -23,6 +23,7 @@ use App\Http\Controllers\cms\solution\SolutionController;
 use App\Http\Controllers\cms\custom\CustomPagesController;
 use App\Http\Controllers\cms\custom\EditAboutusController;
 use App\Http\Controllers\cms\custom\IntegrationController;
+use App\Http\Controllers\cms\custom\SolutionIndustriesController;
 use App\Http\Controllers\cms\industries\IndustriesController;
 use App\Models\CameraComparePage;
 
@@ -207,10 +208,7 @@ Route::prefix('/work_safety')->group(function(){
 
 
             //Solution Card
-Route::get('/solutions', function(){
-    return view('frontend.solutions.index');
-
-})->name('/solutions');
+Route::get('/solutions', [SolutionController::class, 'industriesPagesListing'] )->name('/solutions');
 
 
 
@@ -567,6 +565,11 @@ Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.ind
     Route::get('/camera-compare/edit/{id}', [CameraComparePageController::class, 'editCameraCompare'])->name('cms.custome.edit.camera-compare');
      // demo page heading update
      Route::post('/camera-compare/update' , [CameraComparePageController::class, 'cameraCompareUpdate'])->name('cms.custome.camera-compare.update');
+
+                //solution/industries/index Page
+    Route::get('/solution/industries/edit/{id}', [SolutionIndustriesController::class, 'solutionsIndustries'])->name('cms.custome.edit.solutions-industries');
+                //solution/industries/index Page
+     Route::post('/solution/industries/update' , [SolutionIndustriesController::class, 'solutionsIndustriesUpdate'])->name('cms.custome.solutions-industries.update');
 
 
 });

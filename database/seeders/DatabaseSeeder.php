@@ -45,6 +45,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CameraComparePageSeeder::class);
 
+        //frontend/solution/index/
+        $this->call(SolutionIndustries::class);
+
 
 
         // \App\Models\User::factory(10)->create();

@@ -49,6 +49,10 @@ class CustomPagesController extends Controller
             return redirect()->route('cms.custome.edit.camera-compare', $id);
 
         }
+        else if($id == 8){
+            return redirect()->route('cms.custome.edit.solutions-industries', $id);
+
+        }
         $page = CustomPage::find($id);
         $home_page_data =  HomePage::first();
         $home_page_wwu = whatWeUseImage::get();
@@ -227,7 +231,7 @@ public function busniessadd(Request $request){
         }
     }
 
-    //custome page
+    //user custome pages
     public function userCustomePage(){
         $custome_pages = NewCustomePage::all();
         return view('admin.cms.custome-pages.user-custome-page-index', compact('custome_pages'));

@@ -87,7 +87,7 @@
                                        <img src="" alt="" srcset="">
                                     </div>
                                 </div>
-                                <div class="form-group mb-4">
+                                {{-- <div class="form-group mb-4">
                                     <label for="">Select Solution Sub Page</label>
                                     <select class="form-control" name="solution_sub_page_id[]" id="" multiple="">
                                         @if($solution_sub_pages->count()>0)
@@ -99,7 +99,7 @@
                                         <option value="">---No solution sub pages--</option>
                                         @endif
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Create Now</button>
                                 </div>
