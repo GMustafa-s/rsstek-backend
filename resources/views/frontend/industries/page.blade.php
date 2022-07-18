@@ -140,24 +140,6 @@ $pc = App\Models\PageCategory::all();
             <div class="mask">
               <div class="slideset">
 
-                {{-- @if($sub_pages->count()>0)
-                    @foreach($sub_pages as $sp)
-                <div class="slide viewport-holder slideDown">
-                  <div class="frame">
-                    <video width="340" height="150" loop="true" autoplay="autoplay" muted="" id="fitvid330684" __idm_id__="147457">
-                        <!-- <source src="../images/videos/ActivePOS.mp4" type="video/mp4"> -->
-                        <source  src="https://drive.google.com/uc?id={{$sp->video}}" type="video/mp4">
-                            {{$tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
-                    </video>
-
-                    <div class="txt-box">
-                      <a href="../health-care/thermal-camera.html" class="more">{{$sp->title}}</a>
-                    </div>
-                  </div>
-                </div>
-                @endforeach
-                @endif --}}
-
               </div>
             </div>
             <div class="pagination"></div>

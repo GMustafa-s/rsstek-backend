@@ -58,16 +58,16 @@ $language = session()->get('language');
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('BUSINESS')}}
               </strong>
               <ul class="drop">
-                <li><a href="{{route('/business')}}">
+                <li><a href="{{route('category.slug','business')}}oe">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                 </a></li>
-                <li><a href="{{route('health.care')}}">
+                <li><a href="{{route('category.slug','health-care')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Healthcare')}}
                 </a></li>
-                <li><a href="{{route('security')}}">
+                <li><a href="{{route('category.slug','security')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
                 </a></li>
-                <li><a href="{{route('work.safety')}}">
+                <li><a href="{{route('category.slug','work-safety')}}">
                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Work safety')}}
                 </a></li>
               </ul>

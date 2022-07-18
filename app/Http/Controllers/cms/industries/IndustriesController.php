@@ -321,6 +321,10 @@ class IndustriesController extends Controller
         // // // dd($pc);
         // $sub_pages = SolutionSubPage::where('page_categories_id', $pc->id)->get();
         // // // dd($sub_pages);
+
+        // // dd($pc);
+
+        // // dd($sub_pages);
         if($page == null){
             abort(404);
         }

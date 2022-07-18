@@ -57,19 +57,19 @@ $site_dat = App\Models\GeneralSetting::first();
                                 <ul class="link">
                                     <li><a href="#" class="nav-back">Back</a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('category.slug','category-1')}}">
+                                    <li><a href="{{route('category.slug','business')}}">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Business')}}
                                     </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('health.care')}}">
-                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Healthcare')}}
+                                    <li><a href="{{route('category.slug','health-care')}}">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Health Care')}}
                                     </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('security')}}">
+                                    <li><a href="{{route('category.slug','security')}}">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Security')}}
                                     </a></li>
                                     <!-- <li><span class="label">Text Label</span></li> -->
-                                    <li><a href="{{route('work.safety')}}">
+                                    <li><a href="{{route('category.slug','work-safety')}}">
                                     {{ $tr->setSource('en')->setTarget($site_language)->translate('Work safety')}}</a></li>
                                 </ul>
                             </li>

@@ -2209,6 +2209,14 @@ nav{
 	-o-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
+
+.item .box .img img{
+	height: auto;
+    width: 200px;
+    margin-right: 30px;
+}
+
+
 .our-work{
 	padding: 0 0 180px;
 }
