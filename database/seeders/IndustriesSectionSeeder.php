@@ -21,18 +21,21 @@ class IndustriesSectionSeeder extends Seeder
         'heading' => 'Improving productivity',
         'description' => 'Any hospital should be capable to ensure staff, patients and visitors that the environment is safe. The medical departments have strict surrounding with zero tolerance to violence where protection and freedom are paramount.',
         'image' => 'improvingProductivity.png',
+        'slug' => 'improving-productivity'
         ]);
         DB::table('industries_security_sections')->insert([
         'industries_page_id' => '1',
         'heading' => 'Legal troubles',
         'description' => 'Any hospital should be capable to ensure staff, patients and visitors that the environment is safe. The medical departments have strict surrounding with zero tolerance to violence where protection and freedom are paramount.',
         'image' => 'LegalTroubles.png',
+        'slug' => 'legal-troubles'
         ]);
         DB::table('industries_security_sections')->insert([
         'industries_page_id' => '1',
         'heading' => 'Spreading of COVID-19',
         'description' => 'Keeping social distance is a necessary preventive measure during pandemic or epidemic, and strengthening control is an important task for hospitals. Automatically checking the face masks is also of great importance.',
         'image' => 'Spreading-Covid19.png',
+        'slug' => 'spreading-of-covid-19'
         ]);
 
 

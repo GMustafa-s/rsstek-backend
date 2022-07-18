@@ -4,8 +4,8 @@
     $site_dat = App\Models\GeneralSetting::first();
     $data = App\Models\Cases::first();
     $our_works = App\Models\OurWork::all();
-    $casesPage = App\Models\CustomPage::find(5);
-    
+    $page = App\Models\CustomPage::find(5);
+
 
     @endphp
     <?php
@@ -19,13 +19,11 @@
     }
     ?>
 @section('meta')
-<meta name="name" content="{{$casesPage->meta_name}}">
-<meta name="description" content="{{$casesPage->meta_description}}">
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
 @endsection
-
-
 @section('title')
-<title>@if($casesPage->page_title !=null) {{$casesPage->page_title}}   @else RRSTEK | Intelligent Video Analitycs @endif</title>
+<title>@if($page->page_title !=null) {{$page->page_title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
 @endsection
     <div id="promo-cases" class="promo product">
         <div class="frame">

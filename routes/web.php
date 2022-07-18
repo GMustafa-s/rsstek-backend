@@ -208,7 +208,7 @@ Route::prefix('/work_safety')->group(function(){
 
 
             //Solution Card
-Route::get('/solutions', [SolutionController::class, 'industriesPagesListing'] )->name('/solutions');
+Route::get('/solutions-by-industries', [SolutionController::class, 'industriesPagesListing'] )->name('/solutions');
 
 
 

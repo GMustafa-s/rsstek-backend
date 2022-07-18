@@ -5,7 +5,17 @@
     $site_dat = App\Models\GeneralSetting::first();
     $data = App\Models\SolutionIndustries::first();
     // dd($data);
+    $page = App\Models\CustomPage::find(8);
+
 @endphp
+
+@section('meta')
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
+@endsection
+@section('title')
+<title>@if($page->page_title !=null) {{$page->page_title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
 <?php
 
     use Stichoza\GoogleTranslate\GoogleTranslate;
@@ -66,8 +76,7 @@
                 @if($n % 2 == 0)
             <article class="article">
               <div class="img-box viewport-holder slideDown delay-1">
-              <img
-                  src="{{asset('frontend')}}/images/industries/{{$industries_page->bg_image}}"
+              <img style="border-radius: 20px;" src="{{asset('frontend')}}/images/industries/{{$industries_page->bg_image}}"
                   alt="image description"
                 />
               </div>
@@ -85,7 +94,7 @@
             @else
             <article class="article">
               <div class="img-box viewport-holder slideDown delay-1">
-                <img
+                <img style="border-radius: 20px;"
                   src="{{asset('frontend')}}/images/industries/{{$industries_page->bg_image}}"
                   alt="image description"
                 />

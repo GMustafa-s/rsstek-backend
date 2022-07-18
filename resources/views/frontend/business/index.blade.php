@@ -110,7 +110,7 @@ style="background-image: url('{{ asset('frontend/images/' . $page->name.'/'.$pag
                     {{ $tr->setSource('en')->setTarget($site_language)->translate( Illuminate\Support\Str::of(strip_tags($sub_page->description))->words(55)) }}
                     </p>
 
-                   
+
                     <a class="viewport-holder slideDown delay-4 more" href="{{route('category.sub.slug',['solution'=>$page->slug,'name'=>$sub_page->slug])}}">
                         <span>{{$tr->setSource('en')->setTarget($site_language)->translate('Read More')}}</span>
                     </a>

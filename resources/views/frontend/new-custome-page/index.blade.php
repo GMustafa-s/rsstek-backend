@@ -9,6 +9,9 @@ $site_dat = App\Models\GeneralSetting::first();
 <meta name="name" content="{{$page->meta_name}}">
 <meta name="description" content="{{$page->meta_description}}">
 @endsection
+@section('title')
+<title>@if($page->page_title !=null) {{$page->page_title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
 <?php
 
     use Stichoza\GoogleTranslate\GoogleTranslate;

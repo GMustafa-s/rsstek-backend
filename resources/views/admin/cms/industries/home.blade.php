@@ -87,7 +87,7 @@
                                     <img width="50px" height="50px" src="{{asset('frontend')}}/images/industries/{{$industries_page->bg_image}}" alt="image" srcset="">
                                 </td>
                                 <td style="font-size: 20px;display: flex;gap: 10px;">
-                                    {{-- <a href="{{route('cms.edit.user-custom-page',$page->id)}}" class="btn btn-warning btn-sm">show</a> --}}
+                                    <a href="{{route('industries.slug', $industries_page->slug)}}" class="btn btn-warning btn-sm">show</a>
                                     <a href="{{route('cms.industries.edit', $industries_page->id)}}" class="btn btn-primary btn-sm">edit</a>
 
                                     <form action="{{route('cms.industries.delete', $industries_page->id)}}" method="POST">

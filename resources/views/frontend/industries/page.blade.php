@@ -4,6 +4,8 @@
 @php
 $site_dat = App\Models\GeneralSetting::first();
 $pc = App\Models\PageCategory::all();
+// $c = App\Models\IndustriesSecuritySection::all();
+// dd($c);
 @endphp
 
 @section('meta')
@@ -66,7 +68,7 @@ $pc = App\Models\PageCategory::all();
         <ul class="links viewport-holder slideDown">
             @if($security_sections->count()>0)
                 @foreach($security_sections as $security_section)
-                    <li><a onclick="myfunc({{$security_section->heading}})" href="">{{$tr->setSource('en')->setTarget($site_language)->translate($security_section->heading)}}</a></li>
+                    <li><a  href="#{{$security_section->slug}}">{{$tr->setSource('en')->setTarget($site_language)->translate($security_section->heading)}}</a></li>
                 @endforeach
             @endif
         </ul>
@@ -81,7 +83,7 @@ $pc = App\Models\PageCategory::all();
                 @foreach($security_sections as $security_section)
                 <?php $n = 1; ?>
                 @if($n % 2 == 0)
-                <article class="article">
+                <article  class="article">
                     <div class="img-box viewport-holder slideDown delay-1">
                         <img src="{{ asset('frontend') }}/images/Business/active-pos-Image.png" alt="image description" />
                     </div>
@@ -99,7 +101,7 @@ $pc = App\Models\PageCategory::all();
                     </div>
                 </article>
                 @else
-            <article id="scroll_article" class="article">
+            <article  class="article" id="{{$security_section->slug}}">
                 <div class="img-box viewport-holder slideDown delay-1">
                     <img src="{{asset('frontend')}}/images/industries/security-section/{{$security_section->image}}"
                         alt="image description" />
@@ -139,6 +141,23 @@ $pc = App\Models\PageCategory::all();
           <div class="carousel">
             <div class="mask">
               <div class="slideset">
+                {{-- @if($sub_pages->count()>0)
+                    @foreach($sub_pages as $sp)
+                <div class="slide viewport-holder slideDown">
+                  <div class="frame">
+                    <video width="340" height="150" loop="true" autoplay="autoplay" muted="" id="fitvid330684" __idm_id__="147457">
+                        <!-- <source src="../images/videos/ActivePOS.mp4" type="video/mp4"> -->
+                        <source  src="https://drive.google.com/uc?id={{$sp->video}}" type="video/mp4">
+                            {{$tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
+                    </video>
+
+                    <div class="txt-box">
+                      <a href="../health-care/thermal-camera.html" class="more">{{$sp->title}}</a>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
+                @endif --}}
 
               </div>
             </div>
@@ -154,9 +173,6 @@ $pc = App\Models\PageCategory::all();
 
 </main>
 
-<script type="text/javascript">
-    function myfunc($id){
-        console.log($id);
-    }
-</script>
+
+
 @endsection

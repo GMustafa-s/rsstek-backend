@@ -3,6 +3,7 @@
 @php
 $site_dat = App\Models\GeneralSetting::first();
 $camera_compare = App\Models\CameraComparePage::first();
+$page = App\Models\CustomPage::find(7);
 
 @endphp
 <?php
@@ -17,7 +18,13 @@ $camera_compare = App\Models\CameraComparePage::first();
 
     }
 ?>
-
+@section('meta')
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
+@endsection
+@section('title')
+<title>@if($page->page_title !=null) {{$page->page_title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
 <?php $_SESSION['previous'] = basename($_SERVER['PHP_SELF']); ?>
 		<div class="promo camera" style="background-image: url('{{ asset('frontend/images/' .  $camera_compare->bg_image) }}')">
 			<div class="frame">

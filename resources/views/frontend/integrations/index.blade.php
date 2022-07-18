@@ -11,6 +11,8 @@
     $provider_sections = App\Models\IntegrationProviderSection::all();
     $communication_tools_sections = App\Models\IntegrationCommunicationToolsSection::all();
 
+    $page = App\Models\CustomPage::find(4);
+
 @endphp
 <?php
     use Stichoza\GoogleTranslate\GoogleTranslate;
@@ -23,7 +25,13 @@
         $site_language = $site_dat->language;
     }
 ?>
-
+@section('meta')
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
+@endsection
+@section('title')
+<title>@if($page->page_title !=null) {{$page->page_title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
     <div class="promo integ">
         <div class="frame">
             <div class="holder">

@@ -11,8 +11,16 @@ $chief_officer = DB::table('aboutus_cheif_officer')->first();
 $our_product = DB::table('aboutus_about_our_product_section')->where('id', '1')->first();
 $product_info_section = DB::table('aboutus_our_product_info_section')->where('id', '1')->first();
 $our_customer = DB::table('aboutus_our_customer')->first();
+$page = App\Models\CustomPage::find(2);
 @endphp
 
+@section('meta')
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
+@endsection
+@section('title')
+<title>@if($page->page_title !=null) {{$page->page_title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
 
 <?php
 use Stichoza\GoogleTranslate\GoogleTranslate;

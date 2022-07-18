@@ -3,9 +3,11 @@
 
 <?php
 $site_dat = App\Models\GeneralSetting::first();
-
 $data = App\Models\Demo::first();
 $demo_sections = App\Models\DemoSection::all();
+
+$page = App\Models\CustomPage::find(6);
+
 
 use Stichoza\GoogleTranslate\GoogleTranslate;
  $tr = new GoogleTranslate();
@@ -20,13 +22,11 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
 ?>
 
 @section('meta')
-<meta name="name" content="{{$CustomPage->meta_name}}">
-<meta name="description" content="{{$CustomPage->meta_description}}">
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
 @endsection
-
-
 @section('title')
-<title>@if($CustomPage->page_title !=null) {{$custom->page_title}}   @else RRSTEK | Intelligent Video Analitycs @endif</title>
+<title>@if($page->page_title !=null) {{$page->page_title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
 @endsection
 
     <div id="promo-demo" class="promo product">
