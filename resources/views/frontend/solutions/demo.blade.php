@@ -18,6 +18,17 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
  }
 
 ?>
+
+@section('meta')
+<meta name="name" content="{{$CustomPage->meta_name}}">
+<meta name="description" content="{{$CustomPage->meta_description}}">
+@endsection
+
+
+@section('title')
+<title>@if($CustomPage->page_title !=null) {{$custom->page_title}}   @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
+
     <div id="promo-demo" class="promo product">
         <div class="frame">
             <div class="holder">
