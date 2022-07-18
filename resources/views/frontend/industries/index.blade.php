@@ -136,11 +136,11 @@ style="background-image: url('{{ asset('frontend/images/industries/' . $page->bg
             <div class="mask">
               <div class="slideset">
 
-                {{-- @if($sub_pages->count()>0 && $page->slug == 'health-care')
+                @if($sub_pages->count()>0)
                     @foreach($sub_pages as $sp)
                 <div class="slide viewport-holder slideDown">
                   <div class="frame">
-                    <video  loop="true" autoplay="autoplay" muted="" id="fitvid330684" __idm_id__="147457">
+                    <video width="340" height="150" loop="true" autoplay="autoplay" muted="" id="fitvid330684" __idm_id__="147457">
                         <!-- <source src="../images/videos/ActivePOS.mp4" type="video/mp4"> -->
                         <source  src="https://drive.google.com/uc?id={{$sp->video}}" type="video/mp4">
                             {{$tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
@@ -152,29 +152,8 @@ style="background-image: url('{{ asset('frontend/images/industries/' . $page->bg
                   </div>
                 </div>
                 @endforeach
-                @endif --}}
-                {{-- <div class="slide viewport-holder slideDown delay-1">
-                  <div class="frame">
-                    <img
-                      src="../images/Industries/Healthcare/SocialDistance.png"
-                      alt="image description"
-                    />
-                    <div class="txt-box">
-                      <a href="../health-care/social-distance-detector.html" class="more">Social Distance Detector</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="slide viewport-holder slideDown delay-2">
-                  <div class="frame">
-                    <img
-                      src="../images/Industries/Healthcare/FaceMaskDetector.png"
-                      alt="image description"
-                    />
-                    <div class="txt-box">
-                      <a href="../health-care/face-mask-detector.html" class="more">Face Mask Detector</a>
-                    </div>
-                  </div>
-                </div> --}}
+                @endif
+
               </div>
             </div>
             <div class="pagination"></div>

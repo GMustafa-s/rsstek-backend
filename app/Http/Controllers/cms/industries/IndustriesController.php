@@ -293,7 +293,6 @@ class IndustriesController extends Controller
         }
         else{
             return redirect()->route('cms.industries.security-section.index')->with('error', 'Something went wrong!');
-
         }
     }
     //delete security section
@@ -315,16 +314,16 @@ class IndustriesController extends Controller
     {
         $page = IndustriesPage::whereSlug($slug)->first();
         // // dd($page);
-        // $pc = PageCategory::where('slug', '=', $page->slug)->first();
-        // // dd($pc);
-        // $sub_pages = SolutionSubPage::where('page_categories_id', $pc->id)->get();
-        // // dd($sub_pages);
+        $pc = PageCategory::where('slug', '=', $page->slug)->first();
+        // dd($pc);
+        $sub_pages = SolutionSubPage::where('page_categories_id', $pc->id)->get();
+        // dd($sub_pages);
         if($page == null){
             abort(404);
         }
         else{
             $security_sections = IndustriesSecuritySection::where('industries_page_id',$page->id)->get();
-            return view('frontend.industries.index',compact('page' ,'security_sections'));
+            return view('frontend.industries.index',compact('page' ,'security_sections', 'sub_pages'));
         }
     }
 }
