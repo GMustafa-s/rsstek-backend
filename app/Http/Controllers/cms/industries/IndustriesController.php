@@ -33,7 +33,9 @@ class IndustriesController extends Controller
     public function create()
     {
         //
-        return view('admin.cms.industries.add-industries-page');
+        $solution_sub_pages = SolutionSubPage::all();
+        // dd($sub_pages);
+        return view('admin.cms.industries.add-industries-page', compact('solution_sub_pages'));
     }
 
     /**
@@ -43,6 +45,7 @@ class IndustriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+        // dd($request->all());
         $page_title = IndustriesPage::all();
         foreach($page_title as $title){
             if($title->page_title == $request->page_title){
@@ -313,17 +316,17 @@ class IndustriesController extends Controller
     public function showSlug($slug)
     {
         $page = IndustriesPage::whereSlug($slug)->first();
-        // // dd($page);
+        // dd($page);
         $pc = PageCategory::where('slug', '=', $page->slug)->first();
-        // dd($pc);
+        // // dd($pc);
         $sub_pages = SolutionSubPage::where('page_categories_id', $pc->id)->get();
-        // dd($sub_pages);
+        // // dd($sub_pages);
         if($page == null){
             abort(404);
         }
         else{
             $security_sections = IndustriesSecuritySection::where('industries_page_id',$page->id)->get();
-            return view('frontend.industries.index',compact('page' ,'security_sections', 'sub_pages'));
+            return view('frontend.industries.page',compact('page' ,'security_sections', 'sub_pages'));
         }
     }
 }
