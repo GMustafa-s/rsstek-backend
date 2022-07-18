@@ -38,13 +38,13 @@ class AboutusPageSeeder extends Seeder
         // aboutus section
         DB::table('aboutus_section')->insert([
             'our_heading' => 'Who we are',
-            'our_description' => 'RRSTEK is a manufacturer of CCTV systems and a video surveillance software developer. All advanced solutions implemented by our company are designed in-house. Our key principle - modern security solutions should be engineered on a deep future-proof concept and wide-spread compatibility between all system components. This allows the selected elements in the TRASSIR system to work with maximum productivity in a timely and cost-effective manner. It’s the essence of TRASSIR CCTV surveillance ecosystem.',
+            'our_description' => 'RRSTEK is a manufacturer of CCTV systems and a video surveillance software developer. All advanced solutions implemented by our company are designed in-house. Our key principle - modern security solutions should be engineered on a deep future-proof concept and wide-spread compatibility between all system components. This allows the selected elements in the RRSTEK system to work with maximum productivity in a timely and cost-effective manner. It’s the essence of RRSTEK CCTV surveillance ecosystem.',
             'our_image' => 'about-us.png',
 
         ]);
         // ourwork section
         DB::table('aboutus_our_work_section')->insert([
-            'our_work_heading' => 'Since 2002, TRASSIR has been developing solutions for CCTV surveillance and security:',
+            'our_work_heading' => 'Since 2002, RRSTEK has been developing solutions for CCTV surveillance and security:',
 
             'sub_heading_1'=> 'Professional CCTV surveillance software',
             'sub_heading_1_icon' => 'ico-pc.svg',
@@ -61,7 +61,7 @@ class AboutusPageSeeder extends Seeder
         // CHIEF EXECUTIVE OFFICER section
         DB::table('aboutus_cheif_officer')->insert([
             'name' => 'Igor Oleynik',
-            'about' => 'I’ve always been fascinated by engineering design and technologies. Throughout the years I’ve pursued my inner passion as an opportunity to learn and bring my ideas to life. This became well-suited to the way that the company has had such a strong focus on the desire to drive progress. Thanks to an amazing team of experienced developers, data-obsessed experts and our network of forward-thinking partners we deliver superb results and continue to expand the international footprint of the TRASSIR brand. The mission statement of our company is to play a leading role in providing state-of-the-art security solutions, from the core to the edge.',
+            'about' => 'I’ve always been fascinated by engineering design and technologies. Throughout the years I’ve pursued my inner passion as an opportunity to learn and bring my ideas to life. This became well-suited to the way that the company has had such a strong focus on the desire to drive progress. Thanks to an amazing team of experienced developers, data-obsessed experts and our network of forward-thinking partners we deliver superb results and continue to expand the international footprint of the RRSTEK brand. The mission statement of our company is to play a leading role in providing state-of-the-art security solutions, from the core to the edge.',
             'image' => 'Image.png',
         ]);
         //about our product section
@@ -90,7 +90,7 @@ class AboutusPageSeeder extends Seeder
             'icon_1' => 'ico-check.svg',
 
             'value_2' => '2002',
-            'text_2' => 'Countries of Trassir installations',
+            'text_2' => 'Countries of RRSTEK installations',
             'icon_2' => 'ico-eye.svg',
 
             'value_3' => '5000+',
