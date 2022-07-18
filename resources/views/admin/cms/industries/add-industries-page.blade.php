@@ -78,7 +78,7 @@
                                     <label>Header Description</label>
                                     <textarea required name="header_description" rows="3" cols="5" class="form-control" placeholder=" description here" ></textarea>
                                 </div>
-                                <div class="row">
+                                <div class="form-group mb-4 row">
                                     <div class="col-8">
                                         <label for="">Backgroung image</label>
                                         <input class="form-control" required type="file" name="bg_image" id="">
@@ -86,6 +86,19 @@
                                     <div class="col-4">
                                        <img src="" alt="" srcset="">
                                     </div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="">Select Solution Sub Page</label>
+                                    <select class="form-control" name="solution_sub_page_id[]" id="" multiple="">
+                                        @if($solution_sub_pages->count()>0)
+                                        <option value="">---select solution sub pages--</option>
+                                        @foreach ($solution_sub_pages as $sp)
+                                        <option value="{{$sp->id}}">{{$sp->title}}</option>
+                                        @endforeach
+                                        @else
+                                        <option value="">---No solution sub pages--</option>
+                                        @endif
+                                    </select>
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Create Now</button>
