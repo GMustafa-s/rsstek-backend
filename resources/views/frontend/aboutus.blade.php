@@ -1,25 +1,62 @@
 @extends('frontend.index')
 @section('content')
+
+@php
+$site_dat = App\Models\GeneralSetting::first();
+$aboutus_heading = DB::table('aboutus_page_heading')->first();
+$top_info_section = DB::table('aboutus_top_info_section')->first();
+$aboutus_section = DB::table('aboutus_section')->first();
+$ourwork_section = DB::table('aboutus_our_work_section')->first();
+$chief_officer = DB::table('aboutus_cheif_officer')->first();
+$our_product = DB::table('aboutus_about_our_product_section')->where('id', '1')->first();
+$product_info_section = DB::table('aboutus_our_product_info_section')->where('id', '1')->first();
+$our_customer = DB::table('aboutus_our_customer')->first();
+$page = App\Models\CustomPage::find(2);
+@endphp
+
+@section('meta')
+<meta name="name" content="{{$page->meta_name}}">
+<meta name="description" content="{{$page->meta_description}}">
+@endsection
+@section('title')
+<title>@if($page->page_title !=null) {{$page->page_title}} - {{$site_dat->site_title}}  @else RRSTEK | Intelligent Video Analitycs @endif</title>
+@endsection
+
+<?php
+use Stichoza\GoogleTranslate\GoogleTranslate;
+$tr = new GoogleTranslate();
+$language = session()->get('language');
+if($language){
+    $site_language = $language;
+}
+else{
+    $site_language = $site_dat->language;
+
+}
+?>
+
 <div id="promo-about-rrstek" class="promo product">
     <div class="frame">
       <div class="holder">
         <div class="container">
           <div class="box">
             <ul class="breadcrumbs viewport-holder slideDown">
-              <li><a href="index.html">Main</a></li>
-              <li><a href="#">About RRSTEK</a></li>
+              <li><a href="index.html">{{$tr->setSource('en')->setTarget($site_language)->translate('Main')}}</a></li>
+              <li><a href="#">{{$tr->setSource('en')->setTarget($site_language)->translate('About RRSTEK')}}</a></li>
             </ul>
             <div id="#text-banner-overview" class="text">
-              <h1 class="viewport-holder slideDown delay-1">Security
-                and Innovation
-                in a single touch</h1>
-              <!-- <p class="viewport-holder slideDown delay-2">
+              <h1 class="viewport-holder slideDown delay-1">
+                @if($aboutus_heading->aboutus_heading !=null)
+
+                {{$tr->setSource('en')->setTarget($site_language)->translate($aboutus_heading->aboutus_heading)}}</h1>
+                @endif
+                <!-- <p class="viewport-holder slideDown delay-2">
                 Confidence and security without constant control on your
                 part, the stability of all processes in the company - that
                 is what RRSTEK intelligent systems are all about.
               </p> -->
               <ul class="viewport-holder slideDown delay-3">
-                <li><a href="#" class="btn sec">Watch Video</a></li>
+                <li><a href="#" class="btn sec">{{$tr->setSource('en')->setTarget($site_language)->translate('Watch Video')}}</a></li>
               </ul>
             </div>
           </div>
@@ -32,16 +69,43 @@
         <div class="container">
             <div class="holder">
                 <div class="txt viewport-holder slideDown delay-3">
-                    <h2>800+ <i class="ico"><img src="{{asset('frontend')}}/images/ico-building.svg" alt="image description"></i></h2>
-                    <p>Global employees</p>
+                    <h2>
+                        @if($top_info_section->value_1 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->value_1)}}
+                        @endif
+                        <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/top-info-section-icon/{{$top_info_section->icon_1}}" alt="img"></i>
+                    </h2>
+                    <p>
+                        @if($top_info_section->text_1 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->text_1)}}
+                        @endif
+                    </p>
                 </div>
                 <div class="txt viewport-holder slideDown delay-5">
-                    <h2>2002 <i class="ico"><img src="{{asset('frontend')}}/images/ico-home.svg" alt="image description"></i></h2>
-                    <p>Year founded</p>
+                    <h2>
+                        @if($top_info_section->value_2 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->value_2)}}
+                        @endif
+                        <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/top-info-section-icon/{{$top_info_section->icon_2}}" alt="img"></i>
+                    </h2>
+                    <p>
+                        @if ($top_info_section->text_2 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->text_2)}}
+                        @endif
+                    </p>
                 </div>
                 <div class="txt viewport-holder slideDown delay-7">
-                    <h2>50+ <i class="ico"><img src="{{asset('frontend')}}/images/ico-users.svg" alt="image description"></i></h2>
-                    <p>Partners worldwide</p>
+                    <h2>
+                        @if($top_info_section->value_3 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->value_3)}}
+                        @endif
+                        <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/top-info-section-icon/{{$top_info_section->icon_3}}" alt="img"></i>
+                    </h2>
+                    <p>
+                        @if($top_info_section->text_3 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->text_3)}}
+                        @endif
+                    </p>
                 </div>
             </div>
         </div>
@@ -52,16 +116,26 @@
           <article id="image-left-aligned"  class="article">
             <div  class="img-box viewport-holder slideDown delay-1">
               <img
-                src="{{asset('frontend')}}/images/About-rrstek/about-us.png"
-                alt="image description"
+                src="{{asset('frontend')}}/images/About-rrstek/aboutus-section/{{$aboutus_section->our_image}}"
+                alt="about us"
               />
             </div>
             <div class="text-box">
               <h2 class="viewport-holder slideDown delay-2">
-                <span><i>About Us</i></span> Who we are
+                <span><i>
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('About Us')}}
+                    </i>
+                </span>
+                @if($aboutus_section->our_heading !=null)
+                {{$tr->setSource('en')->setTarget($site_language)->translate($aboutus_section->our_heading)}}
+                @endif
+
               </h2>
               <p class="viewport-holder slideDown delay-3">
-                RRSTEK is a manufacturer of CCTV systems and a video surveillance software developer. All advanced solutions implemented by our company are designed in-house. Our key principle - modern security solutions should be engineered on a deep future-proof concept and wide-spread compatibility between all system components. This allows the selected elements in the TRASSIR system to work with maximum productivity in a timely and cost-effective manner. It’s the essence of TRASSIR CCTV surveillance ecosystem.
+                @if($aboutus_section->our_description !=null)
+                {{$tr->setSource('en')->setTarget($site_language)
+                ->translate($aboutus_section->our_description)}}
+                @endif
               </p>
               <!-- <a href="active-post.html" class="viewport-holder slideDown delay-4 more"
                 ><span>Read More</span></a
@@ -73,31 +147,56 @@
     <div class="solutions-area">
         <div class="container">
             <div class="heading center viewport-holder slideDown delay-1">
-                <h2><span><i>OUR WORK</i></span> Since 2002, TRASSIR has been developing solutions for CCTV surveillance and security:</h2>
+                <h2>
+                    <span><i>
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('OUR WORK')}}
+                    </i></span>
+                    @if($ourwork_section->our_work_heading !=null)
+                    {{$tr->setSource('en')->setTarget($site_language)
+                    ->translate($ourwork_section->our_work_heading)}}
+                    @endif
+                </h2>
             </div>
-            <div class="holder">
+            <div id="linebreak2" class="holder">
                 <div class="txt-box viewport-holder slideDown delay-3">
-                    <i class="ico"><img src="{{asset('frontend')}}/images/ico-pc.svg" alt="image description"></i>
+                    <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_1_icon}}" alt="image"></i>
                     <div class="frame">
-                        <p>Professional CCTV <br> surveillance software</p>
+                        <p>
+                            @if($ourwork_section->sub_heading_1 !=null)
+                            {{$tr->setSource('en')->setTarget($site_language)->translate($ourwork_section->sub_heading_1)}}
+                            @endif
+                        </p>
                     </div>
                 </div>
                 <div class="txt-box viewport-holder slideDown delay-4">
-                    <i class="ico"><img src="{{asset('frontend')}}/images/ico-chart.svg" alt="image description"></i>
+                    <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_2_icon}}" alt="image"></i>
                     <div class="frame">
-                        <p>Comprehensive <br> partnership policy</p>
+                        <p>
+                            @if($ourwork_section->sub_heading_2 !=null)
+                            {{$tr->setSource('en')->setTarget($site_language)->translate($ourwork_section->sub_heading_2)}}
+                            @endif
+                        </p>
                     </div>
                 </div>
                 <div class="txt-box viewport-holder slideDown delay-5">
-                    <i class="ico"><img src="{{asset('frontend')}}/images/ico-camera-small.svg" alt="image description"></i>
+                    <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_3_icon}}" alt="image"></i>
                     <div class="frame">
-                        <p>CCTV cameras and <br> video recorders</p>
+                        <p>
+                            @if($ourwork_section->sub_heading_3 !=null)
+                            {{$tr->setSource('en')->setTarget($site_language)->translate($ourwork_section->sub_heading_3)}}
+                            @endif
+                        </p>
                     </div>
                 </div>
                 <div class="txt-box viewport-holder slideDown delay-6">
-                    <i class="ico"><img src="{{asset('frontend')}}/images/ico-vehicle.svg" alt="image description"></i>
+                    <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/ourwork-section/{{$ourwork_section->sub_heading_4_icon}}" alt="image"></i>
                     <div class="frame">
-                        <p>Technical support <br> 24/7</p>
+                        <p>
+
+                            @if($ourwork_section->sub_heading_4 !=null)
+                            {{$tr->setSource('en')->setTarget($site_language)->translate($ourwork_section->sub_heading_4)}}
+                            @endif
+                        </p>
                     </div>
                 </div>
             </div>
@@ -108,17 +207,23 @@
           <!--Article two image on right and text on the left-->
           <article  class="article">
             <div  class="img-box viewport-holder slideDown delay-1">
-              <img
-                src="{{asset('frontend')}}/images/Image.png"
-                alt="image description"
-              />
+                <img src="{{asset('frontend')}}/images/About-rrstek/chief-officer/{{$chief_officer->image}}" alt="{{$chief_officer->name}}" width="auto" height="100" />
             </div>
             <div class="text-box">
               <h2 class="viewport-holder slideDown delay-2">
-                <span><i>Chief Executive Officer</i></span> Igor Oleynik
+                <span><i>
+                    {{$tr->setSource('en')->setTarget($site_language)->translate('Chief Executive Officer')}}
+                </i></span>
+                @if($chief_officer->name !=null)
+                {{$tr->setSource('en')->setTarget($site_language)->translate($chief_officer->name)}}
+                @endif
               </h2>
               <p class="viewport-holder slideDown delay-3">
-                I’ve always been fascinated by engineering design and technologies. Throughout the years I’ve pursued my inner passion as an opportunity to learn and bring my ideas to life. This became well-suited to the way that the company has had such a strong focus on the desire to drive progress. Thanks to an amazing team of experienced developers, data-obsessed experts and our network of forward-thinking partners we deliver superb results and continue to expand the international footprint of the TRASSIR brand. The mission statement of our company is to play a leading role in providing state-of-the-art security solutions, from the core to the edge.
+                @if($chief_officer->about !=null)
+                {{$tr->setSource('en')->setTarget($site_language)
+                ->translate($chief_officer->about)}}
+                @endif
+
               </p>
               <!-- <a href="active-post.html" class="viewport-holder slideDown delay-4 more"
                 ><span>Read More</span></a
@@ -130,54 +235,113 @@
     <div class="advantages-area">
         <div class="container">
             <div class="heading center viewport-holder slideDown delay-1">
-                <h2><span><i>ABOUT OUR PRODUCT</i></span> The Camera Series Advantge</h2>
+                <h2><span><i>
+                {{$tr->setSource('en')->setTarget($site_language)->translate('ABOUT OUR PRODUCT')}}
+                </i></span>
+                @if($our_product->heading !=null)
+                {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->heading)}}
+                @endif
+                </h2>
             </div>
             <div class="holder">
                 <div class="box viewport-holder slideDown delay-2">
                     <div class="ico">
-                        <i><img src="{{asset('frontend')}}/images/compare-camera/Solid/Icon.png" alt="image description"></i>
+                        <i><img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_1}}" alt="image"></i>
                     </div>
-                    <p>Easy installation, use, and management</p>
+                    <p>
+                        @if($our_product->text_1 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->text_1)}}
+                        @endif
+                    </p>
                 </div>
                 <div class="box viewport-holder slideDown delay-3">
                     <div class="ico">
-                        <i><img src="{{asset('frontend')}}/images/compare-camera/Solid/Icon-1.png" alt="image description"></i>
+                        <i><img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_2}}" alt="image"></i>
                     </div>
-                    <p>AI video and audio analytics</p>
+                    <p>
+                        @if($our_product->text_2 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->text_2)}}
+                        @endif
+                    </p>
                 </div>
                 <div class="box viewport-holder slideDown delay-4">
                     <div class="ico">
-                        <i><img src="{{asset('frontend')}}/images/compare-camera/Solid/Icon-2.png" alt="image description"></i>
+                        <i><img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_3}}" alt="image"></i>
                     </div>
-                    <p>Cloud-connected deployment</p>
+                    <p>
+                        @if($our_product->text_3 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->text_3)}}
+                        @endif
+                    </p>
                 </div>
                 <div class="box viewport-holder slideDown delay-5">
                     <div class="ico">
-                        <i><img src="{{asset('frontend')}}/images/compare-camera/Solid/Icon-3.png" alt="image description"></i>
+                        <i><img src="{{asset('frontend')}}/images/About-rrstek/our-product/{{$our_product->icon_4}}" alt="image"></i>
                     </div>
-                    <p>10 year warrantly</p>
+                    <p>
+                        @if($our_product->text_4 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($our_product->text_4)}}
+                        @endif
+                    </p>
                 </div>
             </div>
         </div>
     </div>
     <section class="overview-section viewport-holder slideDown delay-1">
         <div class="container">
-            <div class="holder">
-                <div class="text-box viewport-holder slideDown delay-2">
-                    <h3>19 <i class="ico"><img src="{{asset('frontend')}}/images/ico-check.svg" alt="image description"></i></h3>
-                    <p>Years of experience in <br> CCTV surveillance</p>
+            <div id="linebreak" class="holder">
+                <div  class="text-box viewport-holder slideDown delay-2">
+                    <h3>
+                        @if($product_info_section->value_1 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->value_1)}}
+                        @endif
+                        <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_1}}" alt="image"></i>
+                    </h3>
+
+                    <p id="p1">
+                        @if($product_info_section->text_1 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->text_1)}}
+                        @endif
+
+                    </p>
                 </div>
                 <div class="text-box viewport-holder slideDown delay-3">
-                    <h3>35+ <i class="ico"><img src="{{asset('frontend')}}/images/ico-eye.svg" alt="image description"></i></h3>
-                    <p>Countries of Trassir <br> installations</p>
+                    <h3>
+                        @if($product_info_section->value_2 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->value_2)}}
+                        @endif
+                        <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_2}}" alt="image"></i>
+                    </h3>
+                    <p>
+                        @if($product_info_section->text_2 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->text_2)}}
+                        @endif
+                    </p>
                 </div>
                 <div class="text-box viewport-holder slideDown delay-4">
-                    <h3>5000+ <i class="ico"><img src="{{asset('frontend')}}/images/ico-men.svg" alt="image description"></i></h3>
-                    <p>Loyal customers all <br> over the globe</p>
+                    <h3>
+                        @if($product_info_section->value_3 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->value_3)}}
+                        @endif
+
+                        <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_3}}" alt="image"></i></h3>
+                    <p>
+                        @if($product_info_section->text_3 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->text_3)}}
+                        @endif
+                    </p>
                 </div>
                 <div class="text-box viewport-holder slideDown delay-5">
-                    <h3>30% <i class="ico"><img src="{{asset('frontend')}}/images/ico-graph.svg" alt="image description"></i></h3>
-                    <p>Compound annual growth rate</p>
+                    <h3>
+                        @if($product_info_section->value_4 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->value_4)}}
+                        @endif
+                        <i class="ico"><img src="{{asset('frontend')}}/images/About-rrstek/product-info-section/{{$product_info_section->icon_4}}" alt="image"></i></h3>
+                    <p>
+                        @if($product_info_section->text_4 !=null)
+                        {{$tr->setSource('en')->setTarget($site_language)->translate($product_info_section->text_4)}}
+                        @endif
+                    </p>
                 </div>
             </div>
         </div>
@@ -185,34 +349,21 @@
     <div class="map-area">
         <div class="container">
             <div class="heading center viewport-holder slideDown delay-1">
-                <h2><span><i>OUR Customer</i></span> Engage Customers Everywhere</h2>
+                <h2>
+                    <span><i>
+                        {{$tr->setSource('en')->setTarget($site_language)->translate('OUR Customer')}}
+                    </i></span>
+                    @if($our_customer->heading !=null)
+                    {{$tr->setSource('en')->setTarget($site_language)->translate($our_customer->heading)}}
+                    @endif
+                </h2>
             </div>
         </div>
         <div class="img-box viewport-holder slideDown delay-2">
-            <img src="{{asset('frontend')}}/images/img-world-map.png" alt="image description">
+            <img src="{{asset('frontend')}}/images/About-rrstek/our-customer/{{$our_customer->image}}" alt="img">
         </div>
     </div>
-    <div class="booking-area">
-        <div class="container">
-            <div class="holder">
-                <div class="text-box">
-                    <h2 class="viewport-holder slideDown"><span>GET DEMO</span> Try RRSTEK in Your Business</h2>
-                    <p class="viewport-holder slideDown delay-1">Learn more about how RRSTEK analytic modules work! Demo mode is an opportunity to see for yourself how the system operates, and also check the interface and test all the functions</p>
-                </div>
-                <div class="form-area">
-                    <div class="frame viewport-holder slideDown delay-2">
-                        <h3 class="viewport-holder slideDown delay-3">Book a Demo</h3>
-                        <p class="viewport-holder slideDown delay-4">Book a Demo for  your facility for demotrastion of camera operation.</p>
-                        <form  onsubmit="demoEmail(); reset(); return false" method="POST" class="user-form">
-                            <input class="form-control" id="name" type="text" placeholder="Your Name" name="name" required>
-                            <input class="form-control" id="email" type="email" placeholder="Your Email" name="email" required>
-                            <input class="login-btn" type="submit" value="Book Now" class="viewport-holder slideDown delay-7">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('frontend.common.demo_booking')
 </main>
 
 @endsection

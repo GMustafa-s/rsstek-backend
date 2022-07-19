@@ -12,7 +12,7 @@
                     <h3 class="page-title">Settings</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="route('dashboard')">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">general settings</li>
                         </ol>
                     </nav>
@@ -20,8 +20,27 @@
             </div>
         </div>
         <!-- /Page Header -->
+        @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong>Success!</strong>  {{ session()->get('success') }}
+                                
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+                    @endif
+                    @if(session()->has('error'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong>Success!</strong> {{ session()->get('error') }}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+                    @endif
         <div class="row">
             <div class="col-md-12">
+                <form action="{{route('add.siteinfo')}}" method="post" enctype="multipart/form-data">
+                    @csrf
                 <div class="card leave-box mb-5" id="leave_annual">
                     <div class="card-body">
                         <div class="row">
@@ -34,28 +53,26 @@
                             <div class="col-8">
                                 <div class="form-group mb-4">
                                     <label>Site Title</label>
-                                    <input type="text" class="form-control" name="site_title" value="site title" />
+                                    <input type="text" class="form-control" name="site_title" value=" @if($generals!=null)  {{$generals->site_title}} @endif" required />
                                 </div>
 
                                 <div class="form-group mb-4">
                                     <label>Site description</label>
-
-                                    <textarea rows="3" cols="5" class="form-control" maxlength="215" placeholder="site description here">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum magnam, atque perspiciatis totam saepe rem pariatur odit et iusto amet nam, illo reiciendis voluptatibus aperiam, non a! Autem, reiciendis necessitatibus.
-                                    </textarea>
+                                    <textarea name="description" rows="3" cols="5" class="form-control" maxlength="215" placeholder="site description here" >@if($generals!=null)  {{$generals->description}} @endif</textarea>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label>Favicon</label>
-
-                                            <input class="form-control" type="file" />
+                                            <input  name="favicon" class="form-control" type="file" />
                                         </div>
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col-4">
-                                        <img src="{{asset('admin')}}/assets/img/favicon.png" alt="" width="100" height="70" />
+                                        @if($generals->favicon !=null) 
+                                        <img src="{{asset('frontend')}}/images/fevicon/{{$generals->favicon}} " alt="" width="100" height="70" />
+                                         @endif
                                     </div>
                                     <div class="col-1"></div>
                                 </div>
@@ -63,21 +80,26 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum magnam, atque persp
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label>Logo</label>
-
-                                            <input class="form-control" type="file" />
+                                            <input name="logo"  class="form-control" type="file" />
                                         </div>
                                     </div>
                                     <div class="col-4">
-                                        <img src="{{asset('admin')}}/assets/img/favicon.png" alt="" width="100%" height="70" />
+                                        @if($generals->logo !=null) 
+                                        <img src="{{asset('frontend')}}/images/{{$generals->logo}} " alt="" width="100%" height="70" />
+                                         @endif
                                     </div>
                                 </div>
-
-                                <div class="submit-section"></div>
+                              
+                                <div class="submit-section">
+                                    <button type="submit" class="btn btn-primary submit-btn">Update</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                </form>
+                <form action="{{route('add.contactInfo')}}" method="post">
+                    @csrf
                 <div class="card leave-box" id="leave_annual">
                     <div class="card-body">
                         <div class="card-body">
@@ -91,22 +113,29 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum magnam, atque persp
                                 <div class="col-8">
                                     <div class="form-group mb-4">
                                         <label>Phone#</label>
-                                        <input type="phone" class="form-control" name="site_title" value="423156445" />
+                                        
+                                        <input type="phone" class="form-control" name="phone" value="@if($generals->phone !=null) {{$generals->phone}} @endif" />
                                     </div>
                                     <div class="form-group mb-4">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" name="site_title" value="" placeholder="abc@gmail.com" />
+                                        <input type="email" class="form-control" name="email" value="@if($generals->email !=null) {{$generals->email}} @endif" placeholder="abc@gmail.com" />
                                     </div>
                                     <div class="form-group mb-4">
                                         <label>Adress</label>
-                                        <input type="text" class="form-control" name="site_title" value="address" />
+                                        <input type="text" class="form-control" name="address" value="@if($generals->address !=null) {{$generals->address}} @endif" />
+                                    </div>
+                                    <div class="submit-section">
+                                        <button type="submit" class="btn btn-primary submit-btn">Update</button>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
 
+             
                 <div class="card leave-box" id="leave_annual">
                     <div class="card-body">
                         <div class="card-body">
@@ -119,20 +148,30 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum magnam, atque persp
                                 </div>
                                 <div class="col-8">
                                     <div class="form-group mb-4">
+                                        <form action="{{route('add.language')}}" method="post">
+                                            @csrf
                                         <label>select default language</label>
-                                        <select class="form-control" name="" id="">
-                                            <option value="" disabled selected>Default</option>
-                                            <option value="">ENG</option>
-                                            <option value="">NL</option>
-                                            <option value="">FR</option>
-                                            <option value="">ES</option>
+                                        <select class="form-control" name="language" id="">
+                                            <option value="@if($generals->language !=null) {{$generals->language}} @endif" disabled selected>{{$generals->language}}</option>
+                                            <option value="en">en</option>
+                                            <option value="nl">nl</option>
+                                            <option value="fr">fr</option>
+                                            <option value="es">es</option>
                                         </select>
+                                        <div class="submit-section">
+                                        <button type="submit" class="btn btn-primary submit-btn">Update</button>
                                     </div>
+                                        </form>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <form action="{{route('add.copyright')}}" method="post">
+                    @csrf
                 <div class="card leave-box" id="leave_annual">
                     <div class="card-body">
                         <div class="card-body">
@@ -146,13 +185,17 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum magnam, atque persp
                                 <div class="col-8">
                                     <div class="form-group mb-4">
                                         <label>Copy Right Text</label>
-                                        <input type="text" class="form-control" name="" value="" placeholder="Copyright © 2022 RRSTEK All rights reserved" />
+                                        <input type="text"  name="copy_right_text" class="form-control" value="@if($generals->copy_right_text !=null) {{$generals->copy_right_text}} @endif" placeholder="Copyright © 2022 RRSTEK All rights reserved" />
+                                    </div>
+                                    <div class="submit-section">
+                                        <button type="submit" class="btn btn-primary submit-btn">Update</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
                 <div class="card leave-box" id="leave_annual">
                     <div class="card-body">
                         <div class="card-body">

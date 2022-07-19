@@ -49,7 +49,7 @@
 function sendEmail(){
     Email.send({
         SecureToken: "2e489077-907b-4fba-b87e-9905e749bb29",
-        To : '',
+        To : 'info@rrsteksecurity.com',
         ReplyTo: document.getElementById("email").value,
         From : 'contact@rrsteksecurity.com',
         Subject : "New Contact Form Enquiry",

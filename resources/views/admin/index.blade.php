@@ -1,19 +1,19 @@
 @extends('admin.layouts.app')
 
 @section('content')
-				
+
 				<!-- Page Wrapper -->
 
         <div class="page-wrapper">
-			
+
 				<!-- Page Content -->
                 <div class="content container-fluid">
-				
+
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome Admin!</h3>
+								<h3 class="page-title">Welcome {{Auth()->user()->name}}!</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item active">Dashboard</li>
 								</ul>
@@ -21,15 +21,17 @@
 						</div>
 					</div>
 					<!-- /Page Header -->
-				
+
 					<div class="row">
 						<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 							<div class="card dash-widget">
 								<div class="card-body">
-									<span class="dash-widget-icon"><i class="fa fa-cubes"></i></span>
+									<span class="dash-widget-icon"><i class="fa fa-file-o"></i></span>
 									<div class="dash-widget-info">
-										<h3>112</h3>
-										<span>Projects</span>
+										<h3>
+                                            {{App\Models\CustomPage::all()->count()}}
+                                        </h3>
+										<span>Custome Pages</span>
 									</div>
 								</div>
 							</div>
@@ -37,10 +39,25 @@
 						<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 							<div class="card dash-widget">
 								<div class="card-body">
-									<span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+									<span class="dash-widget-icon"><i class="fa fa-file-o"></i></span>
 									<div class="dash-widget-info">
-										<h3>44</h3>
-										<span>Clients</span>
+										<h3>
+                                            {{App\Models\PageCategory::all()->count()}}
+                                        </h3>
+										<span>Solutions Pages</span>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+							<div class="card dash-widget">
+								<div class="card-body">
+									<span class="dash-widget-icon"><i class="fa fa-file-o"></i></span>
+									<div class="dash-widget-info">
+										<h3>
+                                            {{App\Models\SolutionSubPage::all()->count()}}
+                                        </h3>
+										<span>Sub Pages</span>
 									</div>
 								</div>
 							</div>
@@ -48,27 +65,19 @@
 						<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 							<div class="card dash-widget">
 								<div class="card-body">
-									<span class="dash-widget-icon"><i class="fa fa-diamond"></i></span>
+									<span class="dash-widget-icon"><i class="fa fa-camera"></i></span>
 									<div class="dash-widget-info">
-										<h3>37</h3>
-										<span>Tasks</span>
+										<h3>
+                                            {{App\Models\Camera::all()->count()}}
+                                        </h3>
+										<span>Product Pages</span>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-							<div class="card dash-widget">
-								<div class="card-body">
-									<span class="dash-widget-icon"><i class="fa fa-user"></i></span>
-									<div class="dash-widget-info">
-										<h3>218</h3>
-										<span>Employees</span>
-									</div>
-								</div>
-							</div>
-						</div>
+
 					</div>
-					
+
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
@@ -91,7 +100,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card-group m-b-30">
@@ -112,7 +121,7 @@
 										<p class="mb-0">Overall Employees 218</p>
 									</div>
 								</div>
-							
+
 								<div class="card">
 									<div class="card-body">
 										<div class="d-flex justify-content-between mb-3">
@@ -130,7 +139,7 @@
 										<p class="mb-0">Previous Month <span class="text-muted">$1,15,852</span></p>
 									</div>
 								</div>
-							
+
 								<div class="card">
 									<div class="card-body">
 										<div class="d-flex justify-content-between mb-3">
@@ -148,7 +157,7 @@
 										<p class="mb-0">Previous Month <span class="text-muted">$7,500</span></p>
 									</div>
 								</div>
-							
+
 								<div class="card">
 									<div class="card-body">
 										<div class="d-flex justify-content-between mb-3">
@@ -167,9 +176,9 @@
 									</div>
 								</div>
 							</div>
-						</div>	
+						</div>
 					</div>
-					
+
 					<!-- Statistics Widget -->
 					<div class="row">
 						<div class="col-md-12 col-lg-12 col-xl-4 d-flex">
@@ -211,7 +220,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="col-md-12 col-lg-6 col-xl-4 d-flex">
 							<div class="card flex-fill">
 								<div class="card-body">
@@ -249,14 +258,14 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="col-md-12 col-lg-6 col-xl-4 d-flex">
 							<div class="card flex-fill">
 								<div class="card-body">
 									<h4 class="card-title">Today Absent <span class="badge bg-inverse-danger ml-2">5</span></h4>
 									<div class="leave-info-box">
 										<div class="media align-items-center">
-											<a href="profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/user.jpg"></a>
+											<a href="profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/user.jpg"></a>
 											<div class="media-body">
 												<div class="text-sm my-0">Martin Lewis</div>
 											</div>
@@ -273,7 +282,7 @@
 									</div>
 									<div class="leave-info-box">
 										<div class="media align-items-center">
-											<a href="profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/user.jpg"></a>
+											<a href="profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/user.jpg"></a>
 											<div class="media-body">
 												<div class="text-sm my-0">Martin Lewis</div>
 											</div>
@@ -296,7 +305,7 @@
 						</div>
 					</div>
 					<!-- /Statistics Widget -->
-					
+
 					<div class="row">
 						<div class="col-md-6 d-flex">
 							<div class="card card-table flex-fill">
@@ -364,7 +373,7 @@
 									<h3 class="card-title mb-0">Payments</h3>
 								</div>
 								<div class="card-body">
-									<div class="table-responsive">	
+									<div class="table-responsive">
 										<table class="table custom-table table-nowrap mb-0">
 											<thead>
 												<tr>
@@ -413,7 +422,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="col-md-6 d-flex">
 							<div class="card card-table flex-fill">
@@ -435,7 +444,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="#" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-19.jpg"></a>
+															<a href="#" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-19.jpg"></a>
 															<a href="client-profile.html">Barry Cuda <span>CEO</span></a>
 														</h2>
 													</td>
@@ -464,7 +473,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="#" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-19.jpg"></a>
+															<a href="#" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-19.jpg"></a>
 															<a href="client-profile.html">Tressa Wexler <span>Manager</span></a>
 														</h2>
 													</td>
@@ -493,7 +502,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-07.jpg"></a>
+															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-07.jpg"></a>
 															<a href="client-profile.html">Ruby Bartlett <span>CEO</span></a>
 														</h2>
 													</td>
@@ -522,7 +531,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-06.jpg"></a>
+															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-06.jpg"></a>
 															<a href="client-profile.html"> Misty Tison <span>CEO</span></a>
 														</h2>
 													</td>
@@ -551,7 +560,7 @@
 												<tr>
 													<td>
 														<h2 class="table-avatar">
-															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('admin')}}/assets/img/profiles/avatar-14.jpg"></a>
+															<a href="client-profile.html" class="avatar"><img alt="" src="{{asset('adminn')}}/assets/img/profiles/avatar-14.jpg"></a>
 															<a href="client-profile.html"> Daniel Deacon <span>CEO</span></a>
 														</h2>
 													</td>
@@ -727,7 +736,7 @@
 							</div>
 						</div>
 					</div>
-				
+
 				</div>
 				<!-- /Page Content -->
 
