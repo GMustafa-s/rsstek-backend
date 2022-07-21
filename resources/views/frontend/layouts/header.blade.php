@@ -28,7 +28,7 @@ $site_dat = App\Models\GeneralSetting::first();
     <div class="header-t">
         <div class="container">
             <strong class="logo">
-                <a href="{{route('/')}}">
+                <a href="{{url('/')}}">
                     <img src="{{asset('frontend')}}/images/@if($site_dat->logo!=null){{$site_dat->logo}} @endif" alt="RRSTEK | Home Automation System">
                 </a>
             </strong>

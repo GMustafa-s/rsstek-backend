@@ -17,7 +17,7 @@ class AboutUsFeatureSeeder extends Seeder
     {
         DB::table('about_us_features')->insert([
             'title' => 'A compartible solution customization',
-            'description' => 'Support 99,9% of IP-Cameras can be connected by: Navive integratio (manufature protocol) ONVIF RTSP connectivity',
+            'description' => 'Support 99,9% of IP-Cameras can be connected by: Native integratio (manufature protocol) ONVIF RTSP connectivity',
             'image' => 'compatible-solution.svg',
         ]);
 
