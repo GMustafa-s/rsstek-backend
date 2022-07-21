@@ -1,5 +1,7 @@
 @php
     $site_dat = App\Models\GeneralSetting::first();
+    $industries_pages = App\Models\IndustriesPage::get();
+
 @endphp
 <?php
     use Stichoza\GoogleTranslate\GoogleTranslate;
@@ -29,66 +31,20 @@
         <div class="carousel">
             <div class="mask">
                 <div class="slideset">
+                    @if($industries_pages != null)
+                    @foreach ($industries_pages as $ip)
                     <div class="slide viewport-holder slideDown">
                         <div class="frame">
-                            <img src="{{asset('frontend')}}/images/img-06.jpg" alt="image description">
+                            <img src="{{asset('frontend')}}/images/industries/{{$ip->bg_image}}" alt="image description">
                             <div class="txt-box">
-                                <a href="../Industries/retail.html" class="more">
-                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Retail') }}
+                                <a href="{{route('industries.slug', $ip->slug)}}" class="more">
+                                    {{ $tr->setSource('en')->setTarget($site_language)->translate($ip->page_title) }}
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="slide viewport-holder slideDown delay-1">
-                        <div class="frame">
-                            <img src="{{asset('frontend')}}/images/img-07.jpg" alt="image description">
-                            <div class="txt-box">
-                                <a href="../Industries/industrial.html" class="more">
-                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Industrial') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide viewport-holder slideDown delay-2">
-                        <div class="frame">
-                            <img src="{{asset('frontend')}}/images/img-08.jpg" alt="image description">
-                            <div class="txt-box">
-                                <a href="../Industries/public-safety.html" class="more">
-                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Public Safety') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide viewport-holder slideDown">
-                        <div class="frame">
-                            <img src="{{asset('frontend')}}/images/img-09.jpg" alt="image description">
-                            <div class="txt-box">
-                                <a href="../Industries/health-care.html" class="more">
-                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Health Care') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide viewport-holder slideDown delay-1">
-                        <div class="frame">
-                            <img src="{{asset('frontend')}}/images/img-10.jpg" alt="image description">
-                            <div class="txt-box">
-                                <a href="../Industries/real-estate.html" class="more">
-                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Real Estate') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide viewport-holder slideDown delay-2">
-                        <div class="frame">
-                            <img src="{{asset('frontend')}}/images/img-11.jpg" alt="image description">
-                            <div class="txt-box">
-                                <a href="../Industries/transport-and-storage.html" class="more">
-                                    {{ $tr->setSource('en')->setTarget($site_language)->translate('Transport/Storage') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                    @endif
                 </div>
             </div>
             <div class="pagination"></div>

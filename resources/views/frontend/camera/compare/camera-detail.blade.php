@@ -44,7 +44,7 @@ $site_dat = App\Models\GeneralSetting::first();
                             <p class="viewport-holder slideDown delay-2">{{$tr->setSource('en')->setTarget($site_language)->translate($camera->sub_title)}}</p>
 
                             <div class="btn-holder viewport-holder slideDown delay-2">
-                                <a href="{{ route('/solutions') }}" class="btn primary"><span>{{$tr->setSource('en')->setTarget($site_language)->translate('Book a Demo')}}</span></a>
+                                <a href="{{ route('demo') }}" class="btn primary"><span>{{$tr->setSource('en')->setTarget($site_language)->translate('Book a Demo')}}</span></a>
                                 <a href="{{ route('/contactus') }}" class="btn default"><span>{{$tr->setSource('en')->setTarget($site_language)->translate('How To Buy')}}</span></a>
                             </div>
                         </div>

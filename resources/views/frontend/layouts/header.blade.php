@@ -36,15 +36,16 @@ $site_dat = App\Models\GeneralSetting::first();
                 <a href="#" class="open"><img src="{{asset('frontend')}}/images/menu-icon.svg" alt="image description"></a>
                 <div class="drop-down">
                     <ul class="lang">
-                        <li><a class="active" href="{{route('change.language','en')}}">ENG</a></li>
-                        <li><a href="{{route('change.language','nl')}}">NL</a></li>
-                        <li><a href="{{route('change.language','fr')}}">FR</a></li>
-                        <li><a href="{{route('change.language','es')}}">ES</a></li>
+                        <li><a @if($language=='en') class="active" @else class="language" @endif href="{{route('change.language','en')}}">ENG</a></li>
+
+                        <li><a @if($language=='nl') class="active" @else class="language" @endif href="{{route('change.language','nl')}}">NL</a></li>
+                        <li><a @if($language=='fr') class="active" @else class="language" @endif href="{{route('change.language','fr')}}">FR</a></li>
+                        <li><a @if($language=='es') class="active" @else class="language" @endif href="{{route('change.language','es')}}">ES</a></li>
                     </ul>
                     <div class="holder">
                         <ul class="list">
                             <li>
-                        <a href="{{route('/')}}" class="title">
+                        <a href="{{url('/')}}" class="title">
 
                         {{ $tr->setSource('en')->setTarget($site_language)->translate('Home')}}
                         </a>

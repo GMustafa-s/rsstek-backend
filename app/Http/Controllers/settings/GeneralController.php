@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\SocialLink;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 
 class GeneralController extends Controller
@@ -85,7 +85,7 @@ class GeneralController extends Controller
             }
             if($site_data->save()){
                 return redirect()->back();
-    
+
             }
         }
         public function createCopyRight(Request $request){
@@ -98,7 +98,7 @@ class GeneralController extends Controller
             }
             if($site_data->save()){
                 return redirect()->back();
-    
+
             }
             else{
                 return redirect()->back();
@@ -160,7 +160,7 @@ class GeneralController extends Controller
     {
         //
     }
-    
+
 // Social links management
     public function createSocials(Request $request)
     {
@@ -194,7 +194,11 @@ class GeneralController extends Controller
 
     public function changeLanguage($language)
     {
+        // dd($language);
+        // dd(session()->all());
+        // Session()->forget('language');
         $session=  Session::put('language',$language);
+        // dd($session);
         return redirect()->back();
     }
 }
