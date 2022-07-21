@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 // use App\Models\contactuses;
 use App\Models\ContactUsForm;
 use App\Models\Demo;
+use App\Models\DemoQueires;
 use App\Models\installationQuery;
 use Illuminate\Support\Facades\DB;
 
@@ -61,7 +62,7 @@ class ContactUsController extends Controller
 
     // demo queries
     public function demoShow(){
-        $demo_messages = Demo::orderby('created_at','DESC')->paginate(15);
+        $demo_messages = DemoQueires::orderby('created_at','DESC')->paginate(15);
         return view('admin.queries.demo',compact('demo_messages'));
     }
 
@@ -73,7 +74,7 @@ class ContactUsController extends Controller
                 'email' => 'required|email',
             ]
         );
-        $demo = new Demo;
+        $demo = new DemoQueires;
         $demo->name = $request->name;
         $demo->email = $request->email;
         if($demo->save()){

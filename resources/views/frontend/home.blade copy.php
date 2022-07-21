@@ -7,10 +7,11 @@ $wwu = App\Models\whatWeUseImage::get();
 $aboutus_features = App\Models\AboutUsFeature::get();
 $header_info = App\Models\CustomPage::find(1);
 $feature_section = App\Models\HomeFeatureSection::findOrFail(1);
-$business = App\Models\HomePageBusinessSection::get();
+// $business = App\Models\HomePageBusinessSection::get();
 $broadcast = App\Models\HomePageroadcastSection::get();
 // $choice_us_section = App\Models\HomeChoiceUsSection::findOrFail(1);
-// dd($choice_us_section);
+$page_category = App\Models\PageCategory::get();
+
 
 @endphp
 
@@ -194,21 +195,19 @@ else{
                 </h1>
                 </div>
                 <div class="holder">
-                @foreach($business as $biz)
-
+                    @foreach($page_category as $pc)
                     <div class="col viewport-holder slideDown">
                         <div class="image-holder">
-                            <img src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$biz->image}}" alt="image description">
+                            <img src="{{asset('frontend/images')}}/{{$pc->name}}/{{$pc->bg_image}}" alt="image description">
                         </div>
                         <div class="text">
                             <h2>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate($biz->title)}}
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($pc->name)}}
                             </h2>
                             <p>
-                                {{ $tr->setSource('en')->setTarget($site_language)->translate($biz->description)}}
+                                {{ $tr->setSource('en')->setTarget($site_language)->translate($pc->description)}}
                             </p>
-
-                            <a href="{{route('category.slug', $biz->slug)}}" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
+                            <a href="{{route('category.slug', $pc->slug)}}" class="more"><img src="{{asset('frontend')}}/images/ico-right.svg" alt="image description"></a>
                         </div>
                     </div>
                     @endforeach

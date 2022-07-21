@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('home_page_business_sections', function (Blueprint $table) {
-             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('image');
-            $table->string('slug')->nullable();
+        Schema::create('demo_queires', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 255);
+            $table->string('email', 255);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('home_page_business_sections');
+        Schema::dropIfExists('demo_queires');
     }
 };

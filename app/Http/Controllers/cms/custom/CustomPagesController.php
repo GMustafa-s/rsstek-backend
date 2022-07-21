@@ -180,6 +180,7 @@ public function busniessadd(Request $request){
     $feature = new HomePageBusinessSection;
     $feature->title = $request->title;
     $feature->description = $request->description;
+    $feature->slug = Str::slug($request->title);
     if($request->image){
         $file = $request->file('image');
         $filename = rand().'.'.$file->getClientOriginalExtension();

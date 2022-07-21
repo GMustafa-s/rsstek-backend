@@ -324,21 +324,21 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 
-Route::prefix('contactus')->middleware(['auth', 'can:contactus.quesries.view'])->group(function () {
+Route::prefix('contactus')->group(function () {
     Route::post('/add', [ContactUsController::class, 'store'])->name('add.contactus');
-    Route::get('/show', [ContactUsController::class, 'show'])->name('show.contactus');
+    Route::get('/show', [ContactUsController::class, 'show'])->name('show.contactus')->middleware(['auth', 'can:contactus.quesries.view']);
  });
 
  Route::get('contactus', [ContactUsController::class, 'index'])->name('/contactus');
  //demo routes
- Route::prefix('demo')->middleware(['auth', 'can:demo.quesries.view'])->group(function () {
+ Route::prefix('demo')->group(function () {
     Route::post('/add', [ContactUsController::class, 'demoStore'])->name('add.demo');
-    Route::get('/show', [ContactUsController::class, 'demoShow'])->name('show.demo');
+    Route::get('/show', [ContactUsController::class, 'demoShow'])->name('show.demo')->middleware(['auth', 'can:demo.quesries.view']);
  });
 
- Route::prefix('intallation')->middleware(['auth' , 'can:installation.quesries.view'])->group(function () {
+ Route::prefix('intallation')->group(function () {
     Route::post('/add', [ContactUsController::class, 'installationStore'])->name('add.intallation');
-    Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation');
+    Route::get('/show', [ContactUsController::class, 'intallationShow'])->name('show.intallation')->middleware(['auth' , 'can:installation.quesries.view']);
  });
 
  Route::prefix('cms')->group(function () {
