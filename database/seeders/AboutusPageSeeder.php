@@ -83,7 +83,7 @@ class AboutusPageSeeder extends Seeder
 
         ]);
         //our product info section
-        DB::table('aboutus_our_product_info_section')->insert([
+        DB::table('aboutus_our_info_section')->insert([
 
             'value_1' => '19',
             'text_1' => 'Years of experience in CCTV surveillance',

@@ -8,6 +8,11 @@ use App\Models\CustomPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\AboutUsAboutOurProductSection;
+use App\Models\AboutUsAboutOurWorkSection;
+use App\Models\AboutUsOurInfoSection;
+use App\Models\AboutUsOurProductInfoSection;
+use App\Models\AboutUsTopInfoSection;
 use Illuminate\Support\Facades\File;
 
 class EditAboutusController extends Controller
@@ -17,12 +22,12 @@ class EditAboutusController extends Controller
         $page = CustomPage::find(2);
 
         $aboutus_heading = DB::table('aboutus_page_heading')->where('id', '1')->first();
-        $top_info_section = DB::table('aboutus_top_info_section')->where('id', '1')->first();
+        $top_info_section =  AboutUsTopInfoSection::first();
         $aboutus_section = DB::table('aboutus_section')->where('id', '1')->first();
-        $ourwork_section = DB::table('aboutus_our_work_section')->where('id', '1')->first();
+        $ourwork_section = AboutUsAboutOurWorkSection::first();
         $chief_officer = DB::table('aboutus_cheif_officer')->where('id', '1')->first();
         $our_product = DB::table('aboutus_about_our_product_section')->where('id', '1')->first();
-        $product_info_section = DB::table('aboutus_our_product_info_section')->where('id', '1')->first();
+        $product_info_section = AboutUsOurInfoSection::first();
         $our_customer = DB::table('aboutus_our_customer')->where('id', '1')->first();
 
         return view('admin.cms.custome-pages.edit-aboutus', compact('page','aboutus_heading', 'top_info_section','aboutus_section', 'ourwork_section', 'chief_officer','our_product', 'product_info_section','our_customer'));
@@ -53,63 +58,48 @@ class EditAboutusController extends Controller
     }
     // Top Info section
     public function topInfoSectionUpdate(Request $request){
-        $data = DB::table('aboutus_top_info_section')->where('id', '1')->first();
+        $data = AboutUsTopInfoSection::first();
         if($data != null){
             if($request->value_1){
-                $v1 = $request->value_1;
+                $data->value_1 = $request->value_1;
             }
             if($request->text_1){
-                $t1 = $request->text_1;
+                $data->text_1 = $request->text_1;
             }
             if($request->icon_1){
                 $file = $request->file('icon_1');
                 $icon_1 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/top-info-section-icon/';
                 $file->move($destinationPath, $icon_1);
-                $data_set =[
-                    'value_1' => $v1,
-                    'text_1' => $t1,
-                    'icon_1' => $icon_1
-                ];
+                $data->icon_1 = $icon_1;
             }
-
             if($request->value_2){
-                $v2 = $request->value_2;
+                $data->value_2 = $request->value_2;
             }
             if($request->text_2){
-                $t2 = $request->text_2;
+                $data->text_2 = $request->text_2;
             }
             if($request->icon_2){
                 $file = $request->file('icon_2');
                 $icon_2 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/top-info-section-icon/';
                 $file->move($destinationPath, $icon_2);
-                $data_set =[
-                    'value_1' => $v1,
-                    'text_1' => $t1,
-                    'icon_1' => $icon_1,
-
-                    'value_2' => $v2,
-                    'text_2' => $t2,
-                    'icon_2' => $icon_2,
-                ];
+                $data->icon_2 = $icon_2;
             }
-
-
             // if($request->value_3){
-            //     $v3 = $request->value_3;
+            //     $data->value_3 = $request->value_3;
             // }
             // if($request->text_1){
-            //     $t3 = $request->text_3;
+            //     $data->text_3 = $request->text_3;
             // }
             // if($request->icon_3){
             //     $file = $request->file('icon_3');
             //     $icon_3 = rand().'.'.$file->getClientOriginalExtension();
             //     $destinationPath = public_path('frontend').'/images/About-rrstek/top-info-section-icon/';
             //     $file->move($destinationPath, $icon_3);
+                // $data->icon_3 = $icon_3;
             // }
-            $result = DB::table('aboutus_top_info_section')->where('id', $data->id)->update($data_set);
-            if($result){
+            if($data->save()){
                 return redirect()->back()->with('success' , 'AboutUs page top section updated!');
             }else{
                 return redirect()->back()->with('error', 'Something went wrong!');
@@ -167,16 +157,15 @@ class EditAboutusController extends Controller
 
     }
 
-    // our work section
+    //about our work section
     public function ourworkSectionUpdate(Request $request){
-        $data = DB::table('aboutus_our_work_section')->where('id', '1')->first();
-
+        $data = AboutUsAboutOurWorkSection::first();
         if($data != null){
             if($request->our_work_heading){
-                $our_work_heading = $request->our_work_heading;
+                $data->our_work_heading = $request->our_work_heading;
             }
             if($request->sub_heading_1){
-                $sub_heading_1 = $request->sub_heading_1;
+                $data->sub_heading_1 = $request->sub_heading_1;
             }
             if($request->sub_heading_1_icon !=null){
                 //delete file form folder functionality
@@ -188,9 +177,10 @@ class EditAboutusController extends Controller
                 $filename_1 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/ourwork-section/';
                 $file->move($destinationPath,$filename_1);
+                $data->sub_heading_1_icon = $filename_1;
             }
             if($request->sub_heading_2){
-                $sub_heading_2 = $request->sub_heading_2;
+                $data->sub_heading_2 = $request->sub_heading_2;
             }
             if($request->sub_heading_2_icon !=null){
                 //delete file form folder functionality
@@ -202,10 +192,11 @@ class EditAboutusController extends Controller
                 $filename_2 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/ourwork-section/';
                 $file->move($destinationPath,$filename_2);
+                $data->sub_heading_2_icon = $filename_2;
             }
 
             if($request->sub_heading_3){
-                $sub_heading_3 = $request->sub_heading_3;
+                $data->sub_heading_3 = $request->sub_heading_3;
             }
             if($request->sub_heading_3_icon !=null){
                 //delete file form folder functionality
@@ -217,10 +208,11 @@ class EditAboutusController extends Controller
                 $filename_3 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/ourwork-section/';
                 $file->move($destinationPath,$filename_3);
+                $data->sub_heading_3_icon = $filename_3;
             }
 
             if($request->sub_heading_4){
-                $sub_heading_4 = $request->sub_heading_4;
+                $data->sub_heading_4 = $request->sub_heading_4;
             }
             if($request->sub_heading_4_icon !=null){
                 //delete file form folder functionality
@@ -233,25 +225,9 @@ class EditAboutusController extends Controller
                 $filename_4 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/ourwork-section/';
                 $file->move($destinationPath,$filename_4);
+                $data->sub_heading_4_icon = $filename_4;
             }
-            // dd($filename);
-            $result = DB::table('aboutus_our_work_section')->where('id', $data->id)->update([
-                'our_work_heading' => $our_work_heading,
-
-                'sub_heading_1' => $sub_heading_1,
-                'sub_heading_1_icon' => $filename_1,
-
-                'sub_heading_2' => $sub_heading_2,
-                'sub_heading_2_icon' => $filename_2,
-
-                'sub_heading_3' => $sub_heading_3,
-                'sub_heading_3_icon' => $filename_3,
-
-                'sub_heading_4' => $sub_heading_4,
-                'sub_heading_4_icon' => $filename_4,
-
-            ]);
-            if($result){
+            if($data->save()){
                 return redirect()->back()->with('success' , 'Our Work section updated successfully');
             }else{
                 return redirect()->back()->with('error', 'Something went wrong!');
@@ -307,158 +283,128 @@ class EditAboutusController extends Controller
     }
 
     // About Our Product Section
-    public function ourProductUpdate(Request $request)
-    {
-        $data = DB::table('aboutus_about_our_product_section')->where('id','1')->first();
-        if($data != null){
-            if($request->heading){
-                $h = $request->heading;
-            }
+    // public function ourProductUpdate(Request $request)
+    // {
+    //     $data = AboutUsAboutOurProductSection::first();
+    //     if($data != null){
+    //         if($request->heading){
+    //             $data->heading = $request->heading;
+    //         }
 
-            if($request->text_1){
-                $t1 = $request->text_1;
-            }
-            if($request->icon_1){
-                $file = $request->file('icon_1');
-                 $filename_1 = rand().'.'.$file->getClientOriginalExtension();
-                $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
-                $file->move($destinationPath, $filename_1);
+    //         if($request->text_1){
+    //             $data->text_1 = $request->text_1;
+    //         }
+    //         if($request->icon_1){
+    //             $file = $request->file('icon_1');
+    //              $icon_1 = rand().'.'.$file->getClientOriginalExtension();
+    //             $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
+    //             $file->move($destinationPath, $icon_1);
+    //             $data->icon_1 = $icon_1;
+    //         }
+    //         if($request->text_2){
+    //             $data->text_2 = $request->text_2;
+    //         }
+    //         if($request->icon_2){
+    //             $file = $request->file('icon_2');
+    //             $icon_2 = rand().'.'.$file->getClientOriginalExtension();
+    //             $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
+    //             $file->move($destinationPath, $icon_2);
+    //             $data->icon_2 = $icon_2;
 
-            }
-            if($request->text_2){
-                $t2 = $request->text_2;
-            }
-            if($request->icon_2){
-                $file = $request->file('icon_2');
-                $filename_2 = rand().'.'.$file->getClientOriginalExtension();
-                $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
-                $file->move($destinationPath, $filename_2);
 
-            }
-            if($request->text_3){
-                $t3 = $request->text_3;
-            }
-            if($request->icon_3){
-                $file = $request->file('icon_3');
-                $filename_3 = rand().'.'.$file->getClientOriginalExtension();
-                $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
-                $file->move($destinationPath, $filename_3);
-            }
-            if($request->text_4){
-                $t4 = $request->text_4;
-            }
-            if($request->icon_4){
-                $file = $request->file('icon_4');
-                $filename_4 = rand().'.'.$file->getClientOriginalExtension();
-                $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
-                $file->move($destinationPath, $filename_4);
+    //         }
+    //         if($request->text_3){
+    //             $data->text_3 = $request->text_3;
+    //         }
+    //         if($request->icon_3){
+    //             $file = $request->file('icon_3');
+    //             $icon_3 = rand().'.'.$file->getClientOriginalExtension();
+    //             $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
+    //             $file->move($destinationPath, $icon_3);
+    //             $data->icon_3 = $icon_3;
+    //         }
+    //         if($request->text_4){
+    //             $data->text_4 = $request->text_4;
+    //         }
+    //         if($request->icon_4){
+    //             $file = $request->file('icon_4');
+    //             $icon_4 = rand().'.'.$file->getClientOriginalExtension();
+    //             $destinationPath = public_path('frontend').'/images/About-rrstek/our-product/';
+    //             $file->move($destinationPath, $icon_4);
+    //             $data->icon_4 = $icon_4;
 
-            }
-            $result = DB::table('aboutus_about_our_product_section')->where('id', '1')->update([
-                'heading' => $h,
 
-                'text_1' => $t1,
-                'icon_1' => $filename_1,
+    //         }
+    //         if($data->save()){
+    //             return redirect()->back()->with('success' , 'Our product section data updated successfully');
+    //         }else{
+    //             return redirect()->back()->with('error', 'Something went wrong!');
 
-                'text_2' => $t2,
-                'icon_2' => $filename_2,
-
-                'text_3' => $t3,
-                'icon_3' => $filename_3,
-
-                'text_4' => $t4,
-                'icon_4' => $filename_4,
-            ]);
-            if($result){
-                return redirect()->back()->with('success' , 'Our product section data updated successfully');
-            }else{
-                return redirect()->back()->with('error', 'Something went wrong!');
-
-            }
-        }else{
-            $data = "";
-        }
-    }
-
-    //our product info section
+    //         }
+    //     }else{
+    //         $data = "";
+    //     }
+    // }
+    // //our info section
     public function productInfoSectionUpdate(Request $request){
-        $data = DB::table('aboutus_our_product_info_section')->where('id','1')->first();
+        $data = AboutUsOurInfoSection::first();
         if($data != null){
             if($request->value_1){
-                $v1 = $request->value_1;
+                $data->value_1 = $request->value_1;
             }
-
             if($request->text_1){
-                $t1 = $request->text_1;
+                $data->text_1 = $request->text_1;
             }
             if($request->icon_1){
                 $file = $request->file('icon_1');
-                 $filename_1 = rand().'.'.$file->getClientOriginalExtension();
+                 $icon_1 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/product_info_section/';
-                $file->move($destinationPath, $filename_1);
+                $file->move($destinationPath, $icon_1);
+                $data->icon_1 = $icon_1;
 
             }
             if($request->value_2){
-                $v2 = $request->value_2;
+                $data->value_2 = $request->value_2;
             }
 
             if($request->text_2){
-                $t2 = $request->text_2;
+                $data->text_2 = $request->text_2;
             }
-            if($request->icon_1){
+            if($request->icon_2){
                 $file = $request->file('icon_2');
-                 $filename_2 = rand().'.'.$file->getClientOriginalExtension();
+                 $icon_2 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/product_info_section/';
-                $file->move($destinationPath, $filename_2);
-
+                $file->move($destinationPath, $icon_2);
+                $data->icon_2 = $icon_2;
             }
             if($request->value_3){
-                $v3 = $request->value_3;
+                $data->value_3 = $request->value_3;
             }
 
             if($request->text_1){
-                $t3 = $request->text_3;
+                $data->text_3 = $request->text_3;
             }
             if($request->icon_3){
                 $file = $request->file('icon_3');
-                 $filename_3 = rand().'.'.$file->getClientOriginalExtension();
+                 $icon_3 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/product_info_section/';
-                $file->move($destinationPath, $filename_3);
-
+                $file->move($destinationPath, $icon_3);
+                $data->icon_3 = $icon_3;
             }
             if($request->value_4){
-                $v4 = $request->value_4;
+                $data->value_4 = $request->value_4;
             }
-
-            if($request->text_1){
-                $t4 = $request->text_4;
+            if($request->text_4){
+                $data->text_4 = $request->text_4;
             }
             if($request->icon_4){
                 $file = $request->file('icon_4');
-                 $filename_4 = rand().'.'.$file->getClientOriginalExtension();
+                 $icon_4 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/product_info_section/';
-                $file->move($destinationPath, $filename_4);
+                $file->move($destinationPath, $icon_4);
+                $data->icon_4 = $icon_4;
             }
-
-            $result = DB::table('aboutus_our_product_info_section')->where('id', '1')->update([
-                'value_1' => $v1,
-                'text_1' => $t1,
-                'icon_1' => $filename_1,
-
-                'value_2' => $v2,
-                'text_2' => $t2,
-                'icon_2' => $filename_2,
-
-                'value_3' => $v3,
-                'text_3' => $t3,
-                'icon_3' => $filename_3,
-
-                'value_4' => $v4,
-                'text_4' => $t4,
-                'icon_4' => $filename_4,
-
-            ]);
-            if($result){
+            if($data->save()){
                 return redirect()->back()->with('success' , 'Product info section data updated successfully');
             }else{
                 return redirect()->back()->with('error', 'Something went wrong!');

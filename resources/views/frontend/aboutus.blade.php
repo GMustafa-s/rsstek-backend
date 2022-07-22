@@ -4,12 +4,12 @@
 @php
 $site_dat = App\Models\GeneralSetting::first();
 $aboutus_heading = DB::table('aboutus_page_heading')->first();
-$top_info_section = DB::table('aboutus_top_info_section')->first();
+$top_info_section = App\Models\AboutUsTopInfoSection::first();
 $aboutus_section = DB::table('aboutus_section')->first();
-$ourwork_section = DB::table('aboutus_our_work_section')->first();
+$ourwork_section = App\Models\AboutUsAboutOurWorkSection::first();
 $chief_officer = DB::table('aboutus_cheif_officer')->first();
 $our_product = DB::table('aboutus_about_our_product_section')->where('id', '1')->first();
-$product_info_section = DB::table('aboutus_our_product_info_section')->where('id', '1')->first();
+$product_info_section = App\Models\AboutUsOurInfoSection::first();
 $our_customer = DB::table('aboutus_our_customer')->first();
 $page = App\Models\CustomPage::find(2);
 @endphp

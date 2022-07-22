@@ -270,7 +270,7 @@
         {{-- /aboutus section--}}
 
         {{-- our work section--}}
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-md-12">
                 <form action="{{route('cms.custome.ourwork_section.update')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -393,7 +393,7 @@
                 </div>
                 </form>
             </div>
-        </div> --}}
+        </div>
         {{-- /our work section--}}
 
          {{-- cheif office section--}}
@@ -448,7 +448,7 @@
          {{-- /cheif office section--}}
 
          {{-- about our product section --}}
-         <div class="row">
+         {{-- <div class="row">
             <div class="col-md-12">
                 <form action="{{route('cms.custome.our-product.update')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -551,7 +551,7 @@
                 </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
          {{-- /about our product section --}}
 
          {{-- Product information section --}}
@@ -565,7 +565,7 @@
                             <div class="col-4 bg-ccc">
                                 <div class="h3 card-title with-switch">
                                     <br />
-                                    Our Product Info Section
+                                    Our Info Section
                                 </div>
                             </div>
                             <div class="col-8">
@@ -584,7 +584,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <label for="icon_1">Icon</label>
-                                            <input type="file" class="form-control" name="icon_1" value="" required />
+                                            <input type="file" class="form-control" name="icon_1" value=""/>
                                         </div>
                                         <div class="imgColor" class="col-4">
                                             @if($product_info_section->icon_1 !=null)
@@ -609,7 +609,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <label for="icon_2">Icon</label>
-                                            <input type="file" class="form-control" name="icon_2" value="" required />
+                                            <input type="file" class="form-control" name="icon_2" value=""/>
                                         </div>
                                         <div class="imgColor" class="col-4">
                                             @if($product_info_section->icon_2 !=null)
@@ -634,7 +634,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <label for="icon_3">Icon</label>
-                                            <input type="file" class="form-control" name="icon_3" value="" required />
+                                            <input type="file" class="form-control" name="icon_3" value=""/>
                                         </div>
                                         <div class="imgColor" class="col-4">
                                             @if($product_info_section->icon_3 !=null)
@@ -659,7 +659,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <label for="icon_4">Icon</label>
-                                            <input type="file" class="form-control" name="icon_4" value="" required />
+                                            <input type="file" class="form-control" name="icon_4" value=""/>
                                         </div>
                                         <div class="imgColor" class="col-4">
                                             @if($product_info_section->icon_4 !=null)
@@ -730,10 +730,4 @@
          {{-- /our customer section --}}
     </div>
 </div>
-
-
-
-
-
-
 @endsection
