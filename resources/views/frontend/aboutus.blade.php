@@ -67,7 +67,7 @@ else{
 <main id="main">
     <div class="achievements viewport-holder slideDown delay-1">
         <div class="container">
-            <div class="holder">
+            <div class="holder" style="display: flex; justify-content:space-evenly; ">
                 <div class="txt viewport-holder slideDown delay-3">
                     <h2>
                         @if($top_info_section->value_1 !=null)
@@ -81,7 +81,7 @@ else{
                         @endif
                     </p>
                 </div>
-                <div class="txt viewport-holder slideDown delay-5">
+                <div class="txt viewport-holder slideDown delay-5" style="margin-left: 10px">
                     <h2>
                         @if($top_info_section->value_2 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->value_2)}}
@@ -94,7 +94,7 @@ else{
                         @endif
                     </p>
                 </div>
-                <div class="txt viewport-holder slideDown delay-7">
+                {{-- <div class="txt viewport-holder slideDown delay-7">
                     <h2>
                         @if($top_info_section->value_3 !=null)
                         {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->value_3)}}
@@ -106,7 +106,7 @@ else{
                         {{$tr->setSource('en')->setTarget($site_language)->translate($top_info_section->text_3)}}
                         @endif
                     </p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -232,7 +232,8 @@ else{
           </article>
         </div>
       </div>
-    <div class="advantages-area">
+      {{-- about our product section --}}
+    {{-- <div class="advantages-area">
         <div class="container">
             <div class="heading center viewport-holder slideDown delay-1">
                 <h2><span><i>
@@ -286,7 +287,9 @@ else{
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    {{-- /about our product section --}}
+
     <section class="overview-section viewport-holder slideDown delay-1">
         <div class="container">
             <div id="linebreak" class="holder">

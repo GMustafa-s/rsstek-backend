@@ -46,7 +46,8 @@ class ContactUsController extends Controller
         $contact->country = $request->country;
         $contact->message = $request->message;
         if($contact->save()){
-            return redirect()->back()->with('success','Your Query sent Successfully.');
+            return redirect()->back();
+            // ->with('success','Your Query sent Successfully.');
         }
         else{
             return redirect()->back()->with('erro','Something went wrong.');

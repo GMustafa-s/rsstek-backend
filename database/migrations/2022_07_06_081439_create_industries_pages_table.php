@@ -22,6 +22,7 @@ return new class extends Migration
             $table->longText('header_description');
             $table->text('bg_image');
             $table->string('slug')->nullable();
+            $table->string('solution_sub_page_id')->nullable();
             $table->timestamps();
         });
     }

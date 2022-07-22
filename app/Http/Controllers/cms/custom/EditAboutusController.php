@@ -66,6 +66,11 @@ class EditAboutusController extends Controller
                 $icon_1 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/top-info-section-icon/';
                 $file->move($destinationPath, $icon_1);
+                $data_set =[
+                    'value_1' => $v1,
+                    'text_1' => $t1,
+                    'icon_1' => $icon_1
+                ];
             }
 
             if($request->value_2){
@@ -79,33 +84,31 @@ class EditAboutusController extends Controller
                 $icon_2 = rand().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend').'/images/About-rrstek/top-info-section-icon/';
                 $file->move($destinationPath, $icon_2);
-            }
-            if($request->value_3){
-                $v3 = $request->value_3;
-            }
-            if($request->text_1){
-                $t3 = $request->text_3;
-            }
-            if($request->icon_3){
-                $file = $request->file('icon_3');
-                $icon_3 = rand().'.'.$file->getClientOriginalExtension();
-                $destinationPath = public_path('frontend').'/images/About-rrstek/top-info-section-icon/';
-                $file->move($destinationPath, $icon_3);
-            }
-            $result = DB::table('aboutus_top_info_section')->where('id', $data->id)->update([
-                'value_1' => $v1,
-                'text_1' => $t1,
-                'icon_1' => $icon_1,
+                $data_set =[
+                    'value_1' => $v1,
+                    'text_1' => $t1,
+                    'icon_1' => $icon_1,
 
-                'value_2' => $v2,
-                'text_2' => $t2,
-                'icon_2' => $icon_2,
+                    'value_2' => $v2,
+                    'text_2' => $t2,
+                    'icon_2' => $icon_2,
+                ];
+            }
 
-                'value_3' => $v3,
-                'text_3' => $t3,
-                'icon_3' => $icon_3,
 
-            ]);
+            // if($request->value_3){
+            //     $v3 = $request->value_3;
+            // }
+            // if($request->text_1){
+            //     $t3 = $request->text_3;
+            // }
+            // if($request->icon_3){
+            //     $file = $request->file('icon_3');
+            //     $icon_3 = rand().'.'.$file->getClientOriginalExtension();
+            //     $destinationPath = public_path('frontend').'/images/About-rrstek/top-info-section-icon/';
+            //     $file->move($destinationPath, $icon_3);
+            // }
+            $result = DB::table('aboutus_top_info_section')->where('id', $data->id)->update($data_set);
             if($result){
                 return redirect()->back()->with('success' , 'AboutUs page top section updated!');
             }else{

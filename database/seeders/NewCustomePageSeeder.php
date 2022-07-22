@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,7 +24,7 @@ class NewCustomePageSeeder extends Seeder
             'header_heading' => 'Privacy polices',
             'header_description' => ' Get to know how we secure your data with our perfect policies. ',
             'bg_image' => 'privacy-policy.jpg',
-            'slug' => 'Privacy Policy',
+            'slug' => Str::slug('Privacy Policy'),
             'body' => 'Privacy Policy
             Last updated: July 13, 2022
 

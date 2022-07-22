@@ -89,6 +89,19 @@
                                         @endif
                                     </div>
                                 </div>
+                                {{-- <div class="form-group mb-4">
+                                    <label for="">Select Solution Sub Page</label>
+                                    <select class="form-control" name="solution_sub_page_id[]" id="" multiple="">
+                                        @if($solution_sub_pages->count()>0)
+                                        <option value="">---select solution sub pages--</option>
+                                        @foreach ($solution_sub_pages as $sp)
+                                        <option value="{{$sp->id}}">{{$sp->title}}</option>
+                                        @endforeach
+                                        @else
+                                        <option value="">---No solution sub pages--</option>
+                                        @endif
+                                    </select>
+                                </div> --}}
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Update</button>
                                 </div>

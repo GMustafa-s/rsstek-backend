@@ -53,6 +53,13 @@ class IndustriesController extends Controller
             }
         }
         $industries_page = new IndustriesPage;
+
+        //saving solution sub pages id
+        if($request->solution_sub_page_id){
+            $a = implode(',', $request->solution_sub_page_id);
+            $industries_page->solution_sub_page_id = $a;
+        }
+
         if($request->page_title){
             $industries_page->page_title = $request->page_title;
         }
@@ -76,6 +83,7 @@ class IndustriesController extends Controller
             $file->move($destinationPath, $filename);
             $industries_page->bg_image = $filename;
         }
+
         if($industries_page->save()){
             return redirect()->route('cms.industries.index')->with('success', 'industrial Page added successfully');
 
@@ -105,8 +113,17 @@ class IndustriesController extends Controller
      */
     public function edit($id)
     {
-        // dd('edit');
         $industries_page = IndustriesPage::find($id);
+        $pages = explode(',',$industries_page->solution_sub_page_id);
+        // dd($pages);
+        foreach($pages as $p){
+            $selected_sub_pages[] = SolutionSubPage::where('id', '=', $p)->first()->toArray(); //get selected solution_sub_pages ..it may or be more then one
+        }
+        $all_sub_solutions = SolutionSubPage::all()->toArray();
+        // dd($selected_sub_pages, $all_sub_solutions);
+        $final_array = array_unique(array_merge($selected_sub_pages,$all_sub_solutions), SORT_REGULAR);
+        // dd($final_array);
+
         return view('admin.cms.industries.edit-industries-page', compact('industries_page'));
     }
 
@@ -316,21 +333,20 @@ class IndustriesController extends Controller
     public function showSlug($slug)
     {
         $page = IndustriesPage::whereSlug($slug)->first();
-        // dd($page);
-        // $pc = PageCategory::where('slug', '=', $page->slug)->first();
-        // // // dd($pc);
-        // $sub_pages = SolutionSubPage::where('page_categories_id', $pc->id)->get();
-        // // // dd($sub_pages);
+        $solution_sub_pages = explode(',',$page->solution_sub_page_id);
+        // dd(explode(',',$page->solution_sub_page_id));
+        foreach($solution_sub_pages as $ssp){
 
-        // // dd($pc);
+            $solution_sub_page_array[] = SolutionSubPage::where('id', '=', $ssp)->first();
+        }
 
-        // // dd($sub_pages);
+
         if($page == null){
             abort(404);
         }
         else{
             $security_sections = IndustriesSecuritySection::where('industries_page_id',$page->id)->get();
-            return view('frontend.industries.page',compact('page' ,'security_sections'));
+            return view('frontend.industries.page',compact('page' ,'security_sections', 'solution_sub_page_array'));
         }
     }
 }

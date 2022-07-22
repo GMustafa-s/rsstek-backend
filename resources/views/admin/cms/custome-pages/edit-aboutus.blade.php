@@ -178,7 +178,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <hr>
+                                    {{-- <hr>
                                     <h4 class="text-primary">Info Three</h4>
                                     <div class="row">
                                         <div class="col-6">
@@ -202,10 +202,8 @@
                                                 <p class="row mt-4"> no icon </p>
                                             @endif
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <hr>
-
-
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-edit"></i> update</button>
@@ -242,7 +240,7 @@
 
                                 <div class="form-group mb-4">
                                     <label>About Us Description</label>
-                                    <textarea rows="7" cols="5" maxlength="200" class="form-control" name="our_description"  required>@if($aboutus_section->our_description) {{$aboutus_section->our_description}} @endif</textarea>
+                                    <textarea rows="7" cols="5" maxlength="1000" class="form-control" name="our_description"  required>@if($aboutus_section->our_description) {{$aboutus_section->our_description}} @endif</textarea>
                                 </div>
                                 <div class="form-group mb-4 ">
                                     <div class="row">
@@ -272,7 +270,7 @@
         {{-- /aboutus section--}}
 
         {{-- our work section--}}
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12">
                 <form action="{{route('cms.custome.ourwork_section.update')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -395,7 +393,7 @@
                 </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
         {{-- /our work section--}}
 
          {{-- cheif office section--}}
@@ -420,7 +418,7 @@
 
                                 <div class="form-group mb-4">
                                     <label>About</label>
-                                    <textarea rows="7" cols="5" maxlength="200" class="form-control" name="about"  required>@if($chief_officer->about) {{$chief_officer->about}} @endif</textarea>
+                                    <textarea rows="7" cols="5" maxlength="1000" class="form-control" name="about"  required>@if($chief_officer->about) {{$chief_officer->about}} @endif</textarea>
                                 </div>
                                 <div class="form-group mb-4 ">
                                     <div class="row">

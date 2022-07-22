@@ -27,7 +27,7 @@ class AboutusPageSeeder extends Seeder
             'text_1' => 'Global employees',
             'icon_1' => 'ico-building.svg',
 
-            'value_2' => '2002',
+            'value_2' => '2017',
             'text_2' => 'Year founded',
             'icon_2' => 'ico-home.svg',
 
@@ -89,7 +89,7 @@ class AboutusPageSeeder extends Seeder
             'text_1' => 'Years of experience in CCTV surveillance',
             'icon_1' => 'ico-check.svg',
 
-            'value_2' => '2002',
+            'value_2' => '2017',
             'text_2' => 'Countries of RRSTEK installations',
             'icon_2' => 'ico-eye.svg',
 
@@ -109,7 +109,7 @@ class AboutusPageSeeder extends Seeder
             'image' => 'img-world-map.png',
 
         ]);
-        
+
 
     }
 }

@@ -141,23 +141,27 @@ $pc = App\Models\PageCategory::all();
           <div class="carousel">
             <div class="mask">
               <div class="slideset">
-                {{-- @if($sub_pages->count()>0)
-                    @foreach($sub_pages as $sp)
+                {{-- {{dd($solution_sub_page_array)}} --}}
+                @if($solution_sub_page_array != null)
+                    @foreach($solution_sub_page_array as $ssp)
                 <div class="slide viewport-holder slideDown">
                   <div class="frame">
                     <video width="340" height="150" loop="true" autoplay="autoplay" muted="" id="fitvid330684" __idm_id__="147457">
                         <!-- <source src="../images/videos/ActivePOS.mp4" type="video/mp4"> -->
-                        <source  src="https://drive.google.com/uc?id={{$sp->video}}" type="video/mp4">
+                        <source  src="https://drive.google.com/uc?id={{$ssp->video}}" type="video/mp4">
                             {{$tr->setSource('en')->setTarget($site_language)->translate('Your browser does not support the video tag.')}}
                     </video>
 
                     <div class="txt-box">
-                      <a href="../health-care/thermal-camera.html" class="more">{{$sp->title}}</a>
+                        @php
+                            $solution_page = App\Models\PageCategory::where('id', '=', $ssp->page_categories_id)->first();
+                        @endphp
+                      <a href="{{route('category.sub.slug',[$solution_page->slug,$ssp->slug])}}" class="more">{{$ssp->title}}</a>
                     </div>
                   </div>
                 </div>
                 @endforeach
-                @endif --}}
+                @endif
 
               </div>
             </div>
