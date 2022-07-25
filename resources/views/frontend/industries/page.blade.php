@@ -142,6 +142,7 @@ $pc = App\Models\PageCategory::all();
             <div class="mask">
               <div class="slideset">
                 {{-- {{dd($solution_sub_page_array)}} --}}
+
                 @if($solution_sub_page_array != null)
                     @foreach($solution_sub_page_array as $ssp)
                 <div class="slide viewport-holder slideDown">
@@ -162,6 +163,7 @@ $pc = App\Models\PageCategory::all();
                 </div>
                 @endforeach
                 @endif
+
 
               </div>
             </div>

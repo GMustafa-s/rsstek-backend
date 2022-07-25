@@ -6,10 +6,12 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\IndustriesPage;
 use App\Http\Controllers\Controller;
+use App\Models\IndustriesPageCoursalVideo;
 use Illuminate\Support\Facades\File;
 use App\Models\IndustriesSecuritySection;
 use App\Models\PageCategory;
 use App\Models\SolutionSubPage;
+use Illuminate\Support\Facades\Session;
 
 class IndustriesController extends Controller
 {
@@ -54,10 +56,14 @@ class IndustriesController extends Controller
         }
         $industries_page = new IndustriesPage;
 
-        //saving solution sub pages id
-        if($request->solution_sub_page_id){
-            $a = implode(',', $request->solution_sub_page_id);
-            $industries_page->solution_sub_page_id = $a;
+        //saving solution sub pages title & industries page title in new table
+        if($request->solution_sub_page_title){
+            foreach($request->solution_sub_page_title as $b){
+                $crousal_video =  new IndustriesPageCoursalVideo;
+                $crousal_video->industries_page_title = $request->page_title;
+                $crousal_video->solution_sub_page_title = $b;
+                $crousal_video->save();
+            }
         }
 
         if($request->page_title){
@@ -114,17 +120,20 @@ class IndustriesController extends Controller
     public function edit($id)
     {
         $industries_page = IndustriesPage::find($id);
-        $pages = explode(',',$industries_page->solution_sub_page_id);
-        // dd($pages);
-        foreach($pages as $p){
-            $selected_sub_pages[] = SolutionSubPage::where('id', '=', $p)->first()->toArray(); //get selected solution_sub_pages ..it may or be more then one
-        }
-        $all_sub_solutions = SolutionSubPage::all()->toArray();
-        // dd($selected_sub_pages, $all_sub_solutions);
-        $final_array = array_unique(array_merge($selected_sub_pages,$all_sub_solutions), SORT_REGULAR);
-        // dd($final_array);
 
-        return view('admin.cms.industries.edit-industries-page', compact('industries_page'));
+        $crousal_video = IndustriesPageCoursalVideo::where('industries_page_title', $industries_page->page_title)->select('solution_sub_page_title')->get();
+
+        $all_sub_solutions = SolutionSubPage::all();
+
+        // $merged_array = array_merge($crousal_video, $all_sub_solutions);
+
+        // $merged_array = collect($merged_array);
+
+        // dd($crousal_video, $all_sub_solutions);
+        // $a = in_array($merged_array, $crousal_video);
+
+
+        return view('admin.cms.industries.edit-industries-page', compact('industries_page', 'all_sub_solutions', 'crousal_video'));
     }
 
     /**
@@ -137,8 +146,26 @@ class IndustriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+
         $industries_page = IndustriesPage::find($id);
+        
+        // dd($request->solution_sub_page_name);
         // dd($request->page_title);
+        // if($request->solution_sub_page_name){
+
+        //     $crousal_video = IndustriesPageCoursalVideo::where('industries_page_title', $industries_page->page_title)->select('solution_sub_page_title')->get();
+        //     // dd($crousal_video);
+
+        //     foreach($crousal_video as $cv){
+
+        //         foreach($request->solution_sub_page_name as $b){
+        //             $crousal_video =  new IndustriesPageCoursalVideo;
+        //             $crousal_video->industries_page_title = $request->page_title;
+        //             $crousal_video->solution_sub_page_title = $b;
+        //             $crousal_video->save();
+        //         }
+        //     }
+        // }
         if($request->page_title){
             $industries_page->page_title = $request->page_title;
         }
@@ -189,20 +216,34 @@ class IndustriesController extends Controller
     {
         //
         $industries_page = IndustriesPage::find($id);
-        $security_sections = IndustriesSecuritySection::where('industries_page_id', $id)->get();
-        // dd($security_sections);
+
         // code to delete security sections
+        $security_sections = IndustriesSecuritySection::where('industries_page_id', $id)->get();
         foreach($security_sections as $security_section){
             $delete_sections = $this->deleteAllSection($security_section->id);
             $security_section->delete();
         }
-
+        //code to delete crousal video section in this industries page
+        $crousal_video = IndustriesPageCoursalVideo::where('industries_page_title', $industries_page->page_title)->get();
+        foreach($crousal_video as $cv){
+            $video = $this->deleteVideoCrousal($cv);
+        }
         if($industries_page->delete()){
             return redirect()->route('cms.industries.index')->with('success', 'industrial page and it\'s security sections deleted successfully');
         }
         else{
             return redirect()->route('cms.industries.index')->with('error', 'Something went wrong!');
 
+        }
+    }
+
+    //function tp delete crousal video of a single industries page
+    public function deleteVideoCrousal($cv){
+        if($cv->delete()){
+            return true;
+        }
+        else{
+            return false;
         }
     }
     // function to delete all security section of a single industrial page
@@ -333,14 +374,11 @@ class IndustriesController extends Controller
     public function showSlug($slug)
     {
         $page = IndustriesPage::whereSlug($slug)->first();
-        $solution_sub_pages = explode(',',$page->solution_sub_page_id);
-        // dd(explode(',',$page->solution_sub_page_id));
-        foreach($solution_sub_pages as $ssp){
-
-            $solution_sub_page_array[] = SolutionSubPage::where('id', '=', $ssp)->first();
+        $crousal_video = IndustriesPageCoursalVideo::where('industries_page_title', $page->page_title)->get();
+        foreach($crousal_video as $ssp){
+            $solution_sub_page_array[] = SolutionSubPage::where('title', '=', $ssp->solution_sub_page_title)->first();
         }
-
-
+        // dd($solution_sub_page_array);
         if($page == null){
             abort(404);
         }

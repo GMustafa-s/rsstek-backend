@@ -10,33 +10,35 @@
         <!-- Datatable CSS -->
 		<link rel="stylesheet" href="{{asset('adminn')}}/assets/css/dataTables.bootstrap4.min.css">
         <title>Admin-Dashboard</title>
-		
+
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('adminn')}}/assets/img/favicon.png">
-		
+
 			<!-- Bootstrap CSS -->
             <link rel="stylesheet" href="{{asset('adminn')}}/assets/css/bootstrap.min.css">
-		
+
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="{{asset('adminn')}}/assets/css/font-awesome.min.css">
-		
+
 		<!-- Lineawesome CSS -->
         <link rel="stylesheet" href="{{asset('adminn')}}/assets/css/line-awesome.min.css">
-		
+
+		<!-- Select2 CSS -->
+        {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 		<!-- Select2 CSS -->
 		<link rel="stylesheet" href="{{asset('adminn')}}/assets/css/select2.min.css">
-		
+
 		<!-- Datetimepicker CSS -->
 		<link rel="stylesheet" href="{{asset('adminn')}}/assets/css/bootstrap-datetimepicker.min.css">
-		
+
 		<!-- Summernote CSS -->
 		<link rel="stylesheet" href="{{asset('adminn')}}/assets/plugins/summernote/dist/summernote-bs4.css">
-		
+
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{asset('adminn')}}/assets/css/style.css">
 
     </head>
-	
+
     <body>
 
     <div class="main-wrapper">

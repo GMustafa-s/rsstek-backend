@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('industries_pages', function (Blueprint $table) {
+        Schema::create('industries_page_crousal_video', function (Blueprint $table) {
             $table->id();
-            $table->string('page_title');
-            $table->string('meta_name');
-            $table->string('meta_description');
-            $table->string('header_heading');
-            $table->longText('header_description');
-            $table->text('bg_image');
-            $table->string('slug')->nullable();
+            $table->string('industries_page_title')->nullable();
+            $table->string('solution_sub_page_title')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('industries_pages');
+        Schema::dropIfExists('table_industries_page_crousal_video');
     }
 };

@@ -89,19 +89,29 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{-- <div class="form-group mb-4">
-                                    <label for="">Select Solution Sub Page</label>
-                                    <select class="form-control" name="solution_sub_page_id[]" id="" multiple="">
-                                        @if($solution_sub_pages->count()>0)
-                                        <option value="">---select solution sub pages--</option>
-                                        @foreach ($solution_sub_pages as $sp)
-                                        <option value="{{$sp->id}}">{{$sp->title}}</option>
-                                        @endforeach
+                                <div class="form-group mb-4 mt-4">
+                                    <label for="">Select Solution Sub Page video</label>
+                                    <select class="form-control select" name="solution_sub_page_name[]" id="" multiple="multiple">
+
+                                        @if($all_sub_solutions != null)
+                                            @foreach ($all_sub_solutions as $sp)
+                                            <option value="{{$sp->title}}">{{$sp->title}}</option>
+                                               @if ($crousal_video != null )
+                                                     @foreach ($crousal_video as $cv)
+
+                                                        @if($cv->solution_sub_page_title == $sp->title)
+                                                            <option value="{{$cv->solution_sub_page_title}}" selected>{{$cv->solution_sub_page_title}}</option>
+                                                        @endif
+
+                                                    @endforeach
+                                                @endif
+
+                                            @endforeach
                                         @else
                                         <option value="">---No solution sub pages--</option>
                                         @endif
                                     </select>
-                                </div> --}}
+                                </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn"> <i class="fa fa-plus"></i> Update</button>
                                 </div>
