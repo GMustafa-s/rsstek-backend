@@ -121,19 +121,14 @@ class IndustriesController extends Controller
     {
         $industries_page = IndustriesPage::find($id);
 
-        $crousal_video = IndustriesPageCoursalVideo::where('industries_page_title', $industries_page->page_title)->select('solution_sub_page_title')->get();
-
         $all_sub_solutions = SolutionSubPage::all();
-
-        // $merged_array = array_merge($crousal_video, $all_sub_solutions);
-
-        // $merged_array = collect($merged_array);
-
-        // dd($crousal_video, $all_sub_solutions);
-        // $a = in_array($merged_array, $crousal_video);
-
-
-        return view('admin.cms.industries.edit-industries-page', compact('industries_page', 'all_sub_solutions', 'crousal_video'));
+        $crousal_video = IndustriesPageCoursalVideo::where('industries_page_title', $industries_page->page_title)->select('solution_sub_page_title')->get();
+        $db_titles = [];
+        foreach($crousal_video as $cv){
+           $db_titles[] = $cv->solution_sub_page_title;
+        }
+        // dd($db_titles);
+        return view('admin.cms.industries.edit-industries-page', compact('industries_page', 'all_sub_solutions', 'db_titles'));
     }
 
     /**
@@ -148,24 +143,33 @@ class IndustriesController extends Controller
         //
 
         $industries_page = IndustriesPage::find($id);
-        
-        // dd($request->solution_sub_page_name);
-        // dd($request->page_title);
-        // if($request->solution_sub_page_name){
 
-        //     $crousal_video = IndustriesPageCoursalVideo::where('industries_page_title', $industries_page->page_title)->select('solution_sub_page_title')->get();
-        //     // dd($crousal_video);
+        if($request->solution_sub_page_title){
+            $crousal_video = IndustriesPageCoursalVideo::where('industries_page_title', $industries_page->page_title)->select('solution_sub_page_title')->get();
 
-        //     foreach($crousal_video as $cv){
-
-        //         foreach($request->solution_sub_page_name as $b){
-        //             $crousal_video =  new IndustriesPageCoursalVideo;
-        //             $crousal_video->industries_page_title = $request->page_title;
-        //             $crousal_video->solution_sub_page_title = $b;
-        //             $crousal_video->save();
-        //         }
-        //     }
-        // }
+            $db_titles = []; //store data in this which is comming from db by below foreach loop
+            foreach($crousal_video as $cv){
+                $db_titles[] = $cv->solution_sub_page_title;
+            }
+            // insert newly added data
+            foreach ($request->solution_sub_page_title as $sspt)  {
+               if(!in_array($sspt, $db_titles))//if db not have that value which is comming from $request->solution_sub_page_name then insert it
+               {
+                $data = new IndustriesPageCoursalVideo;
+                $data->industries_page_title = $request->page_title;
+                $data->solution_sub_page_title = $sspt;
+                $data->save();
+               }
+            }
+            // delete previous data from db
+            foreach ($db_titles as $db_t) {
+                if(!in_array($db_t, $request->solution_sub_page_title)) //if in $request->solution_sub_page_name previous data exits in db then delete it
+                {
+                    $data = IndustriesPageCoursalVideo::where('industries_page_title', $request->page_title)
+                    ->where('solution_sub_page_title', $db_t)->delete();
+                }
+            }
+        }
         if($request->page_title){
             $industries_page->page_title = $request->page_title;
         }

@@ -91,21 +91,14 @@
                                 </div>
                                 <div class="form-group mb-4 mt-4">
                                     <label for="">Select Solution Sub Page video</label>
-                                    <select class="form-control select" name="solution_sub_page_name[]" id="" multiple="multiple">
+                                    <select class="form-control select" name="solution_sub_page_title[]" id="" multiple="multiple" required>
 
                                         @if($all_sub_solutions != null)
                                             @foreach ($all_sub_solutions as $sp)
-                                            <option value="{{$sp->title}}">{{$sp->title}}</option>
-                                               @if ($crousal_video != null )
-                                                     @foreach ($crousal_video as $cv)
-
-                                                        @if($cv->solution_sub_page_title == $sp->title)
-                                                            <option value="{{$cv->solution_sub_page_title}}" selected>{{$cv->solution_sub_page_title}}</option>
-                                                        @endif
-
-                                                    @endforeach
-                                                @endif
-
+                                            <option value="{{$sp->title}}"
+                                                @if(in_array($sp->title, $db_titles)) selected @endif>
+                                                {{$sp->title}}
+                                            </option>
                                             @endforeach
                                         @else
                                         <option value="">---No solution sub pages--</option>
