@@ -217,14 +217,59 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    <form action="{{route('cms.custome.integration-second-camera-section.delete', $second_camera_section->id)}}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                            <button  style="border: none" onclick="return confirm('Are you sure want ot delete {{$second_camera_section->name}}?')" type="submit"><i class="fa fa-trash-o m-r-5"></i></button>
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#edit_second_camera{{$second_camera_section->id}}"><i class="fa fa-edit"></i> Edit</a>
 
-                                                    </form>
+                                                    <a class="dropdown-item" onclick="return confirm('Are you sure want ot delete {{$second_camera_section->name}}?')" href="{{route('cms.custome.integration-second-camera-section.delete', $second_camera_section->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
+                                                {{-- Second Camera popup edit form --}}
+                                                <div class="modal custom-modal fade" id="edit_second_camera{{$second_camera_section->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit Second Camera Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_second_camera', $second_camera_section->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Name</label>
+                                                                                <input name="name" type="text" class="form-control" value=" {{$second_camera_section->name}}" required/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Description</label>
+                                                                                <textarea name="description" type="text" class="form-control" required>{{$second_camera_section->description}}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            @if($second_camera_section->image !=null)
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                <img width="100px" height="100px" src="{{asset('frontend')}}/images/integration/second-camera-section/{{$second_camera_section->image}}" alt="img" >
+                                                                                </div>
+                                                                            </div>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /Second Camera popup edit form --}}
+
                                                 @endforeach
                                                 @endif
                                             </tbody>
@@ -302,14 +347,60 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    <form action="{{route('cms.custome.integration-control-section.delete', $control_section->id)}}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                            <button  style="border: none" onclick="return confirm('Are you sure want ot delete {{$control_section->name}}?')" type="submit"><i class="fa fa-trash-o m-r-5"></i></button>
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#edit_control_section{{$control_section->id}}"><i class="fa fa-edit"></i> Edit</a>
 
-                                                    </form>
+                                                    <a class="dropdown-item" onclick="return confirm('Are you sure want ot delete {{$control_section->name}}?')" href="{{route('cms.custome.integration-control-section.delete', $control_section->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
+
+                                                {{-- Control Section popup edit form --}}
+                                                <div class="modal custom-modal fade" id="edit_control_section{{$control_section->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit Control Section Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_control_section', $control_section->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Name</label>
+                                                                                <input name="name" type="text" class="form-control" value=" {{$control_section->name}}" required/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Description</label>
+                                                                                <textarea name="description" rows="3" type="text" class="form-control" required>{{$control_section->description}}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            @if($control_section->image !=null)
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                <img width="100px" height="100px" src="{{asset('frontend')}}/images/integration/control-section/{{$control_section->image}}" alt="img" >
+                                                                                </div>
+                                                                            </div>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /Control Section popup edit form --}}
+
                                                 @endforeach
                                                 @endif
                                             </tbody>
@@ -386,14 +477,59 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    <form action="{{route('cms.custome.integration-outputs-section.delete', $os->id)}}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                            <button  style="border: none" onclick="return confirm('Are you sure want ot delete {{$os->name}}?')" type="submit"><i class="fa fa-trash-o m-r-5"></i></button>
+                                                        <a class="dropdown-item" data-toggle="modal" data-target="#edit_outputs_section{{$os->id}}"><i class="fa fa-edit"></i> Edit</a>
 
-                                                    </form>
+                                                        <a class="dropdown-item" onclick="return confirm('Are you sure want ot delete {{$os->name}}?')" href="{{route('cms.custome.integration-outputs-section.delete', $os->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+
                                                     </td>
                                                 </tr>
+                                                {{-- Outputs Section popup edit form --}}
+                                                <div class="modal custom-modal fade" id="edit_outputs_section{{$os->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit Outputs Section Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_outputs_section', $os->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Name</label>
+                                                                                <input name="name" type="text" class="form-control" value=" {{$os->name}}" required/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Description</label>
+                                                                                <textarea name="description" rows="3" type="text" class="form-control" required>{{$os->description}}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            @if($os->image !=null)
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                <img width="100px" height="100px" src="{{asset('frontend')}}/images/integration/outputs-section/{{$os->image}}" alt="img" >
+                                                                                </div>
+                                                                            </div>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /Control Section popup edit form --}}
                                                 @endforeach
                                                 @endif
                                             </tbody>
@@ -470,14 +606,59 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    <form action="{{route('cms.custome.integration-management-section.delete', $ms->id)}}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                            <button  style="border: none" onclick="return confirm('Are you sure want ot delete {{$ms->name}}?')" type="submit"><i class="fa fa-trash-o m-r-5"></i></button>
+                                                        <a class="dropdown-item" data-toggle="modal" data-target="#edit_management_section{{$ms->id}}"><i class="fa fa-edit"></i> Edit</a>
 
-                                                    </form>
+                                                        <a class="dropdown-item" onclick="return confirm('Are you sure want ot delete {{$ms->name}}?')" href="{{route('cms.custome.integration-management-section.delete', $ms->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+
                                                     </td>
                                                 </tr>
+                                                {{-- Management Section popup edit form --}}
+                                                <div class="modal custom-modal fade" id="edit_management_section{{$ms->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit Management Section Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_management_section', $ms->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Name</label>
+                                                                                <input name="name" type="text" class="form-control" value=" {{$ms->name}}" required/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Description</label>
+                                                                                <textarea name="description" rows="3" type="text" class="form-control" required>{{$ms->description}}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            @if($ms->image !=null)
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                <img width="100px" height="100px" src="{{asset('frontend')}}/images/integration/management-section/{{$ms->image}}" alt="img" >
+                                                                                </div>
+                                                                            </div>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /Control Section popup edit form --}}
                                                 @endforeach
                                                 @endif
                                             </tbody>
@@ -550,14 +731,52 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    <form action="{{route('cms.custome.integration-providers-section.delete', $ps->id)}}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                            <button  style="border: none" onclick="return confirm('Are you sure want ot delete {{$ps->name}}?')" type="submit"><i class="fa fa-trash-o m-r-5"></i></button>
+                                                        <a class="dropdown-item" data-toggle="modal" data-target="#edit_providers_section{{$ps->id}}"><i class="fa fa-edit"></i> Edit</a>
 
-                                                    </form>
+                                                        <a class="dropdown-item" onclick="return confirm('Are you sure want ot delete {{$ps->name}}?')" href="{{route('cms.custome.integration-providers-section.delete', $ps->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
+                                                 {{-- Providers Section popup edit form --}}
+                                                 <div class="modal custom-modal fade" id="edit_providers_section{{$ps->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit providers Section Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_providers_section', $ps->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Name</label>
+                                                                                <input name="name" type="text" class="form-control" value=" {{$ps->name}}" required/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            @if($ps->image !=null)
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                <img width="100px" height="100px" src="{{asset('frontend')}}/images/integration/providers-section/{{$ps->image}}" alt="img" >
+                                                                                </div>
+                                                                            </div>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /Control Section popup edit form --}}
                                                 @endforeach
                                                 @endif
                                             </tbody>
@@ -630,14 +849,52 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    <form action="{{route('cms.custome.integration-communication-tools-section.delete', $cts->id)}}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                            <button style="border: none" onclick="return confirm('Are you sure want ot delete {{$cts->name}}?')" type="submit"><i class="fa fa-trash-o m-r-5"></i></button>
+                                                        <a class="dropdown-item" data-toggle="modal" data-target="#edit_communication_tools_section{{$cts->id}}"><i class="fa fa-edit"></i> Edit</a>
 
-                                                    </form>
+                                                        <a class="dropdown-item" onclick="return confirm('Are you sure want ot delete {{$cts->name}}?')" href="{{route('cms.custome.integration-communication-tools-section.delete', $cts->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
+                                                {{-- Communication Tools Section popup edit form --}}
+                                                <div class="modal custom-modal fade" id="edit_communication_tools_section{{$cts->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit Communication Tools Section Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_communication_tools_section', $cts->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Name</label>
+                                                                                <input name="name" type="text" class="form-control" value=" {{$cts->name}}" required/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            @if($cts->image !=null)
+                                                                            <div class="col-md-6-6">
+                                                                                <div class="form-group">
+                                                                                <img width="100px" height="100px" src="{{asset('frontend')}}/images/integration/communication-tools-section/{{$cts->image}}" alt="img" >
+                                                                                </div>
+                                                                            </div>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /Control Section popup edit form --}}
                                                 @endforeach
                                                 @endif
                                             </tbody>

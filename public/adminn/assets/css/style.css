@@ -1150,7 +1150,7 @@ table.dataTable thead > tr > td.sorting {
 	background: -ms-linear-gradient(left, #00c5fb 0%, #0253cc 100%);
 	background: linear-gradient(to right, #00c5fb 0%, #0253cc 100%);
 }
-#getDemoSection{
+.getDemoSection{
     margin: 10px;
     padding: 30px;
     border-radius: 10px;

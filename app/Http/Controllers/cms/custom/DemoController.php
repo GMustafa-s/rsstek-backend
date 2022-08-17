@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\cms\custom;
 
+use App\Models\Demo;
 use App\Models\CustomPage;
+use App\Models\DemoSection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Demo;
-use App\Models\DemoSection;
+use Illuminate\Support\Facades\File;
 
 class DemoController extends Controller
 {
@@ -81,6 +82,30 @@ class DemoController extends Controller
             return redirect()->back()->with('error', 'Something went wrong!');
         }
     }
+
+    // new update from client for editing Button our work section
+    public function getDemoNewUpdate(Request $request, $id){
+        $data = DemoSection::find($id);
+        if($request->text){
+            $data->text = $request->text;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/Solutions/demo-section-icon/'.$data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/Solutions/demo-section-icon/';
+            $file->move($destinationPath,$filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+
+            return redirect()->back()->with('success', 'Get demo section updated successfully');
+        }
+    }
+
     //regular security needs section update functionality
     public function securityNeedsUpdate(Request $request){
         $sn = Demo::first();

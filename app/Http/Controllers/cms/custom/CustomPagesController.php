@@ -75,8 +75,12 @@ class CustomPagesController extends Controller
     }
     public function homeHeaderUpdate(Request $request){
         $page = HomePage::first();
-        $page->header_heading = $request->header_heading;
-        $page->header_description = $request->header_description;
+        if($request->header_heading){
+            $page->header_heading = $request->header_heading;
+        }
+        if($request->header_description){
+            $page->header_description = $request->header_description;
+        }
         if($page->save()){
             return redirect()->route('cms.custom.index')->with('success','Page Updated Successfully!');
         }
@@ -118,6 +122,26 @@ class CustomPagesController extends Controller
 
     }
 
+    // new update form client for editing button home what we use section
+    public function homeWhatWeUsenewUpdate(Request $request, $id){
+        $wwu = whatWeUseImage::find($id);
+        if($request->file('image')){
+            $path = public_path('frontend').'/images/custompages/home/what-we-use/'.$wwu->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/custompages/home/what-we-use/';
+            $file->move($destinationPath,$filename);
+            $wwu->image = $filename;
+            if($wwu->save()){
+                return redirect()->back()->with('success', 'home what we use section image updated successfully');
+            }
+
+        }
+    }
+
     public function aboutusTitle(Request $request){
         $home_page_data =  HomePage::first();
         $home_page_data->about_us_heading =$request->about_us_heading;
@@ -152,50 +176,102 @@ class CustomPagesController extends Controller
         }
     }
 
-    public function faturesUpdate(Request $request){
-        $feature =HomePage::first();
-        $feature->features_heading = $request->features_heading;
-        $feature->features_description = $request->features_description;
-        if($request->features_image){
-            $file = $request->file('features_image');
+    // new update from client for editing Button home about us section
+    public function aboutUsNewUpdate(Request $request, $id){
+        $feature = AboutUsFeature::find($id);
+        if($request->title){
+            $feature->title = $request->title;
+        }
+        if($request->heading){
+            $feature->description = $request->description;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/custompages/home/about-features/'.$feature->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
             $filename = rand().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('frontend').'/images';
+            $destinationPath = public_path('frontend').'/images/custompages/home/about-features/';
             $file->move($destinationPath,$filename);
-            $feature->features_image = $filename;
-    }
-    if($feature->save()){
-        return redirect()->back()->with('success', 'updated successfully');
+            $feature->image = $filename;
+        }
+        if($feature->save()){
+
+            return redirect()->back()->with('success', 'feature section updated successfully');
+        }
     }
 
-}
-public function busniessTitle(Request $request){
-    $home_page_data =  HomePage::first();
-    $home_page_data->business_heding =$request->business_heding;
-    if($home_page_data->save()){
-        return redirect()->back()->with('success', 'updated successfully');
-    }
+    public function faturesUpdate(Request $request){
+            $feature =HomePage::first();
+            $feature->features_heading = $request->features_heading;
+            $feature->features_description = $request->features_description;
+            if($request->features_image){
+                $file = $request->file('features_image');
+                $filename = rand().'.'.$file->getClientOriginalExtension();
+                $destinationPath = public_path('frontend').'/images';
+                $file->move($destinationPath,$filename);
+                $feature->features_image = $filename;
+        }
+        if($feature->save()){
+            return redirect()->back()->with('success', 'updated successfully');
+        }
 
-}
-public function busniessadd(Request $request){
-    $feature = new HomePageBusinessSection;
-    $feature->title = $request->title;
-    $feature->description = $request->description;
-    $feature->slug = Str::slug($request->title);
-    if($request->image){
-        $file = $request->file('image');
-        $filename = rand().'.'.$file->getClientOriginalExtension();
-        $destinationPath = public_path('frontend').'/images/custompages/home/bisiness/';
-        $file->move($destinationPath,$filename);
-        $feature->image = $filename;
     }
-    if($feature->save()){
-        return redirect()->back()->with('success', 'added successfully');
+    public function busniessTitle(Request $request){
+        $home_page_data =  HomePage::first();
+        $home_page_data->business_heding =$request->business_heding;
+        if($home_page_data->save()){
+            return redirect()->back()->with('success', 'updated successfully');
+        }
+
     }
-}
+    public function busniessadd(Request $request){
+        $feature = new HomePageBusinessSection;
+        $feature->title = $request->title;
+        $feature->description = $request->description;
+        $feature->slug = Str::slug($request->title);
+        if($request->image){
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/custompages/home/bisiness/';
+            $file->move($destinationPath,$filename);
+            $feature->image = $filename;
+        }
+        if($feature->save()){
+            return redirect()->back()->with('success', 'added successfully');
+        }
+    }
     public function businessDelete($id){
         $feature = HomePageBusinessSection::find($id);
         if($feature->delete()){
             return redirect()->back()->with('success', 'deleted successfully');
+        }
+    }
+
+     // new update from client for editing Button business section
+     public function businessNewUpdate(Request $request, $id){
+        $feature = HomePageBusinessSection::find($id);
+        if($request->title){
+            $feature->title = $request->title;
+        }
+        if($request->heading){
+            $feature->description = $request->description;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/custompages/home/bisiness/'.$feature->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/custompages/home/bisiness/';
+            $file->move($destinationPath,$filename);
+            $feature->image = $filename;
+        }
+        if($feature->save()){
+
+            return redirect()->back()->with('success', 'Business section updated successfully');
         }
     }
 
@@ -231,7 +307,34 @@ public function busniessadd(Request $request){
             return redirect()->back()->with('success', 'deleted successfully');
         }
     }
+    // new update from client for editing Button broadcast section
+    public function broadcastNewUpdate(Request $request, $id){
+        $feature = HomePageroadcastSection::find($id);
+        if($request->title){
+            $feature->title = $request->title;
+        }
+        if($request->heading){
+            $feature->description = $request->description;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/custompages/home/broadcast/'.$feature->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/custompages/home/broadcast/';
+            $file->move($destinationPath,$filename);
+            $feature->image = $filename;
+        }
+        if($feature->save()){
 
+            return redirect()->back()->with('success', 'Broadcast section updated successfully');
+        }
+    }
+
+
+                //USER CUSTOME PAGES
     //user custome pages
     public function userCustomePage(){
         $custome_pages = NewCustomePage::all();

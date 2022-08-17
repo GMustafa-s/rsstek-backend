@@ -428,64 +428,70 @@ Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.ind
     // delete user custome page
     Route::delete('/user/custome-page/delete/{id}', [CustomPagesController::class, 'deleteNewCustomePage'])->name('cms.delete.user-custom-page');
 
-
+    // Home page
     Route::get('/', [CustomPagesController::class, 'index'])->name('cms.custom.index');
     Route::get('/edit/{id}', [CustomPagesController::class, 'edit'])->name('cms.custom.edit');
     Route::post('/update/{id}', [CustomPagesController::class, 'update'])->name('cms.custom.update.meta');
     Route::post('home-header/update', [CustomPagesController::class, 'homeHeaderUpdate'])->name('cms.custom.update.header');
     Route::post('hero-section/update', [CustomPagesController::class, 'homeHeroSectionUpdate'])->name('cms.custom.update.hero');
+
     Route::post('what-we-use/update', [CustomPagesController::class, 'homeWhatWeUseUpdate'])->name('cms.custom.update.wwu');
     Route::post('what-we-use/add', [CustomPagesController::class, 'homeWhatWeUseUpadd'])->name('cms.custom.add.wwu');
     Route::get('what-we-use/delete/{id}', [CustomPagesController::class, 'homeWhatWeUseDelete'])->name('cms.custom.delete.wwu');
+    // new update form client for editing button home what we use section
+    Route::post('new_update_home_what_we_use/edit/{id}', [CustomPagesController::class, 'homeWhatWeUsenewUpdate'])->name('cms.custom.newUpdate_wwu');
+
+
     Route::post('aboutus/title', [CustomPagesController::class, 'aboutusTitle'])->name('cms.custom.aboutus.title');
     Route::post('aboutus/add', [CustomPagesController::class, 'aboutusAdd'])->name('cms.custom.aboutus.add');
     Route::get('aboutus/delete/{id}', [CustomPagesController::class, 'aboutusDelete'])->name('cms.custom.aboutus.delete');
+    // new update form client for editing button about us section
+    Route::post('new_update_aboutus/edit/{id}', [CustomPagesController::class, 'aboutUsNewUpdate'])->name('cms.custom.newUpdate_aboutus');
+
     //features section
     Route::post('features/update', [CustomPagesController::class, 'faturesUpdate'])->name('cms.custom.features.update');
+
     //business section
     Route::post('business/title', [CustomPagesController::class, 'busniessTitle'])->name('cms.custom.business.title');
     Route::post('business/add', [CustomPagesController::class, 'busniessadd'])->name('cms.custom.business.add');
     Route::get('business/delete/{id}', [CustomPagesController::class, 'businessDelete'])->name('cms.custom.business.delete');
+    // new update form client for editing button business section
+    Route::post('new_update_business/edit/{id}', [CustomPagesController::class, 'businessNewUpdate'])->name('cms.custom.newUpdate_business');
+
     //broadcast section
     Route::post('broadcast/title', [CustomPagesController::class, 'broadcastTitle'])->name('cms.custom.broadcast.title');
     Route::post('broadcast/add', [CustomPagesController::class, 'broadcastadd'])->name('cms.custom.broadcast.add');
     Route::get('broadcast/delete/{id}', [CustomPagesController::class, 'broadcastDelete'])->name('cms.custom.broadcast.delete');
+    // new update form client for editing button broadcast section
+    Route::post('new_update_broadcast/edit/{id}', [CustomPagesController::class, 'broadcastNewUpdate'])->name('cms.custom.newUpdate_broadcast');
 
+    Route::post('/feature', [CustomPagesController::class, 'homeFeatureSection'])->name('cms.custome.feature.update');
+    Route::post('/choice-us', [CustomPagesController::class, 'homeChoiceUsSection'])->name('cms.custome.choice-us-section.update');
+    // End Home Page
 
 
     Route::get('delete/{id}', [CameraController::class, 'destroy'])->name('cms.camera.delete');
     Route::get('/section/delete/{id}', [CameraController::class, 'deleteSection'])->name('cms.camera.deletesection');
 
-    // make home page dynamic ..all routes
-    Route::post('/feature', [CustomPagesController::class, 'homeFeatureSection'])->name('cms.custome.feature.update');
-    Route::post('/choice-us', [CustomPagesController::class, 'homeChoiceUsSection'])->name('cms.custome.choice-us-section.update');
-
-    // make aboutus page dynamic ..all routes
+    // Aboutus page dynamic
     Route::get('/aboutus/edit/{id}', [EditAboutusController::class, 'editAboutus'])->name('cms.custome.edit.aboutus');
-
     Route::post('/aboutus-page-heading', [EditAboutusController::class, 'aboutusHeadingUpdate'])->name('cms.custome.aboutus_page_heading.update');
-
     Route::post('/aboutus-top_info-section', [EditAboutusController::class, 'topInfoSectionUpdate'])->name('cms.custome.top_info_section.update');
-
     Route::post('/aboutus-section', [EditAboutusController::class, 'aboutusSectionUpdate'])->name('cms.custome.aboutus_section.update');
-
     Route::post('/ourwork-section', [EditAboutusController::class, 'ourworkSectionUpdate'])->name('cms.custome.ourwork_section.update');
-
     Route::post('/chief-officer', [EditAboutusController::class, 'chiefOfficeUpdate'])->name('cms.custome.chief-office.update');
-
     Route::post('/our-product', [EditAboutusController::class, 'ourProductUpdate'])->name('cms.custome.our-product.update');
-
     Route::post('/product-info-section', [EditAboutusController::class, 'productInfoSectionUpdate'])->name('cms.custome.product-info-section.update');
-
     Route::post('/our-customer', [EditAboutusController::class, 'ourCustomerUpdate'])->name('cms.custome.our-customer.update');
+    // End Aboutus page dynamic
 
-    // make contactus page dynamic ..all routes
+    // Contactus page dynamic
     Route::get('/contactus/edit/{id}', [EditAboutusController::class, 'editContactus'])->name('cms.custome.edit.contactus');
     Route::post('/contactus-main-section', [EditAboutusController::class, 'contactusMainUpdate'])->name('cms.custome.contactus-main-section.update');
+    // End Contactus page dynamic
 
-    // make integration page dynamic ..all routes
+    // integration page dynamic
     Route::get('/integration/edit/{id}', [IntegrationController::class, 'editIntegration'])->name('cms.custome.edit.integration');
-
     //header update
     Route::post('/header/update', [IntegrationController::class, 'headerUpdate'])->name('cms.custome.integration-header.update');
 
@@ -496,46 +502,58 @@ Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.ind
     Route::post('/second-camera-section/update', [IntegrationController::class, 'secondCameraSectionUpdate'])->name('cms.custome.integration-second-camera-section.update');
     // second camera section create
     Route::post('/second-camera-section/create', [IntegrationController::class, 'secondCameraSectionCreate'])->name('cms.custome.integration-second-camera-section.create');
+    // new update form client for editing button second camera section
+    Route::post('new_update_second_camera_section/edit/{id}', [IntegrationController::class, 'secondCameraNewUpdate'])->name('cms.custom.newUpdate_second_camera');
     // second camera section delete
-    Route::delete('/second-camera-section/delete/{id}', [IntegrationController::class, 'secondCameraSectionDelete'])->name('cms.custome.integration-second-camera-section.delete');
+    Route::get('/second-camera-section/delete/{id}', [IntegrationController::class, 'secondCameraSectionDelete'])->name('cms.custome.integration-second-camera-section.delete');
 
     // control section heading update
     Route::post('/control-section/update', [IntegrationController::class, 'controlSectionUpdate'])->name('cms.custome.integration-control-section.update');
     // control section create
     Route::post('/control-section/create', [IntegrationController::class, 'controlSectionCreate'])->name('cms.custome.integration-control-section.create');
+    // new update form client for editing button second camera section
+    Route::post('new_update_control_section/edit/{id}', [IntegrationController::class, 'controlSectionNewUpdate'])->name('cms.custom.newUpdate_control_section');
     // control section delete
-    Route::delete('/control-section/delete/{id}', [IntegrationController::class, 'controlSectionDelete'])->name('cms.custome.integration-control-section.delete');
+    Route::get('/control-section/delete/{id}', [IntegrationController::class, 'controlSectionDelete'])->name('cms.custome.integration-control-section.delete');
 
     // outputs section heading update
     Route::post('/outputs-section/update', [IntegrationController::class, 'outputsSectionUpdate'])->name('cms.custome.integration-outputs-section.update');
     // outputs section create
     Route::post('/outputs-section/create', [IntegrationController::class, 'outputsSectionCreate'])->name('cms.custome.integration-outputs-section.create');
+    // new update form client for editing button outputs section section
+    Route::post('new_update_outputs_section/edit/{id}', [IntegrationController::class, 'outputsSectionNewUpdate'])->name('cms.custom.newUpdate_outputs_section');
     // outputs section delete
-    Route::delete('/outputs-section/delete/{id}', [IntegrationController::class, 'outputsSectionDelete'])->name('cms.custome.integration-outputs-section.delete');
+    Route::get('/outputs-section/delete/{id}', [IntegrationController::class, 'outputsSectionDelete'])->name('cms.custome.integration-outputs-section.delete');
 
     // management section heading update
     Route::post('/management-section/update', [IntegrationController::class, 'managementSectionUpdate'])->name('cms.custome.integration-management-section.update');
     // management section create
     Route::post('/management-section/create', [IntegrationController::class, 'managementSectionCreate'])->name('cms.custome.integration-management-section.create');
+    // new update form client for editing button outputs section section
+    Route::post('new_update_management_section/edit/{id}', [IntegrationController::class, 'managementSectionNewUpdate'])->name('cms.custom.newUpdate_management_section');
     // management section delete
-    Route::delete('/management-section/delete/{id}', [IntegrationController::class, 'managementSectionDelete'])->name('cms.custome.integration-management-section.delete');
+    Route::get('/management-section/delete/{id}', [IntegrationController::class, 'managementSectionDelete'])->name('cms.custome.integration-management-section.delete');
 
     // providers section heading update
     Route::post('/providers-section/update', [IntegrationController::class, 'providersSectionUpdate'])->name('cms.custome.integration-providers-section.update');
     // providers section create
     Route::post('/providers-section/create', [IntegrationController::class, 'providersSectionCreate'])->name('cms.custome.integration-providers-section.create');
+    // new update form client for editing button outputs section section
+    Route::post('new_update_providers_section/edit/{id}', [IntegrationController::class, 'providersSectionNewUpdate'])->name('cms.custom.newUpdate_providers_section');
     // providers section delete
-    Route::delete('/providers-section/delete/{id}', [IntegrationController::class, 'providersSectionDelete'])->name('cms.custome.integration-providers-section.delete');
+    Route::get('/providers-section/delete/{id}', [IntegrationController::class, 'providersSectionDelete'])->name('cms.custome.integration-providers-section.delete');
 
     // communication tools section heading update
     Route::post('/communication-tools-section/update', [IntegrationController::class, 'communicationToolsSectionUpdate'])->name('cms.custome.integration-communication-tools-section.update');
     // communication tools section create
     Route::post('/communication-tools-section/create', [IntegrationController::class, 'communicationToolsSectionCreate'])->name('cms.custome.integration-communication-tools-section.create');
+     // new update form client for editing button outputs section section
+     Route::post('new_update_communication_tools_section/edit/{id}', [IntegrationController::class, 'communicationToolsSectionNewUpdate'])->name('cms.custom.newUpdate_communication_tools_section');
     // communication tools section delete
-    Route::delete('/communication-tools-section/delete/{id}', [IntegrationController::class, 'communicationToolsSectionDelete'])->name('cms.custome.integration-communication-tools-section.delete');
+    Route::get('/communication-tools-section/delete/{id}', [IntegrationController::class, 'communicationToolsSectionDelete'])->name('cms.custome.integration-communication-tools-section.delete');
     //End integration page
 
-                //Cases Page
+    //Cases Page
     Route::get('/cases/edit/{id}', [CasesController::class, 'editCases'])->name('cms.custome.edit.cases');
     //heading section
     Route::post('/cases/header/update', [CasesController::class, 'headerUpdate'])->name('cms.custome.cases-header.update');
@@ -545,10 +563,12 @@ Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.ind
     // ourwork section update
     Route::post('/our-work/update', [CasesController::class, 'ourWorkSectionUpdate'])->name('cms.custome.our-work-section.update');
     // ourwork section delete
-    Route::delete('/our-work/delete/{id}', [CasesController::class, 'ourWorkSectionDelete'])->name('cms.custome.our-work-section.delete');
+    Route::get('/our-work/delete/{id}', [CasesController::class, 'ourWorkSectionDelete'])->name('cms.custome.our-work-section.delete');
+    // new update form client for editing button our work section
+    Route::post('new_update_our_work/edit/{id}', [CasesController::class, 'ourWorkNewUpdate'])->name('cms.custom.newUpdate_our_work');
+    // End Cases page
 
-
-                //Demo Page
+    //Demo Page
     Route::get('/demo/edit/{id}', [DemoController::class, 'editDemo'])->name('cms.custome.edit.demo');
      // demo page heading update
      Route::post('/demo/header' , [DemoController::class, 'demoHeadingUpdate'])->name('cms.custome.demo-heading.update');
@@ -556,12 +576,15 @@ Route::prefix('cms/custompages')->middleware(['auth', 'can:cms.custome.pages.ind
      Route::post('/get-demo/heading/update' , [DemoController::class, 'getDemoHeadingUpdate'])->name('cms.custome.get-demo-heading.update');
      // get demo section update
      Route::post('/get-demo/update' , [DemoController::class, 'getDemoUpdate'])->name('cms.custome.get-demo.update');
+     // new update form client for editing button get demo section
+     Route::post('new_update_get_demo/edit/{id}', [DemoController::class, 'getDemoNewUpdate'])->name('cms.custom.newUpdate_get_demo');
      // get demo section delete
-     Route::delete('/get-demo/delete/{id}' , [DemoController::class, 'getDemoDelete'])->name('cms.custome.get-demo.delete');
+     Route::get('/get-demo/delete/{id}' , [DemoController::class, 'getDemoDelete'])->name('cms.custome.get-demo.delete');
      // regular security needs section delete
      Route::post('/security-needs' , [DemoController::class, 'securityNeedsUpdate'])->name('cms.custome.security-needs.update');
+    // End Demo Page
 
-                //Camera Compare Page
+    //Camera Compare Page
     Route::get('/camera-compare/edit/{id}', [CameraComparePageController::class, 'editCameraCompare'])->name('cms.custome.edit.camera-compare');
      // demo page heading update
      Route::post('/camera-compare/update' , [CameraComparePageController::class, 'cameraCompareUpdate'])->name('cms.custome.camera-compare.update');

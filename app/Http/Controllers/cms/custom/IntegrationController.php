@@ -5,16 +5,17 @@ namespace App\Http\Controllers\cms\custom;
 use App\Models\Camera;
 use App\Models\CustomPage;
 use App\Models\Integration;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\IntegrationCommunicationToolsSection;
-use App\Models\IntegrationControlSection;
-use App\Models\IntegrationManagementSection;
+use Illuminate\Support\Facades\File;
 use App\Models\IntegrationOutputSection;
+use App\Models\IntegrationControlSection;
 use App\Models\IntegrationProviderSection;
+use App\Models\IntegrationManagementSection;
 use App\Models\IntegrationSecondCameraSection;
-use Illuminate\Support\Str;
+use App\Models\IntegrationCommunicationToolsSection;
 
 class IntegrationController extends Controller
 {
@@ -115,6 +116,33 @@ class IntegrationController extends Controller
 
         }
      }
+     // new update form client for editing button second camera section
+     public function secondCameraNewUpdate(Request $request, $id){
+        $data =  IntegrationSecondCameraSection::find($id);
+        if($request->name){
+             $data->name = $request->name;
+        }
+        if($request->description){
+             $data->description = $request->description;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/integration/second-camera-section/'.$data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/integration/second-camera-section/';
+            $file->move($destinationPath, $filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+            return redirect()->back()->with('success' , 'Second camera section updated successfully');
+       }else{
+        return redirect()->back()->with('error', 'Something went wrong!');
+
+        }
+     }
 
     //second camera section delete
     public function secondCameraSectionDelete($id){
@@ -160,6 +188,33 @@ class IntegrationController extends Controller
         }
         if($data->save()){
             return redirect()->back()->with('success' , 'Control section added successfully');
+       }else{
+        return redirect()->back()->with('error', 'Something went wrong!');
+
+        }
+     }
+    // new update form client for editing button control section
+    public function controlSectionNewUpdate(Request $request, $id){
+        $data =  IntegrationControlSection::find($id);
+        if($request->name){
+             $data->name = $request->name;
+        }
+        if($request->description){
+             $data->description = $request->description;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/integration/control-section/'.$data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/integration/control-section/';
+            $file->move($destinationPath, $filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+            return redirect()->back()->with('success' , 'Control section updated successfully');
        }else{
         return redirect()->back()->with('error', 'Something went wrong!');
 
@@ -215,6 +270,35 @@ class IntegrationController extends Controller
 
         }
      }
+
+     // new update form client for editing button control section
+    public function outputsSectionNewUpdate(Request $request, $id){
+        $data =  IntegrationOutputSection::find($id);
+        if($request->name){
+             $data->name = $request->name;
+        }
+        if($request->description){
+             $data->description = $request->description;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/integration/outputs-section/'.$data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/integration/outputs-section/';
+            $file->move($destinationPath, $filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+            return redirect()->back()->with('success' , 'Outputs section updated successfully');
+       }else{
+        return redirect()->back()->with('error', 'Something went wrong!');
+
+        }
+     }
+
      //outputs section delete
     public function outputsSectionDelete($id){
         $data =  IntegrationOutputSection::find($id);
@@ -265,6 +349,35 @@ class IntegrationController extends Controller
 
         }
      }
+
+     // new update form client for editing button management section
+    public function managementSectionNewUpdate(Request $request, $id){
+        $data =  IntegrationManagementSection::find($id);
+        if($request->name){
+             $data->name = $request->name;
+        }
+        if($request->description){
+             $data->description = $request->description;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/integration/management-section/'.$data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/integration/management-section/';
+            $file->move($destinationPath, $filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+            return redirect()->back()->with('success' , 'Management section updated successfully');
+       }else{
+        return redirect()->back()->with('error', 'Something went wrong!');
+
+        }
+     }
+
      //management section delete
     public function managementSectionDelete($id){
         $data =  IntegrationManagementSection::find($id);
@@ -312,6 +425,32 @@ class IntegrationController extends Controller
 
         }
      }
+
+     // new update form client for editing button providers section
+    public function providersSectionNewUpdate(Request $request, $id){
+        $data =  IntegrationProviderSection::find($id);
+        if($request->name){
+             $data->name = $request->name;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/integration/providers-section/'.$data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/integration/providers-section/';
+            $file->move($destinationPath, $filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+            return redirect()->back()->with('success' , 'Providers section updated successfully');
+       }else{
+        return redirect()->back()->with('error', 'Something went wrong!');
+
+        }
+     }
+
      //providers section delete
     public function providersSectionDelete($id){
         $data =  IntegrationProviderSection::find($id);
@@ -359,6 +498,32 @@ class IntegrationController extends Controller
 
         }
      }
+
+     // new update form client for editing button communication tools section
+    public function communicationToolsSectionNewUpdate(Request $request, $id){
+        $data =  IntegrationCommunicationToolsSection::find($id);
+        if($request->name){
+             $data->name = $request->name;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/integration/communication-tools-section/'.$data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/integration/communication-tools-section/';
+            $file->move($destinationPath, $filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+            return redirect()->back()->with('success' , 'Communication section updated successfully');
+       }else{
+        return redirect()->back()->with('error', 'Something went wrong!');
+
+        }
+     }
+
      //communication tools section delete
     public function communicationToolsSectionDelete($id){
         $data =  IntegrationCommunicationToolsSection::find($id);

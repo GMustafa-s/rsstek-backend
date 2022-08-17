@@ -103,7 +103,7 @@
 
                                 <div class="form-group mb-4">
                                     <label>Header Description</label>
-                                    <textarea required name="header_description " rows="3" cols="5" class="form-control" maxlength="500" placeholder=" description here" >{{$home_page_data->header_description}}</textarea>
+                                    <textarea required name="header_description" rows="3" cols="5" class="form-control" placeholder=" description here" >{{$home_page_data->header_description}}</textarea>
 
                                 </div>
                                 <div class="submit-section">
@@ -208,9 +208,42 @@
                                                     </td>
                                                     <td>
 
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#edit_what_we_use{{$wwu_img->id}}"><i class="fa fa-edit"></i> Edit</a>
+
                                                     <a class="dropdown-item" href="{{route('cms.custom.delete.wwu',$wwu_img->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
+
+                                                {{-- what we use section popup edit form --}}
+                                                <div class="modal custom-modal fade" id="edit_what_we_use{{$wwu_img->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit What We Use Image</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_wwu', $wwu_img->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Select New Image</label>
+                                                                                <input name="image" type="file" class="form-control" required />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <img  src="{{asset('frontend')}}/images/custompages/home/what-we-use/{{$wwu_img->image}}" alt="img" srcset="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Image</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /what we use section popup edit form --}}
+
                                                 @endforeach
                                                 @endif
                                             </tbody>
@@ -232,7 +265,7 @@
                         <div class="col-4 bg-ccc">
                             <div class="h3 card-title with-switch">
                                 <br>
-                               Abbout Us
+                               About Us
                             </div>
                         </div>
                         <div class="col-8">
@@ -286,12 +319,62 @@
                                                     </td>
                                                     <td>
 
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#edit_about_us_section{{$feature->id}}"><i class="fa fa-edit"></i> Edit</a>
+
                                                     <a class="dropdown-item" href="{{route('cms.custom.aboutus.delete',$feature->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
+
+                                                 {{-- about us popup edit form --}}
+                                                 <div class="modal custom-modal fade" id="edit_about_us_section{{$feature->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit About Us Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_aboutus', $feature->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Feature Heading</label>
+                                                                                <input name="title" type="text" class="form-control" value=" {{$feature->title}}" required  />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Feature Description</label>
+                                                                                <input name="description" type="text" class="form-control" value="{{$feature->description}}" required />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                <img  height="50" src="{{asset('frontend')}}//images/custompages/home/about-features/{{$feature->image}}" alt="img" >
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /about us popup edit form --}}
+
+
                                                 @endforeach
                                                 @endif
-                                                                                                     </tbody>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -390,7 +473,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>Business Heading</th>
-                                                    <th>Business Heading</th>
                                                     <th> Description</th>
                                                     <th>Image</th>
                                                     <th>Action</th>
@@ -410,13 +492,61 @@
                                                         <img height="50" src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$feature->image}}" alt="">
                                                     </td>
                                                     <td>
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#edit_business_section{{$feature->id}}"><i class="fa fa-edit"></i> Edit</a>
 
                                                     <a class="dropdown-item" href="{{route('cms.custom.business.delete',$feature->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
+
+                                                {{-- Business Section popup edit form --}}
+                                                <div class="modal custom-modal fade" id="edit_business_section{{$feature->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit Business Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_business', $feature->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Feature Heading</label>
+                                                                                <input name="title" type="text" class="form-control" value=" {{$feature->title}}" required  />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Feature Description</label>
+                                                                                <input name="description" type="text" class="form-control" value="{{$feature->description}}" required />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                <img  height="50" src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$feature->image}}" alt="img" >
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /Business Section popup edit form --}}
+
                                                 @endforeach
                                                 @endif
-                                                                                                     </tbody>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -492,16 +622,76 @@
                                                         {{$feature->temperature}}
                                                     </td>
                                                     <td>
-                                                        <img height="50" src="{{asset('frontend')}}/images/custompages/home/bisiness/{{$feature->image}}" alt="">
+                                                        <img height="50" src="{{asset('frontend')}}/images/custompages/home/broadcast/{{$feature->image}}" alt="">
                                                     </td>
                                                     <td>
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#edit_broadcast_section{{$feature->id}}"><i class="fa fa-edit"></i> Edit</a>
 
                                                     <a class="dropdown-item" href="{{route('cms.custom.broadcast.delete',$feature->id)}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </td>
                                                 </tr>
+
+                                                {{-- BroadCast Section popup edit form --}}
+                                                <div class="modal custom-modal fade" id="edit_broadcast_section{{$feature->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit BroadCast Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_broadcast', $feature->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Camera</label>
+                                                                                <input name="cam" type="text" class="form-control" value=" {{$feature->cam}}" required  />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Locationing</label>
+                                                                                <input name="location" type="text" class="form-control" value="{{$feature->location}}" required />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Digree</label>
+                                                                                <input name="temperature" type="text" value="{{$feature->degree}}" class="form-control" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Temprature</label>
+                                                                                <input name="temperature" type="text" value="{{$feature->temperature}}" class="form-control" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <img height="50" src="{{asset('frontend')}}/images/custompages/home/broadcast/{{$feature->image}}" alt="img">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /BroadCast Section popup edit form --}}
+
                                                 @endforeach
                                                 @endif
-                                                                                                     </tbody>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -511,6 +701,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
 <div class="modal custom-modal fade" id="add_what_we_use" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">

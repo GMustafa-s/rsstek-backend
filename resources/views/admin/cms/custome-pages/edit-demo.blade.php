@@ -170,18 +170,54 @@
                                                     </td>
                                                     <td>
                                                         @if($ds->image !=null)
-                                                        <img id="getDemoSection" width="100px" height="100px" src="{{asset('frontend')}}/images/Solutions/demo-section-icon/{{$ds->image}}" alt="image">
+                                                        <img class="getDemoSection" width="100px" height="100px" src="{{asset('frontend')}}/images/Solutions/demo-section-icon/{{$ds->image}}" alt="image">
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    <form action="{{route('cms.custome.get-demo.delete', $ds->id)}}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                            <button  style="border: none" onclick="return confirm('Are you sure want ot delete?')" type="submit"><i class="fa fa-trash-o m-r-5"></i></button>
-
-                                                    </form>
+                                                        <a class="dropdown-item" data-toggle="modal" data-target="#edit_get_demo_section{{$ds->id}}"><i class="fa fa-edit"></i></a>
+                                                        <a href="{{route('cms.custome.get-demo.delete', $ds->id)}}" onclick="return confirm('Are you sure want ot delete {{$ds->name}}?')" class="dropdown-item" ><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
+
+                                                  {{-- Get Demo Section popup edit form --}}
+                                                  <div class="modal custom-modal fade" id="edit_get_demo_section{{$ds->id}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-md modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                            <div class="modal-body">
+                                                                <h5 class="modal-title text-center mb-3">Edit Get Demo Section</h5>
+                                                                <form action="{{route('cms.custom.newUpdate_get_demo', $ds->id)}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label>Text</label>
+                                                                                <input name="text" type="text" class="form-control" value="  {{$ds->text}}" required  />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">New Image</label>
+                                                                                    <input name="image" type="file" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <img class="getDemoSection" width="100px" height="100px" src="{{asset('frontend')}}/images/Solutions/demo-section-icon/{{$ds->image}}" alt="img">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="m-t-20 text-center">
+                                                                        <button class="btn btn-primary submit-btn">Update Section</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- /Get Demo Section popup edit form --}}
                                                 @endforeach
                                                 @endif
                                             </tbody>

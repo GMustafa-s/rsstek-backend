@@ -88,5 +88,31 @@ class CasesController extends Controller
         }
     }
 
+     // new update from client for editing Button our work section
+     public function ourWorkNewUpdate(Request $request, $id){
+        $data = OurWork::find($id);
+        if($request->name){
+            $data->name = $request->name;
+        }
+        if($request->location){
+            $data->location = $request->location;
+        }
+        if($request->image){
+            $path = public_path('frontend').'/images/common-pages/our-work/'.$data->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $filename = rand().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('frontend').'/images/common-pages/our-work/';
+            $file->move($destinationPath,$filename);
+            $data->image = $filename;
+        }
+        if($data->save()){
+
+            return redirect()->back()->with('success', 'Our work section updated successfully');
+        }
+    }
+
 
 }
